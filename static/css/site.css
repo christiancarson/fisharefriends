@@ -11,7 +11,8 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .card .frame iframe { display: block; width: 100%; height: 100%; border: 0 }
 .card figcaption { font-size: .9rem; line-height: 1.6; color: var(--mute) }
 .card figcaption p { margin: 0 }
-.water .card:not(.map) { margin-left: 2.5rem }
+.water { background: #f3f3f1; border-radius: 16px; padding: 14px 14px 1px; margin: 0 0 18px }
+.water .card:not(.map) { margin-left: 1.5rem }
 .tags { margin-top: .4rem }
 .tags a, .tags span { color: var(--mute); font-size: .8rem; margin-right: .7em }
 .ftitle { display: block; margin-bottom: .3rem; font-weight: 700; font-size: 1rem; color: var(--ink) }
