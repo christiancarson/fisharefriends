@@ -4,9 +4,6 @@ timeZone = 'America/Vancouver'
 capitalizeListTitles = false
 disableKinds = ['taxonomy']
 
-[pagination]
-pagerSize = 5
-
 [taxonomies]
 category = 'categories'
 

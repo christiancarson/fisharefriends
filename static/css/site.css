@@ -22,8 +22,8 @@ nav a { margin-left: 1.4em; text-decoration: none; color: var(--mute) }
 .post .meta { font-size: .8rem; color: var(--mute) }
 .post .meta a { color: var(--mute) }
 .sep { display: block; width: 56px; height: 28px; margin: 0 auto 2.5rem }
-.pager a { margin-right: 1em; text-decoration: none }
-.pager .here { font-weight: 700 }
+.intro { max-width: 40rem; margin: 0 0 2.5rem }
+.intro p:last-child { font: 1.5rem/1 "Gochi Hand", cursive }
 ul.plain { list-style: none; padding: 0; margin: 0 }
 .side h3 { font: 1.25rem/1 "Gochi Hand", cursive; margin: 1.8rem 0 .5rem }
 .side a { text-decoration: none }

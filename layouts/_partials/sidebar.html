@@ -5,7 +5,7 @@
 <h3>next trips</h3>
 <ul class="plain">{{ range first 3 (partial "upcoming.html" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mute">{{ .Params.trip_date }}</span></li>{{ else }}<li class="mute">nothing planned yet</li>{{ end }}</ul>
 <h3>categories</h3>
-<ul class="plain"><li><a href="{{ site.Home.RelPermalink }}">all</a></li>{{ range site.Taxonomies.categories.Alphabetical }}<li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> <span class="mute">{{ .Count }}</span></li>{{ end }}<li><a href="{{ (site.GetPage "trips").RelPermalink }}">trips</a></li></ul>
+<ul class="plain"><li><a href="{{ (site.GetPage "posts").RelPermalink }}">all</a></li>{{ range site.Taxonomies.categories.Alphabetical }}<li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> <span class="mute">{{ .Count }}</span></li>{{ end }}<li><a href="{{ (site.GetPage "trips").RelPermalink }}">trips</a></li></ul>
 <h3>older posts</h3>
 <ul class="plain">{{ $a := site.GetPage "archive" }}{{ range site.RegularPages.GroupByDate "January 2006" }}<li><a href="{{ $a.RelPermalink }}#{{ .Key | urlize }}">{{ .Key }}</a></li>{{ end }}</ul>
 {{ with site.Params.links }}<h3>links</h3><ul class="plain">{{ range . }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}</ul>{{ end }}
