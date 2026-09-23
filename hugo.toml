@@ -26,6 +26,7 @@ fishies = 'fish'
 [params.waters]
 Toquaht = 'Toquaht Estuary'
 Ucluelet = 'Ucluelet Harbour'
+Squamish = 'Squamish River'
 
 [params.trips.raft]
 label = 'raft fishing'
