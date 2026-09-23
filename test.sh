@@ -10,7 +10,7 @@ grep -q 'href="/categories/life/">life' public/index.html
 grep -q 'href="/archive/#september-2026">September 2026' public/index.html
 grep -q 'crittycar (at) gmail.com' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
-grep -q 'symbol id="fish"' public/index.html
+grep -q 'symbol id="fishdaisy"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
 grep -q -- '--paper: #fff' public/css/site.css
 grep -q '<p class="date">September 22, 2026</p>' public/index.html
@@ -37,6 +37,7 @@ grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish
 grep -q 'href="/trips/squamish-river/">squamish river' public/archive/index.html
 grep -q 'runners you can trash :)' public/trips/squamish-river/index.html
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
+grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">squamish river' public/trips/index.html
