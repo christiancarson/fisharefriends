@@ -25,3 +25,5 @@ grep -q 'mailto:crittycar@gmail.com?subject=count%20me%20in%3a%20sample%20trip' 
 grep -q '0 of 4 taken' public/index.html
 grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
+grep -q 'id="september-2026">September 2026' public/archive/index.html
+grep -q 'href="/posts/welcome/">welcome' public/archive/index.html
