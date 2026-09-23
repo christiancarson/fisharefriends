@@ -26,7 +26,7 @@ grep -q 'data-tags="rivers bitteroot-river"' public/categories/bitteroot-river/i
 grep -q 'href="/posts/2026-09-september-2026/">september 2026' public/index.html
 grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
-grep -q 'symbol id="fishdaisy"' public/index.html
+grep -q 'symbol id="fishpals"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
 grep -q -- '--paper: #fff' public/css/site.css
 grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
@@ -100,7 +100,7 @@ grep -q '<dt>what</dt><dd>walk and wade to learn the basics</dd>' public/trips/s
 grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish-river/index.html
 grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish-river/index.html
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
-grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
+grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/>' public/index.html
 grep -q '<figure class="card map" data-tags="rivers squamish-river"><div class="doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
 grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcaption>' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
