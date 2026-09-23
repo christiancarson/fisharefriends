@@ -51,9 +51,10 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             d = pathlib.Path("data/rivers.toml")
             d.write_text(re.sub(r'(\["%s"\]\ntitle = "[^"]*"\nabout = )"[^"]*"' % re.escape(slugify(t)), lambda m: m.group(1) + json.dumps(note.read_text().strip()), d.read_text()))
         tags.add(group(t))
-        cards.append(f'{{{{< map "{t}" >}}}}')
-        cards.extend(p for w, p in photos if w and w[0] == t)
+        cards.append('<div class="water">\n\n' + "\n\n".join([f'{{{{< map "{t}" >}}}}'] + [p for w, p in photos if w and w[0] == t]) + '\n\n</div>')
     cards += [p for w, p in photos if not w or not pathlib.Path(f"assets/maps/{slugify(w[0])}.svg").exists()] + videos
+    for old in out.glob("*.jpg"):
+        if old.name not in {p.split("](")[1].split(" ")[0] for w, p in photos}: old.unlink()
     if not cards: continue
     (out / "index.md").write_text(f'---\ntitle: "{title}"\ndate: {date}T12:00:00-07:00\ncategories: [{", ".join(sorted(tags))}]\n---\n' + "\n\n".join(cards) + "\n")
     print(out.name, len(cards))

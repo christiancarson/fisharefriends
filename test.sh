@@ -41,7 +41,7 @@ grep -q 'please wait for the next float trip' public/trips/index.html
 grep -q 'data-trip="squamish-river" data-spots="4"' public/trips/squamish-river/index.html
 grep -q '<dd class="spots">0 of 4 taken</dd>' public/trips/squamish-river/index.html
 grep -q 'width="484" height="272"' public/posts/2026-09-september-2026/index.html
-grep -q '<figcaption><a class="ftitle" href="/categories/fish/">Ruby</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.</p></figcaption>' public/posts/2026-09-september-2026/index.html
+grep -q '<figcaption><a class="ftitle" href="/categories/fish/">Ruby</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.</p><p class="tags">' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/fish/index.html
 ! grep -q 'card video\|card map\|<article' public/categories/fish/index.html
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">The Morice River</a>' public/categories/rivers/index.html
@@ -64,6 +64,9 @@ grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/2026-09-september-20
 ! grep -q 'autoplay=1' public/posts/index.html
 test $(grep -c 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html) -eq 1
 test $(grep -n 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n '>Ruby</a>' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
+grep -q '<div class="water">' public/posts/2022-08-august-2022/index.html
+grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/dean-river/">Dean River</a></p>' public/posts/2022-08-august-2022/index.html
+! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
