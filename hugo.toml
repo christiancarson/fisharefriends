@@ -1,0 +1,23 @@
+baseURL = 'https://fisharefriends.org/'
+title = 'fish are friends'
+timeZone = 'America/Vancouver'
+capitalizeListTitles = false
+disableKinds = ['taxonomy']
+
+[pagination]
+pagerSize = 5
+
+[taxonomies]
+category = 'categories'
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[module.hugoVersion]
+min = '0.146.0'
+
+[params]
+author = 'Christian'
+email = 'crittycar@gmail.com'
+bio = 'Fishing journal, music, and life things. Trips to get friends out for their first fish.'
+links = []
