@@ -19,7 +19,7 @@ min = '0.146.0'
 [params]
 author = 'critty'
 email = 'crittycar@gmail.com'
-licence = 'https://www.fishing.gov.bc.ca/'
+licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
 bio = 'Fishing journal, music, and life things. Trips to get friends out for their first fish.'
 links = []
 
