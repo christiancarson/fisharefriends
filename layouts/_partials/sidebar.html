@@ -1,5 +1,5 @@
 <aside class="side">
-{{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" alt="{{ site.Params.author }}">{{ else }}<svg class="doodle big red"><use href="#flower"/></svg>{{ end }}
+{{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" alt="{{ site.Params.author }}">{{ else }}<svg class="doodle big red" aria-hidden="true"><use href="#flower"/></svg>{{ end }}
 <p>{{ site.Params.bio }}</p>
 <p>by {{ site.Params.author }}</p>
 <h3>next trips</h3>

@@ -1,4 +1,4 @@
 {{ define "main" }}
 <h1 class="listtitle">{{ .Title }}</h1>
-{{ range .Pages.ByDate.Reverse }}{{ partial "post.html" . }}<svg class="doodle sep"><use href="#fish"/></svg>{{ end }}
+{{ range .Pages.ByDate.Reverse }}{{ partial "post.html" . }}<svg class="doodle sep" aria-hidden="true"><use href="#fish"/></svg>{{ end }}
 {{ end }}

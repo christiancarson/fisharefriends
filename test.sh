@@ -27,3 +27,6 @@ grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
 grep -q 'id="september-2026">September 2026' public/archive/index.html
 grep -q 'href="/posts/welcome/">welcome' public/archive/index.html
+hugo build -d public --quiet --cleanDestinationDir
+test ! -e public/trips/sample-trip
+grep -q 'nothing planned yet' public/trips/index.html
