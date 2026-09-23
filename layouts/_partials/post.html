@@ -1,0 +1,6 @@
+<article class="post">
+<p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+<h2 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+<div class="body">{{ .Content }}</div>
+<p class="meta"># by {{ site.Params.author }} | {{ .Date.Format "2006-01-02 15:04" }}{{ range .GetTerms "categories" }} | <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ if eq .Section "trips" }} | <a href="{{ .Parent.RelPermalink }}">trips</a>{{ end }}</p>
+</article>

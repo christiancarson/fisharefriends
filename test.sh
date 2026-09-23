@@ -13,3 +13,10 @@ grep -q 'href="/index.xml">rss' public/index.html
 grep -q 'symbol id="fish"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
 grep -q -- '--paper: #fff' public/css/site.css
+grep -q '<p class="date">September 22, 2026</p>' public/index.html
+grep -q 'href="/posts/welcome/">welcome' public/index.html
+grep -q '# by Christian | 2026-09-22 12:00 | <a href="/categories/life/">life</a>' public/index.html
+grep -q 'class="doodle sep"' public/index.html
+grep -q '<title>welcome | fish are friends</title>' public/posts/welcome/index.html
+grep -q 'href="/posts/welcome/">welcome' public/categories/life/index.html
+test -f public/page/1/index.html

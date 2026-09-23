@@ -1,1 +1,4 @@
-{{ define "main" }}{{ end }}
+{{ define "main" }}
+{{ range (.Paginate site.RegularPages).Pages }}{{ partial "post.html" . }}<svg class="doodle sep"><use href="#fish"/></svg>{{ end }}
+{{ with .Paginator }}{{ if gt .TotalPages 1 }}<p class="pager">{{ range .Pagers }}<a href="{{ .URL }}"{{ if eq .PageNumber $.Paginator.PageNumber }} class="here"{{ end }}>{{ .PageNumber }}</a>{{ end }}{{ if .HasNext }}<a href="{{ .Next.URL }}">next &gt;&gt;&gt;</a>{{ end }}</p>{{ end }}{{ end }}
+{{ end }}
