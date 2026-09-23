@@ -1,4 +1,4 @@
 ---
 title: "floats"
-weight: 6
+weight: 7
 ---

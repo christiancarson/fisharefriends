@@ -1,6 +1,6 @@
 {{ define "main" }}
 <h1 class="listtitle">{{ .Title }}</h1>
-{{ range site.RegularPages.GroupByDate "January 2006" }}
+{{ range (where site.RegularPages "Section" "posts").GroupByDate "January 2006" }}
 <h2 class="sub" id="{{ .Key | urlize }}">{{ .Key }}</h2>
 <ul class="plain">{{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mute">{{ .Date.Format "Jan 2" }}</span></li>{{ end }}</ul>
 {{ end }}

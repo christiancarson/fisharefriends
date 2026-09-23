@@ -1,1 +1,1 @@
-{{ partial "map.html" .Page.Params.river }}
+{{ partial "map.html" (.Get 0 | default .Page.Params.river) }}
