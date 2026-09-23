@@ -5,7 +5,7 @@ categories: [Atnarko River, Bella Coola, Dean River, fishies, friends]
 ---
 ![](christian-in-action.jpg "Christian in action | friends, Bella Coola")
 
-![](josh-dean-river.jpg "Josh Dean River | fishies, Dean River")
+![](josh.jpg "Josh | fishies, Dean River")
 
 ![](sam-in-action.jpg "Sam in action | friends, Dean River")
 

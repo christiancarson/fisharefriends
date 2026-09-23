@@ -51,7 +51,7 @@ grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
 grep -q '"/posts/2026-09-september-2026/"' public/index.html
-grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Josh Dean River</a>' public/categories/fishies/index.html
+grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Josh</a>' public/categories/fishies/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Christian in action</a>' public/categories/friends/index.html
 ! grep -q 'Christian in action' public/categories/fishies/index.html
 grep -q 'data-tags="rivers morice-river"' public/categories/morice-river/index.html

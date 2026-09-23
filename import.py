@@ -24,6 +24,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"):
             tag = finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fishies"])
             tags.update(tag)
+            for t in tag: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
             jpg = out / (slugify(name) + ".jpg")
             if not jpg.exists() or jpg.stat().st_mtime < f.stat().st_mtime:
                 im = ImageOps.exif_transpose(Image.open(f)).convert("RGB")
