@@ -22,7 +22,7 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .post { padding-bottom: 1.5rem }
 .post .date { margin: 0; font-size: .85rem; color: var(--mute) }
 .post .title { font: 1.7rem/1.2 "Gochi Hand", cursive; margin: .2rem 0 1rem }
-.title, .listtitle, .side, .ftitle { text-transform: lowercase }
+body { text-transform: lowercase }
 .post .title a { text-decoration: none }
 .post .meta { font-size: .8rem; color: var(--mute) }
 .post .meta a { color: var(--mute) }

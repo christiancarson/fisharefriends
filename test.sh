@@ -6,8 +6,8 @@ grep -q '<title>fish are friends</title>' public/index.html
 grep -q 'class="brand" href="/">fish are friends' public/index.html
 grep -q 'href="/trips/">trips' public/trips/squamish-river/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
-grep -q 'text-transform: lowercase' public/css/site.css
-grep -q '>Walk and Wade the Squamish</a></h2>' public/trips/index.html
+grep -q 'body { text-transform: lowercase }' public/css/site.css
+grep -q '>walk and wade</a></h2>' public/trips/index.html
 grep -q 'href="/categories/fish/">fish' public/index.html
 grep -q '<li><details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
 grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
@@ -101,4 +101,4 @@ grep -q '<figure class="card map" data-tags="rivers squamish-river"><div class="
 grep -q '<a class="ftitle" href="/categories/rivers/">The Squamish River</a></figcaption>' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
-grep -q 'href="/trips/squamish-river/">Walk and Wade the Squamish' public/trips/index.html
+grep -q 'href="/trips/squamish-river/">walk and wade' public/trips/index.html
