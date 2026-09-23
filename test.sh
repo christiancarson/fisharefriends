@@ -9,14 +9,19 @@ grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'href="/categories/fishies/">fishies' public/index.html
 grep -q '<li><details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
 grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
-grep -q '<summary>places</summary><ul class="plain nest"><li><a href="/categories/bella-coola/">Bella Coola</a>' public/index.html
+! grep -q '<summary>places</summary>' public/index.html
+grep -q '<summary>estuaries</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
+grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li><a href="/categories/ucluelet-harbour/">Ucluelet Harbour</a>' public/index.html
+grep -q '<li><a href="/posts/2026-09-september-2026/">September 2026</a></li>' public/index.html
+test $(grep -n 'figure class="card map" data-tags="rivers atnarko-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
+test $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map" data-tags="rivers dean-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
 ! grep -q 'spey fishing\|fly tying' public/index.html
 grep -q 'data-tags="lakes kennedy-lake"' public/posts/2020-07-july-2020/index.html
 grep -q 'data-tags="rivers dean-river"' public/categories/dean-river/index.html
 test $(grep -c 'data-tags="rivers dean-river"' public/categories/dean-river/index.html) -eq 1
 test $(grep -n 'figure class="card map"' public/categories/dean-river/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card" ' public/categories/dean-river/index.html | head -1 | cut -d: -f1)
 grep -q 'data-tags="rivers bitteroot-river"' public/categories/bitteroot-river/index.html
-grep -q 'href="/archive/#september-2026">September 2026' public/index.html
+grep -q 'href="/posts/2026-09-september-2026/">September 2026' public/index.html
 grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
 grep -q 'symbol id="fishdaisy"' public/index.html
@@ -51,7 +56,6 @@ test -f public/posts/2026-09-september-2026/ruby.jpg
 ! grep -q 'squamish-river/">squamish river</a></h2>' public/index.html
 ! grep -q '<footer class="wrap"><svg' public/index.html
 grep -q 'viewBox="0 0 640 360"' public/posts/2026-09-september-2026/index.html
-test $(grep -n 'class="ftitle" href=' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'figure class="card map"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'youtube.com/embed' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
 grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/2026-09-september-2026/index.html
 ! grep -q 'autoplay=1' public/categories/music/index.html

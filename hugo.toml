@@ -19,7 +19,10 @@ email = 'critty@fisharefriends.org'
 signup = ''
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
 links = []
-places = ['Bella Coola', 'Ucluelet', 'Toquaht', 'Squamish']
+
+[params.waters]
+Toquaht = 'Toquaht Estuary'
+Ucluelet = 'Ucluelet Harbour'
 
 [params.trips.raft]
 label = 'raft fishing'

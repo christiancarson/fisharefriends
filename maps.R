@@ -1,4 +1,5 @@
 library(sf)
+library(jsonlite)
 args <- commandArgs(TRUE)
 name <- args[1]
 alias <- if (length(args) > 1) args[2] else name
@@ -16,7 +17,29 @@ if (!nrow(s)) {
 }
 if (!length(g)) {
   osm <- tempfile(fileext = ".osm")
-  system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", "https://overpass-api.de/api/interpreter", "--data-urlencode", shQuote(sprintf('data=[out:xml][timeout:120];(way["waterway"~"river|stream"]["name"="%s"];relation["waterway"~"river|stream"]["name"="%s"];way["natural"="water"]["name"="%s"];relation["natural"="water"]["name"="%s"];);(._;>;);out body;', name, name, name, name)), "-o", osm))
+  for (i in 1:4) {
+    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", "https://overpass-api.de/api/interpreter", "--data-urlencode", shQuote(sprintf('data=[out:xml][timeout:120];(way["waterway"~"river|stream"]["name"="%s"];relation["waterway"~"river|stream"]["name"="%s"];way["natural"="water"]["name"="%s"];relation["natural"="water"]["name"="%s"];);(._;>;);out body;', name, name, name, name)), "-o", osm))
+    if (file.size(osm) > 0 && grepl("^<\\?xml", readLines(osm, n = 1, warn = FALSE))) break
+    Sys.sleep(15)
+  }
+  g <- st_transform(st_geometry(suppressWarnings(st_read(osm, "lines", quiet = TRUE))), 3005)
+}
+if (!length(g)) {
+  ctr <- tempfile(fileext = ".json")
+  for (i in 1:4) {
+    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", "https://overpass-api.de/api/interpreter", "--data-urlencode", shQuote(sprintf('data=[out:json][timeout:120];(node["name"="%s"];way["name"="%s"];relation["name"="%s"];);out center 1;', name, name, name)), "-o", ctr))
+    if (grepl("^\\s*\\{", paste(readLines(ctr, n = 1, warn = FALSE), collapse = ""))) break
+    Sys.sleep(15)
+  }
+  e <- fromJSON(ctr)$elements
+  lat <- if (!is.null(e$lat)) e$lat[1] else e$center$lat[1]
+  lon <- if (!is.null(e$lon)) e$lon[1] else e$center$lon[1]
+  osm <- tempfile(fileext = ".osm")
+  for (i in 1:4) {
+    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", "https://overpass-api.de/api/interpreter", "--data-urlencode", shQuote(sprintf('data=[out:xml][timeout:120];(way["natural"="coastline"](around:4000,%f,%f);way["waterway"~"river|stream"](around:4000,%f,%f););(._;>;);out body;', lat, lon, lat, lon)), "-o", osm))
+    if (file.size(osm) > 0 && grepl("^<\\?xml", readLines(osm, n = 1, warn = FALSE))) break
+    Sys.sleep(15)
+  }
   g <- st_transform(st_geometry(suppressWarnings(st_read(osm, "lines", quiet = TRUE))), 3005)
 }
 stopifnot(length(g) > 0)
@@ -33,5 +56,5 @@ svg <- c('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserve
 slug <- gsub(" ", "-", tolower(alias))
 writeLines(svg, sprintf("assets/maps/%s.svg", slug))
 old <- if (file.exists("data/rivers.toml")) readLines("data/rivers.toml") else character()
-title <- if (grepl(" (River|Creek)$", alias)) paste("The", alias) else alias
+title <- if (grepl(" (River|Creek|Estuary)$", alias)) paste("The", alias) else alias
 if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), sprintf('title = "%s"', title), 'about = ""', ""), "data/rivers.toml")
