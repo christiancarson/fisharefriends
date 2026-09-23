@@ -8,6 +8,4 @@ river: "Morice River"
 
 {{< map >}}
 
-{{< youtube P-i0jw61niE >}}
-
-[watch on youtube](https://www.youtube.com/watch?v=P-i0jw61niE)
+{{< video P-i0jw61niE "Bloc Party, Banquet" >}}{{< /video >}}
