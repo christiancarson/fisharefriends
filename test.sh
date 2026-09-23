@@ -7,12 +7,15 @@ grep -q 'class="brand" href="/">fish are friends' public/index.html
 grep -q 'href="/trips/">trips' public/trips/squamish-river/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'href="/categories/fishies/">fishies' public/index.html
-grep -q '<li><a href="/categories/rivers/">rivers</a><ul class="plain nest"><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
-grep -q '<li><a href="/categories/lakes/">lakes</a><ul class="plain nest"><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
-grep -q '<li>places<ul class="plain nest"><li><a href="/categories/bella-coola/">Bella Coola</a>' public/index.html
+grep -q '<li><details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
+grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
+grep -q '<summary>places</summary><ul class="plain nest"><li><a href="/categories/bella-coola/">Bella Coola</a>' public/index.html
 ! grep -q 'spey fishing\|fly tying' public/index.html
 grep -q 'data-tags="lakes kennedy-lake"' public/posts/2020-07-july-2020/index.html
 grep -q 'data-tags="rivers dean-river"' public/categories/dean-river/index.html
+test $(grep -c 'data-tags="rivers dean-river"' public/categories/dean-river/index.html) -eq 1
+test $(grep -n 'figure class="card map"' public/categories/dean-river/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card" ' public/categories/dean-river/index.html | head -1 | cut -d: -f1)
+grep -q 'data-tags="rivers bitteroot-river"' public/categories/bitteroot-river/index.html
 grep -q 'href="/archive/#september-2026">September 2026' public/index.html
 grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html

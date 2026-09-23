@@ -32,6 +32,9 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .side h3 { font: 1.25rem/1 "Gochi Hand", cursive; margin: 1.8rem 0 .5rem }
 .side a { text-decoration: none }
 ul.plain.nest { margin-left: 1.1em }
+.side summary { cursor: pointer; list-style: none }
+.side summary::before { content: "+ "; color: var(--mute) }
+.side details[open] summary::before { content: "- " }
 .side a:hover { text-decoration: underline }
 .side img { width: 100%; margin: 0 0 1rem }
 .mute { color: var(--mute); font-size: .85rem }

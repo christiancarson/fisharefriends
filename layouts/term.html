@@ -1,5 +1,7 @@
 {{ define "main" }}
 <h1 class="listtitle">{{ .Title }}</h1>
+{{ $own := resources.Get (printf "maps/%s.svg" (.Title | urlize)) }}
+{{ with $own }}{{ partial "map.html" $.Title }}{{ end }}
 {{ $re := printf "(?s)<figure class=\"card[^\"]*\" data-tags=\"[^\"]*\\b%s\\b[^\"]*\">.*?</figure>" (.Data.Term | urlize) }}
-{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range findRE $re .Content }}{{ replaceRE "class=\"ftitle\" href=\"[^\"]*\"" (printf "class=\"ftitle\" href=\"%s\"" $p.RelPermalink) . | safeHTML }}{{ end }}{{ end }}
+{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range findRE $re .Content }}{{ if not (and $own (hasPrefix . "<figure class=\"card map\"")) }}{{ replaceRE "class=\"ftitle\" href=\"[^\"]*\"" (printf "class=\"ftitle\" href=\"%s\"" $p.RelPermalink) . | safeHTML }}{{ end }}{{ end }}{{ end }}
 {{ end }}

@@ -1,5 +1,5 @@
 import pathlib, re, datetime, subprocess, plistlib
-from PIL import Image, ImageOps, ImageFilter
+from PIL import Image, ImageOps
 src = pathlib.Path.home() / "Desktop" / "fish_are_friends"
 dst = pathlib.Path("content/posts")
 months = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"], 1)}
@@ -30,14 +30,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             if not jpg.exists() or jpg.stat().st_mtime < f.stat().st_mtime:
                 im = ImageOps.exif_transpose(Image.open(f)).convert("RGB")
                 im.thumbnail((1600, 1600))
-                box = (1600, 900)
-                if im.height > im.width:
-                    bg = ImageOps.fit(im, box).filter(ImageFilter.GaussianBlur(40))
-                    im = ImageOps.contain(im, box)
-                    bg.paste(im, ((box[0] - im.width) // 2, 0))
-                    im = bg
-                else:
-                    im = ImageOps.fit(im, box)
+                im = ImageOps.fit(im, (1600, 900), centering=(0.5, 0.35))
                 im.save(jpg, quality=85)
             photos.append(f'![{desc}]({jpg.name} "{name} | {", ".join(tag)}")')
         elif f.suffix == ".river":
