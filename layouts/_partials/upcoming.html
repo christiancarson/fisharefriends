@@ -1,0 +1,2 @@
+{{ $trips := where site.RegularPages "Section" "trips" }}
+{{ return (where $trips "Params.trip_date" ">=" (now.Format "2006-01-02")).ByParam "trip_date" }}
