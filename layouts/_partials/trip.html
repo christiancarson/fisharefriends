@@ -1,12 +1,13 @@
 {{ $k := index site.Params.trips (.Params.kind | default "wade") }}
-{{ with resources.Get (printf "maps/%s.svg" (.Params.where | urlize)) }}<div class="map doodle" aria-hidden="true">{{ .Content | safeHTML }}</div>{{ end }}
+{{ with resources.Get (printf "maps/%s.svg" (.Params.river | default .Params.where | urlize)) }}<div class="map doodle" aria-hidden="true">{{ .Content | safeHTML }}</div>{{ end }}
 <dl class="trip">
 <dt>what</dt><dd>{{ $k.label }}</dd>
 <dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}</dd>
 {{ with .Params.where }}<dt>where</dt><dd>{{ . }}</dd>{{ end }}
 {{ with .Params.meet }}<dt>meet</dt><dd>{{ . }}</dd>{{ end }}
 <dt>spots</dt><dd>{{ len (.Params.crew | default slice) }} of {{ $k.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>
-<dt>licence</dt><dd><a href="{{ site.Params.licence }}">bc freshwater fishing licence</a>, buy it online before the day</dd>
+<dt>licence</dt><dd><a href="{{ site.Params.licence }}">bc freshwater fishing licence</a></dd>
+{{ with .Params.donate }}<dt>donate</dt><dd><a href="{{ $.Params.donate_url }}">{{ . }}</a></dd>{{ end }}
 {{ with .Params.bring }}<dt>bring</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
 </dl>
 <form class="signup" data-to="{{ site.Params.email }}" data-subject="fish are friends: count me in: {{ .Title }}">

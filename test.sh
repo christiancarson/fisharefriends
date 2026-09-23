@@ -16,6 +16,9 @@ grep -q -- '--paper: #fff' public/css/site.css
 grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
 grep -qv '<nav>' public/index.html
 grep -q 'class="plain menu"' public/index.html
+grep -q '<dt>donate</dt><dd><a href="https://www.squamishwatershed.com/#/">Squamish River Watershed Society</a></dd>' public/trips/squamish-river/index.html
+grep -q 'See you on the water:)' public/index.html
+grep -q 'please wait for the next float trip' public/trips/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'href="/trips/squamish-river/">squamish river</a></h2>' public/index.html
@@ -37,10 +40,10 @@ grep -q '<option>M</option>' public/trips/sample-trip/index.html
 grep -q 'name="gear"' public/trips/sample-trip/index.html
 grep -q 'src="/js/signup.js"' public/index.html
 grep -q '<dt>licence</dt><dd><a href="https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence">bc freshwater fishing licence</a>' public/trips/sample-trip/index.html
-grep -q '<dt>what</dt><dd>walk and wade</dd>' public/trips/squamish-river/index.html
+grep -q '<dt>what</dt><dd>walk and wade to learn the basics</dd>' public/trips/squamish-river/index.html
 grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish-river/index.html
 grep -q 'href="/trips/squamish-river/">squamish river' public/archive/index.html
-grep -q 'runners you can trash :)' public/trips/squamish-river/index.html
+grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish-river/index.html
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
 grep -q '<div class="map doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html

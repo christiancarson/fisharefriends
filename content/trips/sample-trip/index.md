@@ -7,6 +7,6 @@ trip_date: "2099-06-06"
 where: "a river"
 meet: "7:00 at the boat launch"
 crew: []
-bring: ["a pair of runners you can trash :)", rain jacket, lunch, warm layers]
+bring: [a pair of runners, rain jacket, lunch, warm layers]
 ---
 A draft that test.sh builds against. It never publishes. Leave it alone.
