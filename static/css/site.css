@@ -39,7 +39,7 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .doodle.red { color: var(--red) }
 .doodle.blue { color: var(--blue) }
 .doodle.green { color: var(--green) }
-.doodle.mark { width: 72px; height: 72px }
+.doodle.mark { width: 96px; height: 96px }
 .doodle.big { width: 150px; height: 150px; display: block; margin: 0 auto 1rem }
 footer { display: flex; gap: 14px; justify-content: center; padding: 3rem 0 }
 footer .doodle { width: 36px; height: 36px }
