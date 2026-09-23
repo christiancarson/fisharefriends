@@ -25,7 +25,7 @@ grep -q 'please wait for the next float trip' public/trips/index.html
 grep -q 'data-trip="squamish-river" data-spots="4"' public/trips/squamish-river/index.html
 grep -q '<dd class="spots">0 of 4 taken</dd>' public/trips/squamish-river/index.html
 grep -q 'width="484" height="272"' public/index.html
-grep -q '<figcaption><a class="ftitle" href="/categories/fishies/">Ruby Rocket</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. It nearly took my arm off.</p></figcaption>' public/index.html
+grep -q '<figcaption><a class="ftitle" href="/categories/fishies/">Ruby</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.</p></figcaption>' public/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/first-morice-steelhead/index.html
 grep -q '<figure class="card video"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/first-morice-steelhead/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/first-morice-steelhead/index.html
