@@ -29,7 +29,7 @@ grep -q '<figcaption><a class="ftitle" href="/categories/spey-fishing/">My first
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/first-morice-steelhead/index.html
 grep -q 'href="https://www.youtube.com/watch?v=P-i0jw61niE">watch on youtube' public/posts/first-morice-steelhead/index.html
 grep -q '<figure><a href="/posts/first-morice-steelhead/first-morice-steelhead.jpg"><img src="/posts/first-morice-steelhead/first-morice-steelhead_hu' public/index.html
-grep -q '>Morice River</text>' public/posts/first-morice-steelhead/index.html
+grep -q '<span class="ftitle">Morice River</span><p>Wedzin Kwa' public/posts/first-morice-steelhead/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/first-morice-steelhead/index.html
 test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
 ! grep -q 'squamish-river/">squamish river</a></h2>' public/index.html
@@ -63,8 +63,8 @@ grep -q 'href="/trips/squamish-river/">squamish river' public/archive/index.html
 grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish-river/index.html
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
-grep -q '<div class="map doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
-grep -q '>Squamish River</text>' public/trips/squamish-river/index.html
+grep -q '<figure class="map"><div class="doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
+grep -q '<span class="ftitle">Squamish River</span><p>Skwxwú7mesh territory' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">squamish river' public/trips/index.html
