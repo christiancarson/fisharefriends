@@ -1,5 +1,5 @@
 ---
-title: "squamish river"
+title: "Walk and Wade the Squamish"
 date: 2026-09-22T21:00:00-07:00
 kind: wade
 trip_date: "2026-10-17"

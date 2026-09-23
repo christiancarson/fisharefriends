@@ -20,6 +20,9 @@ signup = ''
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
 links = []
 
+[params.tags]
+fishies = 'fish'
+
 [params.waters]
 Toquaht = 'Toquaht Estuary'
 Ucluelet = 'Ucluelet Harbour'

@@ -1,4 +1,4 @@
 ---
-title: "fishies"
+title: "fish"
 weight: 1
 ---
