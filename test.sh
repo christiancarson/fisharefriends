@@ -44,15 +44,15 @@ grep -q 'width="484" height="272"' public/posts/2026-09-september-2026/index.htm
 grep -q '<figcaption><a class="ftitle" href="/categories/fish/">Ruby</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.</p><p class="tags">' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/fish/index.html
 ! grep -q 'card video\|card map\|<article' public/categories/fish/index.html
-grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">The Morice River</a>' public/categories/rivers/index.html
+grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Morice River</a>' public/categories/rivers/index.html
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Banquet by Bloc Party</a>' public/categories/music/index.html
 ! grep -q '<figure class="card"><a' public/categories/music/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/index.html
 grep -q '<figure class="card video" data-tags="music"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card" data-tags="fish"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
-grep -q '<a class="ftitle" href="/categories/rivers/">The Morice River</a></figcaption>' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card" data-tags="fish morice-river"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
+grep -q '<a class="ftitle" href="/categories/rivers/">Morice River</a></figcaption>' public/posts/2026-09-september-2026/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/2026-09-september-2026/index.html
 test -f public/posts/2026-09-september-2026/ruby.jpg
 ! grep -q 'squamish-river/">squamish river</a></h2>' public/index.html
@@ -101,7 +101,7 @@ grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
 grep -q '<figure class="card map" data-tags="rivers squamish-river"><div class="doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
-grep -q '<a class="ftitle" href="/categories/rivers/">The Squamish River</a></figcaption>' public/trips/squamish-river/index.html
+grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcaption>' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">walk and wade' public/trips/index.html

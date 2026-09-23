@@ -57,5 +57,5 @@ svg <- c('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserve
 slug <- gsub(" ", "-", tolower(alias))
 writeLines(svg, sprintf("assets/maps/%s.svg", slug))
 old <- if (file.exists("data/rivers.toml")) readLines("data/rivers.toml") else character()
-title <- if (grepl(" (River|Creek|Estuary)$", alias)) paste("The", alias) else alias
+title <- alias
 if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), sprintf('title = "%s"', title), 'about = ""', ""), "data/rivers.toml")
