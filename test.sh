@@ -8,7 +8,7 @@ grep -q 'href="/trips/">trips' public/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'href="/categories/life/">life' public/index.html
 grep -q 'href="/archive/#september-2026">September 2026' public/index.html
-grep -q 'crittycar (at) gmail.com' public/index.html
+grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
 grep -q 'symbol id="fishdaisy"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
@@ -23,7 +23,7 @@ grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>welcome | fish are friends</title>' public/posts/welcome/index.html
 grep -q 'href="/posts/welcome/">welcome' public/categories/life/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
-grep -q 'data-to="crittycar@gmail.com" data-subject="count me in: sample trip"' public/trips/sample-trip/index.html
+grep -q 'data-to="critty@fisharefriends.org" data-subject="count me in: sample trip"' public/trips/sample-trip/index.html
 grep -q '0 of 4 taken' public/index.html
 grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
