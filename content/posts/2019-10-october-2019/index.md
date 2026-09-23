@@ -1,12 +1,12 @@
 ---
 title: "October 2019"
 date: 2019-10-01T12:00:00-07:00
-categories: [fishies]
+categories: [Squamish, Squamish River, fishies, friends, not-fly-fishing]
 ---
-![](christian-was-designed-for-this.jpg "Christian was designed for this | fishies")
+![](christian-was-designed-for-this.jpg "Christian was designed for this | friends, Squamish River")
 
-![](hallows-ween.jpg "Hallows ween | fishies")
+![](hallows-ween.jpg "Hallows ween | friends, Squamish")
 
-![](mack-the-bulltrout.jpg "Mack the BullTrout | fishies")
+![](mack-the-bulltrout.jpg "Mack the BullTrout | fishies, Squamish River")
 
-![](not-fly-fishing.jpg "Not fly fishing | fishies")
+![](not-fly-fishing.jpg "Not fly fishing | not-fly-fishing, friends")

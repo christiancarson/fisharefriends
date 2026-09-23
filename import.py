@@ -1,9 +1,12 @@
-import pathlib, re, datetime, subprocess
+import pathlib, re, datetime, subprocess, plistlib
 from PIL import Image, ImageOps, ImageFilter
 src = pathlib.Path.home() / "Desktop" / "fish_are_friends"
 dst = pathlib.Path("content/posts")
 months = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"], 1)}
 clean = lambda s: re.sub(r"\s+", " ", s.replace("_", " ")).strip()
+def finder_tags(f):
+    h = subprocess.run(["xattr", "-px", "com.apple.metadata:_kMDItemUserTags", str(f)], capture_output=True, text=True).stdout
+    return [clean(t.split("\n")[0]) for t in plistlib.loads(bytes.fromhex(re.sub(r"\s", "", h)))] if h.strip() else []
 slugify = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     parts = folder.name.split("__")
@@ -19,7 +22,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         name = clean(bits[0])
         desc = (folder / (bits[0] + ".txt")).read_text().strip() if (folder / (bits[0] + ".txt")).exists() else ""
         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"):
-            tag = [clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fishies"]
+            tag = finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fishies"])
             tags.update(tag)
             jpg = out / (slugify(name) + ".jpg")
             if not jpg.exists() or jpg.stat().st_mtime < f.stat().st_mtime:
@@ -36,11 +39,11 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
                 im.save(jpg, quality=85)
             photos.append(f'![{desc}]({jpg.name} "{name} | {", ".join(tag)}")')
         elif f.suffix == ".river":
-            tags.update(["rivers", name])
+            tags.update(["rivers", name] + finder_tags(f))
             if not pathlib.Path(f"assets/maps/{slugify(name)}.svg").exists(): subprocess.run(["Rscript", "maps.R", name], check=True)
             rivers.append(f'{{{{< map "{name}" >}}}}')
         elif f.suffix == ".video":
-            tags.add("music")
+            tags.update(["music"] + finder_tags(f))
             videos.append(f'{{{{< video {bits[1]} "{name}" >}}}}{desc}{{{{< /video >}}}}')
     cards = photos + rivers + videos
     if not cards: continue
