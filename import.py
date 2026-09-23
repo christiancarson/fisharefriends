@@ -47,6 +47,11 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         elif f.suffix == ".video":
             tags.update(["music"] + finder_tags(f))
             videos.append(f'{{{{< video {bits[1]} "{name}" >}}}}{desc}{{{{< /video >}}}}')
+    for t in sorted(t for t in tags if re.search(r" (River|Creek|Lake)$", t)):
+        if not pathlib.Path(f"assets/maps/{slugify(t)}.svg").exists() and subprocess.run(["Rscript", "maps.R", t]).returncode: continue
+        tags.add("lakes" if t.endswith("Lake") else "rivers")
+        rivers.append(f'{{{{< map "{t}" >}}}}')
+    rivers = sorted(set(rivers))
     cards = photos + rivers + videos
     if not cards: continue
     (out / "index.md").write_text(f'---\ntitle: "{title}"\ndate: {date}T12:00:00-07:00\ncategories: [{", ".join(sorted(tags))}]\n---\n' + "\n\n".join(cards) + "\n")

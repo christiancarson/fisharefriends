@@ -1,4 +1,4 @@
 ---
 title: "friends"
-weight: 3
+weight: 2
 ---

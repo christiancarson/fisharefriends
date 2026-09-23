@@ -1,7 +1,7 @@
 ---
 title: "August 2022"
 date: 2022-08-01T12:00:00-07:00
-categories: [Atnarko River, Bella Coola, Dean River, fishies, friends]
+categories: [Atnarko River, Bella Coola, Dean River, fishies, friends, rivers]
 ---
 ![](christian-in-action.jpg "Christian in action | friends, Bella Coola")
 
@@ -12,3 +12,7 @@ categories: [Atnarko River, Bella Coola, Dean River, fishies, friends]
 ![](in-the-wind.jpg "in the wind | friends, Bella Coola")
 
 ![](number-1.jpg "number 1 | friends, Atnarko River")
+
+{{< map "Atnarko River" >}}
+
+{{< map "Dean River" >}}

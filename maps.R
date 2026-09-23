@@ -1,9 +1,24 @@
 library(sf)
-river <- commandArgs(TRUE)[1]
-q <- c(service = "WFS", version = "2.0.0", request = "GetFeature", typeName = "WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", outputFormat = "json", srsName = "EPSG:3005", count = "10000", CQL_FILTER = sprintf("GNIS_NAME='%s'", river))
-main <- st_read(paste0("https://openmaps.gov.bc.ca/geo/pub/wfs?", paste0(names(q), "=", URLencode(q, reserved = TRUE), collapse = "&")), quiet = TRUE)
-stopifnot(nrow(main) < 10000)
-g <- st_zm(st_simplify(st_cast(st_geometry(main), "LINESTRING"), dTolerance = 60))
+name <- commandArgs(TRUE)[1]
+wfs <- function(layer, cql) {
+  q <- c(service = "WFS", version = "2.0.0", request = "GetFeature", typeName = layer, outputFormat = "json", srsName = "EPSG:3005", count = "10000", CQL_FILTER = cql)
+  st_read(paste0("https://openmaps.gov.bc.ca/geo/pub/wfs?", paste0(names(q), "=", URLencode(q, reserved = TRUE), collapse = "&")), quiet = TRUE)
+}
+tol <- 60
+s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", sprintf("GNIS_NAME='%s'", name))
+g <- st_geometry(s)
+if (!nrow(s)) {
+  l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", sprintf("GNIS_NAME_1='%s'", name))
+  if (nrow(l)) g <- st_cast(st_geometry(l[which.max(l$AREA_HA), ]), "MULTILINESTRING")
+  tol <- 15
+}
+if (!length(g)) {
+  osm <- tempfile(fileext = ".osm")
+  download.file(paste0("https://overpass-api.de/api/interpreter?data=", URLencode(sprintf('[out:xml][timeout:90];(way["waterway"~"river|stream"]["name"="%s"];way["natural"="water"]["name"="%s"];relation["natural"="water"]["name"="%s"];);out body;>;out skel qt;', name, name, name), reserved = TRUE)), osm, quiet = TRUE)
+  g <- st_transform(st_geometry(st_read(osm, "lines", quiet = TRUE)), 3005)
+}
+stopifnot(length(g) > 0)
+g <- st_zm(st_simplify(st_cast(st_cast(g, "MULTILINESTRING"), "LINESTRING"), dTolerance = tol))
 b <- st_bbox(g)
 x0 <- 16
 y0 <- 16
@@ -13,7 +28,8 @@ sx <- w / (b$xmax - b$xmin)
 sy <- h / (b$ymax - b$ymin)
 d <- vapply(g, function(p) paste("M", paste(round((p[, 1] - b$xmin) * sx + x0, 1), round((b$ymax - p[, 2]) * sy + y0, 1), collapse = " L ")), "")
 svg <- c('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMinYMin meet" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">', sprintf('<path d="%s" stroke-width="5"/>', d), "</svg>")
-slug <- gsub(" ", "-", tolower(river))
+slug <- gsub(" ", "-", tolower(name))
 writeLines(svg, sprintf("assets/maps/%s.svg", slug))
 old <- if (file.exists("data/rivers.toml")) readLines("data/rivers.toml") else character()
-if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), sprintf('title = "The %s"', river), 'about = ""', ""), "data/rivers.toml")
+title <- if (grepl(" (River|Creek)$", name)) paste("The", name) else name
+if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), sprintf('title = "%s"', title), 'about = ""', ""), "data/rivers.toml")

@@ -7,6 +7,12 @@ grep -q 'class="brand" href="/">fish are friends' public/index.html
 grep -q 'href="/trips/">trips' public/trips/squamish-river/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'href="/categories/fishies/">fishies' public/index.html
+grep -q '<li><a href="/categories/rivers/">rivers</a><ul class="plain nest"><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
+grep -q '<li><a href="/categories/lakes/">lakes</a><ul class="plain nest"><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
+grep -q '<li>places<ul class="plain nest"><li><a href="/categories/bella-coola/">Bella Coola</a>' public/index.html
+! grep -q 'spey fishing\|fly tying' public/index.html
+grep -q 'data-tags="lakes kennedy-lake"' public/posts/2020-07-july-2020/index.html
+grep -q 'data-tags="rivers dean-river"' public/categories/dean-river/index.html
 grep -q 'href="/archive/#september-2026">September 2026' public/index.html
 grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
@@ -63,7 +69,6 @@ grep -q 'href="/posts/2026-09-september-2026/">September 2026' public/posts/inde
 grep -q '# by critty | 2026-09-01 12:00 | <a href="/categories/morice-river/">Morice River</a> | <a href="/categories/fishies/">fishies</a> | <a href="/categories/music/">music</a> | <a href="/categories/rivers/">rivers</a>' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>September 2026 | fish are friends</title>' public/posts/2026-09-september-2026/index.html
-test -f public/categories/art/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
 grep -q 'data-to="critty@fisharefriends.org" data-subject="fish are friends: count me in: sample trip"' public/trips/sample-trip/index.html
 grep -q '0 of 3 taken' public/trips/index.html
