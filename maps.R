@@ -3,15 +3,16 @@ library(jsonlite)
 args <- commandArgs(TRUE)
 name <- args[1]
 alias <- if (length(args) > 1) args[2] else name
+grp <- if (length(args) > 2) sprintf(" AND WATERSHED_GROUP_CODE='%s'", args[3]) else ""
 wfs <- function(layer, cql) {
   q <- c(service = "WFS", version = "2.0.0", request = "GetFeature", typeName = layer, outputFormat = "json", srsName = "EPSG:3005", count = "10000", CQL_FILTER = cql)
   st_read(paste0("https://openmaps.gov.bc.ca/geo/pub/wfs?", paste0(names(q), "=", URLencode(q, reserved = TRUE), collapse = "&")), quiet = TRUE)
 }
 tol <- 60
-s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", sprintf("GNIS_NAME='%s'", name))
+s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", sprintf("GNIS_NAME='%s'%s", name, grp))
 g <- st_geometry(s)
 if (!nrow(s)) {
-  l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", sprintf("GNIS_NAME_1='%s'", name))
+  l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", sprintf("GNIS_NAME_1='%s'%s", name, grp))
   if (nrow(l)) g <- st_cast(st_geometry(l[which.max(l$AREA_HA), ]), "MULTILINESTRING")
   tol <- 15
 }
