@@ -1,8 +1,17 @@
+{{ $k := index site.Params.trips (.Params.kind | default "wade") }}
 <dl class="trip">
+<dt>what</dt><dd>{{ $k.label }}</dd>
 <dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}</dd>
-<dt>where</dt><dd>{{ .Params.where }}</dd>
-<dt>meet</dt><dd>{{ .Params.meet }}</dd>
-<dt>spots</dt><dd>{{ len (.Params.crew | default slice) }} of {{ .Params.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>
+{{ with .Params.where }}<dt>where</dt><dd>{{ . }}</dd>{{ end }}
+{{ with .Params.meet }}<dt>meet</dt><dd>{{ . }}</dd>{{ end }}
+<dt>spots</dt><dd>{{ len (.Params.crew | default slice) }} of {{ $k.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>
+<dt>licence</dt><dd><a href="{{ site.Params.licence }}">bc freshwater fishing licence</a>, buy it online before the day</dd>
 {{ with .Params.bring }}<dt>bring</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
 </dl>
-<a class="button" href="mailto:{{ site.Params.email }}?subject={{ printf "count me in: %s" .Title }}">count me in</a>
+<form class="signup" data-to="{{ site.Params.email }}" data-subject="count me in: {{ .Title }}">
+<label>name <input name="name" required></label>
+<label><input type="checkbox" name="gear"> I need gear (waders, boots, rod)</label>
+<label>waders <select name="waders"><option>S</option><option>M</option><option>L</option></select></label>
+<label>boots <select name="boots">{{ range seq 6 14 }}<option>{{ . }}</option>{{ end }}</select></label>
+<button class="button">count me in</button>
+</form>

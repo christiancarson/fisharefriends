@@ -15,18 +15,27 @@ grep -q 'filter id="wobble"' public/index.html
 grep -q -- '--paper: #fff' public/css/site.css
 grep -q '<p class="date">September 22, 2026</p>' public/index.html
 grep -q 'href="/posts/welcome/">welcome' public/index.html
-grep -q '# by Christian | 2026-09-22 12:00 | <a href="/categories/life/">life</a>' public/index.html
+grep -q '# by critty | 2026-09-22 12:00 | <a href="/categories/life/">life</a>' public/index.html
 grep -q 'class="doodle sep"' public/index.html
 grep -q '<title>welcome | fish are friends</title>' public/posts/welcome/index.html
 grep -q 'href="/posts/welcome/">welcome' public/categories/life/index.html
 test -f public/page/1/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
-grep -q 'mailto:crittycar@gmail.com?subject=count%20me%20in%3a%20sample%20trip' public/trips/sample-trip/index.html
-grep -q '0 of 4 taken' public/index.html
+grep -q 'data-to="crittycar@gmail.com" data-subject="count me in: sample trip"' public/trips/sample-trip/index.html
+grep -q '0 of 3 taken' public/index.html
 grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
 grep -q 'id="september-2026">September 2026' public/archive/index.html
 grep -q 'href="/posts/welcome/">welcome' public/archive/index.html
+grep -q '<dt>what</dt><dd>raft fishing</dd>' public/trips/sample-trip/index.html
+grep -q '<option>M</option>' public/trips/sample-trip/index.html
+grep -q '<option>14</option>' public/trips/sample-trip/index.html
+grep -q 'name="gear"' public/trips/sample-trip/index.html
+grep -q 'src="/js/signup.js"' public/index.html
+grep -q '<dt>licence</dt><dd><a href="https://www.fishing.gov.bc.ca/">bc freshwater fishing licence</a>' public/trips/sample-trip/index.html
+grep -q '<dt>what</dt><dd>walk and wade</dd>' public/trips/squamish-river/index.html
+grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish-river/index.html
+grep -q 'href="/trips/squamish-river/">squamish river' public/archive/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
-grep -q 'nothing planned yet' public/trips/index.html
+grep -q 'href="/trips/squamish-river/">squamish river' public/trips/index.html
