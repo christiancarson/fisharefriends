@@ -5,14 +5,15 @@
 <dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}</dd>
 {{ with .Params.where }}<dt>where</dt><dd>{{ . }}</dd>{{ end }}
 {{ with .Params.meet }}<dt>meet</dt><dd>{{ . }}</dd>{{ end }}
-<dt>spots</dt><dd>{{ len (.Params.crew | default slice) }} of {{ $k.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>
+<dt>spots</dt><dd class="spots">{{ len (.Params.crew | default slice) }} of {{ $k.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>
 <dt>licence</dt><dd><a href="{{ site.Params.licence }}">bc freshwater fishing licence</a></dd>
 {{ with .Params.donate }}<dt>donate</dt><dd><a href="{{ $.Params.donate_url }}">{{ . }}</a></dd>{{ end }}
 {{ with .Params.bring }}<dt>bring</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
 </dl>
-<form class="signup" data-to="{{ site.Params.email }}" data-subject="fish are friends: count me in: {{ .Title }}">
+<form class="signup" data-to="{{ site.Params.email }}" data-subject="fish are friends: count me in: {{ .Title }}" data-signup="{{ site.Params.signup }}" data-trip="{{ .File.ContentBaseName }}" data-spots="{{ $k.spots }}">
 <label>name <input name="name" required></label>
 <label><input type="checkbox" name="gear"> I need gear (waders, rod)</label>
 <label>waders <select name="waders"><option>S</option><option>M</option><option>L</option></select></label>
-<button class="button">count me in</button>
+<span class="buttons"><button class="button">count me in</button><button class="button" name="out" value="1">count me out</button></span>
+<p class="note"></p>
 </form>

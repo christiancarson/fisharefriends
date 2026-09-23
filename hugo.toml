@@ -16,6 +16,7 @@ min = '0.146.0'
 [params]
 author = 'critty'
 email = 'critty@fisharefriends.org'
+signup = ''
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
 links = []
 

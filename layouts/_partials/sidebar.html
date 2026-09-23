@@ -1,7 +1,6 @@
 <aside class="side">
 <ul class="plain menu"><li><a href="{{ site.Home.RelPermalink }}">top</a></li><li><a href="{{ (site.GetPage "trips").RelPermalink }}">trips</a></li><li><a href="{{ (site.GetPage "archive").RelPermalink }}">archive</a></li></ul>
-{{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" alt="{{ site.Params.author }}">{{ else }}<svg class="doodle big red" aria-hidden="true"><use href="#flower"/></svg>{{ end }}
-<p>by {{ site.Params.author }}</p>
+{{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" alt="{{ site.Params.author }}">{{ end }}
 <h3>next trips</h3>
 <ul class="plain">{{ range first 3 (partial "upcoming.html" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mute">{{ .Params.trip_date }}</span></li>{{ else }}<li class="mute">nothing planned yet</li>{{ end }}</ul>
 <h3>categories</h3>

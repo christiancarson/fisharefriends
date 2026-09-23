@@ -14,11 +14,16 @@ grep -q 'symbol id="fishdaisy"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
 grep -q -- '--paper: #fff' public/css/site.css
 grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
-grep -qv '<nav>' public/index.html
 grep -q 'class="plain menu"' public/index.html
 grep -q '<dt>donate</dt><dd><a href="https://www.squamishwatershed.com/#/">Squamish River Watershed Society</a></dd>' public/trips/squamish-river/index.html
 grep -q 'See you on the water:)' public/index.html
 grep -q 'please wait for the next float trip' public/trips/index.html
+! grep -q '<nav>' public/index.html
+! grep -q 'class="domain"' public/index.html
+! grep -q 'by critty</p>' public/index.html
+grep -q 'name="out" value="1">count me out' public/trips/squamish-river/index.html
+grep -q 'data-trip="squamish-river" data-spots="4"' public/trips/squamish-river/index.html
+grep -q '<dd class="spots">0 of 4 taken</dd>' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'href="/trips/squamish-river/">squamish river</a></h2>' public/index.html
