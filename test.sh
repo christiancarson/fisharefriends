@@ -20,3 +20,8 @@ grep -q 'class="doodle sep"' public/index.html
 grep -q '<title>welcome | fish are friends</title>' public/posts/welcome/index.html
 grep -q 'href="/posts/welcome/">welcome' public/categories/life/index.html
 test -f public/page/1/index.html
+grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
+grep -q 'mailto:crittycar@gmail.com?subject=count%20me%20in%3a%20sample%20trip' public/trips/sample-trip/index.html
+grep -q '0 of 4 taken' public/index.html
+grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
+grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html

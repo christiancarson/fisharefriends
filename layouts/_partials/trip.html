@@ -1,0 +1,8 @@
+<dl class="trip">
+<dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}</dd>
+<dt>where</dt><dd>{{ .Params.where }}</dd>
+<dt>meet</dt><dd>{{ .Params.meet }}</dd>
+<dt>spots</dt><dd>{{ len .Params.crew }} of {{ .Params.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>
+{{ with .Params.bring }}<dt>bring</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
+</dl>
+<a class="button" href="mailto:{{ site.Params.email }}?subject={{ printf "count me in: %s" .Title }}">count me in</a>

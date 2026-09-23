@@ -1,0 +1,7 @@
+{{ define "main" }}
+<h1 class="listtitle">{{ .Title }}</h1>
+<div class="body">{{ .Content }}</div>
+<h2 class="sub">upcoming</h2>
+{{ range partial "upcoming.html" . }}{{ partial "post.html" . }}{{ else }}<p class="mute">nothing planned yet</p>{{ end }}
+{{ with ((where .Pages "Params.trip_date" "<" (now.Format "2006-01-02")).ByParam "trip_date").Reverse }}<h2 class="sub">past</h2><ul class="plain">{{ range . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mute">{{ .Params.trip_date }}</span></li>{{ end }}</ul>{{ end }}
+{{ end }}
