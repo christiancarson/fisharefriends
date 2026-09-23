@@ -24,9 +24,11 @@ grep -q 'please wait for the next float trip' public/trips/index.html
 ! grep -q 'count me out' public/trips/squamish-river/index.html
 grep -q 'data-trip="squamish-river" data-spots="4"' public/trips/squamish-river/index.html
 grep -q '<dd class="spots">0 of 4 taken</dd>' public/trips/squamish-river/index.html
+grep -q 'width="484" height="272"' public/index.html
+grep -q '<figcaption>ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. It nearly took my arm off.</figcaption>' public/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/first-morice-steelhead/index.html
 grep -q 'href="https://www.youtube.com/watch?v=P-i0jw61niE">watch on youtube' public/posts/first-morice-steelhead/index.html
-grep -q 'src="/posts/first-morice-steelhead/first-morice-steelhead.jpg"' public/index.html
+grep -q '<figure><a href="/posts/first-morice-steelhead/first-morice-steelhead.jpg"><img src="/posts/first-morice-steelhead/first-morice-steelhead_hu' public/index.html
 grep -q '>morice river</text>' public/posts/first-morice-steelhead/index.html
 test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
 ! grep -q 'squamish-river/">squamish river</a></h2>' public/index.html

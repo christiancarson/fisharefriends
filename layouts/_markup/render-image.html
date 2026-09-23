@@ -1,1 +1,1 @@
-{{ with .Page.Resources.Get .Destination }}<img src="{{ .RelPermalink }}" alt="{{ $.Text }}">{{ else }}<img src="{{ .Destination }}" alt="{{ .Text }}">{{ end }}
+{{ with .Page.Resources.Get .Destination }}{{ $m := .Resize "968x q80" }}<figure><a href="{{ .RelPermalink }}"><img src="{{ $m.RelPermalink }}" width="484" height="{{ div $m.Height 2 }}" alt="{{ $.Text }}"></a>{{ with $.Text }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>{{ else }}<img src="{{ .Destination }}" alt="{{ .Text }}">{{ end }}
