@@ -23,7 +23,7 @@ grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>welcome | fish are friends</title>' public/posts/welcome/index.html
 grep -q 'href="/posts/welcome/">welcome' public/categories/life/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
-grep -q 'data-to="critty@fisharefriends.org" data-subject="count me in: sample trip"' public/trips/sample-trip/index.html
+grep -q 'data-to="critty@fisharefriends.org" data-subject="fish are friends: count me in: sample trip"' public/trips/sample-trip/index.html
 grep -q '0 of 4 taken' public/index.html
 grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
