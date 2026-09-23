@@ -44,6 +44,9 @@ test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
 grep -q 'viewBox="0 0 640 360"' public/posts/first-morice-steelhead/index.html
 test $(grep -n 'class="ftitle" href=' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map"' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'figure class="card map"' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'youtube.com/embed' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1)
+grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/first-morice-steelhead/index.html
+! grep -q 'autoplay=1' public/categories/music/index.html
+! grep -q 'autoplay=1' public/posts/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
