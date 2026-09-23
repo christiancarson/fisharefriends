@@ -49,3 +49,6 @@ footer .doodle { width: 36px; height: 36px }
 .signup input:not([type=checkbox]), .signup select { font: inherit; border: 2px solid var(--ink); border-radius: 8px; padding: .2rem .5rem; background: var(--paper) }
 .signup input[type=checkbox] { accent-color: var(--ink) }
 .signup .button { justify-self: start; cursor: pointer; background: var(--paper) }
+.map { max-width: 22rem; margin: 0 0 1rem }
+.map svg { max-width: 100%; height: 26rem; display: block }
+.map text { font-family: "Gochi Hand", cursive }

@@ -40,6 +40,8 @@ grep -q 'href="/trips/squamish-river/">squamish river' public/archive/index.html
 grep -q 'runners you can trash :)' public/trips/squamish-river/index.html
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
+grep -q '<div class="map doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
+grep -q '>squamish river</text>' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">squamish river' public/trips/index.html
