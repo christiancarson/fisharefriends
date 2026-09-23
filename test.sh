@@ -50,7 +50,8 @@ grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/first-morice-steelhe
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
-grep -q 'const posts = \["/posts/first-morice-steelhead/"\]' public/index.html
+grep -q '"/posts/first-morice-steelhead/"' public/index.html
+grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Josh Dean River</a>' public/categories/fishies/index.html
 ! grep -q '<article' public/index.html
 grep -q '<p class="date">September 20, 2026</p>' public/posts/first-morice-steelhead/index.html
 grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/posts/index.html
