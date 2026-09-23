@@ -1,0 +1,1 @@
+{{ with .Page.Resources.Get .Destination }}<img src="{{ .RelPermalink }}" alt="{{ $.Text }}">{{ else }}<img src="{{ .Destination }}" alt="{{ .Text }}">{{ end }}

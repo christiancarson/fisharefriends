@@ -1,4 +1,4 @@
 {{ define "main" }}
 <div class="intro">{{ .Content }}</div>
-{{ range first 1 site.RegularPages.ByDate.Reverse }}{{ partial "post.html" . }}{{ end }}
+{{ range first 1 (where site.RegularPages "Section" "posts") }}{{ partial "post.html" . }}{{ end }}
 {{ end }}

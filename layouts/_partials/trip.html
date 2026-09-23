@@ -1,5 +1,4 @@
 {{ $k := index site.Params.trips (.Params.kind | default "wade") }}
-{{ with resources.Get (printf "maps/%s.svg" (.Params.river | default .Params.where | urlize)) }}<div class="map doodle" aria-hidden="true">{{ .Content | safeHTML }}</div>{{ end }}
 <dl class="trip">
 <dt>what</dt><dd>{{ $k.label }}</dd>
 <dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}</dd>
@@ -14,6 +13,6 @@
 <label>name <input name="name" required></label>
 <label><input type="checkbox" name="gear"> I need gear (waders, rod)</label>
 <label>waders <select name="waders"><option>S</option><option>M</option><option>L</option></select></label>
-<span class="buttons"><button class="button">count me in</button><button class="button" name="out" value="1">count me out</button></span>
+<button class="button">count me in</button>
 <p class="note"></p>
 </form>
