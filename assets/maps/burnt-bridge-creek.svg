@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMinYMin meet" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
 <path d="M 573.1 89 L 591.7 87.7" stroke-width="5"/>
 <path d="M 467.9 146.1 L 479.4 144.9" stroke-width="5"/>
+<path d="M 278.7 248.3 L 295.4 245.2 L 285.4 228.7" stroke-width="5"/>
+<path d="M 600.8 80 L 580.8 75.7 L 589.9 70.4 L 610.6 66.2" stroke-width="5"/>
+<path d="M 49.7 336.1 L 63.8 332.7" stroke-width="5"/>
+<path d="M 285.4 228.7 L 284.1 221.9" stroke-width="5"/>
+<path d="M 364.7 203.9 L 375 202.1" stroke-width="5"/>
+<path d="M 282.3 266.8 L 292.9 253.3" stroke-width="5"/>
+<path d="M 610.6 66.2 L 603.4 64 L 612.7 60.6 L 605 58.4 L 612.2 53.7" stroke-width="5"/>
+<path d="M 400.5 185.2 L 399.5 177" stroke-width="5"/>
+<path d="M 452.2 153.2 L 466.6 147.9" stroke-width="5"/>
+<path d="M 591.7 87.7 L 600.3 80.6" stroke-width="5"/>
 <path d="M 288.8 273.9 L 288.8 273.9" stroke-width="5"/>
 <path d="M 466.6 147.9 L 467.9 146.1" stroke-width="5"/>
 <path d="M 270.8 282.6 L 284.4 280.1" stroke-width="5"/>
@@ -27,18 +37,6 @@
 <path d="M 598.1 44.1 L 594 41.5" stroke-width="5"/>
 <path d="M 242 301.1 L 247.4 299" stroke-width="5"/>
 <path d="M 298.5 217.4 L 337.7 209.4" stroke-width="5"/>
-<path d="M 135 326.6 L 149.2 324" stroke-width="5"/>
-<path d="M 549.3 118.8 L 550.4 118.4" stroke-width="5"/>
-<path d="M 278.7 248.3 L 295.4 245.2 L 285.4 228.7" stroke-width="5"/>
-<path d="M 600.8 80 L 580.8 75.7 L 589.9 70.4 L 610.6 66.2" stroke-width="5"/>
-<path d="M 49.7 336.1 L 63.8 332.7" stroke-width="5"/>
-<path d="M 285.4 228.7 L 284.1 221.9" stroke-width="5"/>
-<path d="M 364.7 203.9 L 375 202.1" stroke-width="5"/>
-<path d="M 282.3 266.8 L 292.9 253.3" stroke-width="5"/>
-<path d="M 610.6 66.2 L 603.4 64 L 612.7 60.6 L 605 58.4 L 612.2 53.7" stroke-width="5"/>
-<path d="M 400.5 185.2 L 399.5 177" stroke-width="5"/>
-<path d="M 452.2 153.2 L 466.6 147.9" stroke-width="5"/>
-<path d="M 591.7 87.7 L 600.3 80.6" stroke-width="5"/>
 <path d="M 564.1 102.3 L 568.1 91.5" stroke-width="5"/>
 <path d="M 259 296 L 260.2 295.3" stroke-width="5"/>
 <path d="M 571.9 88.9 L 573.1 89" stroke-width="5"/>
@@ -66,6 +64,8 @@
 <path d="M 24.4 341.7 L 29.3 339.4" stroke-width="5"/>
 <path d="M 407.5 170.1 L 413.6 167" stroke-width="5"/>
 <path d="M 29.3 339.4 L 49.7 336.1" stroke-width="5"/>
+<path d="M 135 326.6 L 149.2 324" stroke-width="5"/>
 <path d="M 566.8 106.9 L 564.1 102.3" stroke-width="5"/>
 <path d="M 568.1 91.5 L 571.1 89.3" stroke-width="5"/>
+<path d="M 549.3 118.8 L 550.4 118.4" stroke-width="5"/>
 </svg>
