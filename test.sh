@@ -6,22 +6,25 @@ grep -q '<title>fish are friends</title>' public/index.html
 grep -q 'class="brand" href="/">fish are friends' public/index.html
 grep -q 'href="/trips/">trips' public/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
-grep -q 'href="/categories/life/">life' public/index.html
+grep -q 'href="/categories/spey-fishing/">spey fishing' public/index.html
 grep -q 'href="/archive/#september-2026">September 2026' public/index.html
 grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
 grep -q 'symbol id="fishdaisy"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
 grep -q -- '--paper: #fff' public/css/site.css
+grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
+grep -qv '<nav>' public/index.html
+grep -q 'class="plain menu"' public/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'href="/trips/squamish-river/">squamish river</a></h2>' public/index.html
 grep -q '<p class="date">September 22, 2026</p>' public/index.html
 grep -q 'href="/posts/welcome/">welcome' public/posts/index.html
-grep -q '# by critty | 2026-09-22 12:00 | <a href="/categories/life/">life</a>' public/posts/index.html
+grep -q '# by critty | 2026-09-22 12:00</p>' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>welcome | fish are friends</title>' public/posts/welcome/index.html
-grep -q 'href="/posts/welcome/">welcome' public/categories/life/index.html
+test -f public/categories/art/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
 grep -q 'data-to="critty@fisharefriends.org" data-subject="fish are friends: count me in: sample trip"' public/trips/sample-trip/index.html
 grep -q '0 of 4 taken' public/index.html

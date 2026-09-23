@@ -6,12 +6,12 @@ a:hover { color: var(--red) }
 img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 iframe { max-width: 100%; display: block; margin: 1.2rem auto }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px }
-.band { border-bottom: 3px solid var(--ink); padding-top: 28px }
+.band { border-bottom: 3px solid var(--ink); padding: 28px 0 16px }
 .brand { font: 2.8rem/1 "Gochi Hand", cursive; text-decoration: none; display: inline-flex; align-items: center; gap: .4em }
 .brand:hover { color: var(--ink) }
 .domain { margin: .3rem 0 0; color: var(--mute); font-size: .85rem }
-nav { text-align: right; padding-bottom: 6px }
-nav a { margin-left: 1.4em; text-decoration: none; color: var(--mute) }
+.menu { display: flex; gap: 1.2em; margin-bottom: 1.5rem }
+.menu a { color: var(--mute) }
 .cols { display: grid; grid-template-columns: 1fr 280px; gap: 56px; padding-top: 32px }
 .listtitle, .sub { font: 1.7rem/1.2 "Gochi Hand", cursive; margin: 0 0 1rem }
 .sub { font-size: 1.3rem; margin-top: 2rem }
@@ -41,8 +41,10 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .doodle.green { color: var(--green) }
 .doodle.mark { width: 96px; height: 96px }
 .doodle.big { width: 150px; height: 150px; display: block; margin: 0 auto 1rem }
-footer { display: flex; gap: 14px; justify-content: center; padding: 3rem 0 }
-footer .doodle { width: 36px; height: 36px }
+footer { text-align: center; padding: 3rem 0 }
+footer .doodle { width: 36px; height: 36px; margin: 0 6px }
+footer p { margin: .8rem 0 0; font-size: .8rem; color: var(--mute) }
+footer a { color: var(--mute) }
 @media (max-width: 820px) { .cols { grid-template-columns: 1fr; gap: 32px } .brand { font-size: 2.2rem } }
 .signup { display: grid; gap: .5rem; max-width: 22rem; margin: 0 0 1.5rem }
 .signup label { display: flex; align-items: center; gap: .5rem }
