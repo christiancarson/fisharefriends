@@ -6,6 +6,8 @@ river: "Morice River"
 ---
 ![Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. It nearly took my arm off.](first-morice-steelhead.jpg)
 
+{{< map >}}
+
 {{< youtube P-i0jw61niE >}}
 
 [watch on youtube](https://www.youtube.com/watch?v=P-i0jw61niE)

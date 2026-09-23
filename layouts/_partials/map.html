@@ -1,0 +1,1 @@
+{{ with . }}{{ $r := . }}{{ with resources.Get (printf "maps/%s.svg" (. | urlize)) }}<figure class="map"><div class="doodle" aria-hidden="true">{{ .Content | safeHTML }}</div><figcaption><span class="ftitle">{{ $r }}</span>{{ with index site.Data.rivers ($r | urlize) }}<p>{{ .about }} <a href="{{ .source }}">wikipedia</a></p>{{ end }}</figcaption></figure>{{ end }}{{ end }}
