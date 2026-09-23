@@ -19,7 +19,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     title = clean(parts[1]) if len(parts) > 1 else f"{m.group(1).capitalize()} {m.group(2)}"
     out = dst / f"{date:%Y-%m}-{slugify(title)}"
     out.mkdir(parents=True, exist_ok=True)
-    photos, rivers, videos, tags = [], [], [], set()
+    photos, home, videos, tags = [], [], [], set()
     for f in sorted(p for p in folder.iterdir() if not p.name.startswith(".")):
         bits = f.stem.split("__")
         name = clean(bits[0])
@@ -35,11 +35,10 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
                 im.thumbnail((1600, 1600))
                 im = ImageOps.fit(im, (1600, 900), centering=(0.5, 0.35))
                 im.save(jpg, quality=85)
-            photos.append((sorted(t for t in tag if water(t)), f'![{desc}]({jpg.name} "{name} | {", ".join(tag)}")'))
+            photos.append((sorted(t for t in tag if water(t)) or home[:1], f'![{desc}]({jpg.name} "{name} | {", ".join(tag)}")'))
         elif f.suffix == ".river":
-            tags.update(["rivers", name] + finder_tags(f))
-            if not pathlib.Path(f"assets/maps/{slugify(name)}.svg").exists(): subprocess.run(["Rscript", "maps.R", name], check=True)
-            rivers.append(f'{{{{< map "{name}" >}}}}')
+            tags.update([name] + finder_tags(f))
+            home.append(name)
         elif f.suffix == ".video":
             tags.update(["music"] + finder_tags(f))
             videos.append(f'{{{{< video {bits[1]} "{name}" >}}}}{desc}{{{{< /video >}}}}')
@@ -49,7 +48,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         tags.add(group(t))
         cards.append(f'{{{{< map "{t}" >}}}}')
         cards.extend(p for w, p in photos if w and w[0] == t)
-    cards += [p for w, p in photos if not w or not pathlib.Path(f"assets/maps/{slugify(w[0])}.svg").exists()] + rivers + videos
+    cards += [p for w, p in photos if not w or not pathlib.Path(f"assets/maps/{slugify(w[0])}.svg").exists()] + videos
     if not cards: continue
     (out / "index.md").write_text(f'---\ntitle: "{title}"\ndate: {date}T12:00:00-07:00\ncategories: [{", ".join(sorted(tags))}]\n---\n' + "\n\n".join(cards) + "\n")
     print(out.name, len(cards))

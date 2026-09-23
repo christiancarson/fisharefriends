@@ -60,6 +60,8 @@ test $(grep -n 'figure class="card map"' public/posts/2026-09-september-2026/ind
 grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/2026-09-september-2026/index.html
 ! grep -q 'autoplay=1' public/categories/music/index.html
 ! grep -q 'autoplay=1' public/posts/index.html
+test $(grep -c 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html) -eq 1
+test $(grep -n 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n '>Ruby</a>' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
