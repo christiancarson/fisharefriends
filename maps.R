@@ -16,4 +16,4 @@ svg <- c('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserve
 slug <- gsub(" ", "-", tolower(river))
 writeLines(svg, sprintf("assets/maps/%s.svg", slug))
 old <- if (file.exists("data/rivers.toml")) readLines("data/rivers.toml") else character()
-if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), 'about = ""', ""), "data/rivers.toml")
+if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), sprintf('title = "The %s"', river), 'about = ""', ""), "data/rivers.toml")

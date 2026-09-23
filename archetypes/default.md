@@ -2,5 +2,5 @@
 title: "{{ replace .File.ContentBaseName "-" " " }}"
 date: {{ .Date }}
 draft: false
-categories: [spey fishing]
+categories: [fishies, rivers, music]
 ---

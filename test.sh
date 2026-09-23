@@ -1,12 +1,12 @@
 #!/bin/sh
 set -e
 hugo build -D -d public --quiet --cleanDestinationDir
-grep -q '<title>My first Morice steelhead.</title>' public/index.xml
+grep -q '<title>My first Morice Steelhead</title>' public/index.xml
 grep -q '<title>fish are friends</title>' public/index.html
 grep -q 'class="brand" href="/">fish are friends' public/index.html
 grep -q 'href="/trips/">trips' public/trips/squamish-river/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
-grep -q 'href="/categories/spey-fishing/">spey fishing' public/index.html
+grep -q 'href="/categories/fishies/">fishies' public/index.html
 grep -q 'href="/archive/#september-2026">September 2026' public/index.html
 grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
@@ -25,12 +25,14 @@ grep -q 'please wait for the next float trip' public/trips/index.html
 grep -q 'data-trip="squamish-river" data-spots="4"' public/trips/squamish-river/index.html
 grep -q '<dd class="spots">0 of 4 taken</dd>' public/trips/squamish-river/index.html
 grep -q 'width="484" height="272"' public/index.html
-grep -q '<figcaption><a class="ftitle" href="/categories/spey-fishing/">My first Morice steelhead.</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. It nearly took my arm off.</p></figcaption>' public/index.html
+grep -q '<figcaption><a class="ftitle" href="/categories/fishies/">Ruby Rocket</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. It nearly took my arm off.</p></figcaption>' public/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/first-morice-steelhead/index.html
 grep -q '<figure class="card video"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/first-morice-steelhead/index.html
-grep -q '<a class="ftitle" href="https://www.youtube.com/watch?v=P-i0jw61niE">Bloc Party, Banquet</a>' public/posts/first-morice-steelhead/index.html
+grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/first-morice-steelhead/index.html
+grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/categories/fishies/index.html
+! grep -q 'ftitle" href="[^"]*">My first Morice Steelhead' public/index.html
 grep -q '<figure class="card"><a href="/posts/first-morice-steelhead/first-morice-steelhead.jpg"><img src="/posts/first-morice-steelhead/first-morice-steelhead_hu' public/index.html
-grep -q '<span class="ftitle">Morice River</span></figcaption>' public/posts/first-morice-steelhead/index.html
+grep -q '<a class="ftitle" href="/categories/rivers/">The Morice River</a></figcaption>' public/posts/first-morice-steelhead/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/first-morice-steelhead/index.html
 test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
 ! grep -q 'squamish-river/">squamish river</a></h2>' public/index.html
@@ -38,15 +40,15 @@ test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
 grep -q 'viewBox="0 0 640 360"' public/posts/first-morice-steelhead/index.html
 test $(grep -n 'class="ftitle" href=' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map"' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'figure class="card map"' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'youtube.com/embed' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1)
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice steelhead.' public/categories/music/index.html
+grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/categories/music/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice steelhead.</a></h2>' public/index.html
+grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead</a></h2>' public/index.html
 grep -q '<p class="date">September 20, 2026</p>' public/index.html
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice steelhead.' public/posts/index.html
-grep -q '# by critty | 2026-09-20 18:00 | <a href="/categories/spey-fishing/">spey fishing</a> | <a href="/categories/music/">music</a>' public/posts/index.html
+grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/posts/index.html
+grep -q '# by critty | 2026-09-20 18:00 | <a href="/categories/fishies/">fishies</a> | <a href="/categories/rivers/">rivers</a> | <a href="/categories/music/">music</a>' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
-grep -q '<title>My first Morice steelhead. | fish are friends</title>' public/posts/first-morice-steelhead/index.html
+grep -q '<title>My first Morice Steelhead | fish are friends</title>' public/posts/first-morice-steelhead/index.html
 test -f public/categories/art/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
 grep -q 'data-to="critty@fisharefriends.org" data-subject="fish are friends: count me in: sample trip"' public/trips/sample-trip/index.html
@@ -54,7 +56,7 @@ grep -q '0 of 3 taken' public/trips/index.html
 grep -q '<h2 class="sub">upcoming</h2>' public/trips/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
 grep -q 'id="september-2026">September 2026' public/archive/index.html
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice steelhead.' public/archive/index.html
+grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/archive/index.html
 grep -q '<dt>what</dt><dd>raft fishing</dd>' public/trips/sample-trip/index.html
 grep -q '<option>M</option>' public/trips/sample-trip/index.html
 grep -q 'name="gear"' public/trips/sample-trip/index.html
@@ -67,7 +69,7 @@ grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishdaisy"/>' public/index.html
 grep -q '<figure class="card map"><div class="doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
-grep -q '<span class="ftitle">Squamish River</span></figcaption>' public/trips/squamish-river/index.html
+grep -q '<a class="ftitle" href="/categories/rivers/">The Squamish River</a></figcaption>' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">squamish river' public/trips/index.html
