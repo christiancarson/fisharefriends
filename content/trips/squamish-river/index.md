@@ -6,6 +6,6 @@ trip_date: "2026-10-17"
 where: "Squamish River"
 meet: ""
 crew: []
-bring: [rain jacket, lunch, warm layers]
+bring: ["a pair of runners you can trash :)", rain jacket, lunch, warm layers]
 ---
 First trip. Walking and wading the Squamish, four spots, nobody needs to have held a rod before.

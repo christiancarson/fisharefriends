@@ -10,8 +10,7 @@
 </dl>
 <form class="signup" data-to="{{ site.Params.email }}" data-subject="count me in: {{ .Title }}">
 <label>name <input name="name" required></label>
-<label><input type="checkbox" name="gear"> I need gear (waders, boots, rod)</label>
+<label><input type="checkbox" name="gear"> I need gear (waders, rod)</label>
 <label>waders <select name="waders"><option>S</option><option>M</option><option>L</option></select></label>
-<label>boots <select name="boots">{{ range seq 6 14 }}<option>{{ . }}</option>{{ end }}</select></label>
 <button class="button">count me in</button>
 </form>

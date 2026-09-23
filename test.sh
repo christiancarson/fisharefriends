@@ -29,13 +29,14 @@ grep -q 'id="september-2026">September 2026' public/archive/index.html
 grep -q 'href="/posts/welcome/">welcome' public/archive/index.html
 grep -q '<dt>what</dt><dd>raft fishing</dd>' public/trips/sample-trip/index.html
 grep -q '<option>M</option>' public/trips/sample-trip/index.html
-grep -q '<option>14</option>' public/trips/sample-trip/index.html
 grep -q 'name="gear"' public/trips/sample-trip/index.html
 grep -q 'src="/js/signup.js"' public/index.html
 grep -q '<dt>licence</dt><dd><a href="https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence">bc freshwater fishing licence</a>' public/trips/sample-trip/index.html
 grep -q '<dt>what</dt><dd>walk and wade</dd>' public/trips/squamish-river/index.html
 grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish-river/index.html
 grep -q 'href="/trips/squamish-river/">squamish river' public/archive/index.html
+grep -q 'runners you can trash :)' public/trips/squamish-river/index.html
+grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">squamish river' public/trips/index.html
