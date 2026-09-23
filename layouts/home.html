@@ -1,4 +1,6 @@
 {{ define "main" }}
 <div class="intro">{{ .Content }}</div>
-{{ range first 1 (where site.RegularPages "Section" "posts") }}{{ partial "post.html" . }}{{ end }}
+<p><a class="button" id="random" href="{{ (site.GetPage "posts").RelPermalink }}">take me to a random post</a></p>
+{{ $urls := slice }}{{ range where site.RegularPages "Section" "posts" }}{{ $urls = $urls | append .RelPermalink }}{{ end }}<script>const posts = {{ $urls | jsonify | safeJS }}
+document.getElementById('random').addEventListener('click', e => { e.preventDefault(); location.href = posts[Math.floor(Math.random() * posts.length)] })</script>
 {{ end }}

@@ -20,6 +20,11 @@ signup = ''
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
 links = []
 
+[params.threads]
+fishies = 'card'
+rivers = 'card map'
+music = 'card video'
+
 [params.trips.raft]
 label = 'raft fishing'
 spots = 3

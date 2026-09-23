@@ -1,0 +1,7 @@
+{{ define "main" }}
+<h1 class="listtitle">{{ .Title }}</h1>
+{{ $kind := index site.Params.threads .Data.Term }}
+{{ range .Pages.ByDate.Reverse }}{{ $p := . }}
+{{ if $kind }}{{ range findRE (printf "(?s)<figure class=\"%s\">.*?</figure>" $kind) .Content }}{{ replaceRE "class=\"ftitle\" href=\"[^\"]*\"" (printf "class=\"ftitle\" href=\"%s\"" $p.RelPermalink) . | safeHTML }}{{ end }}{{ else }}{{ partial "post.html" . }}<svg class="doodle sep" aria-hidden="true"><use href="#fish"/></svg>{{ end }}
+{{ end }}
+{{ end }}

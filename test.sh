@@ -24,14 +24,18 @@ grep -q 'please wait for the next float trip' public/trips/index.html
 ! grep -q 'count me out' public/trips/squamish-river/index.html
 grep -q 'data-trip="squamish-river" data-spots="4"' public/trips/squamish-river/index.html
 grep -q '<dd class="spots">0 of 4 taken</dd>' public/trips/squamish-river/index.html
-grep -q 'width="484" height="272"' public/index.html
-grep -q '<figcaption><a class="ftitle" href="/categories/fishies/">Ruby</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.</p></figcaption>' public/index.html
+grep -q 'width="484" height="272"' public/posts/first-morice-steelhead/index.html
+grep -q '<figcaption><a class="ftitle" href="/categories/fishies/">Ruby</a><p>Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.</p></figcaption>' public/posts/first-morice-steelhead/index.html
+grep -q '<a class="ftitle" href="/posts/first-morice-steelhead/">Ruby</a>' public/categories/fishies/index.html
+! grep -q 'card video\|card map\|<article' public/categories/fishies/index.html
+grep -q '<a class="ftitle" href="/posts/first-morice-steelhead/">The Morice River</a>' public/categories/rivers/index.html
+grep -q '<a class="ftitle" href="/posts/first-morice-steelhead/">Banquet by Bloc Party</a>' public/categories/music/index.html
+! grep -q '<figure class="card"><a' public/categories/music/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/first-morice-steelhead/index.html
 grep -q '<figure class="card video"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/first-morice-steelhead/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/first-morice-steelhead/index.html
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/categories/fishies/index.html
-! grep -q 'ftitle" href="[^"]*">My first Morice Steelhead' public/index.html
-grep -q '<figure class="card"><a href="/posts/first-morice-steelhead/first-morice-steelhead.jpg"><img src="/posts/first-morice-steelhead/first-morice-steelhead_hu' public/index.html
+! grep -q 'ftitle" href="[^"]*">My first Morice Steelhead' public/posts/first-morice-steelhead/index.html
+grep -q '<figure class="card"><a href="/posts/first-morice-steelhead/first-morice-steelhead.jpg"><img src="/posts/first-morice-steelhead/first-morice-steelhead_hu' public/posts/first-morice-steelhead/index.html
 grep -q '<a class="ftitle" href="/categories/rivers/">The Morice River</a></figcaption>' public/posts/first-morice-steelhead/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/first-morice-steelhead/index.html
 test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
@@ -40,11 +44,12 @@ test -f public/posts/first-morice-steelhead/first-morice-steelhead.jpg
 grep -q 'viewBox="0 0 640 360"' public/posts/first-morice-steelhead/index.html
 test $(grep -n 'class="ftitle" href=' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map"' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'figure class="card map"' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'youtube.com/embed' public/posts/first-morice-steelhead/index.html | head -1 | cut -d: -f1)
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/categories/music/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
-grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead</a></h2>' public/index.html
-grep -q '<p class="date">September 20, 2026</p>' public/index.html
+grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
+grep -q 'const posts = \["/posts/first-morice-steelhead/"\]' public/index.html
+! grep -q '<article' public/index.html
+grep -q '<p class="date">September 20, 2026</p>' public/posts/first-morice-steelhead/index.html
 grep -q 'href="/posts/first-morice-steelhead/">My first Morice Steelhead' public/posts/index.html
 grep -q '# by critty | 2026-09-20 18:00 | <a href="/categories/fishies/">fishies</a> | <a href="/categories/rivers/">rivers</a> | <a href="/categories/music/">music</a>' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
