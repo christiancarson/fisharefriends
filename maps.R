@@ -10,12 +10,9 @@ x0 <- 8
 y0 <- 8
 w <- 624
 h <- 344
-cx <- (b$xmin + b$xmax) / 2
-cy <- (b$ymin + b$ymax) / 2
-W <- max(b$xmax - b$xmin, (b$ymax - b$ymin) * w / h)
-H <- W * h / w
-s <- w / W
-d <- vapply(g, function(p) paste("M", paste(round((p[, 1] - (cx - W / 2)) * s + x0, 1), round(((cy + H / 2) - p[, 2]) * s + y0, 1), collapse = " L ")), "")
+sx <- w / (b$xmax - b$xmin)
+sy <- h / (b$ymax - b$ymin)
+d <- vapply(g, function(p) paste("M", paste(round((p[, 1] - b$xmin) * sx + x0, 1), round((b$ymax - p[, 2]) * sy + y0, 1), collapse = " L ")), "")
 svg <- c('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMinYMin meet" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">', sprintf('<path d="%s" stroke-width="5"/>', d), "</svg>")
 slug <- gsub(" ", "-", tolower(river))
 writeLines(svg, sprintf("assets/maps/%s.svg", slug))
