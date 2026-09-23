@@ -67,6 +67,7 @@ test $(grep -n 'data-tags="rivers morice-river"' public/posts/2026-09-september-
 grep -q '<div class="water">' public/posts/2022-08-august-2022/index.html
 grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/dean-river/">Dean River</a></p>' public/posts/2022-08-august-2022/index.html
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
+grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">take me to a random post' public/index.html
