@@ -44,7 +44,7 @@ const show = path => {
   if (!site[path] && site[path.replace(/\/?$/, '/index.html')]) path = path.replace(/\/?$/, '/index.html')
   if (!site[path]) path = '404.html'
   let html = new TextDecoder().decode(b64(site[path]))
-  html = html.replace(/(src|href)="\/([^"#?]+)"/g, (all, a, rel) => { if (!site[rel]) return all; urls[rel] = urls[rel] || URL.createObjectURL(new Blob([b64(site[rel])], { type: mime(rel) })); return `${a}="${urls[rel]}"` })
+  html = html.replace(/(src|href)=("?)\/([^"\s>#?]+)\2/g, (all, a, q, rel) => { if (!site[rel]) return all; urls[rel] = urls[rel] || URL.createObjectURL(new Blob([b64(site[rel])], { type: mime(rel) })); return `${a}="${urls[rel]}"` })
   document.open(); document.write(html); document.close()
   window.lockGo = h => { history.pushState(null, '', h); show(h.split('#')[0]) }
   document.addEventListener('click', e => { const a = e.target.closest('a[href]'); if (!a) return; const h = a.getAttribute('href'); if (h.startsWith('/') && !h.startsWith('//')) { e.preventDefault(); history.pushState(null, '', h); show(h.split('#')[0]); if (h.includes('#')) location.hash = h.split('#')[1] } })
