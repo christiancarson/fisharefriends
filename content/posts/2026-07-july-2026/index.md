@@ -8,6 +8,7 @@
   "Rainbow Trout",
   "Sam A",
   "draw creek",
+  "estuary",
   "fish",
   "friends",
   "karina dsj",
@@ -20,6 +21,7 @@
   "rivers",
   "skagit river",
   "water",
+  "widgeon slough",
   "works"
  ],
  "groups": [
@@ -38,21 +40,23 @@
       "water",
       "lakes"
      ]
+    },
+    {
+     "type": "photo",
+     "file": "me.jpg",
+     "title": "me",
+     "caption": "",
+     "tags": [
+      "Kennedy Lake",
+      "lakes",
+      "water"
+     ]
     }
    ]
   },
   {
    "water": null,
    "cards": [
-    {
-     "type": "photo",
-     "file": "img-1467.jpg",
-     "title": "IMG 1467",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
     {
      "type": "photo",
      "file": "screenshot-2026-09-24-at-123824.jpg",
@@ -66,15 +70,6 @@
      "type": "photo",
      "file": "screenshot-2026-09-24-at-123903.jpg",
      "title": "Screenshot 2026-09-24 at 123903",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
-    {
-     "type": "photo",
-     "file": "view-recent-photos.jpg",
-     "title": "View recent photos",
      "caption": "",
      "tags": [
       "fish"
@@ -153,6 +148,19 @@
       "friends",
       "works",
       "resoration"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "standing.jpg",
+     "title": "standing",
+     "caption": "",
+     "tags": [
+      "Sam A",
+      "friends",
+      "water",
+      "estuary",
+      "widgeon slough"
      ]
     }
    ]

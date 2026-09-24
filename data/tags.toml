@@ -6,6 +6,10 @@ parent = "friends"
 title = "draw creek"
 parent = "works"
 
+["estuary"]
+title = "estuary"
+parent = "friends"
+
 ["finn-w"]
 title = "Finn W"
 parent = "friends"
@@ -64,5 +68,9 @@ parent = "friends"
 
 ["water"]
 title = "water"
+parent = "friends"
+
+["widgeon-slough"]
+title = "widgeon slough"
 parent = "friends"
 
