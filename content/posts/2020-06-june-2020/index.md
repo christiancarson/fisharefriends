@@ -1,13 +1,13 @@
 ---
 title: "june 2020"
 date: 2020-06-01T12:00:00-07:00
-categories: [Boot Lake, fish, lakes]
+categories: [Boot Lake, Coastal Cutthroat Trout, fish, lakes, species]
 ---
 <div class="water">
 
 {{< map "Boot Lake" >}}
 
-![](ben.jpg "Ben | fish, Boot Lake")
+![](ben.jpg "Ben | fish, Boot Lake, Coastal Cutthroat Trout")
 
 ![](tooted-and-booted.jpg "tooted and booted | Boot Lake")
 

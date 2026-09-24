@@ -6,6 +6,7 @@ months = {m: i for i, m in enumerate(["january", "february", "march", "april", "
 clean = lambda s: re.sub(r"\s+", " ", s.replace("_", " ")).strip()
 params = tomllib.loads(pathlib.Path("hugo.toml").read_text())["params"]
 waters = {**params.get("tags", {}), **params.get("waters", {})}
+species = tomllib.loads(pathlib.Path("data/species.toml").read_text())
 water = lambda t: re.search(r" (River|Creek|Lake|Estuary|Harbour|Bay|Sound|Inlet|Ocean)$", t) is not None
 group = lambda t: {"River": "rivers", "Creek": "rivers", "Lake": "lakes", "Estuary": "estuaries"}.get(t.split()[-1], "oceans")
 def finder_tags(f):
@@ -28,6 +29,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"):
             tag = [waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])]
             tags.update(tag)
+            if any(slugify(t) in species for t in tag): tags.add("species")
             for t in tag: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
             name = re.sub(r"(?i)\s+(from|at|on|in|of|the|and|with)$", "", name)
             jpg = out / (slugify(name) + ".jpg")

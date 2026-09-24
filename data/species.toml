@@ -1,0 +1,11 @@
+["rainbow-trout"]
+title = "Rainbow Trout"
+latin = "Oncorhynchus mykiss"
+
+["westslope-cutthroat-trout"]
+title = "Westslope Cutthroat Trout"
+latin = "Oncorhynchus clarkii lewisi"
+
+["coastal-cutthroat-trout"]
+title = "Coastal Cutthroat Trout"
+latin = "Oncorhynchus clarkii clarkii"

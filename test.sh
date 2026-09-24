@@ -51,7 +51,7 @@ grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/inde
 grep -q '<figure class="card video" data-tags="music"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card" data-tags="fish morice-river"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout species"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/rivers/">Morice River</a></figcaption>' public/posts/2026-09-september-2026/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/2026-09-september-2026/index.html
 test -f public/posts/2026-09-september-2026/ruby.jpg
@@ -65,7 +65,7 @@ grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/2026-09-september-20
 test $(grep -c 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html) -eq 1
 test $(grep -n 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n '>Ruby</a>' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
 grep -q '<div class="water">' public/posts/2022-08-august-2022/index.html
-grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/dean-river/">Dean River</a></p>' public/posts/2022-08-august-2022/index.html
+grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/dean-river/">Dean River</a><a href="/categories/rainbow-trout/">Rainbow Trout</a></p>' public/posts/2022-08-august-2022/index.html
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
@@ -81,7 +81,7 @@ grep -q 'data-tags="rivers morice-river"' public/categories/morice-river/index.h
 ! grep -q '<article' public/index.html
 grep -q '<p class="date">September 1, 2026</p>' public/posts/2026-09-september-2026/index.html
 grep -q 'href="/posts/2026-09-september-2026/">september 2026' public/posts/index.html
-grep -q '# by critty | 2026-09-01 12:00 | <a href="/categories/morice-river/">Morice River</a> | <a href="/categories/fish/">fish</a> | <a href="/categories/music/">music</a> | <a href="/categories/rivers/">rivers</a>' public/posts/index.html
+grep -q '# by critty | 2026-09-01 12:00 | <a href="/categories/morice-river/">Morice River</a> | <a href="/categories/rainbow-trout/">Rainbow Trout</a> | <a href="/categories/fish/">fish</a> | <a href="/categories/music/">music</a> | <a href="/categories/rivers/">rivers</a> | <a href="/categories/species/">species</a>' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>september 2026 | fish are friends</title>' public/posts/2026-09-september-2026/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
@@ -106,3 +106,8 @@ grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcap
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">walk and wade' public/trips/index.html
+grep -q '<summary>species</summary><ul class="plain nest"><li><a href="/categories/species/">all species</a></li><li><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html
+grep -q '<p class="latin">Oncorhynchus mykiss</p>' public/categories/rainbow-trout/index.html
+grep -q 'href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/species/index.html
+grep -q 'href="/posts/2020-06-june-2020/">Ben</a>' public/categories/coastal-cutthroat-trout/index.html
+grep -q 'Westslope Cutthroat Trout' public/posts/2021-03-march-2021/index.html

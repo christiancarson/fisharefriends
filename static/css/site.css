@@ -22,6 +22,7 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .brand:hover { color: var(--ink) }
 .cols { display: grid; grid-template-columns: 1fr 280px; gap: 56px; padding-top: 32px }
 .listtitle, .sub { font: 1.7rem/1.2 "Gochi Hand", cursive; margin: 0 0 1rem }
+.latin { font-style: italic; text-transform: none; color: var(--mute); margin: -.6rem 0 1.2rem }
 .sub { font-size: 1.3rem; margin-top: 2rem }
 .post { padding-bottom: 1.5rem }
 .post .date { margin: 0; font-size: .85rem; color: var(--mute) }
