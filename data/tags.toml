@@ -2,24 +2,12 @@
 title = "Christian A"
 parent = "friends"
 
-["draw-creek"]
-title = "draw creek"
-parent = "works"
-
-["estuary"]
-title = "estuary"
-parent = "friends"
-
 ["finn-w"]
 title = "Finn W"
 parent = "friends"
 
 ["gabe-r"]
 title = "Gabe R"
-parent = "friends"
-
-["hope-bay"]
-title = "hope bay"
 parent = "friends"
 
 ["indie"]
@@ -30,36 +18,16 @@ parent = "music"
 title = "karina dsj"
 parent = "friends"
 
-["kennedy-river"]
-title = "kennedy river"
-parent = "friends"
-
-["lakes"]
-title = "lakes"
-parent = "friends"
-
 ["michelle"]
 title = "michelle"
-parent = "friends"
-
-["ocean"]
-title = "ocean"
 parent = "friends"
 
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
 
-["onion-lake"]
-title = "onion lake"
-parent = "friends"
-
 ["resoration"]
 title = "resoration"
-parent = "friends"
-
-["rivers"]
-title = "rivers"
 parent = "friends"
 
 ["ross-c"]
@@ -68,17 +36,5 @@ parent = "friends"
 
 ["sam-a"]
 title = "Sam A"
-parent = "friends"
-
-["skagit-river"]
-title = "skagit river"
-parent = "friends"
-
-["water"]
-title = "water"
-parent = "friends"
-
-["widgeon-slough"]
-title = "widgeon slough"
 parent = "friends"
 
