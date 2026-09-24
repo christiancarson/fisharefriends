@@ -2,12 +2,12 @@
 <path d="M 448.9 30.2 L 547.8 16 L 595.9 44.3" stroke-width="5"/>
 <path d="M 132.3 163.2 L 236.1 112.8" stroke-width="5"/>
 <path d="M 16 316.4 L 55 255.2" stroke-width="5"/>
-<path d="M 236.1 112.8 L 239.8 109.3" stroke-width="5"/>
-<path d="M 239.8 109.3 L 246.4 106.1" stroke-width="5"/>
-<path d="M 56.5 243.7 L 72 213.6" stroke-width="5"/>
 <path d="M 595.9 44.3 L 624 68.5" stroke-width="5"/>
 <path d="M 246.4 106.1 L 448.9 30.2" stroke-width="5"/>
 <path d="M 72 213.6 L 132.3 163.2" stroke-width="5"/>
+<path d="M 236.1 112.8 L 239.8 109.3" stroke-width="5"/>
 <path d="M 55 255.2 L 56.5 243.7" stroke-width="5"/>
+<path d="M 239.8 109.3 L 246.4 106.1" stroke-width="5"/>
+<path d="M 56.5 243.7 L 72 213.6" stroke-width="5"/>
 <path d="M 50.9 344 L 16 316.4" stroke-width="5"/>
 </svg>
