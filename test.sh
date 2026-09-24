@@ -9,11 +9,11 @@ grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'body { text-transform: lowercase }' public/css/site.*.css
 grep -q '>walk and wade</a></h2>' public/trips/index.html
 grep -q 'href="/categories/fish/">all fish' public/index.html
-grep -q '<li><details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
-grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
+grep -q '<details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li data-sub="0"><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
+grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li data-sub="0"><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
 ! grep -q '<summary>places</summary>' public/index.html
-grep -q '<summary>estuaries</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
-grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li><a href="/categories/ucluelet-harbour/">Ucluelet Harbour</a>' public/index.html
+grep -q '<summary>estuaries</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li data-sub="0"><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
+grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li data-sub="0"><a href="/categories/ucluelet-harbour/">Ucluelet Harbour</a>' public/index.html
 grep -q '<li><a href="/posts/2026-09-september-2026/">september 2026</a></li>' public/index.html
 test $(grep -n 'figure class="card map" data-tags="rivers atnarko-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map" data-tags="rivers dean-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
@@ -108,8 +108,15 @@ grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcap
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">walk and wade' public/trips/index.html
-grep -q '<summary>fish <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/fish/">all fish</a></li><li><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html
+grep -q '<summary>fish <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/fish/">all fish</a></li><li data-sub="0"><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html
 grep -q '<p class="latin">Oncorhynchus mykiss</p>' public/categories/rainbow-trout/index.html
 grep -q 'href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/rainbow-trout/index.html
 grep -q 'href="/posts/2020-06-june-2020/">Ben</a>' public/categories/coastal-cutthroat-trout/index.html
 grep -q 'Westslope Cutthroat Trout' public/posts/2021-03-march-2021/index.html
+grep -q 'id="stem"' public/index.html
+test $(grep -o 'class="petal' public/index.html | wc -l) -eq $(grep -o '<li data-tab=' public/index.html | wc -l)
+grep -q 'class="petal lit" data-tab="0"' public/categories/rainbow-trout/index.html
+grep -q '<li data-tab="0" class="on"><details open>' public/categories/rainbow-trout/index.html
+grep -q '<li data-sub="1" class="on"><a href="/categories/rainbow-trout/">' public/categories/rainbow-trout/index.html
+! grep -q 'class="petal lit"' public/index.html
+grep -q 'src="/js/garden\.[0-9a-f]*\.js"' public/index.html
