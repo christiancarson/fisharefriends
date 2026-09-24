@@ -12,7 +12,7 @@
 {{ $gj := resources.Get "js/garden.js" | fingerprint }}<script src="{{ $gj.RelPermalink }}" defer></script>
 {{ with site.Home.OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
 </head>
-<body>
+<body{{ if .IsHome }} class="home"{{ end }}>
 {{ partial "doodles.html" . }}
 {{ $tabs := partial "tabs.html" . }}{{ $theme := "" }}{{ $shade := 40 }}{{ if or (eq .Kind "term") (and (eq .Kind "section") (in (slice "journal" "trips") .Section)) (eq .Section "trips") }}{{ range $tabs }}{{ if .on }}{{ $theme = .hue }}{{ $shade = index site.Params.shade .title | default 40 }}{{ end }}{{ end }}{{ end }}
 <div class="wrap cols">

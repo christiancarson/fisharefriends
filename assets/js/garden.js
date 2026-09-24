@@ -4,10 +4,13 @@ if (stem) {
   let len = 0
   const scale = () => svg.getBoundingClientRect().width / 280
   const fit = () => {
-    const H = Math.max(460, Math.round(side.clientHeight / scale()))
-    let d = `M70 ${top} C 70 200, 92 320, 70 400`, y = 400
-    while (y < H) { d += ` C 48 ${y + 110}, 92 ${y + 220}, 70 ${y + 340}`; y += 340 }
-    svg.setAttribute('viewBox', `0 0 280 ${H}`); stem.setAttribute('d', d); len = stem.getTotalLength()
+    const nav = side.querySelector('.nav'), H = Math.max(Number(top) + 60, Math.round((nav.getBoundingClientRect().bottom - side.getBoundingClientRect().top) / scale()) + 6)
+    let d, y
+    if (H < 400) { d = `M70 ${top} C 70 ${Number(top) + 80}, 86 ${H - 80}, 70 ${H}`; y = H }
+    else { d = `M70 ${top} C 70 200, 92 320, 70 400`; y = 400 }
+    while (y + 340 <= H) { d += ` C 48 ${y + 110}, 92 ${y + 220}, 70 ${y + 340}`; y += 340 }
+    if (y < H) { d += ` C 56 ${y + (H - y) / 2}, 70 ${H - 4}, 70 ${H}` }
+    svg.setAttribute('viewBox', `0 0 280 ${Math.max(H, Math.round(side.clientHeight / scale()))}`); stem.setAttribute('d', d); len = stem.getTotalLength()
   }
   fit()
   const at = y => { let lo = 0, hi = len; for (let i = 0; i < 30; i++) { const m = (lo + hi) / 2; if (stem.getPointAtLength(m).y < y) lo = m; else hi = m }; return lo }
