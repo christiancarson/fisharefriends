@@ -42,7 +42,10 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .garden .petal, .garden .centre, .garden .leaf { pointer-events: all; cursor: pointer }
 .garden .centre:hover circle { stroke-width: 4 }
 .side li[data-sub] > span { color: hsl(var(--hue) 45% 38%) }
-.side .nav > li:first-child > a { color: hsl(45 70% 40%) }
+.tablink { color: hsl(var(--hue) 55% 42%); text-decoration-color: hsl(var(--hue) 55% 70%) }
+.tablink:hover { background: hsl(var(--hue) 70% 91%); border-radius: 5px; box-shadow: 0 0 0 3px hsl(var(--hue) 70% 91%) }
+.garden .centre .face { opacity: 0; transition: opacity .25s }
+.garden .centre:hover .face, .garden .centre.lit .face { opacity: 1 }
 .side > *:not(.garden) { pointer-events: none }
 .side a, .side summary { pointer-events: auto }
 .side li[data-tab] > a, .side li[data-tab] > details > summary { color: hsl(var(--hue) 55% 42%) }

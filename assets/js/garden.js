@@ -53,4 +53,10 @@ if (stem) {
   })
   side.addEventListener('mouseover', e => { const li = e.target.closest('li[data-sub]'); if (li && li.leaf && !li.contains(e.relatedTarget)) li.leaf.classList.add('lit') })
   side.addEventListener('mouseout', e => { const li = e.target.closest('li[data-sub]'); if (li && li.leaf && !li.classList.contains('on') && !li.contains(e.relatedTarget)) li.leaf.classList.remove('lit') })
+  document.querySelectorAll('main .tablink').forEach(a => {
+    const n = a.dataset.link, li = side.querySelector(`li[data-tab][data-name="${n}"]`)
+    const p = li && svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`)
+    a.addEventListener('mouseenter', () => { li && li.classList.add('lit'); p && p.classList.add('lit') })
+    a.addEventListener('mouseleave', () => { if (li && !li.classList.contains('on')) { li.classList.remove('lit'); p && p.classList.remove('lit') } })
+  })
 }

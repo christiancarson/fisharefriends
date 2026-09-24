@@ -1,7 +1,7 @@
 ---
 title: "july 2020"
 date: 2020-07-01T12:00:00-07:00
-categories: [Kennedy Lake, friends, lakes, water]
+categories: [Kennedy Lake, friends, lakes, photos, water]
 ---
 <div class="water">
 
