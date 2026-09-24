@@ -1,0 +1,1 @@
+{{- $u := partial "upcoming.html" .Page -}}{{- if $u }}{{ (index $u 0).RelPermalink }}{{ else }}{{ (site.GetPage "trips").RelPermalink }}{{ end -}}

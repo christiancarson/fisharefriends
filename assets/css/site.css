@@ -33,7 +33,8 @@ body { text-transform: lowercase }
 .post .meta a { color: var(--mute) }
 .sep { display: block; width: 56px; height: 28px; margin: 0 auto 2.5rem }
 .intro { max-width: 40rem; margin: 0 0 2rem; font-size: 1.05rem; font-weight: 400; color: var(--ink) }
-.intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: .6rem }
+.intro p { margin: 0 0 .9rem }
+.intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 ul.plain { list-style: none; padding: 0; margin: 0 }
 .side h3 { font: 1.25rem/1 "Gochi Hand", cursive; margin: 1.8rem 0 .5rem }
 .side { padding-top: 26px }

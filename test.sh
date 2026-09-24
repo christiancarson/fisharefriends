@@ -69,6 +69,8 @@ grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categorie
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
+grep -q 'href="/posts/">stories, photos, and observations</a>' public/index.html
+grep -q 'href="/trips/squamish-river/">sign up to join me on a trip</a>' public/index.html
 grep -q 'href="/posts/">all' public/index.html
 grep -q 'id="random" href="/posts/">go fish <svg class="doodle blue" aria-hidden="true"><use href="#fish"/></svg></a>' public/index.html
 grep -q '"/posts/2026-09-september-2026/"' public/index.html
