@@ -43,15 +43,6 @@
    "cards": [
     {
      "type": "photo",
-     "file": "img-1388.jpg",
-     "title": "IMG 1388",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
-    {
-     "type": "photo",
      "file": "img-1467.jpg",
      "title": "IMG 1467",
      "caption": "",
@@ -96,6 +87,15 @@
       "rivers",
       "works",
       "resoration"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "area-man-124.jpg",
+     "title": "area man 124",
+     "caption": "",
+     "tags": [
+      "fish"
      ]
     },
     {
