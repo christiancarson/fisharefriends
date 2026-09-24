@@ -8,7 +8,7 @@ params = tomllib.loads(pathlib.Path("hugo.toml").read_text())["params"]
 waters = {**params.get("tags", {}), **params.get("waters", {})}
 species = tomllib.loads(pathlib.Path("data/species.toml").read_text())
 kids = {k: (v["title"], v["parent"]) for k, v in tomllib.loads(pathlib.Path("data/tags.toml").read_text()).items()} if pathlib.Path("data/tags.toml").exists() else {}
-parents = params.get("parents", ["friends", "fish", "music", "works"])
+parents = params.get("parents", ["friends", "fish", "music", "works", "things"])
 used = set()
 nest = {k.lower(): v for k, v in params.get("nest", {}).items()}
 crop = pathlib.Path.home() / "Library/Caches/fisharefriends/crop"
@@ -37,6 +37,7 @@ def finder_tags(f):
     h = subprocess.run(["xattr", "-px", "com.apple.metadata:_kMDItemUserTags", str(f)], capture_output=True, text=True).stdout
     return [clean(t.split("\n")[0]) for t in plistlib.loads(bytes.fromhex(re.sub(r"\s", "", h)))] if h.strip() else []
 slugify = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+for k in nest: kids[slugify(k)] = (k, nest[k]); used.add(slugify(k))
 toml = lambda rows: "".join(f'["{k}"]\n' + "".join(f"{a} = {json.dumps(b)}\n" for a, b in v.items()) + "\n" for k, v in rows.items())
 for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     parts = folder.name.split("__")
@@ -65,8 +66,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
                     pathlib.Path("data/species.toml").write_text(toml(species))
             if any(slugify(t) in species for t in tag): tags.add("fish")
             for t in tag:
-                if t.lower() in nest: tags.add(nest[t.lower()])
-                elif slugify(t) in kids and not water(t): tags.add(kids[slugify(t)][1])
+                if t.lower() in nest: kids[slugify(t)] = (t, nest[t.lower()]); used.add(slugify(t))
             for t in tag:
                 if water(t) or slugify(t) in species: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
                 elif t not in parents and not water(t):
@@ -110,6 +110,12 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     if loose: groups.append({"water": None, "cards": loose})
     for old in out.glob("*.jpg"):
         if old.name not in {p["file"] for w, p in photos}: old.unlink()
+    for t in list(tags):
+        k = slugify(t)
+        for _ in range(5):
+            if k in kids: tags.add(kids[k][1]); k = slugify(kids[k][1])
+            elif k in species: tags.add("fish"); k = "fish"
+            else: break
     if not groups: continue
     (out / "index.md").write_text(json.dumps({"title": title, "date": f"{date}T12:00:00-07:00", "categories": sorted(tags), "groups": groups}, ensure_ascii=False, indent=1) + "\n")
     print(out.name, sum(len(g["cards"]) for g in groups) + sum(1 for g in groups if g["water"]))

@@ -6,8 +6,8 @@ Drop a photo in a month folder, give it Finder tags, and the site sorts it. This
 
     [tab tag]  [names that belong to that tab]  [water name]  [species]
 
-- **tab tags:** `friends`, `fish`, `music`, `works`. A tab tag tells the site what the other names on the photo are.
-- **names:** anything that is not a tab tag, a water or a species. Beside `friends` it is a person, beside `fish` it is a fish's name, beside `works` a project. On a song file it is a genre.
+- **tab tags:** `friends`, `fish`, `things`. A tab tag tells the site what the other names on the photo are. Inside things live `music` (genres under it) and `works` (projects under it); any other activity, like biking or art, sits directly under things.
+- **names:** anything that is not a tab tag, a water or a species. Beside `friends` it is a person, beside `fish` it is a fish's name, beside `works` a project, beside `things` an activity. On a song file it is a genre.
 - **water:** any name ending in river, creek, lake, pond, slough, estuary, lagoon, bay, harbour, inlet, sound, strait, channel, passage, cove or ocean. It gets a map and the photo nests under it.
 - **species:** rainbow trout, bull trout, coho, steelhead and about 200 others, or any two-word name ending in trout, salmon, char, rockfish, snapper and so on. Filed under fish with the Latin name.
 
@@ -45,11 +45,15 @@ That is enough. No tab tag needed.
 
 **a work day**
 `works`, `restoration`, `Kennedy River`
-Add `friends` and names if people are the point of the photo. Restoration is pinned under works.
+Add `friends` and names if people are the point of the photo. Restoration is pinned under works, and works under things.
+
+**an activity that is not fishing**
+`things`, `biking`, `Lost Lake`
+Biking nests directly under things. Art, hiking, boating work the same way.
 
 **a song**
 file `Banquet_by_Bloc_Party__P-i0jw61niE.video` (the YouTube id after the double underscore), tags `indie`
-Genres nest under music. `Banquet_by_Bloc_Party.txt` beside it is the caption.
+Genres nest under music, and music under things. `Banquet_by_Bloc_Party.txt` beside it is the caption.
 
 **a screenshot or a saved image**
 Rename it, then tag everything, including the water. It has no GPS and no useful name.
@@ -71,7 +75,7 @@ an empty `Morice_River.river` file in the folder puts every untagged photo of th
 ## the first time a name appears
 
 - a name filed under a tab stays there for good, even if later photos tag it differently
-- a new name that sits beside two tab tags on the same photo goes to friends first. To start a new project, tag it on a works-only photo first, or ask for it to be pinned.
+- a new name that sits beside two tab tags on the same photo goes to friends first. To start a new project or activity, tag it on a photo without `friends` first, or ask for it to be pinned.
 - a new name with no tab tag beside it becomes a tab of its own with a petal. Right for a new facet, wrong for a typo, and you will see it in the sidebar at once.
 - once a name is known, the name alone is enough; the tab tag is added for you
 
@@ -79,7 +83,7 @@ an empty `Morice_River.river` file in the folder puts every untagged photo of th
 
 - retag or rename in Finder and the site follows within a couple of minutes
 - a name in the wrong tab: change its `parent` in `data/tags.toml` in the repo, or ask
-- a name that must always land somewhere: `[params.nest]` in `hugo.toml` (`'first fish' = 'fish'`, `restoration = 'works'`)
+- a name that must always land somewhere: `[params.nest]` in `hugo.toml` (`'first fish' = 'fish'`, `music = 'things'`, `works = 'things'`, `restoration = 'works'`)
 - a species without a Latin name: add it to `data/latin.toml`
 - move a photo to `_trash` to take it off the site
 - the sync log is `~/Library/Logs/fisharefriends-sync.log`; map choices and skipped folders are written there

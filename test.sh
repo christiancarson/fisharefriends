@@ -47,7 +47,7 @@ grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Morice River</a
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Banquet by Bloc Party</a>' public/categories/music/index.html
 ! grep -q '<figure class="card"><a' public/categories/music/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card video" data-tags="music indie"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card video" data-tags="music things indie"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
 grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
@@ -118,7 +118,7 @@ grep -q '<summary>water</summary><ul class="plain nest"><li><a href="/categories
 grep -q 'data-tags="rivers morice-river"' public/categories/water/index.html
 grep -q 'data-tags="lakes boot-lake"' public/categories/water/index.html
 grep -q '<summary>water</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers</summary>' public/categories/dean-river/index.html
-test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 8
+test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 7
 grep -q '<summary>trips</summary><ul class="plain nest"><li><a href="/trips/">all trips</a></li><li data-sub="0" data-l="62"><a href="/trips/' public/index.html && grep -q '<a href="/trips/sample-trip/">sample trip</a> <span class="mute">2099-06-06</span></li>' public/index.html
 grep -q '<summary>contact</summary><ul class="plain nest"><li data-sub="0" data-l="62"><span>critty (at) fisharefriends.org</span></li><li data-sub="1" data-l="54"><a href="/index.xml">rss</a></li>' public/index.html
 grep -q '<li data-tab="1" data-name="trips" style="--hue: 130" class="on"><details open>' public/trips/sample-trip/index.html
@@ -141,16 +141,16 @@ grep -q '<summary>friends <span class="mute">[0-9]*</span></summary><ul class="p
 grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">[0-9]*</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30; --tl: 40%">' public/categories/sam-a/index.html
-test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends music works contact "
+test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends things contact "
 grep -q 'data-kind="wade"' public/trips/sample-trip/index.html || grep -q 'data-kind="raft"' public/trips/sample-trip/index.html
 grep -q 'git add content data assets/maps' sync.sh
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 test -e public/trips/index.html
-grep -q 'data-name="works" style="--hue: 320"><a href="/categories/works/">works</a>' public/index.html && test -e public/categories/works/index.html
-grep -q '<summary>music <span class="mute">1</span></summary><ul class="plain nest"><li><a href="/categories/music/">all music</a></li><li data-sub="0" data-l="62"><a href="/categories/indie/">indie</a>' public/index.html
+grep -q 'data-name="things" style="--hue: 320"><details' public/index.html && test -e public/categories/things/index.html && grep -q 'data-tags="music things indie"' public/categories/things/index.html
+grep -q '<summary>things <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/things/">all things</a></li><li data-sub="0" data-l="62"><details><summary>music <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/music/">all music</a></li><li data-sub="0" data-l="58"><a href="/categories/indie/">indie</a>' public/index.html && grep -q '<summary>works <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/works/">all works</a></li><li data-sub="0" data-l="58"><a href="/categories/restoration/">restoration</a>' public/index.html
 ! grep -q '^\["music"\]' data/tags.toml
-grep -q 'data-tags="music indie"' public/categories/indie/index.html
+grep -q 'data-tags="music things indie"' public/categories/indie/index.html
 grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/squamish-river/index.html && grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/index.html
 ! grep -q '\.home \.cols' assets/css/site.css
 grep -q 'grid-template-columns: minmax(0, 1fr) 18.7rem' assets/css/site.css
