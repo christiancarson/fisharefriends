@@ -33,7 +33,7 @@ const mime = n => ({html: 'text/html', css: 'text/css', js: 'text/javascript', s
 let site = null
 const derive = async (pw, salt) => crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 300000, hash: 'SHA-256' }, await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']), { name: 'AES-GCM', length: 256 }, false, ['decrypt'])
 const open = async pw => {
-  const bin = new Uint8Array(await (await fetch('site.bin', { cache: 'force-cache' })).arrayBuffer())
+  const bin = new Uint8Array(await (await fetch('/site.bin', { cache: 'force-cache' })).arrayBuffer())
   const key = await derive(pw, bin.slice(0, 16))
   const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: bin.slice(16, 28) }, key, bin.slice(28))
   return JSON.parse(new TextDecoder().decode(plain))
