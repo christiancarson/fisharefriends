@@ -52,7 +52,7 @@ if (stem) {
   const shown = d => d.open && d.offsetParent !== null
   const regrow = skip => { fit(); side.querySelectorAll('details').forEach(d => { if (skip && (d === skip || skip.contains(d))) return; shown(d) ? grow(d, false) : clear(d) }) }
   const toggle = (d, animate) => { const kids = [...d.querySelectorAll('details')]; if (shown(d)) { grow(d, animate); kids.forEach(x => shown(x) ? grow(x, animate) : clear(x)) } else { clear(d); kids.forEach(clear) } }
-  side.querySelectorAll('details').forEach(d => { if (shown(d)) grow(d, true); d.addEventListener('toggle', () => { toggle(d, true); regrow(d) }) })
+  side.querySelectorAll('details').forEach(d => { if (shown(d)) grow(d, true); d.addEventListener('toggle', () => { fit(); toggle(d, true); regrow(d) }) })
   addEventListener('resize', () => regrow())
   addEventListener('load', () => regrow())
   if (document.fonts) document.fonts.ready.then(() => regrow())
