@@ -22,17 +22,13 @@ parent = "music"
 title = "karina dsj"
 parent = "friends"
 
-["michelle"]
-title = "michelle"
-parent = "friends"
-
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
 
 ["resoration"]
 title = "resoration"
-parent = "friends"
+parent = "works"
 
 ["ross-c"]
 title = "Ross C"

@@ -112,6 +112,19 @@
    "cards": [
     {
      "type": "photo",
+     "file": "trevor.jpg",
+     "title": "Trevor",
+     "caption": "",
+     "tags": [
+      "friends",
+      "Sam A",
+      "fish",
+      "Rainbow Trout",
+      "Onion Lake"
+     ]
+    },
+    {
+     "type": "photo",
      "file": "area-man-124.jpg",
      "title": "area man 124",
      "caption": "",
@@ -162,18 +175,6 @@
   {
    "water": null,
    "cards": [
-    {
-     "type": "photo",
-     "file": "screenshot-2026-09-24-at-12-38-24.jpg",
-     "title": "",
-     "caption": "",
-     "tags": [
-      "friends",
-      "Sam A",
-      "fish",
-      "Rainbow Trout"
-     ]
-    },
     {
      "type": "photo",
      "file": "screenshot-2026-09-24-at-12-39-03.jpg",
