@@ -7,6 +7,7 @@ clean = lambda s: re.sub(r"\s+", " ", s.replace("_", " ")).strip()
 params = tomllib.loads(pathlib.Path("hugo.toml").read_text())["params"]
 waters = {**params.get("tags", {}), **params.get("waters", {})}
 species = tomllib.loads(pathlib.Path("data/species.toml").read_text())
+kids = {}
 water = lambda t: re.search(r" (River|Creek|Lake|Estuary|Harbour|Bay|Sound|Inlet|Ocean)$", t) is not None
 group = lambda t: {"River": "rivers", "Creek": "rivers", "Lake": "lakes", "Estuary": "estuaries"}.get(t.split()[-1], "oceans")
 def finder_tags(f):
@@ -30,7 +31,9 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             tag = [x for x in (waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])) if x] or ["fish"]
             tags.update(tag)
             if any(slugify(t) in species for t in tag): tags.add("fish")
-            for t in tag: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
+            for t in tag:
+                if water(t) or slugify(t) in species: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
+                elif t not in ("fish", "friends", "music") and "friends" in tag: kids[slugify(t)] = (t, "friends")
             name = re.sub(r"(?i)\s+(from|at|on|in|of|the|and|with)$", "", name)
             jpg = out / (slugify(name) + ".jpg")
             if not jpg.exists() or jpg.stat().st_mtime < f.stat().st_mtime:
@@ -44,6 +47,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             home.append(name)
         elif f.suffix == ".video":
             tags.update(["music"] + finder_tags(f))
+            for t in finder_tags(f): kids[slugify(t)] = (t, "music")
             videos.append(f'{{{{< video {bits[1]} "{name}" >}}}}{desc}{{{{< /video >}}}}')
     cards = []
     for t in sorted(t for t in tags if water(t)):
@@ -60,3 +64,4 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     if not cards: continue
     (out / "index.md").write_text(f'---\ntitle: "{title}"\ndate: {date}T12:00:00-07:00\ncategories: [{", ".join(sorted(tags))}]\n---\n' + "\n\n".join(cards) + "\n")
     print(out.name, len(cards))
+pathlib.Path("data/tags.toml").write_text("".join(f'["{k}"]\ntitle = {json.dumps(t)}\nparent = "{p}"\n\n' for k, (t, p) in sorted(kids.items())))
