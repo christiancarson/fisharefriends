@@ -16,15 +16,6 @@
    "cards": [
     {
      "type": "photo",
-     "file": "img-1241.jpg",
-     "title": "IMG 1241",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
-    {
-     "type": "photo",
      "file": "img-1249.jpg",
      "title": "IMG 1249",
      "caption": "",
@@ -117,6 +108,15 @@
       "fish",
       "Rainbow Trout",
       "michelle"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "lake-bike-connection.jpg",
+     "title": "lake bike connection",
+     "caption": "",
+     "tags": [
+      "fish"
      ]
     }
    ]
