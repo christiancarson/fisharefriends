@@ -1,7 +1,7 @@
 ---
 title: "october 2019"
 date: 2019-10-01T12:00:00-07:00
-categories: [Squamish River, friends, not-fly-fishing, rivers]
+categories: [Squamish River, friends, not-fly-fishing, rivers, water]
 ---
 <div class="water">
 

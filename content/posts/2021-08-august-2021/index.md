@@ -1,7 +1,7 @@
 ---
 title: "august 2021"
 date: 2021-08-01T12:00:00-07:00
-categories: [Toquaht Estuary, Ucluelet Harbour, boat, estuaries, friends, non-fish, oceans]
+categories: [Toquaht Estuary, Ucluelet Harbour, boat, estuaries, friends, non-fish, oceans, water]
 ---
 <div class="water">
 
