@@ -1,7 +1,7 @@
 ---
 title: "fish are friends"
 ---
-<p class="bro"><a href="/hello/">hello bro ❤️</a></p>
+<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>
 
 You’ve come upon my lie (place where a fish rests).
 
