@@ -18,6 +18,10 @@ parent = "friends"
 title = "Gabe R"
 parent = "friends"
 
+["hope-bay"]
+title = "hope bay"
+parent = "friends"
+
 ["indie"]
 title = "indie"
 parent = "music"
@@ -36,6 +40,10 @@ parent = "friends"
 
 ["michelle"]
 title = "michelle"
+parent = "friends"
+
+["ocean"]
+title = "ocean"
 parent = "friends"
 
 ["ollie-o"]

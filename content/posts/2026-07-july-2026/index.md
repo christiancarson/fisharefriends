@@ -11,11 +11,13 @@
   "estuary",
   "fish",
   "friends",
+  "hope bay",
   "karina dsj",
   "kennedy river",
   "lakes",
   "lost lake",
   "michelle",
+  "ocean",
   "onion lake",
   "resoration",
   "rivers",
@@ -72,7 +74,11 @@
      "title": "Screenshot 2026-09-24 at 123903",
      "caption": "",
      "tags": [
-      "fish"
+      "karina dsj",
+      "friends",
+      "water",
+      "ocean",
+      "hope bay"
      ]
     },
     {
