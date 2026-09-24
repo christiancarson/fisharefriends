@@ -1,7 +1,15 @@
 const side = document.querySelector('.side'), svg = side && side.querySelector('.garden'), stem = svg && svg.querySelector('#stem')
 if (stem) {
-  const len = stem.getTotalLength(), leaves = svg.querySelector('.leaves'), ns = 'http://www.w3.org/2000/svg'
+  const leaves = svg.querySelector('.leaves'), ns = 'http://www.w3.org/2000/svg', top = stem.getAttribute('d').match(/M240 ([\d.]+)/)[1]
+  let len = 0
   const scale = () => svg.getBoundingClientRect().width / 280
+  const fit = () => {
+    const H = Math.max(460, Math.round(side.clientHeight / scale()))
+    let d = `M240 ${top} C 240 200, 272 320, 238 400`, y = 400
+    while (y < H) { d += ` C 202 ${y + 110}, 270 ${y + 220}, 236 ${y + 340}`; y += 340 }
+    svg.setAttribute('viewBox', `0 0 280 ${H}`); stem.setAttribute('d', d); len = stem.getTotalLength()
+  }
+  fit()
   const at = y => { let lo = 0, hi = len; for (let i = 0; i < 30; i++) { const m = (lo + hi) / 2; if (stem.getPointAtLength(m).y < y) lo = m; else hi = m }; return lo }
   const pose = (g, L, k) => {
     const p = stem.getPointAtLength(L), q = stem.getPointAtLength(Math.min(len, L + 2)), side = g.side || 1
@@ -37,7 +45,7 @@ if (stem) {
     })
   }
   const shown = d => d.open && d.offsetParent !== null
-  const regrow = skip => side.querySelectorAll('details').forEach(d => { if (skip && (d === skip || skip.contains(d))) return; shown(d) ? grow(d, false) : clear(d) })
+  const regrow = skip => { fit(); side.querySelectorAll('details').forEach(d => { if (skip && (d === skip || skip.contains(d))) return; shown(d) ? grow(d, false) : clear(d) }) }
   const toggle = (d, animate) => { const kids = [...d.querySelectorAll('details')]; if (shown(d)) { grow(d, animate); kids.forEach(x => shown(x) ? grow(x, animate) : clear(x)) } else { clear(d); kids.forEach(clear) } }
   side.querySelectorAll('details').forEach(d => { if (shown(d)) grow(d, true); d.addEventListener('toggle', () => { toggle(d, true); regrow(d) }) })
   addEventListener('resize', () => regrow())
@@ -58,5 +66,18 @@ if (stem) {
     const p = li && svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`)
     a.addEventListener('mouseenter', () => { li && li.classList.add('lit'); p && p.classList.add('lit') })
     a.addEventListener('mouseleave', () => { if (li && !li.classList.contains('on')) { li.classList.remove('lit'); p && p.classList.remove('lit') } })
+  })
+  const go = document.getElementById('random')
+  if (go) go.addEventListener('click', e => {
+    e.preventDefault()
+    const petals = [...svg.querySelectorAll('.petal')], pages = go.dataset.pages.split(' ').filter(p => p && p !== location.pathname)
+    const target = pages[Math.floor(Math.random() * pages.length)] || go.href
+    const steps = petals.length * 2 + Math.floor(Math.random() * petals.length)
+    let i = 0, delay = 55
+    const tick = () => {
+      petals.forEach(p => p.classList.remove('lit')); petals[i % petals.length].classList.add('lit')
+      if (++i < steps) { delay *= 1.09; setTimeout(tick, delay) } else setTimeout(() => { location.href = target }, 400)
+    }
+    tick()
   })
 }

@@ -71,7 +71,7 @@ grep -q 'come upon my lie' public/index.html
 grep -q 'monthly photo journal</a> from my time on and off the <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">water</a>.' public/index.html
 grep -q '<a class="tablink" href="/trips/[a-z-]*/" data-link="trips" style="--hue: 130">sign up to join me on a trip</a>' public/index.html
 ! grep -q '>all</a>' public/index.html
-grep -q 'id="random" href="/posts/">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a>' public/index.html
+grep -q 'id="random" href="/posts/" data-pages="[^"]*/categories/fish/[^"]*">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a>' public/index.html && ! grep -q 'data-pages="[^"]*/hello/' public/index.html && grep -q 'id="random"' public/posts/2026-09-september-2026/index.html
 grep -q '"/posts/2026-09-september-2026/"' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Josh</a>' public/categories/fish/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Christian in action</a>' public/categories/friends/index.html

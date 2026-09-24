@@ -2,5 +2,6 @@
 {{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ site.Params.author }}">{{ end }}
 {{ $tabs := .tabs }}
 <ul class="plain nav">{{ range $i, $t := $tabs }}<li data-tab="{{ $i }}" data-name="{{ $t.title }}" style="--hue: {{ $t.hue }}"{{ if $t.on }} class="on"{{ end }}>{{ if $t.subs }}<details{{ if $t.on }} open{{ end }}><summary>{{ $t.title }}{{ with $t.n }} <span class="mute">{{ . }}</span>{{ end }}</summary><ul class="plain nest">{{ with $t.url }}<li><a href="{{ . }}">all {{ $t.title }}</a></li>{{ end }}{{ range $j, $s := $t.subs }}{{ partial "navitem.html" (dict "item" $s "j" $j "l" (math.Max 28 (sub 62 (mul $j 8)))) }}{{ end }}</ul></details>{{ else }}<a href="{{ $t.url }}">{{ $t.title }}</a>{{ with $t.n }} <span class="mute">{{ . }}</span>{{ end }}{{ end }}</li>{{ end }}</ul>
+{{ $urls := slice }}{{ range site.Pages }}{{ if and .RelPermalink (not (in (slice "home" "taxonomy") .Kind)) (ne .Layout "secret") }}{{ $urls = $urls | append .RelPermalink }}{{ end }}{{ end }}<a class="button" id="random" href="{{ (site.GetPage "posts").RelPermalink }}" data-pages="{{ delimit $urls " " }}">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a>
 {{ partial "garden.html" (dict "tabs" $tabs) }}
 </aside>

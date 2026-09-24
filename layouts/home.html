@@ -1,6 +1,3 @@
 {{ define "main" }}
 <div class="intro">{{ .Content }}</div>
-<p><a class="button" id="random" href="{{ (site.GetPage "posts").RelPermalink }}">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a></p>
-{{ $urls := slice }}{{ range where site.RegularPages "Section" "posts" }}{{ $urls = $urls | append .RelPermalink }}{{ end }}<script>const posts = {{ $urls | jsonify | safeJS }}
-document.getElementById('random').addEventListener('click', e => { e.preventDefault(); location.href = posts[Math.floor(Math.random() * posts.length)] })</script>
 {{ end }}
