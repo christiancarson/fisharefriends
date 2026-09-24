@@ -75,8 +75,10 @@ ul.plain.nest { margin-left: 1.1em }
 .trip dt { color: var(--mute) }
 .trip dd { margin: 0 }
 .button { display: inline-flex; align-items: center; gap: .35em; border: 2px solid var(--ink); border-radius: 999px; padding: .05rem .85rem; text-decoration: none; font: 1rem/1.9 "Gochi Hand", cursive }
-.button svg { width: 36px; height: 18px }
-.button:hover { background: var(--ink); color: var(--paper) }
+.button svg { width: 36px; height: 19px; color: inherit }
+.button:hover { animation: rainbow .8s linear infinite, flash .4s steps(2, jump-none) infinite }
+@keyframes rainbow { 0% { color: hsl(0 75% 45%); border-color: hsl(0 75% 45%) } 17% { color: hsl(35 80% 45%); border-color: hsl(35 80% 45%) } 33% { color: hsl(55 80% 40%); border-color: hsl(55 80% 40%) } 50% { color: hsl(130 60% 38%); border-color: hsl(130 60% 38%) } 67% { color: hsl(215 70% 45%); border-color: hsl(215 70% 45%) } 83% { color: hsl(275 60% 45%); border-color: hsl(275 60% 45%) } 100% { color: hsl(0 75% 45%); border-color: hsl(0 75% 45%) } }
+@keyframes flash { from { opacity: 1 } to { opacity: .45 } }
 .doodle { filter: url(#wobble); color: var(--ink) }
 .doodle.red { color: var(--red) }
 .doodle.blue { color: var(--blue) }

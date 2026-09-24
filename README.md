@@ -18,4 +18,4 @@ Hold a post back with `draft: true`. Profile photo: assets/img/profile.jpg. Emai
 
 the flower behind the sidebar is `layouts/_partials/garden.html`: one fish petal per top-level category, coloured to match its label, lit on that category's pages or on hover; `assets/js/garden.js` swims a fish leaf down the stem to each row of an open tab in shades of the tab's colour.
 
-the flower centre links to the secret full-screen fish at /hello/ (static/img/friend.jpg), which is kept out of lists and the sitemap. `{{< tab water >}}text{{< /tab >}}` in content makes a link in that tab's colour that lights the tab and its petal on hover (archive and trips resolve to the archive page and the next trip).
+the flower centre links to the secret full-screen fish at /hello/ (static/img/friend.jpg), which is kept out of lists and the sitemap. `{{< tab water >}}text{{< /tab >}}` in content makes a link in that tab's colour that lights the tab and its petal on hover (journal and trips resolve to the journal page and the next trip); tab order is `order` in hugo.toml.

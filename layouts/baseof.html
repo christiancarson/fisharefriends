@@ -14,7 +14,7 @@
 </head>
 <body>
 {{ partial "doodles.html" . }}
-{{ $tabs := partial "tabs.html" . }}{{ $theme := "" }}{{ if or (eq .Kind "term") (and (eq .Kind "section") (in (slice "archive" "trips") .Section)) }}{{ range $tabs }}{{ if .on }}{{ $theme = .hue }}{{ end }}{{ end }}{{ end }}
+{{ $tabs := partial "tabs.html" . }}{{ $theme := "" }}{{ if or (eq .Kind "term") (and (eq .Kind "section") (in (slice "journal" "trips") .Section)) }}{{ range $tabs }}{{ if .on }}{{ $theme = .hue }}{{ end }}{{ end }}{{ end }}
 <div class="wrap cols">
 <div>
 <header class="band">
