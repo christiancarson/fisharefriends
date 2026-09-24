@@ -58,7 +58,7 @@ test -f public/posts/2026-09-september-2026/ruby.jpg
 ! grep -q '<footer class="wrap"><svg' public/index.html
 grep -q 'viewBox="0 0 640 360"' public/posts/2026-09-september-2026/index.html
 test $(grep -n 'figure class="card map"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'youtube.com/embed' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
-grep -q "v.src += '?autoplay=1&playsinline=1'" public/posts/2026-09-september-2026/index.html
+grep -q 'hover: none' public/posts/2026-09-september-2026/index.html && grep -q 'https://www.youtube.com/watch?v=P-i0jw61niE">watch on youtube</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'autoplay=1' public/categories/music/index.html
 ! grep -q 'autoplay=1' public/posts/index.html
 test $(grep -c 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html) -eq 1
