@@ -1,1 +1,1 @@
-{{ $last := index (last 1 (split . " ")) 0 }}{{ return (index (dict "River" "rivers" "Creek" "rivers" "Lake" "lakes" "Estuary" "estuaries") $last | default "oceans") }}
+{{ $last := index (last 1 (split . " ")) 0 }}{{ return (index (dict "River" "rivers" "Creek" "rivers" "Lake" "lakes" "Pond" "lakes" "Estuary" "estuaries" "Slough" "estuaries" "Lagoon" "estuaries") $last | default "oceans") }}

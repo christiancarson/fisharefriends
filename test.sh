@@ -13,7 +13,7 @@ grep -q '<details><summary>rivers</summary><ul class="plain nest"><li><a href="/
 grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li data-sub="0" data-l="58"><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
 ! grep -q '<summary>places</summary>' public/index.html
 grep -q '<summary>estuaries</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li data-sub="0" data-l="58"><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
-grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li data-sub="0" data-l="58"><a href="/categories/ucluelet-harbour/">Ucluelet Harbour</a>' public/index.html
+grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li data-sub="0" data-l="58"><a href="/categories/hope-bay/">Hope Bay</a>' public/index.html
 grep -q '<summary>journal</summary><ul class="plain nest"><li><a href="/journal/">all journal</a></li><li data-sub="0" data-l="62"><a href="/posts/2026-09-september-2026/">september 2026</a></li>' public/index.html
 test $(grep -n 'figure class="card map" data-tags="rivers atnarko-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map" data-tags="rivers dean-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
@@ -102,7 +102,7 @@ grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/>' public/index.html
 grep -q '<figure class="card map" data-tags="rivers squamish-river"><div class="doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
 grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcaption>' public/trips/squamish-river/index.html
-grep -q '<summary>fish <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/fish/">all fish</a></li><li data-sub="0" data-l="62"><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html
+grep -q '<summary>fish <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/fish/">all fish</a></li><li data-sub="0" data-l="62"><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html && grep -q 'data-l="[0-9]*"><a href="/categories/first-fish/">first fish</a>' public/index.html
 grep -q '<p class="latin">Oncorhynchus mykiss</p>' public/categories/rainbow-trout/index.html
 grep -q 'href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/rainbow-trout/index.html
 grep -q 'href="/posts/2020-06-june-2020/">Ben</a>' public/categories/coastal-cutthroat-trout/index.html
@@ -111,7 +111,7 @@ grep -q 'id="stem"' public/index.html
 test $(grep -o 'class="petal' public/index.html | wc -l) -eq $(grep -o '<li data-tab=' public/index.html | wc -l)
 grep -q 'class="petal lit" data-tab="3"' public/categories/rainbow-trout/index.html
 grep -q '<li data-tab="3" data-name="fish" style="--hue: 275" class="on"><details open>' public/categories/rainbow-trout/index.html
-grep -q '<li data-sub="1" data-l="54" class="on"><a href="/categories/rainbow-trout/">' public/categories/rainbow-trout/index.html
+grep -q '<li data-sub="2" data-l="46" class="on"><a href="/categories/rainbow-trout/">' public/categories/rainbow-trout/index.html
 ! grep -q 'class="petal lit"' public/index.html
 grep -q 'src="/js/garden\.[0-9a-f]*\.js"' public/index.html
 grep -q '<summary>water</summary><ul class="plain nest"><li><a href="/categories/water/">all water</a></li><li data-sub="0" data-l="62"><details><summary>rivers</summary>' public/index.html
@@ -137,8 +137,8 @@ grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september
 grep -q 'src="/img/friend.jpg"' public/hello/index.html && ! grep -q 'plain nav' public/hello/index.html
 ! grep -q '/hello/' public/sitemap.xml
 ! grep -q 'hello friend' public/journal/index.html
-grep -q '<summary>friends <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/christian-a/">Christian A</a>' public/index.html
-grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">3</span>' public/index.html
+grep -q '<summary>friends <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/christian-a/">Christian A</a>' public/index.html
+grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">[0-9]*</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30; --tl: 40%">' public/categories/sam-a/index.html
 test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends music works contact "

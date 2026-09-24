@@ -20,6 +20,7 @@
   "friends",
   "karina dsj",
   "lakes",
+  "oceans",
   "restoration",
   "rivers",
   "water",
@@ -38,6 +39,22 @@
       "Draw Creek",
       "works",
       "restoration"
+     ]
+    }
+   ]
+  },
+  {
+   "water": "Hope Bay",
+   "cards": [
+    {
+     "type": "photo",
+     "file": "screenshot-2026-09-24-at-12-39-03.jpg",
+     "title": "",
+     "caption": "",
+     "tags": [
+      "karina dsj",
+      "friends",
+      "Hope Bay"
      ]
     }
    ]
@@ -167,22 +184,6 @@
       "Sam A",
       "friends",
       "Widgeon Slough"
-     ]
-    }
-   ]
-  },
-  {
-   "water": null,
-   "cards": [
-    {
-     "type": "photo",
-     "file": "screenshot-2026-09-24-at-12-39-03.jpg",
-     "title": "",
-     "caption": "",
-     "tags": [
-      "karina dsj",
-      "friends",
-      "Hope Bay"
      ]
     }
    ]

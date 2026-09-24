@@ -21,6 +21,10 @@ licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-
 order = ['journal', 'trips', 'water', 'fish', 'friends', 'music', 'works', 'contact']
 parents = ['friends', 'fish', 'music', 'works']
 
+[params.nest]
+'first fish' = 'fish'
+restoration = 'works'
+
 [params.tags]
 fishies = 'fish'
 boat = ''
