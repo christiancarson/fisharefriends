@@ -152,3 +152,6 @@ grep -q '<summary>music <span class="mute">1</span></summary><ul class="plain ne
 ! grep -q '^\["music"\]' data/tags.toml
 grep -q 'data-tags="music indie"' public/categories/indie/index.html
 grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/squamish-river/index.html && grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/index.html
+! grep -q '\.home \.cols' assets/css/site.css
+grep -q 'grid-template-columns: minmax(0, 1fr) 18.7rem' assets/css/site.css
+test "$(grep -o '\.cols[^{]*{ [^}]*grid-template-columns: [^;}]*' assets/css/site.css | wc -l)" -eq 2
