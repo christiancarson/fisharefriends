@@ -1,4 +1,5 @@
 <aside class="side">
+{{ partial "garden.html" . }}
 {{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" alt="{{ site.Params.author }}">{{ end }}
 <h3>next trips</h3>
 <ul class="plain">{{ range first 3 (partial "upcoming.html" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mute">{{ .Params.trip_date }}</span></li>{{ else }}<li class="mute">nothing planned yet</li>{{ end }}</ul>
