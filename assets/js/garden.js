@@ -1,12 +1,12 @@
 const side = document.querySelector('.side'), svg = side && side.querySelector('.garden'), stem = svg && svg.querySelector('#stem')
 if (stem) {
-  const leaves = svg.querySelector('.leaves'), ns = 'http://www.w3.org/2000/svg', top = stem.getAttribute('d').match(/M240 ([\d.]+)/)[1]
+  const leaves = svg.querySelector('.leaves'), ns = 'http://www.w3.org/2000/svg', top = stem.getAttribute('d').match(/M70 ([\d.]+)/)[1]
   let len = 0
   const scale = () => svg.getBoundingClientRect().width / 280
   const fit = () => {
     const H = Math.max(460, Math.round(side.clientHeight / scale()))
-    let d = `M240 ${top} C 240 200, 272 320, 238 400`, y = 400
-    while (y < H) { d += ` C 202 ${y + 110}, 270 ${y + 220}, 236 ${y + 340}`; y += 340 }
+    let d = `M70 ${top} C 70 200, 92 320, 70 400`, y = 400
+    while (y < H) { d += ` C 48 ${y + 110}, 92 ${y + 220}, 70 ${y + 340}`; y += 340 }
     svg.setAttribute('viewBox', `0 0 280 ${H}`); stem.setAttribute('d', d); len = stem.getTotalLength()
   }
   fit()
@@ -14,7 +14,7 @@ if (stem) {
   const pose = (g, L, k) => {
     const p = stem.getPointAtLength(L), q = stem.getPointAtLength(Math.min(len, L + 2)), side = g.side || 1
     const a = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI - (side > 0 ? 0 : 180)
-    g.setAttribute('transform', `translate(${p.x} ${p.y}) rotate(${a * (1 - k)}) scale(${-.55 * side} .55) translate(-77 0)`)
+    g.setAttribute('transform', `translate(${p.x} ${p.y}) rotate(${a * (1 - k)}) scale(${-.5 * side} .5) translate(-77 0)`)
   }
   const ease = t => 1 - Math.pow(1 - t, 3)
   const swim = (g, L1, delay) => {
@@ -24,7 +24,7 @@ if (stem) {
   }
   const row = li => li.querySelector(':scope > details > summary') || li.querySelector(':scope > a, :scope > span') || li
   const target = li => { const r = row(li).getBoundingClientRect(); return (r.top + r.height / 2 - svg.getBoundingClientRect().top) / scale() }
-  const textEnd = li => { const rg = document.createRange(); rg.selectNodeContents(row(li)); const r = rg.getBoundingClientRect(), b = svg.getBoundingClientRect(); return (r.right - b.left) / scale() }
+  const textStart = li => { const rg = document.createRange(); rg.selectNodeContents(row(li)); const r = rg.getBoundingClientRect(), b = svg.getBoundingClientRect(); return (r.left - b.left) / scale() }
   const rows = d => [...d.querySelectorAll(':scope > ul > li[data-sub]')]
   const clear = d => rows(d).forEach(li => { if (li.leaf) li.leaf.remove(); li.leaf = null })
   const grow = (d, animate) => {
@@ -40,7 +40,7 @@ if (stem) {
       g.addEventListener('mouseleave', () => { if (!li.classList.contains('on')) { g.classList.remove('lit'); li.classList.remove('lit') } })
       g.addEventListener('click', () => { const a = li.querySelector(':scope > a'), d = li.querySelector(':scope > details'); if (d) d.open = !d.open; else if (a) location.href = a.href })
       const L = at(target(li)), x = stem.getPointAtLength(L).x
-      g.side = (j % 2 && x - 42 > textEnd(li) + 4) ? -1 : 1
+      g.side = (j % 2 && x + 40 < textStart(li) - 4) ? 1 : -1
       animate ? swim(g, L, j * 140) : pose(g, L, 1)
     })
   }

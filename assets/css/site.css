@@ -21,7 +21,7 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .band { padding: 22px 0 24px }
 .brand { font: 2.8rem/1 "Gochi Hand", cursive; text-decoration: none; display: inline-flex; align-items: center; gap: .4em }
 .brand:hover { color: var(--ink) }
-.cols { display: grid; grid-template-columns: minmax(0, 1fr) 304px; gap: 32px; padding-top: 28px }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px; padding-top: 28px }
 .listtitle, .sub { font: 1.7rem/1.2 "Gochi Hand", cursive; margin: 0 0 1rem }
 .latin { font-style: italic; text-transform: none; color: var(--mute); margin: -.6rem 0 1.2rem }
 .sub { font-size: 1.3rem; margin-top: 2rem }
@@ -37,8 +37,8 @@ body { text-transform: lowercase }
 .intro p { margin: 0 0 .9rem }
 .intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 ul.plain { list-style: none; padding: 0; margin: 0 }
-.side { padding-top: 52px; position: relative; clip-path: inset(0 -100px 0 0); font-size: 1.05rem; font-weight: 400 }
-.side .garden { position: absolute; top: 0; right: -30px; width: 280px; height: 100%; z-index: -1; overflow: visible }
+.side { padding: 52px 0 0 140px; position: relative; clip-path: inset(0 0 0 -40px); font-size: 1.05rem; font-weight: 400 }
+.side .garden { position: absolute; top: 0; left: -30px; width: 280px; height: 100%; z-index: -1; overflow: visible }
 .garden .petal, .garden .centre, .garden .leaf { pointer-events: all; cursor: pointer }
 .garden .centre:hover circle { stroke-width: 4 }
 .side li[data-sub] > span { color: hsl(var(--hue) 45% 38%) }
@@ -91,9 +91,8 @@ ul.plain.nest { margin-left: 1.1em }
 footer.wrap { text-align: center; padding: 3rem 20px }
 footer p { margin: 0; font-size: .8rem; color: var(--mute) }
 footer a { color: var(--mute) }
-@media (max-width: 1300px) { .side .garden { right: 8px } }
 @media (max-width: 1000px) { .card { flex-direction: column } .card > a, .card > div { flex: none; width: 100% } .water .card:not(.map) { margin-left: 0 } }
-@media (max-width: 820px) { .cols { grid-template-columns: 1fr; gap: 32px } .brand { font-size: 2.2rem } .side .garden { right: 0 } .side { clip-path: none; overflow: hidden; padding-top: 150px } .side summary, .side li > a, .side li > span { display: block; padding: .25rem 0 } }
+@media (max-width: 820px) { .cols { grid-template-columns: 1fr; gap: 32px } .brand { font-size: 2.2rem } .side .garden { left: -20px } .side { clip-path: none; overflow: hidden; padding-left: 118px } .side li { white-space: nowrap } ul.plain.nest { margin-left: .8em } .side summary, .side li > a, .side li > span { display: block; padding: .25rem 0 } }
 .signup { display: grid; gap: .5rem; max-width: 22rem; margin: 0 0 1.5rem }
 .signup label { display: flex; align-items: center; gap: .5rem }
 .signup input:not([type=checkbox]), .signup select { font: inherit; border: 2px solid var(--ink); border-radius: 8px; padding: .2rem .5rem; background: var(--paper) }
