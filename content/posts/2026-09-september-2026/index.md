@@ -5,6 +5,7 @@
   "Morice River",
   "Rainbow Trout",
   "fish",
+  "indie",
   "music",
   "rivers",
   "water"
@@ -35,6 +36,8 @@
      "title": "Banquet by Bloc Party",
      "caption": "",
      "tags": [
+      "music",
+      "indie",
       "music"
      ]
     }

@@ -10,6 +10,14 @@ parent = "friends"
 title = "Gabe R"
 parent = "friends"
 
+["indie"]
+title = "indie"
+parent = "music"
+
+["music"]
+title = "music"
+parent = "music"
+
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
