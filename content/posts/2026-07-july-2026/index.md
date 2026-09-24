@@ -16,6 +16,42 @@
      "tags": [
       "fish"
      ]
+    },
+    {
+     "type": "photo",
+     "file": "img-1241.jpg",
+     "title": "IMG 1241",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "img-1249.jpg",
+     "title": "IMG 1249",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "img-1271.jpg",
+     "title": "IMG 1271",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "view-recent-photos.jpg",
+     "title": "View recent photos",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
     }
    ]
   }
