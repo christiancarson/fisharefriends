@@ -14,7 +14,6 @@ def finder_tags(f):
     h = subprocess.run(["xattr", "-px", "com.apple.metadata:_kMDItemUserTags", str(f)], capture_output=True, text=True).stdout
     return [clean(t.split("\n")[0]) for t in plistlib.loads(bytes.fromhex(re.sub(r"\s", "", h)))] if h.strip() else []
 slugify = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
-md = lambda s: s.replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]").replace('"', "&quot;")
 toml = lambda rows: "".join(f'["{k}"]\n' + "".join(f"{a} = {json.dumps(b)}\n" for a, b in v.items()) + "\n" for k, v in rows.items())
 for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     parts = folder.name.split("__")
@@ -47,14 +46,14 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
                 im = ImageOps.exif_transpose(Image.open(f)).convert("RGB")
                 im = ImageOps.fit(im, (1600, 900))
                 im.save(jpg, quality=85)
-            photos.append((sorted(t for t in tag if water(t)) or home[:1], f'![{md(desc)}]({jpg.name} "{md(name)} | {", ".join(md(t) for t in tag)}")'))
+            photos.append((sorted(t for t in tag if water(t)) or home[:1], {"type": "photo", "file": jpg.name, "title": name, "caption": desc, "tags": tag}))
         elif f.suffix == ".river":
             tags.update([name] + finder_tags(f))
         elif f.suffix == ".video":
             tags.update(["music"] + finder_tags(f))
             for t in finder_tags(f): kids[slugify(t)] = (t, "music")
-            videos.append(f'{{{{< video {bits[1]} {json.dumps(name)} >}}}}{desc}{{{{< /video >}}}}')
-    cards = []
+            videos.append({"type": "video", "id": bits[1], "title": name, "caption": desc, "tags": ["music"] + finder_tags(f)})
+    groups = []
     for t in sorted(t for t in tags if water(t)):
         if not pathlib.Path(f"assets/maps/{slugify(t)}.svg").exists() and subprocess.run(["Rscript", "maps.R", t]).returncode: continue
         note = folder / (t.replace(" ", "_") + ".txt")
@@ -63,11 +62,12 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             rivers.setdefault(slugify(t), {"title": t})["about"] = note.read_text().strip()
             pathlib.Path("data/rivers.toml").write_text(toml(rivers))
         tags.update([group(t), "water"])
-        cards.append('<div class="water">\n\n' + "\n\n".join([f'{{{{< map "{t}" >}}}}'] + [p for w, p in photos if w and w[0] == t]) + '\n\n</div>')
-    cards += [p for w, p in photos if not w or not pathlib.Path(f"assets/maps/{slugify(w[0])}.svg").exists()] + videos
+        groups.append({"water": t, "cards": [p for w, p in photos if w and w[0] == t]})
+    loose = [p for w, p in photos if not w or not pathlib.Path(f"assets/maps/{slugify(w[0])}.svg").exists()] + videos
+    if loose: groups.append({"water": None, "cards": loose})
     for old in out.glob("*.jpg"):
-        if old.name not in {p.split("](")[1].split(" ")[0] for w, p in photos}: old.unlink()
-    if not cards: continue
-    (out / "index.md").write_text(f'---\ntitle: {json.dumps(title)}\ndate: {date}T12:00:00-07:00\ncategories: [{", ".join(json.dumps(t) for t in sorted(tags))}]\n---\n' + "\n\n".join(cards) + "\n")
-    print(out.name, len(cards))
+        if old.name not in {p["file"] for w, p in photos}: old.unlink()
+    if not groups: continue
+    (out / "index.md").write_text(json.dumps({"title": title, "date": f"{date}T12:00:00-07:00", "categories": sorted(tags), "groups": groups}, ensure_ascii=False, indent=1) + "\n")
+    print(out.name, sum(len(g["cards"]) for g in groups) + sum(1 for g in groups if g["water"]))
 pathlib.Path("data/tags.toml").write_text(toml({k: {"title": t, "parent": p} for k, (t, p) in sorted(kids.items())}))

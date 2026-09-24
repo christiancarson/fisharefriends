@@ -1,0 +1,1 @@
+{{ $s := slice }}{{ $fish := false }}{{ range .tags }}{{ $s = $s | append (urlize .) }}{{ if index site.Data.species (urlize .) }}{{ $fish = true }}{{ end }}{{ end }}{{ if $fish }}{{ $s = $s | append "fish" }}{{ end }}{{ return (uniq $s) }}

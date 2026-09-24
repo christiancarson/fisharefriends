@@ -3,6 +3,8 @@
 {{ with index site.Data.species (.Title | urlize) }}{{ with .latin }}<p class="latin">{{ . }}</p>{{ end }}{{ end }}
 {{ $own := resources.Get (printf "maps/%s.svg" (.Title | urlize)) }}
 {{ with $own }}{{ partial "map.html" $.Title }}{{ end }}
-{{ $key := .Data.Term | urlize }}{{ if eq $key "water" }}{{ $key = "(rivers|lakes|estuaries|oceans)" }}{{ end }}{{ $re := printf "(?s)<figure class=\"card[^\"]*\" data-tags=\"(?:[^\"]* )?%s(?: [^\"]*)?\">.*?</figure>" $key }}
-{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range findRE $re .Content }}{{ if not (and $own (hasPrefix . "<figure class=\"card map\"")) }}{{ $card := replaceRE "class=\"ftitle\" href=\"[^\"]*\"" (printf "class=\"ftitle\" href=\"%s\"" $p.RelPermalink) . }}{{ replace $card "</figcaption>" (printf "<p class=\"tags from\"><a href=\"%s\">%s</a></p></figcaption>" $p.RelPermalink $p.Title) | safeHTML }}{{ end }}{{ end }}{{ end }}
+{{ $key := .Data.Term | urlize }}
+{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range .Params.groups }}{{ with .water }}{{ if and (not $own) (in (slice (partial "watergroup.html" .) "water" (urlize .)) $key) }}{{ partial "map.html" (dict "water" . "link" $p.RelPermalink "page" $p "from" true) }}
+{{ end }}{{ end }}{{ range .cards }}{{ if in (partial "cardtags.html" .) $key }}{{ partial "cardany.html" (dict "card" . "page" $p "link" $p.RelPermalink "from" true) }}
+{{ end }}{{ end }}{{ end }}{{ end }}
 {{ end }}
