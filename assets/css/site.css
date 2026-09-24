@@ -49,7 +49,9 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .side > *:not(.garden) { pointer-events: none }
 .side a, .side summary, .side li > span { pointer-events: auto }
 .side li[data-tab] > a, .side li[data-tab] > details > summary { color: hsl(var(--hue) 55% 42%) }
-.side > a.button { margin-top: 1.2rem; font-size: .95rem; pointer-events: auto }
+.gofish { display: inline-flex; align-items: center; gap: .35em; text-decoration: none }
+.gofish svg { width: 30px; height: 15px; color: inherit }
+.gofish:hover { animation: rainbow .8s linear infinite, flash .4s steps(2, jump-none) infinite }
 .side li[data-sub] > a, .side li[data-sub] > details > summary { color: hsl(var(--hue) 45% 38%) }
 .side li.lit > a, .side li.lit > details > summary, .side li.lit > span, .side li[data-tab].lit > details > ul a, .side li[data-tab].lit > details > ul summary, .side li[data-tab].lit > details > ul span { background: hsl(var(--hue) 70% 91%); border-radius: 5px; box-shadow: 0 0 0 3px hsl(var(--hue) 70% 91%) }
 .side li.lit > a, .side li.lit > details > summary { text-decoration: underline }
