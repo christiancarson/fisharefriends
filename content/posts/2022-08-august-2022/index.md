@@ -1,13 +1,13 @@
 ---
 title: "august 2022"
 date: 2022-08-01T12:00:00-07:00
-categories: [Atnarko River, Burnt Bridge Creek, Dean River, McCauley Lake, Rainbow Trout, fish, friends, lakes, photos, rivers, water]
+categories: [Atnarko River, Burnt Bridge Creek, Christian A., Dean River, McCauley Lake, Rainbow Trout, Sam A., fish, friends, lakes, photos, rivers, water]
 ---
 <div class="water">
 
 {{< map "Atnarko River" >}}
 
-![](number-1.jpg "number 1 | friends, Atnarko River")
+![](number-1.jpg "number 1 | friends, Atnarko River, Sam A.")
 
 </div>
 
@@ -15,7 +15,7 @@ categories: [Atnarko River, Burnt Bridge Creek, Dean River, McCauley Lake, Rainb
 
 {{< map "Burnt Bridge Creek" >}}
 
-![](christian-in-action.jpg "Christian in action | friends, Burnt Bridge Creek")
+![](christian-in-action.jpg "Christian in action | friends, Burnt Bridge Creek, Christian A.")
 
 </div>
 
@@ -25,7 +25,7 @@ categories: [Atnarko River, Burnt Bridge Creek, Dean River, McCauley Lake, Rainb
 
 ![](josh.jpg "Josh | fish, Dean River, Rainbow Trout")
 
-![](sam-in-action.jpg "Sam in action | friends, Dean River")
+![](sam-in-action.jpg "Sam in action | friends, Dean River, Sam A.")
 
 </div>
 
@@ -33,6 +33,6 @@ categories: [Atnarko River, Burnt Bridge Creek, Dean River, McCauley Lake, Rainb
 
 {{< map "McCauley Lake" >}}
 
-![](in-the-wind.jpg "in the wind | friends, McCauley Lake")
+![](in-the-wind.jpg "in the wind | friends, McCauley Lake, Sam A.")
 
 </div>
