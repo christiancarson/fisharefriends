@@ -31,10 +31,10 @@ body { text-transform: lowercase }
 .post .meta { font-size: .8rem; color: var(--mute) }
 .post .meta a { color: var(--mute) }
 .sep { display: block; width: 56px; height: 28px; margin: 0 auto 2.5rem }
-.intro { max-width: 40rem; margin: 0 0 2.5rem }
-.intro p:last-child { font: 1.5rem/1 "Gochi Hand", cursive }
+.intro { max-width: 40rem; margin: 0 0 2.5rem; font-size: 1.2rem; font-weight: 400; line-height: 1.7; color: #000 }
 ul.plain { list-style: none; padding: 0; margin: 0 }
 .side h3 { font: 1.25rem/1 "Gochi Hand", cursive; margin: 1.8rem 0 .5rem }
+.side > :first-child { margin-top: 0 }
 .side a { text-decoration: none }
 ul.plain.nest { margin-left: 1.1em }
 .side summary { cursor: pointer; list-style: none }
@@ -46,7 +46,8 @@ ul.plain.nest { margin-left: 1.1em }
 .trip { display: grid; grid-template-columns: 4.5em 1fr; gap: .2rem 1rem; margin: 0 0 1rem; padding: 1rem 1.2rem; border: 2.5px solid var(--ink); border-radius: 16px }
 .trip dt { color: var(--mute) }
 .trip dd { margin: 0 }
-.button { display: inline-block; border: 2.5px solid var(--ink); border-radius: 999px; padding: .25rem 1.1rem; text-decoration: none; font: 1.15rem "Gochi Hand", cursive }
+.button { display: inline-flex; align-items: center; gap: .5em; border: 2.5px solid var(--ink); border-radius: 999px; padding: .25rem 1.1rem; text-decoration: none; font: 1.15rem "Gochi Hand", cursive }
+.button svg { width: 56px; height: 27px }
 .button:hover { background: var(--ink); color: var(--paper) }
 .doodle { filter: url(#wobble); color: var(--ink) }
 .doodle.red { color: var(--red) }
