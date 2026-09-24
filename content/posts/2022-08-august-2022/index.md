@@ -1,7 +1,7 @@
 ---
 title: "august 2022"
 date: 2022-08-01T12:00:00-07:00
-categories: [Atnarko River, Burnt Bridge Creek, Christian A, Dean River, McCauley Lake, Rainbow Trout, Sam A, fish, friends, lakes, rivers, water]
+categories: ["Atnarko River", "Burnt Bridge Creek", "Christian A", "Dean River", "McCauley Lake", "Rainbow Trout", "Sam A", "fish", "friends", "lakes", "rivers", "water"]
 ---
 <div class="water">
 

@@ -1,7 +1,7 @@
 ---
 title: "september 2026"
 date: 2026-09-01T12:00:00-07:00
-categories: [Morice River, Rainbow Trout, fish, music, rivers, water]
+categories: ["Morice River", "Rainbow Trout", "fish", "music", "rivers", "water"]
 ---
 <div class="water">
 

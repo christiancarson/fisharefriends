@@ -36,7 +36,6 @@ body { text-transform: lowercase }
 .intro p { margin: 0 0 .9rem }
 .intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 ul.plain { list-style: none; padding: 0; margin: 0 }
-.side h3 { font: 1.25rem/1 "Gochi Hand", cursive; margin: 1.8rem 0 .5rem }
 .side { padding-top: 52px; position: relative; clip-path: inset(0 -100px 0 0) }
 .side .garden { position: absolute; top: 0; right: -60px; width: 280px; height: auto; z-index: -1; overflow: visible }
 .garden .petal, .garden .centre, .garden .leaf { pointer-events: all; cursor: pointer }
@@ -45,9 +44,9 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .tablink { color: hsl(var(--hue) 55% 42%); text-decoration-color: hsl(var(--hue) 55% 70%) }
 .tablink:hover { background: hsl(var(--hue) 70% 91%); border-radius: 5px; box-shadow: 0 0 0 3px hsl(var(--hue) 70% 91%) }
 .garden .centre .face { opacity: 0; transition: opacity .25s }
-.garden .centre:hover .face, .garden .centre.lit .face { opacity: 1 }
+.garden .centre:hover .face { opacity: 1 }
 .side > *:not(.garden) { pointer-events: none }
-.side a, .side summary { pointer-events: auto }
+.side a, .side summary, .side li > span { pointer-events: auto }
 .side li[data-tab] > a, .side li[data-tab] > details > summary { color: hsl(var(--hue) 55% 42%) }
 .side li[data-sub] > a, .side li[data-sub] > details > summary { color: hsl(var(--hue) 45% 38%) }
 .side li.lit > a, .side li.lit > details > summary, .side li.lit > span, .side li[data-tab].lit > details > ul a, .side li[data-tab].lit > details > ul summary, .side li[data-tab].lit > details > ul span { background: hsl(var(--hue) 70% 91%); border-radius: 5px; box-shadow: 0 0 0 3px hsl(var(--hue) 70% 91%) }
@@ -80,9 +79,7 @@ ul.plain.nest { margin-left: 1.1em }
 @keyframes rainbow { 0% { color: hsl(0 75% 45%); border-color: hsl(0 75% 45%) } 17% { color: hsl(35 80% 45%); border-color: hsl(35 80% 45%) } 33% { color: hsl(55 80% 40%); border-color: hsl(55 80% 40%) } 50% { color: hsl(130 60% 38%); border-color: hsl(130 60% 38%) } 67% { color: hsl(215 70% 45%); border-color: hsl(215 70% 45%) } 83% { color: hsl(275 60% 45%); border-color: hsl(275 60% 45%) } 100% { color: hsl(0 75% 45%); border-color: hsl(0 75% 45%) } }
 @keyframes flash { from { opacity: 1 } to { opacity: .45 } }
 .doodle { filter: url(#wobble); color: var(--ink) }
-.doodle.red { color: var(--red) }
 .doodle.blue { color: var(--blue) }
-.doodle.green { color: var(--green) }
 .doodle.mark { width: 96px; height: 96px }
 footer { text-align: center; padding: 3rem 0 }
 footer p { margin: 0; font-size: .8rem; color: var(--mute) }
