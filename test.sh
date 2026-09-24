@@ -155,3 +155,6 @@ grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/squam
 ! grep -q '\.home \.cols' assets/css/site.css
 grep -q 'grid-template-columns: minmax(0, 1fr) 18.7rem' assets/css/site.css
 test "$(grep -o '\.cols[^{]*{ [^}]*grid-template-columns: [^;}]*' assets/css/site.css | wc -l)" -eq 2
+/opt/homebrew/Caskroom/miniconda/base/bin/python3 -c "import glob, sys; from PIL import Image; bad=[f for f in glob.glob('content/posts/*/*.jpg') if Image.open(f).getexif()]; sys.exit(1 if bad else 0)"
+node --check assets/js/garden.js && node --check assets/js/signup.js
+/opt/homebrew/Caskroom/miniconda/base/bin/python3 lock/encrypt.py public /tmp/faf-locked test-pass > /dev/null && test -s /tmp/faf-locked/site.bin && grep -q 'id="p"' /tmp/faf-locked/index.html && ! grep -q 'critty' /tmp/faf-locked/index.html && rm -rf /tmp/faf-locked

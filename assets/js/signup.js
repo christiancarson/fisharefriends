@@ -1,3 +1,4 @@
+{
 const roster = async f => {
   const r = await fetch(`${f.dataset.signup}?trip=${f.dataset.trip}`)
   if (!r.ok) throw new Error(r.status)
@@ -35,3 +36,4 @@ document.addEventListener('submit', async e => {
     byMail()
   }
 })
+}

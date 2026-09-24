@@ -94,7 +94,7 @@ footer.wrap { text-align: left; padding: 1.5rem 1.6rem .6rem }
 footer p { margin: 0; font-size: .8rem; color: var(--mute) }
 footer a { color: var(--mute) }
 @media (max-width: 1000px) { .card { flex-direction: column } .card > a, .card > div { flex: none; width: 100% } .water .card:not(.map) { margin-left: 0 } }
-@media (max-width: 820px) { .cols { grid-template-columns: 1fr; gap: 32px } .brand { font-size: 2.2rem } .side .garden { left: -20px } .side { clip-path: none; overflow: hidden; padding-left: 118px } .side li { white-space: nowrap } ul.plain.nest { margin-left: .8em } .side summary, .side li > a, .side li > span { display: inline-block; padding: .25rem 0 } .side li { padding: .05rem 0 } }
+@media (max-width: 820px) { .cols { grid-template-columns: 1fr; gap: 32px } .brand { font-size: 2.2rem } .side .garden { left: 0 } .side { clip-path: none; overflow: visible; padding-left: 118px } .side li { white-space: nowrap } ul.plain.nest { margin-left: .8em } .side summary, .side li > a, .side li > span { display: inline-block; padding: .25rem 0 } .side li { padding: .05rem 0 } }
 .signup { display: grid; gap: .5rem; max-width: 22rem; margin: 0 0 1.5rem }
 .signup label { display: flex; align-items: center; gap: .5rem }
 .signup input:not([type=checkbox]), .signup select { font: inherit; border: 2px solid var(--ink); border-radius: 8px; padding: .2rem .5rem; background: var(--paper) }

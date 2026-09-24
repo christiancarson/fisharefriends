@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>fish are friends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap">
+<style>
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #fff; color: #111; font: 300 16px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif }
+form { display: grid; gap: .8rem; justify-items: start; padding: 1.5rem }
+h1 { font: 2.6rem/1 "Gochi Hand", cursive; margin: 0 0 .4rem }
+input { font: inherit; border: 2px solid #111; border-radius: 8px; padding: .3rem .6rem; width: 14rem }
+button { font: 1rem "Gochi Hand", cursive; border: 2px solid #111; border-radius: 999px; padding: .1rem .9rem; background: #fff; cursor: pointer }
+button:hover { background: #111; color: #fff }
+p { margin: 0; color: #8a8a8a; font-size: .9rem; min-height: 1.4em }
+svg { width: 64px; height: 64px; fill: none; stroke: #2f6fd6; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round }
+</style>
+</head>
+<body>
+<form id="f">
+<svg viewBox="0 0 100 100"><path d="M24 16C10 16 7 36 11 48c3 8 7 12 10 16L12 82H36L27 64c3-4 7-8 10-16 4-12 1-32-13-32z"/><circle cx="21" cy="24" r="2.4" fill="#2f6fd6" stroke="none"/><path d="M25 32q5 3.5 10-2" stroke-width="2.5"/></svg>
+<h1>fish are friends</h1>
+<input id="p" type="password" autocomplete="current-password" placeholder="password" autofocus>
+<button>come in</button>
+<p id="m"></p>
+</form>
+<script>
+const m = document.getElementById('m'), f = document.getElementById('f'), p = document.getElementById('p')
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0))
+const mime = n => ({html: 'text/html', css: 'text/css', js: 'text/javascript', svg: 'image/svg+xml', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', xml: 'application/xml', json: 'application/json', txt: 'text/plain', ico: 'image/x-icon', webmanifest: 'application/manifest+json'})[n.split('.').pop()] || 'application/octet-stream'
+let site = null
+const derive = async (pw, salt) => crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 300000, hash: 'SHA-256' }, await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']), { name: 'AES-GCM', length: 256 }, false, ['decrypt'])
+const open = async pw => {
+  const bin = new Uint8Array(await (await fetch('site.bin', { cache: 'force-cache' })).arrayBuffer())
+  const key = await derive(pw, bin.slice(0, 16))
+  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: bin.slice(16, 28) }, key, bin.slice(28))
+  return JSON.parse(new TextDecoder().decode(plain))
+}
+const urls = {}
+const show = path => {
+  path = path.replace(/^\//, '') || 'index.html'
+  if (!site[path] && site[path.replace(/\/?$/, '/index.html')]) path = path.replace(/\/?$/, '/index.html')
+  if (!site[path]) path = '404.html'
+  let html = new TextDecoder().decode(b64(site[path]))
+  html = html.replace(/(src|href)="\/([^"#?]+)"/g, (all, a, rel) => { if (!site[rel]) return all; urls[rel] = urls[rel] || URL.createObjectURL(new Blob([b64(site[rel])], { type: mime(rel) })); return `${a}="${urls[rel]}"` })
+  document.open(); document.write(html); document.close()
+  window.lockGo = h => { history.pushState(null, '', h); show(h.split('#')[0]) }
+  document.addEventListener('click', e => { const a = e.target.closest('a[href]'); if (!a) return; const h = a.getAttribute('href'); if (h.startsWith('/') && !h.startsWith('//')) { e.preventDefault(); history.pushState(null, '', h); show(h.split('#')[0]); if (h.includes('#')) location.hash = h.split('#')[1] } })
+  addEventListener('popstate', () => show(location.pathname))
+}
+window.lockGo = h => { history.pushState(null, '', h); show(h.split('#')[0]) }
+const go = async pw => { site = await open(pw); sessionStorage.setItem('k', pw); show(location.pathname) }
+f.addEventListener('submit', async e => { e.preventDefault(); m.textContent = 'one sec'; try { await go(p.value) } catch { m.textContent = 'not it'; p.select() } })
+if (sessionStorage.getItem('k')) go(sessionStorage.getItem('k')).catch(() => sessionStorage.removeItem('k'))
+</script>
+</body>
+</html>
