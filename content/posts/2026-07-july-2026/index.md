@@ -46,6 +46,33 @@
     },
     {
      "type": "photo",
+     "file": "img-1342.jpg",
+     "title": "IMG 1342",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "img-1359.jpg",
+     "title": "IMG 1359",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "screenshot-2026-09-24-at-123824.jpg",
+     "title": "Screenshot 2026-09-24 at 123824",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
      "file": "view-recent-photos.jpg",
      "title": "View recent photos",
      "caption": "",
