@@ -14,7 +14,7 @@ grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories
 ! grep -q '<summary>places</summary>' public/index.html
 grep -q '<summary>estuaries</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li data-sub="0" data-l="58"><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
 grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li data-sub="0" data-l="58"><a href="/categories/ucluelet-harbour/">Ucluelet Harbour</a>' public/index.html
-grep -q '<li><a href="/posts/2026-09-september-2026/">september 2026</a></li>' public/index.html
+grep -q '<summary>archive</summary><ul class="plain nest"><li><a href="/archive/">all archive</a></li><li data-sub="0" data-l="62"><a href="/posts/2026-09-september-2026/">september 2026</a></li>' public/index.html
 test $(grep -n 'figure class="card map" data-tags="rivers atnarko-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map" data-tags="rivers dean-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
 ! grep -q 'spey fishing\|fly tying' public/index.html
@@ -115,8 +115,8 @@ grep -q 'href="/posts/2020-06-june-2020/">Ben</a>' public/categories/coastal-cut
 grep -q 'Westslope Cutthroat Trout' public/posts/2021-03-march-2021/index.html
 grep -q 'id="stem"' public/index.html
 test $(grep -o 'class="petal' public/index.html | wc -l) -eq $(grep -o '<li data-tab=' public/index.html | wc -l)
-grep -q 'class="petal lit" data-tab="0"' public/categories/rainbow-trout/index.html
-grep -q '<li data-tab="0" style="--hue: 275" class="on"><details open>' public/categories/rainbow-trout/index.html
+grep -q 'class="petal lit" data-tab="1"' public/categories/rainbow-trout/index.html
+grep -q '<li data-tab="1" style="--hue: 275" class="on"><details open>' public/categories/rainbow-trout/index.html
 grep -q '<li data-sub="1" data-l="54" class="on"><a href="/categories/rainbow-trout/">' public/categories/rainbow-trout/index.html
 ! grep -q 'class="petal lit"' public/index.html
 grep -q 'src="/js/garden\.[0-9a-f]*\.js"' public/index.html
@@ -125,3 +125,11 @@ grep -q 'data-tags="rivers morice-river"' public/categories/water/index.html
 grep -q 'data-tags="lakes boot-lake"' public/categories/water/index.html
 grep -q '<summary>water</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers</summary>' public/categories/dean-river/index.html
 test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 7
+grep -q '<summary>trips</summary><ul class="plain nest"><li><a href="/trips/">all trips</a></li><li data-sub="0" data-l="62"><a href="/trips/squamish-river/">walk and wade</a> <span class="mute">2026-10-17</span></li>' public/index.html
+grep -q '<summary>contact</summary><ul class="plain nest"><li data-sub="0" data-l="62"><span>critty (at) fisharefriends.org</span></li><li data-sub="1" data-l="54"><a href="/index.xml">rss</a></li>' public/index.html
+grep -q '<li data-tab="0" style="--hue: 130" class="on"><details open>' public/trips/squamish-river/index.html
+grep -q 'data-l="62" class="on"><a href="/trips/squamish-river/">walk and wade</a>' public/trips/squamish-river/index.html
+grep -q '<li data-tab="5" style="--hue: 48" class="on"><details open>' public/posts/2026-09-september-2026/index.html
+grep -q 'style="--hue: 215"' public/index.html && grep -q 'style="--hue: 30"' public/index.html
+! grep -q '>boat<\|>non-fish<\|>not-fly-fishing<' public/index.html
+grep -q '<a class="centre" href="/posts/">' public/index.html

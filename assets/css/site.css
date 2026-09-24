@@ -39,7 +39,10 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .side h3 { font: 1.25rem/1 "Gochi Hand", cursive; margin: 1.8rem 0 .5rem }
 .side { padding-top: 52px; position: relative; clip-path: inset(0 -70px 0 0) }
 .side .garden { position: absolute; top: 0; right: -60px; width: 280px; height: auto; z-index: -1 }
-.garden .petal { pointer-events: all }
+.garden .petal, .garden .centre { pointer-events: all; cursor: pointer }
+.garden .centre:hover circle { stroke-width: 4 }
+.side li[data-sub] > span { color: hsl(var(--hue) 45% 38%) }
+.side .nav > li:first-child > a { color: hsl(45 70% 40%) }
 .side > *:not(.garden) { pointer-events: none }
 .side a, .side summary { pointer-events: auto }
 .side li[data-tab] > a, .side li[data-tab] > details > summary { color: hsl(var(--hue) 55% 42%) }

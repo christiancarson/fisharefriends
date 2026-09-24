@@ -22,6 +22,18 @@ links = []
 
 [params.tags]
 fishies = 'fish'
+boat = ''
+'non-fish' = ''
+'not-fly-fishing' = ''
+
+[params.hues]
+trips = 130
+fish = 275
+friends = 30
+music = 355
+water = 215
+archive = 48
+contact = 178
 
 [params.waters]
 Toquaht = 'Toquaht Estuary'

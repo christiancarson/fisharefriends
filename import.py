@@ -27,7 +27,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         name = clean(bits[0])
         desc = (folder / (bits[0] + ".txt")).read_text().strip() if (folder / (bits[0] + ".txt")).exists() else ""
         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"):
-            tag = [waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])]
+            tag = [x for x in (waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])) if x] or ["fish"]
             tags.update(tag)
             if any(slugify(t) in species for t in tag): tags.add("fish")
             for t in tag: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name

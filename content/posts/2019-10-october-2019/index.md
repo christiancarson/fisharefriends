@@ -1,7 +1,7 @@
 ---
 title: "october 2019"
 date: 2019-10-01T12:00:00-07:00
-categories: [Squamish River, friends, not-fly-fishing, rivers, water]
+categories: [Squamish River, friends, rivers, water]
 ---
 <div class="water">
 
@@ -13,4 +13,4 @@ categories: [Squamish River, friends, not-fly-fishing, rivers, water]
 
 </div>
 
-![](not-fly-fishing.jpg "Not fly fishing | not-fly-fishing, friends")
+![](not-fly-fishing.jpg "Not fly fishing | friends")

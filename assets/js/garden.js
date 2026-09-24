@@ -39,6 +39,7 @@ if (stem) {
     const on = () => { p.classList.add('lit'); li.classList.add('lit') }, off = () => { if (!li.classList.contains('on')) { p.classList.remove('lit'); li.classList.remove('lit') } }
     li.addEventListener('mouseenter', on); li.addEventListener('mouseleave', off)
     p.addEventListener('mouseenter', on); p.addEventListener('mouseleave', off)
+    p.addEventListener('click', () => { const d = li.querySelector(':scope > details'), a = li.querySelector(':scope > a'); if (d) d.open = !d.open; else if (a) location.href = a.href })
   })
   side.addEventListener('mouseover', e => { const li = e.target.closest('li[data-sub]'); if (li && li.leaf && !li.contains(e.relatedTarget)) li.leaf.classList.add('lit') })
   side.addEventListener('mouseout', e => { const li = e.target.closest('li[data-sub]'); if (li && li.leaf && !li.classList.contains('on') && !li.contains(e.relatedTarget)) li.leaf.classList.remove('lit') })

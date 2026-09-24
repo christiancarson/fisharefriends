@@ -1,8 +1,5 @@
 <aside class="side">
 {{ with resources.Get "img/profile.jpg" }}<img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ site.Params.author }}">{{ end }}
-<h3>next trips</h3>
-<ul class="plain">{{ range first 3 (partial "upcoming.html" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mute">{{ .Params.trip_date }}</span></li>{{ else }}<li class="mute">nothing planned yet</li>{{ end }}</ul>
-<h3>categories</h3>
 {{ $cur := "" }}{{ if eq .Kind "term" }}{{ $cur = .Title }}{{ end }}
 {{ $terms := where site.Pages "Kind" "term" }}
 {{ $groups := dict "River" "rivers" "Creek" "rivers" "Lake" "lakes" "Estuary" "estuaries" "Harbour" "oceans" "Bay" "oceans" "Sound" "oceans" "Inlet" "oceans" "Ocean" "oceans" }}
@@ -11,16 +8,13 @@
 {{ $sp := slice }}{{ range $terms.ByTitle }}{{ if eq (index $kind .Title) "species" }}{{ $sp = $sp | append (dict "title" .Title "url" .RelPermalink "n" (len .Pages) "subs" (slice) "on" (eq .Title $cur)) }}{{ end }}{{ end }}
 {{ $water := slice }}{{ $won := eq $cur "water" }}{{ range $g := $wnames }}{{ $in := slice }}{{ $gon := eq $g $cur }}{{ range $terms.ByTitle }}{{ if eq (index $kind .Title) $g }}{{ $in = $in | append (dict "title" .Title "url" .RelPermalink "n" (len .Pages) "subs" (slice) "on" (eq .Title $cur)) }}{{ if eq .Title $cur }}{{ $gon = true }}{{ end }}{{ end }}{{ end }}{{ with $in }}{{ $u := "" }}{{ with site.GetPage (printf "/categories/%s" $g) }}{{ $u = .RelPermalink }}{{ end }}{{ $water = $water | append (dict "title" $g "url" $u "n" 0 "subs" . "on" $gon) }}{{ if $gon }}{{ $won = true }}{{ end }}{{ end }}{{ end }}
 {{ $tabs := slice }}
+{{ $tr := slice }}{{ range partial "upcoming.html" . }}{{ $tr = $tr | append (dict "title" .Title "url" .RelPermalink "note" .Params.trip_date "subs" (slice) "on" (eq .RelPermalink $.RelPermalink)) }}{{ end }}{{ $tabs = $tabs | append (dict "title" "trips" "url" (site.GetPage "trips").RelPermalink "n" 0 "subs" $tr "on" (eq .Section "trips")) }}
 {{ range (where $terms "Weight" "ne" 0).ByWeight }}{{ if and (eq (index $kind .Title) "top") (not (in $wnames .Title)) (ne .Title "water") }}{{ $subs := slice }}{{ $on := eq .Title $cur }}{{ if eq .Title "fish" }}{{ $subs = $sp }}{{ range $sp }}{{ if .on }}{{ $on = true }}{{ end }}{{ end }}{{ end }}{{ $tabs = $tabs | append (dict "title" .Title "url" .RelPermalink "n" (len .Pages) "subs" $subs "on" $on) }}{{ end }}{{ end }}
 {{ with $water }}{{ $u := "" }}{{ with site.GetPage "/categories/water" }}{{ $u = .RelPermalink }}{{ end }}{{ $tabs = $tabs | append (dict "title" "water" "url" $u "n" 0 "subs" . "on" $won) }}{{ end }}
 {{ range (where $terms "Weight" 0).ByTitle }}{{ if eq (index $kind .Title) "top" }}{{ $tabs = $tabs | append (dict "title" .Title "url" .RelPermalink "n" (len .Pages) "subs" (slice) "on" (eq .Title $cur)) }}{{ end }}{{ end }}
-{{ $n := len $tabs }}{{ $hued := slice }}{{ range $i, $t := $tabs }}{{ $hued = $hued | append (merge $t (dict "hue" (math.Round (mod (add 275 (mul $i (div 360.0 $n))) 360)))) }}{{ end }}{{ $tabs = $hued }}
-<ul class="plain"><li><a href="{{ (site.GetPage "posts").RelPermalink }}">all</a></li>{{ range $i, $t := $tabs }}<li data-tab="{{ $i }}" style="--hue: {{ $t.hue }}"{{ if $t.on }} class="on"{{ end }}>{{ if $t.subs }}<details{{ if $t.on }} open{{ end }}><summary>{{ $t.title }}{{ with $t.n }} <span class="mute">{{ . }}</span>{{ end }}</summary><ul class="plain nest">{{ with $t.url }}<li><a href="{{ . }}">all {{ $t.title }}</a></li>{{ end }}{{ range $j, $s := $t.subs }}{{ partial "navitem.html" (dict "item" $s "j" $j "l" (math.Max 28 (sub 62 (mul $j 8)))) }}{{ end }}</ul></details>{{ else }}<a href="{{ $t.url }}">{{ $t.title }}</a>{{ with $t.n }} <span class="mute">{{ . }}</span>{{ end }}{{ end }}</li>{{ end }}</ul>
-<h3>older posts</h3>
-<ul class="plain">{{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}<li><a href="{{ .RelPermalink }}">{{ .Date.Format "January 2006" | lower }}</a></li>{{ end }}</ul>
-{{ with site.Params.links }}<h3>links</h3><ul class="plain">{{ range . }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}</ul>{{ end }}
-<h3>contact</h3>
-<p>{{ replace site.Params.email "@" " (at) " }}</p>
-{{ with site.Home.OutputFormats.Get "rss" }}<p><a href="{{ .RelPermalink }}">rss</a></p>{{ end }}
+{{ $ar := slice }}{{ range (where site.RegularPages "Section" "posts").ByDate.Reverse }}{{ $ar = $ar | append (dict "title" (.Date.Format "January 2006" | lower) "url" .RelPermalink "subs" (slice) "on" (eq .RelPermalink $.RelPermalink)) }}{{ end }}{{ $tabs = $tabs | append (dict "title" "archive" "url" (site.GetPage "archive").RelPermalink "n" 0 "subs" $ar "on" (or (eq .Section "posts") (eq .Section "archive"))) }}
+{{ $ct := slice (dict "title" (replace site.Params.email "@" " (at) ") "url" "" "subs" (slice) "on" false) }}{{ $rss := site.Home.OutputFormats.Get "rss" }}{{ if $rss }}{{ $ct = $ct | append (dict "title" "rss" "url" $rss.RelPermalink "subs" (slice) "on" false) }}{{ end }}{{ $tabs = $tabs | append (dict "title" "contact" "url" "" "n" 0 "subs" $ct "on" false) }}
+{{ $n := len $tabs }}{{ $hued := slice }}{{ range $i, $t := $tabs }}{{ $h := index site.Params.hues $t.title }}{{ if not $h }}{{ $h = math.Round (mod (add 275 (mul $i (div 360.0 $n))) 360) }}{{ end }}{{ $hued = $hued | append (merge $t (dict "hue" $h)) }}{{ end }}{{ $tabs = $hued }}
+<ul class="plain nav"><li><a href="{{ (site.GetPage "posts").RelPermalink }}">all</a></li>{{ range $i, $t := $tabs }}<li data-tab="{{ $i }}" style="--hue: {{ $t.hue }}"{{ if $t.on }} class="on"{{ end }}>{{ if $t.subs }}<details{{ if $t.on }} open{{ end }}><summary>{{ $t.title }}{{ with $t.n }} <span class="mute">{{ . }}</span>{{ end }}</summary><ul class="plain nest">{{ with $t.url }}<li><a href="{{ . }}">all {{ $t.title }}</a></li>{{ end }}{{ range $j, $s := $t.subs }}{{ partial "navitem.html" (dict "item" $s "j" $j "l" (math.Max 28 (sub 62 (mul $j 8)))) }}{{ end }}</ul></details>{{ else }}<a href="{{ $t.url }}">{{ $t.title }}</a>{{ with $t.n }} <span class="mute">{{ . }}</span>{{ end }}{{ end }}</li>{{ end }}</ul>
 {{ partial "garden.html" (dict "tabs" $tabs "cur" $cur) }}
 </aside>
