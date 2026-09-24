@@ -68,7 +68,7 @@ grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categorie
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
-grep -q 'monthly photo journal</a> from my time <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">on</a> and <a class="tablink" href="/categories/works/" data-link="works" style="--hue: 320">off</a> the water. you can also find' public/index.html || grep -q 'monthly photo journal</a> from my time <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">on</a> and <a class="tablink" href="/categories/works/" data-link="works" style="--hue: 320">off</a> the water. You can also find' public/index.html
+grep -q 'monthly photo journal</a> from my time on and off the <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">water</a>.' public/index.html
 grep -q '<a class="tablink" href="/trips/[a-z-]*/" data-link="trips" style="--hue: 130">sign up to join me on a trip</a>' public/index.html
 ! grep -q '>all</a>' public/index.html
 grep -q 'id="random" href="/posts/">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a>' public/index.html
