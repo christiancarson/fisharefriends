@@ -2,9 +2,11 @@
  "title": "july 2026",
  "date": "2026-07-01T12:00:00-07:00",
  "categories": [
+  "Christian A",
   "Gabe R",
   "Kennedy Lake",
   "Rainbow Trout",
+  "Sam A",
   "draw creek",
   "fish",
   "friends",
@@ -13,6 +15,7 @@
   "lakes",
   "lost lake",
   "michelle",
+  "onion lake",
   "resoration",
   "rivers",
   "skagit river",
@@ -95,7 +98,11 @@
      "title": "area man 124",
      "caption": "",
      "tags": [
-      "fish"
+      "friends",
+      "Christian A",
+      "Sam A",
+      "lakes",
+      "onion lake"
      ]
     },
     {
