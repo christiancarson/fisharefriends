@@ -2,7 +2,13 @@
  "title": "july 2026",
  "date": "2026-07-01T12:00:00-07:00",
  "categories": [
-  "fish"
+  "Rainbow Trout",
+  "fish",
+  "friends",
+  "karina dsj",
+  "michelle",
+  "rivers",
+  "skagit river"
  ],
  "groups": [
   {
@@ -104,7 +110,13 @@
      "title": "first fish smiley face emoji",
      "caption": "",
      "tags": [
-      "fish"
+      "friends",
+      "karina dsj",
+      "rivers",
+      "skagit river",
+      "fish",
+      "Rainbow Trout",
+      "michelle"
      ]
     }
    ]
