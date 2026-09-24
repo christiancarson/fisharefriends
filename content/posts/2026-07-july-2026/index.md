@@ -64,8 +64,35 @@
     },
     {
      "type": "photo",
+     "file": "img-1388.jpg",
+     "title": "IMG 1388",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "img-1467.jpg",
+     "title": "IMG 1467",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
      "file": "screenshot-2026-09-24-at-123824.jpg",
      "title": "Screenshot 2026-09-24 at 123824",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "screenshot-2026-09-24-at-123903.jpg",
+     "title": "Screenshot 2026-09-24 at 123903",
      "caption": "",
      "tags": [
       "fish"
