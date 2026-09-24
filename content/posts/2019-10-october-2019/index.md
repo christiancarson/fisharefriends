@@ -1,7 +1,7 @@
 ---
 title: "october 2019"
 date: 2019-10-01T12:00:00-07:00
-categories: [Christian A., Finn W., Sam A., Squamish River, friends, photos, rivers, water]
+categories: [Christian A., Finn W., Sam A., Squamish River, friends, rivers, water]
 ---
 <div class="water">
 

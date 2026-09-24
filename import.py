@@ -66,7 +66,6 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     for old in out.glob("*.jpg"):
         if old.name not in {p.split("](")[1].split(" ")[0] for w, p in photos}: old.unlink()
     if not cards: continue
-    if photos: tags.add("photos")
     (out / "index.md").write_text(f'---\ntitle: "{title}"\ndate: {date}T12:00:00-07:00\ncategories: [{", ".join(sorted(tags))}]\n---\n' + "\n\n".join(cards) + "\n")
     print(out.name, len(cards))
 pathlib.Path("data/tags.toml").write_text("".join(f'["{k}"]\ntitle = {json.dumps(t)}\nparent = "{p}"\n\n' for k, (t, p) in sorted(kids.items())))
