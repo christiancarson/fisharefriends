@@ -14,10 +14,6 @@ parent = "friends"
 title = "indie"
 parent = "music"
 
-["music"]
-title = "music"
-parent = "music"
-
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"

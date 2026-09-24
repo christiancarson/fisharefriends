@@ -37,8 +37,7 @@
      "caption": "",
      "tags": [
       "music",
-      "indie",
-      "music"
+      "indie"
      ]
     }
    ]

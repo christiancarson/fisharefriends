@@ -18,7 +18,8 @@ toml = lambda rows: "".join(f'["{k}"]\n' + "".join(f"{a} = {json.dumps(b)}\n" fo
 for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     parts = folder.name.split("__")
     m = re.match(r"([A-Za-z]+)[ _](\d{4})", parts[0])
-    if not m or m.group(1).lower() not in months: print("skipped", folder.name); continue
+    if not m: continue
+    if m.group(1).lower() not in months: print("skipped", folder.name); continue
     date = datetime.date(int(m.group(2)), months[m.group(1).lower()], 1)
     title = clean(parts[1]) if len(parts) > 1 else f"{m.group(1).lower()} {m.group(2)}"
     out = dst / f"{date:%Y-%m}-{slugify(title)}"
@@ -51,8 +52,9 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             tags.update([name] + finder_tags(f))
         elif f.suffix == ".video":
             tags.update(["music"] + finder_tags(f))
-            for t in finder_tags(f): kids[slugify(t)] = (t, "music")
-            videos.append({"type": "video", "id": bits[1], "title": name, "caption": desc, "tags": ["music"] + finder_tags(f)})
+            for t in finder_tags(f):
+                if t not in ("fish", "friends", "music"): kids[slugify(t)] = (t, "music")
+            videos.append({"type": "video", "id": bits[1], "title": name, "caption": desc, "tags": ["music"] + [t for t in finder_tags(f) if t != "music"]})
     groups = []
     for t in sorted(t for t in tags if water(t)):
         if not pathlib.Path(f"assets/maps/{slugify(t)}.svg").exists() and subprocess.run(["Rscript", "maps.R", t]).returncode: continue

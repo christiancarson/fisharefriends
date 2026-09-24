@@ -47,7 +47,7 @@ grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Morice River</a
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Banquet by Bloc Party</a>' public/categories/music/index.html
 ! grep -q '<figure class="card"><a' public/categories/music/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card video" data-tags="music"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card video" data-tags="music indie"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
 grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
@@ -148,3 +148,6 @@ hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 test -e public/trips/index.html
 grep -q 'data-name="works" style="--hue: 320"><a href="/categories/works/">works</a>' public/index.html && test -e public/categories/works/index.html
+grep -q '<summary>music <span class="mute">1</span></summary><ul class="plain nest"><li><a href="/categories/music/">all music</a></li><li data-sub="0" data-l="62"><a href="/categories/indie/">indie</a>' public/index.html
+! grep -q '^\["music"\]' data/tags.toml
+grep -q 'data-tags="music indie"' public/categories/indie/index.html
