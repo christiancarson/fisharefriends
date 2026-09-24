@@ -30,6 +30,10 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"):
             tag = [x for x in (waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])) if x] or ["fish"]
             tags.update(tag)
+            for t in tag:
+                if slugify(t) not in species and re.search(r"(?i)\b(trout|salmon|char|steelhead|whitefish|grayling|varden)$", t):
+                    species[slugify(t)] = {"title": t, "latin": ""}
+                    with open("data/species.toml", "a") as sf: sf.write(f'\n["{slugify(t)}"]\ntitle = {json.dumps(t)}\nlatin = ""\n')
             if any(slugify(t) in species for t in tag): tags.add("fish")
             for t in tag:
                 if water(t) or slugify(t) in species: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name

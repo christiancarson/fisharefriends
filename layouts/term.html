@@ -1,6 +1,6 @@
 {{ define "main" }}
 <h1 class="listtitle">{{ .Title }}</h1>
-{{ with index site.Data.species (.Title | urlize) }}<p class="latin">{{ .latin }}</p>{{ end }}
+{{ with index site.Data.species (.Title | urlize) }}{{ with .latin }}<p class="latin">{{ . }}</p>{{ end }}{{ end }}
 {{ $own := resources.Get (printf "maps/%s.svg" (.Title | urlize)) }}
 {{ with $own }}{{ partial "map.html" $.Title }}{{ end }}
 {{ $key := .Data.Term | urlize }}{{ if eq $key "water" }}{{ $key = "(rivers|lakes|estuaries|oceans)" }}{{ end }}{{ $re := printf "(?s)<figure class=\"card[^\"]*\" data-tags=\"[^\"]*\\b%s\\b[^\"]*\">.*?</figure>" $key }}

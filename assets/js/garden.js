@@ -4,9 +4,9 @@ if (stem) {
   const scale = () => svg.getBoundingClientRect().width / 280
   const at = y => { let lo = 0, hi = len; for (let i = 0; i < 30; i++) { const m = (lo + hi) / 2; if (stem.getPointAtLength(m).y < y) lo = m; else hi = m }; return lo }
   const pose = (g, L, k) => {
-    const p = stem.getPointAtLength(L), q = stem.getPointAtLength(Math.min(len, L + 2))
-    const a = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI
-    g.setAttribute('transform', `translate(${p.x} ${p.y}) rotate(${a * (1 - k)}) scale(-.55 .55) translate(-77 0)`)
+    const p = stem.getPointAtLength(L), q = stem.getPointAtLength(Math.min(len, L + 2)), side = g.side || 1
+    const a = Math.atan2(q.y - p.y, q.x - p.x) * 180 / Math.PI - (side > 0 ? 0 : 180)
+    g.setAttribute('transform', `translate(${p.x} ${p.y}) rotate(${a * (1 - k)}) scale(${-.55 * side} .55) translate(-77 0)`)
   }
   const ease = t => 1 - Math.pow(1 - t, 3)
   const swim = (g, L1, delay) => {
@@ -14,7 +14,9 @@ if (stem) {
     const step = now => { const t = Math.min(1, Math.max(0, (now - t0) / 1100)); pose(g, L1 * ease(t), Math.max(0, (t - .75) / .25)); if (t < 1) requestAnimationFrame(step) }
     requestAnimationFrame(step)
   }
-  const target = li => { const r = (li.querySelector(':scope > details > summary') || li.querySelector(':scope > a') || li).getBoundingClientRect(); return (r.top + r.height / 2 - svg.getBoundingClientRect().top) / scale() }
+  const row = li => li.querySelector(':scope > details > summary') || li.querySelector(':scope > a, :scope > span') || li
+  const target = li => { const r = row(li).getBoundingClientRect(); return (r.top + r.height / 2 - svg.getBoundingClientRect().top) / scale() }
+  const textEnd = li => { const rg = document.createRange(); rg.selectNodeContents(row(li)); const r = rg.getBoundingClientRect(), b = svg.getBoundingClientRect(); return (r.right - b.left) / scale() }
   const rows = d => [...d.querySelectorAll(':scope > ul > li[data-sub]')]
   const clear = d => rows(d).forEach(li => { if (li.leaf) li.leaf.remove(); li.leaf = null })
   const grow = (d, animate) => {
@@ -25,7 +27,9 @@ if (stem) {
       const col = `hsl(${hue} 60% ${li.dataset.l || 50}%)`
       g.setAttribute('class', 'leaf' + (li.classList.contains('on') ? ' lit' : '')); g.setAttribute('stroke', col); g.setAttribute('color', col)
       u.setAttribute('href', '#gfish'); g.appendChild(u); leaves.appendChild(g); li.leaf = g
-      const L = at(target(li)); animate ? swim(g, L, j * 140) : pose(g, L, 1)
+      const L = at(target(li)), x = stem.getPointAtLength(L).x
+      g.side = (j % 2 && x - 42 > textEnd(li) + 4) ? -1 : 1
+      animate ? swim(g, L, j * 140) : pose(g, L, 1)
     })
   }
   const regrow = skip => side.querySelectorAll('details[open]').forEach(d => { if (d !== skip) grow(d, false) })
