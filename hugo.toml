@@ -26,6 +26,9 @@ boat = ''
 'non-fish' = ''
 'not-fly-fishing' = ''
 
+[params.shade]
+trips = 28
+
 [params.hues]
 trips = 130
 fish = 275

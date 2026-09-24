@@ -14,13 +14,13 @@
 </head>
 <body>
 {{ partial "doodles.html" . }}
-{{ $tabs := partial "tabs.html" . }}{{ $theme := "" }}{{ if or (eq .Kind "term") (and (eq .Kind "section") (in (slice "journal" "trips") .Section)) }}{{ range $tabs }}{{ if .on }}{{ $theme = .hue }}{{ end }}{{ end }}{{ end }}
+{{ $tabs := partial "tabs.html" . }}{{ $theme := "" }}{{ $shade := 40 }}{{ if or (eq .Kind "term") (and (eq .Kind "section") (in (slice "journal" "trips") .Section)) (eq .Section "trips") }}{{ range $tabs }}{{ if .on }}{{ $theme = .hue }}{{ $shade = index site.Params.shade .title | default 40 }}{{ end }}{{ end }}{{ end }}
 <div class="wrap cols">
 <div>
 <header class="band">
 <a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}<svg class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/></svg></a>
 </header>
-<main{{ with $theme }} class="themed" style="--tab: {{ . }}"{{ end }}>{{ block "main" . }}{{ end }}</main>
+<main{{ with $theme }} class="themed" style="--tab: {{ . }}; --tl: {{ $shade }}%"{{ end }}>{{ block "main" . }}{{ end }}</main>
 </div>
 {{ partial "sidebar.html" (dict "tabs" $tabs) }}
 </div>

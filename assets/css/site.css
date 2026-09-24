@@ -51,7 +51,10 @@ ul.plain { list-style: none; padding: 0; margin: 0 }
 .side li[data-sub] > a, .side li[data-sub] > details > summary { color: hsl(var(--hue) 45% 38%) }
 .side li.lit > a, .side li.lit > details > summary, .side li.lit > span, .side li[data-tab].lit > details > ul a, .side li[data-tab].lit > details > ul summary, .side li[data-tab].lit > details > ul span { background: hsl(var(--hue) 70% 91%); border-radius: 5px; box-shadow: 0 0 0 3px hsl(var(--hue) 70% 91%) }
 .side li.lit > a, .side li.lit > details > summary { text-decoration: underline }
-.themed { --theme: hsl(var(--tab) 55% 40%) }
+.themed { --theme: hsl(var(--tab) 55% var(--tl, 40%)) }
+.themed .trip, .themed .signup input:not([type=checkbox]), .themed .signup select, .themed .button { border-color: var(--theme); color: var(--theme) }
+.themed .signup input[type=checkbox] { accent-color: var(--theme) }
+.themed .trip dt, .themed .note { color: var(--theme) }
 .themed, .themed a, .themed h1, .themed h2, .themed .ftitle, .themed .card figcaption, .themed .tags a, .themed .latin, .themed .date, .themed .meta, .themed .meta a, .themed .mute, .themed .doodle { color: var(--theme) }
 .themed .card.map svg { stroke: var(--theme) }
 body { overflow-x: hidden }

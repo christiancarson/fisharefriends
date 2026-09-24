@@ -127,9 +127,9 @@ grep -q '<li data-tab="0" data-name="journal" style="--hue: 48" class="on"><deta
 grep -q 'style="--hue: 215"' public/index.html && grep -q 'style="--hue: 30"' public/index.html
 ! grep -q '>boat<\|>non-fish<\|>not-fly-fishing<' public/index.html
 grep -q '<a class="centre" href="/hello/">' public/index.html && grep -q 'class="face"' public/index.html
-grep -q '<main class="themed" style="--tab: 275">' public/categories/rainbow-trout/index.html
-grep -q '<main class="themed" style="--tab: 215">' public/categories/dean-river/index.html
-grep -q '<main class="themed" style="--tab: 48">' public/journal/index.html
+grep -q '<main class="themed" style="--tab: 275; --tl: 40%">' public/categories/rainbow-trout/index.html
+grep -q '<main class="themed" style="--tab: 215; --tl: 40%">' public/categories/dean-river/index.html
+grep -q '<main class="themed" style="--tab: 48; --tl: 40%">' public/journal/index.html
 ! grep -q 'class="themed"' public/posts/2026-09-september-2026/index.html
 ! grep -q 'class="themed"' public/index.html
 grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september 2026</a></p></figcaption>' public/categories/rainbow-trout/index.html
@@ -140,7 +140,7 @@ grep -q 'src="/img/friend.jpg"' public/hello/index.html && ! grep -q 'plain nav'
 grep -q '<summary>friends <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/christian-a/">Christian A</a>' public/index.html
 grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">3</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
-grep -q '<main class="themed" style="--tab: 30">' public/categories/sam-a/index.html
+grep -q '<main class="themed" style="--tab: 30; --tl: 40%">' public/categories/sam-a/index.html
 test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends music works contact "
 grep -q 'data-kind="wade"' public/trips/sample-trip/index.html || grep -q 'data-kind="raft"' public/trips/sample-trip/index.html
 grep -q 'git add content data assets/maps' sync.sh
@@ -151,3 +151,4 @@ grep -q 'data-name="works" style="--hue: 320"><a href="/categories/works/">works
 grep -q '<summary>music <span class="mute">1</span></summary><ul class="plain nest"><li><a href="/categories/music/">all music</a></li><li data-sub="0" data-l="62"><a href="/categories/indie/">indie</a>' public/index.html
 ! grep -q '^\["music"\]' data/tags.toml
 grep -q 'data-tags="music indie"' public/categories/indie/index.html
+grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/squamish-river/index.html && grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/index.html
