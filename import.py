@@ -8,6 +8,9 @@ params = tomllib.loads(pathlib.Path("hugo.toml").read_text())["params"]
 waters = {**params.get("tags", {}), **params.get("waters", {})}
 species = tomllib.loads(pathlib.Path("data/species.toml").read_text())
 kids = {}
+parents = params.get("parents", ["friends", "fish", "music", "works"])
+latin = {"rainbow trout": "Oncorhynchus mykiss", "steelhead": "Oncorhynchus mykiss", "coastal cutthroat trout": "Oncorhynchus clarkii clarkii", "westslope cutthroat trout": "Oncorhynchus clarkii lewisi", "cutthroat trout": "Oncorhynchus clarkii", "bull trout": "Salvelinus confluentus", "dolly varden": "Salvelinus malma", "brook trout": "Salvelinus fontinalis", "lake trout": "Salvelinus namaycush", "brown trout": "Salmo trutta", "atlantic salmon": "Salmo salar", "golden trout": "Oncorhynchus aguabonita", "chinook salmon": "Oncorhynchus tshawytscha", "chinook": "Oncorhynchus tshawytscha", "coho salmon": "Oncorhynchus kisutch", "coho": "Oncorhynchus kisutch", "sockeye salmon": "Oncorhynchus nerka", "sockeye": "Oncorhynchus nerka", "kokanee": "Oncorhynchus nerka", "pink salmon": "Oncorhynchus gorbuscha", "chum salmon": "Oncorhynchus keta", "arctic grayling": "Thymallus arcticus", "grayling": "Thymallus arcticus", "mountain whitefish": "Prosopium williamsoni", "lake whitefish": "Coregonus clupeaformis", "arctic char": "Salvelinus alpinus", "northern pike": "Esox lucius", "walleye": "Sander vitreus", "smallmouth bass": "Micropterus dolomieu", "largemouth bass": "Micropterus salmoides", "white sturgeon": "Acipenser transmontanus", "burbot": "Lota lota", "yellow perch": "Perca flavescens", "lingcod": "Ophiodon elongatus", "pacific halibut": "Hippoglossus stenolepis", "halibut": "Hippoglossus stenolepis", "common carp": "Cyprinus carpio", "carp": "Cyprinus carpio", "bonefish": "Albula vulpes", "tarpon": "Megalops atlanticus", "permit": "Trachinotus falcatus"}
+isfish = lambda t: t.lower() in latin or re.search(r"(?i)\b(trout|salmon|char|steelhead|whitefish|grayling|varden|bass|pike|sturgeon|perch)$", t) is not None
 water = lambda t: re.search(r" (River|Creek|Lake|Estuary|Harbour|Bay|Sound|Inlet|Ocean)$", t) is not None
 group = lambda t: {"River": "rivers", "Creek": "rivers", "Lake": "lakes", "Estuary": "estuaries"}.get(t.split()[-1], "oceans")
 def finder_tags(f):
@@ -34,13 +37,15 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             tag = [x for x in (waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])) if x] or ["fish"]
             tags.update(tag)
             for t in tag:
-                if slugify(t) not in species and re.search(r"(?i)\b(trout|salmon|char|steelhead|whitefish|grayling|varden)$", t):
-                    species[slugify(t)] = {"title": t, "latin": ""}
+                if slugify(t) not in species and isfish(t):
+                    species[slugify(t)] = {"title": t, "latin": latin.get(t.lower(), "")}
                     pathlib.Path("data/species.toml").write_text(toml(species))
             if any(slugify(t) in species for t in tag): tags.add("fish")
             for t in tag:
                 if water(t) or slugify(t) in species: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
-                elif t not in ("fish", "friends", "music") and "friends" in tag: kids[slugify(t)] = (t, "friends")
+                elif t not in parents and not water(t):
+                    for p in parents:
+                        if p in tag: kids[slugify(t)] = (t, p); break
             name = re.sub(r"(?i)\s+(from|at|on|in|of|the|and|with)$", "", name)
             jpg = out / (slugify(name) + ".jpg")
             if not jpg.exists() or jpg.stat().st_mtime < f.stat().st_mtime:

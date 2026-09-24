@@ -19,6 +19,7 @@ email = 'critty@fisharefriends.org'
 signup = 'https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec'
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
 order = ['journal', 'trips', 'water', 'fish', 'friends', 'music', 'works', 'contact']
+parents = ['friends', 'fish', 'music', 'works']
 
 [params.tags]
 fishies = 'fish'
