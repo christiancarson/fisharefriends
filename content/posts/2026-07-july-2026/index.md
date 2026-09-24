@@ -3,30 +3,43 @@
  "date": "2026-07-01T12:00:00-07:00",
  "categories": [
   "Gabe R",
+  "Kennedy Lake",
   "Rainbow Trout",
+  "draw creek",
   "fish",
   "friends",
   "karina dsj",
   "lakes",
   "lost lake",
   "michelle",
+  "resoration",
   "rivers",
   "skagit river",
-  "water"
+  "water",
+  "works"
  ],
  "groups": [
   {
-   "water": null,
+   "water": "Kennedy Lake",
    "cards": [
     {
      "type": "photo",
-     "file": "img-1342.jpg",
-     "title": "IMG 1342",
+     "file": "captain.jpg",
+     "title": "captain",
      "caption": "",
      "tags": [
-      "fish"
+      "friends",
+      "Gabe R",
+      "Kennedy Lake",
+      "water",
+      "lakes"
      ]
-    },
+    }
+   ]
+  },
+  {
+   "water": null,
+   "cards": [
     {
      "type": "photo",
      "file": "img-1359.jpg",
@@ -83,12 +96,14 @@
     },
     {
      "type": "photo",
-     "file": "captain.jpg",
-     "title": "captain",
+     "file": "all-hands-on-deck.jpg",
+     "title": "all hands on deck",
      "caption": "",
      "tags": [
-      "friends",
-      "Gabe R"
+      "draw creek",
+      "rivers",
+      "works",
+      "resoration"
      ]
     },
     {

@@ -2,6 +2,10 @@
 title = "Christian A"
 parent = "friends"
 
+["draw-creek"]
+title = "draw creek"
+parent = "works"
+
 ["finn-w"]
 title = "Finn W"
 parent = "friends"
@@ -18,6 +22,10 @@ parent = "music"
 title = "karina dsj"
 parent = "friends"
 
+["lakes"]
+title = "lakes"
+parent = "friends"
+
 ["michelle"]
 title = "michelle"
 parent = "friends"
@@ -25,6 +33,10 @@ parent = "friends"
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
+
+["resoration"]
+title = "resoration"
+parent = "works"
 
 ["rivers"]
 title = "rivers"
@@ -40,5 +52,9 @@ parent = "friends"
 
 ["skagit-river"]
 title = "skagit river"
+parent = "friends"
+
+["water"]
+title = "water"
 parent = "friends"
 
