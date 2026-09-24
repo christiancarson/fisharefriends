@@ -142,7 +142,7 @@ grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september
 grep -q 'src="/img/friend.jpg"' public/hello/index.html && ! grep -q 'plain nav' public/hello/index.html
 ! grep -q '/hello/' public/sitemap.xml
 ! grep -q 'hello friend' public/archive/index.html
-grep -q '<summary>friends <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/christian-a/">Christian A.</a>' public/index.html
-grep -q '<a href="/categories/sam-a/">Sam A.</a> <span class="mute">6</span>' public/index.html
-grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">sam in action</a>' public/categories/sam-a/index.html
+grep -q '<summary>friends <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/christian-a/">Christian A</a>' public/index.html
+grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">3</span>' public/index.html
+grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30">' public/categories/sam-a/index.html

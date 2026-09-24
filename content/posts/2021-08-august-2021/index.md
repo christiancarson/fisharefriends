@@ -1,7 +1,7 @@
 ---
 title: "august 2021"
 date: 2021-08-01T12:00:00-07:00
-categories: [Sam A., Toquaht Estuary, Ucluelet Harbour, estuaries, friends, oceans, water]
+categories: [Sam A, Toquaht Estuary, Ucluelet Harbour, estuaries, friends, oceans, water]
 ---
 <div class="water">
 
@@ -9,7 +9,7 @@ categories: [Sam A., Toquaht Estuary, Ucluelet Harbour, estuaries, friends, ocea
 
 ![](microtrolling.jpg "microtrolling | Toquaht Estuary")
 
-![](nba-longboy.jpg "nba longboy | friends, Toquaht Estuary, Sam A.")
+![](nba-longboy.jpg "nba longboy | friends, Toquaht Estuary, Sam A")
 
 </div>
 
@@ -17,6 +17,6 @@ categories: [Sam A., Toquaht Estuary, Ucluelet Harbour, estuaries, friends, ocea
 
 {{< map "Ucluelet Harbour" >}}
 
-![](sam-and-his-squain.jpg "sam and his squain | friends, Ucluelet Harbour, Sam A.")
+![](sam-and-his-squain.jpg "sam and his squain | friends, Ucluelet Harbour, Sam A")
 
 </div>

@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 src = pathlib.Path.home() / "Desktop" / "fish_are_friends"
 dst = pathlib.Path("content/posts")
 months = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"], 1)}
-clean = lambda s: re.sub(r"\s+", " ", s.replace("_", " ")).strip()
+clean = lambda s: re.sub(r"\s+", " ", s.replace("_", " ").replace(".", "")).strip()
 params = tomllib.loads(pathlib.Path("hugo.toml").read_text())["params"]
 waters = {**params.get("tags", {}), **params.get("waters", {})}
 species = tomllib.loads(pathlib.Path("data/species.toml").read_text())
