@@ -17,11 +17,11 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .tags { margin-top: .4rem }
 .tags a, .tags span { color: var(--mute); font-size: .8rem; margin-right: .7em }
 .ftitle { display: block; margin-bottom: .3rem; font-weight: 700; font-size: 1rem; color: var(--ink) }
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px }
+.wrap { max-width: 1400px; margin: 0; padding: 0 24px }
 .band { padding: 22px 0 24px }
 .brand { font: 2.8rem/1 "Gochi Hand", cursive; text-decoration: none; display: inline-flex; align-items: center; gap: .4em }
 .brand:hover { color: var(--ink) }
-.cols { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; padding-top: 28px }
+.cols { display: grid; grid-template-columns: minmax(0, 740px) 280px; gap: 16px; padding-top: 24px; justify-content: start }
 .listtitle, .sub { font: 1.7rem/1.2 "Gochi Hand", cursive; margin: 0 0 1rem }
 .latin { font-style: italic; text-transform: none; color: var(--mute); margin: -.6rem 0 1.2rem }
 .sub { font-size: 1.3rem; margin-top: 2rem }
@@ -33,7 +33,7 @@ body { text-transform: lowercase }
 .post .meta { font-size: .8rem; color: var(--mute) }
 .post .meta a { color: var(--mute) }
 .sep { display: block; width: 56px; height: 28px; margin: 0 auto 2.5rem }
-.intro { max-width: 40rem; margin: 0 0 2rem; font-size: 1.05rem; font-weight: 400; color: var(--ink) }
+.intro { max-width: 44rem; margin: 0 0 2rem; font-size: 1.05rem; font-weight: 400; color: var(--ink) }
 .intro p { margin: 0 0 .9rem }
 .intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 ul.plain { list-style: none; padding: 0; margin: 0 }
@@ -88,7 +88,7 @@ ul.plain.nest { margin-left: 1.1em }
 .doodle { filter: url(#wobble); color: var(--ink) }
 .doodle.blue { color: var(--blue) }
 .doodle.mark { width: 96px; height: 96px }
-footer.wrap { text-align: center; padding: 2rem 20px .8rem }
+footer.wrap { text-align: left; padding: 1.5rem 24px .6rem; max-width: 1036px }
 footer p { margin: 0; font-size: .8rem; color: var(--mute) }
 footer a { color: var(--mute) }
 @media (max-width: 1000px) { .card { flex-direction: column } .card > a, .card > div { flex: none; width: 100% } .water .card:not(.map) { margin-left: 0 } }
