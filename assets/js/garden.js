@@ -68,9 +68,15 @@ if (stem) {
     a.addEventListener('mouseleave', () => { if (li && !li.classList.contains('on')) { li.classList.remove('lit'); p && p.classList.remove('lit') } })
   })
   const go = document.getElementById('random')
+  let whirl = 0, k = 0
+  const petals = [...svg.querySelectorAll('.petal')]
+  const spinFast = () => { petals.forEach(p => p.classList.remove('lit')); petals[k++ % petals.length].classList.add('lit') }
+  if (go) go.addEventListener('mouseenter', () => { clearInterval(whirl); whirl = setInterval(spinFast, 45) })
+  if (go) go.addEventListener('mouseleave', () => { clearInterval(whirl); petals.forEach(p => p.classList.remove('lit')); side.querySelectorAll('li.on').forEach(li => { const p = svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`); if (p) p.classList.add('lit') }) })
   if (go) go.addEventListener('click', e => {
+    clearInterval(whirl)
     e.preventDefault()
-    const petals = [...svg.querySelectorAll('.petal')], pages = go.dataset.pages.split(' ').filter(p => p && p !== location.pathname)
+    const pages = go.dataset.pages.split(' ').filter(p => p && p !== location.pathname)
     const target = pages[Math.floor(Math.random() * pages.length)] || go.href
     const steps = petals.length * 2 + Math.floor(Math.random() * petals.length)
     let i = 0, delay = 55
