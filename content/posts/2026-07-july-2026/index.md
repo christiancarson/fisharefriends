@@ -65,7 +65,10 @@
      "title": "Screenshot 2026-09-24 at 123824",
      "caption": "",
      "tags": [
-      "fish"
+      "friends",
+      "Sam A",
+      "fish",
+      "Rainbow Trout"
      ]
     },
     {
@@ -87,6 +90,7 @@
      "title": "all hands on deck",
      "caption": "",
      "tags": [
+      "water",
       "draw creek",
       "rivers",
       "works",
@@ -102,7 +106,7 @@
       "friends",
       "Christian A",
       "Sam A",
-      "lakes",
+      "water",
       "onion lake"
      ]
     },
@@ -114,6 +118,7 @@
      "tags": [
       "friends",
       "karina dsj",
+      "water",
       "rivers",
       "skagit river",
       "fish",
@@ -153,7 +158,8 @@
       "rivers",
       "friends",
       "works",
-      "resoration"
+      "resoration",
+      "water"
      ]
     },
     {
