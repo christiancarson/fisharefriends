@@ -22,6 +22,10 @@ parent = "music"
 title = "karina dsj"
 parent = "friends"
 
+["kennedy-river"]
+title = "kennedy river"
+parent = "friends"
+
 ["lakes"]
 title = "lakes"
 parent = "friends"
@@ -36,7 +40,7 @@ parent = "friends"
 
 ["resoration"]
 title = "resoration"
-parent = "works"
+parent = "friends"
 
 ["rivers"]
 title = "rivers"

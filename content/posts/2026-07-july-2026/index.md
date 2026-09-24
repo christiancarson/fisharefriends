@@ -9,6 +9,7 @@
   "fish",
   "friends",
   "karina dsj",
+  "kennedy river",
   "lakes",
   "lost lake",
   "michelle",
@@ -40,15 +41,6 @@
   {
    "water": null,
    "cards": [
-    {
-     "type": "photo",
-     "file": "img-1359.jpg",
-     "title": "IMG 1359",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
     {
      "type": "photo",
      "file": "img-1388.jpg",
@@ -141,6 +133,19 @@
       "lost lake",
       "water",
       "lakes"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "nap-time.jpg",
+     "title": "nap time",
+     "caption": "",
+     "tags": [
+      "kennedy river",
+      "rivers",
+      "friends",
+      "works",
+      "resoration"
      ]
     }
    ]
