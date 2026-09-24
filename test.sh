@@ -6,9 +6,9 @@ grep -q '<title>fish are friends</title>' public/index.html
 grep -q 'class="brand" href="/">fish are friends' public/index.html
 grep -q 'href="/trips/">trips' public/trips/squamish-river/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
-grep -q 'body { text-transform: lowercase }' public/css/site.css
+grep -q 'body { text-transform: lowercase }' public/css/site.*.css
 grep -q '>walk and wade</a></h2>' public/trips/index.html
-grep -q 'href="/categories/fish/">fish' public/index.html
+grep -q 'href="/categories/fish/">all fish' public/index.html
 grep -q '<li><details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
 grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li><a href="/categories/boot-lake/">Boot Lake</a>' public/index.html
 ! grep -q '<summary>places</summary>' public/index.html
@@ -28,7 +28,7 @@ grep -q 'critty (at) fisharefriends.org' public/index.html
 grep -q 'href="/index.xml">rss' public/index.html
 grep -q 'symbol id="fishpals"' public/index.html
 grep -q 'filter id="wobble"' public/index.html
-grep -q -- '--paper: #fff' public/css/site.css
+grep -q -- '--paper: #fff' public/css/site.*.css
 grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
 ! grep -q 'class="plain menu"' public/index.html
 grep -q '<dt>donate</dt><dd><a href="https://www.squamishwatershed.com/#/">Squamish River Watershed Society</a></dd>' public/trips/squamish-river/index.html
@@ -51,7 +51,7 @@ grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/inde
 grep -q '<figure class="card video" data-tags="music"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout species"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/rivers/">Morice River</a></figcaption>' public/posts/2026-09-september-2026/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/2026-09-september-2026/index.html
 test -f public/posts/2026-09-september-2026/ruby.jpg
@@ -81,7 +81,7 @@ grep -q 'data-tags="rivers morice-river"' public/categories/morice-river/index.h
 ! grep -q '<article' public/index.html
 grep -q '<p class="date">September 1, 2026</p>' public/posts/2026-09-september-2026/index.html
 grep -q 'href="/posts/2026-09-september-2026/">september 2026' public/posts/index.html
-grep -q '# by critty | 2026-09-01 12:00 | <a href="/categories/morice-river/">Morice River</a> | <a href="/categories/rainbow-trout/">Rainbow Trout</a> | <a href="/categories/fish/">fish</a> | <a href="/categories/music/">music</a> | <a href="/categories/rivers/">rivers</a> | <a href="/categories/species/">species</a>' public/posts/index.html
+grep -q '# by critty | 2026-09-01 12:00 | <a href="/categories/morice-river/">Morice River</a> | <a href="/categories/rainbow-trout/">Rainbow Trout</a> | <a href="/categories/fish/">fish</a> | <a href="/categories/music/">music</a> | <a href="/categories/rivers/">rivers</a>' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>september 2026 | fish are friends</title>' public/posts/2026-09-september-2026/index.html
 grep -q '<dt>when</dt><dd>Saturday, June 6, 2099</dd>' public/trips/sample-trip/index.html
@@ -94,7 +94,7 @@ grep -q 'href="/posts/2026-09-september-2026/">september 2026' public/archive/in
 grep -q '<dt>what</dt><dd>raft fishing</dd>' public/trips/sample-trip/index.html
 grep -q '<option>M</option>' public/trips/sample-trip/index.html
 grep -q 'name="gear"' public/trips/sample-trip/index.html
-grep -q 'src="/js/signup.js"' public/index.html
+grep -q 'src="/js/signup\.[0-9a-f]*\.js"' public/index.html
 grep -q '<dt>licence</dt><dd><a href="https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence">bc freshwater fishing licence</a>' public/trips/sample-trip/index.html
 grep -q '<dt>what</dt><dd>walk and wade to learn the basics</dd>' public/trips/squamish-river/index.html
 grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish-river/index.html
@@ -106,8 +106,8 @@ grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcap
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 grep -q 'href="/trips/squamish-river/">walk and wade' public/trips/index.html
-grep -q '<summary>species</summary><ul class="plain nest"><li><a href="/categories/species/">all species</a></li><li><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html
+grep -q '<summary>fish <span class="mute">4</span></summary><ul class="plain nest"><li><a href="/categories/fish/">all fish</a></li><li><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html
 grep -q '<p class="latin">Oncorhynchus mykiss</p>' public/categories/rainbow-trout/index.html
-grep -q 'href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/species/index.html
+grep -q 'href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/rainbow-trout/index.html
 grep -q 'href="/posts/2020-06-june-2020/">Ben</a>' public/categories/coastal-cutthroat-trout/index.html
 grep -q 'Westslope Cutthroat Trout' public/posts/2021-03-march-2021/index.html

@@ -1,7 +1,7 @@
 ---
 title: "august 2022"
 date: 2022-08-01T12:00:00-07:00
-categories: [Atnarko River, Burnt Bridge Creek, Dean River, McCauley Lake, Rainbow Trout, fish, friends, lakes, rivers, species]
+categories: [Atnarko River, Burnt Bridge Creek, Dean River, McCauley Lake, Rainbow Trout, fish, friends, lakes, rivers]
 ---
 <div class="water">
 
