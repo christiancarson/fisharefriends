@@ -23,6 +23,7 @@
   "oceans",
   "restoration",
   "rivers",
+  "things",
   "water",
   "works"
  ],

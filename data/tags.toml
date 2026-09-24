@@ -22,6 +22,10 @@ parent = "music"
 title = "karina dsj"
 parent = "friends"
 
+["music"]
+title = "music"
+parent = "things"
+
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
@@ -37,4 +41,8 @@ parent = "friends"
 ["sam-a"]
 title = "Sam A"
 parent = "friends"
+
+["works"]
+title = "works"
+parent = "things"
 
