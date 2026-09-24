@@ -13,13 +13,13 @@
 </head>
 <body>
 {{ partial "doodles.html" . }}
-<header class="band">
-<div class="wrap">
-<a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}<svg class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/></svg></a>
-</div>
-</header>
 <div class="wrap cols">
+<div>
+<header class="band">
+<a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}<svg class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/></svg></a>
+</header>
 <main>{{ block "main" . }}{{ end }}</main>
+</div>
 {{ partial "sidebar.html" . }}
 </div>
 <footer class="wrap"><p>the layout and form of this website was heavily inspired by <a href="https://dyun5.exblog.jp/">slow fishing</a></p></footer>
