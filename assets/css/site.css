@@ -21,7 +21,7 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .band { padding: 22px 0 24px }
 .brand { font: 2.8rem/1 "Gochi Hand", cursive; text-decoration: none; display: inline-flex; align-items: center; gap: .4em }
 .brand:hover { color: var(--ink) }
-.cols { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px; padding-top: 28px }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; padding-top: 28px }
 .listtitle, .sub { font: 1.7rem/1.2 "Gochi Hand", cursive; margin: 0 0 1rem }
 .latin { font-style: italic; text-transform: none; color: var(--mute); margin: -.6rem 0 1.2rem }
 .sub { font-size: 1.3rem; margin-top: 2rem }
@@ -37,8 +37,8 @@ body { text-transform: lowercase }
 .intro p { margin: 0 0 .9rem }
 .intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 ul.plain { list-style: none; padding: 0; margin: 0 }
-.side { padding: 52px 0 0 140px; position: relative; clip-path: inset(0 0 0 -40px); font-size: 1.05rem; font-weight: 400 }
-.side .garden { position: absolute; top: 0; left: -30px; width: 280px; height: 100%; z-index: -1; overflow: visible }
+.side { padding: 52px 0 0 92px; position: relative; clip-path: inset(0 0 0 -70px); font-size: 1.05rem; font-weight: 400 }
+.side .garden { position: absolute; top: 0; left: -48px; width: 280px; height: 100%; z-index: -1; overflow: visible }
 .garden .petal, .garden .centre, .garden .leaf { pointer-events: all; cursor: pointer }
 .garden .centre:hover circle { stroke-width: 4 }
 .side li[data-sub] > span { color: hsl(var(--hue) 45% 38%) }
@@ -88,7 +88,7 @@ ul.plain.nest { margin-left: 1.1em }
 .doodle { filter: url(#wobble); color: var(--ink) }
 .doodle.blue { color: var(--blue) }
 .doodle.mark { width: 96px; height: 96px }
-footer.wrap { text-align: center; padding: 3rem 20px }
+footer.wrap { text-align: center; padding: 2rem 20px .8rem }
 footer p { margin: 0; font-size: .8rem; color: var(--mute) }
 footer a { color: var(--mute) }
 @media (max-width: 1000px) { .card { flex-direction: column } .card > a, .card > div { flex: none; width: 100% } .water .card:not(.map) { margin-left: 0 } }
