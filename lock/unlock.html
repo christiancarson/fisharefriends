@@ -47,8 +47,10 @@ const show = path => {
   html = html.replace(/(src|href)=("?)\/([^"\s>#?]+)\2/g, (all, a, q, rel) => { if (!site[rel]) return all; urls[rel] = urls[rel] || URL.createObjectURL(new Blob([b64(site[rel])], { type: mime(rel) })); return `${a}="${urls[rel]}"` })
   document.open(); document.write(html); document.close()
   window.lockGo = h => { history.pushState(null, '', h); show(h.split('#')[0]) }
-  document.addEventListener('click', e => { const a = e.target.closest('a[href]'); if (!a) return; const h = a.getAttribute('href'); if (h.startsWith('/') && !h.startsWith('//')) { e.preventDefault(); history.pushState(null, '', h); show(h.split('#')[0]); if (h.includes('#')) location.hash = h.split('#')[1] } })
-  addEventListener('popstate', () => show(location.pathname))
+  document.removeEventListener('click', window.lockClick); removeEventListener('popstate', window.lockPop)
+  window.lockClick = e => { if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return; const a = e.target.closest('a[href]'); if (!a) return; const h = a.getAttribute('href'); if (h.startsWith('/') && !h.startsWith('//')) { e.preventDefault(); history.pushState(null, '', h); show(h.split('#')[0]); if (h.includes('#')) location.hash = h.split('#')[1] } }
+  window.lockPop = () => show(location.pathname)
+  document.addEventListener('click', window.lockClick); addEventListener('popstate', window.lockPop)
 }
 window.lockGo = h => { history.pushState(null, '', h); show(h.split('#')[0]) }
 const go = async pw => { site = await open(pw); sessionStorage.setItem('k', pw); show(location.pathname) }
