@@ -1,7 +1,7 @@
 {{ $k := index site.Params.trips (.Params.kind | default "wade") }}
 <dl class="trip">
 <dt>what</dt><dd>{{ $k.label }}</dd>
-<dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}</dd>
+<dt>when</dt><dd>{{ (time .Params.trip_date).Format "Monday, January 2, 2006" }}{{ with .Params.trip_time }} @ {{ . }}{{ end }}</dd>
 {{ with .Params.where }}<dt>where</dt><dd>{{ . }}</dd>{{ end }}
 {{ with .Params.meet }}<dt>meet</dt><dd>{{ . }}</dd>{{ end }}
 <dt>spots</dt><dd class="spots">{{ len (.Params.crew | default slice) }} of {{ $k.spots }} taken{{ with .Params.crew }}: {{ delimit . ", " }}{{ end }}</dd>

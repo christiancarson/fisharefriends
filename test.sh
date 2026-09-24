@@ -97,7 +97,7 @@ grep -q 'name="gear"' public/trips/sample-trip/index.html
 grep -q 'src="/js/signup\.[0-9a-f]*\.js"' public/index.html
 grep -q '<dt>licence</dt><dd><a href="https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence">bc freshwater fishing licence</a>' public/trips/sample-trip/index.html
 grep -q '<dt>what</dt><dd>walk and wade to learn the basics</dd>' public/trips/squamish-river/index.html
-grep -q '<dt>when</dt><dd>Saturday, October 17, 2026</dd>' public/trips/squamish-river/index.html
+grep -q '<dt>when</dt><dd>Saturday, October 17, 2026 @ 8am</dd>' public/trips/squamish-river/index.html && grep -q '<dt>where</dt><dd>meet at EasyPark - Lot #109 - Hastings Community Park</dd>' public/trips/squamish-river/index.html
 grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish-river/index.html
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/>' public/index.html
