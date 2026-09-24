@@ -2,36 +2,22 @@
  "title": "july 2026",
  "date": "2026-07-01T12:00:00-07:00",
  "categories": [
+  "Gabe R",
   "Rainbow Trout",
   "fish",
   "friends",
   "karina dsj",
+  "lakes",
+  "lost lake",
   "michelle",
   "rivers",
-  "skagit river"
+  "skagit river",
+  "water"
  ],
  "groups": [
   {
    "water": null,
    "cards": [
-    {
-     "type": "photo",
-     "file": "img-1249.jpg",
-     "title": "IMG 1249",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
-    {
-     "type": "photo",
-     "file": "img-1271.jpg",
-     "title": "IMG 1271",
-     "caption": "",
-     "tags": [
-      "fish"
-     ]
-    },
     {
      "type": "photo",
      "file": "img-1342.jpg",
@@ -97,6 +83,16 @@
     },
     {
      "type": "photo",
+     "file": "captain.jpg",
+     "title": "captain",
+     "caption": "",
+     "tags": [
+      "friends",
+      "Gabe R"
+     ]
+    },
+    {
+     "type": "photo",
      "file": "first-fish-smiley-face-emoji.jpg",
      "title": "first fish smiley face emoji",
      "caption": "",
@@ -116,7 +112,20 @@
      "title": "lake bike connection",
      "caption": "",
      "tags": [
-      "fish"
+      "lost lake",
+      "water",
+      "lakes"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "lake-bike-reflection.jpg",
+     "title": "lake bike reflection",
+     "caption": "",
+     "tags": [
+      "lost lake",
+      "water",
+      "lakes"
      ]
     }
    ]
