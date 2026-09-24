@@ -4,5 +4,5 @@
 {{ $own := resources.Get (printf "maps/%s.svg" (.Title | urlize)) }}
 {{ with $own }}{{ partial "map.html" $.Title }}{{ end }}
 {{ $key := .Data.Term | urlize }}{{ if eq $key "water" }}{{ $key = "(rivers|lakes|estuaries|oceans)" }}{{ end }}{{ $re := printf "(?s)<figure class=\"card[^\"]*\" data-tags=\"[^\"]*\\b%s\\b[^\"]*\">.*?</figure>" $key }}
-{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range findRE $re .Content }}{{ if not (and $own (hasPrefix . "<figure class=\"card map\"")) }}{{ replaceRE "class=\"ftitle\" href=\"[^\"]*\"" (printf "class=\"ftitle\" href=\"%s\"" $p.RelPermalink) . | safeHTML }}{{ end }}{{ end }}{{ end }}
+{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range findRE $re .Content }}{{ if not (and $own (hasPrefix . "<figure class=\"card map\"")) }}{{ replaceRE "class=\"ftitle\" href=\"[^\"]*\"" (printf "class=\"ftitle\" href=\"%s\"" $p.RelPermalink) . | replaceRE "</figcaption>" (printf "<p class=\"tags from\"><a href=\"%s\">%s</a></p></figcaption>" $p.RelPermalink $p.Title) | safeHTML }}{{ end }}{{ end }}{{ end }}
 {{ end }}

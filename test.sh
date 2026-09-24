@@ -133,3 +133,10 @@ grep -q '<li data-tab="5" style="--hue: 48" class="on"><details open>' public/po
 grep -q 'style="--hue: 215"' public/index.html && grep -q 'style="--hue: 30"' public/index.html
 ! grep -q '>boat<\|>non-fish<\|>not-fly-fishing<' public/index.html
 grep -q '<a class="centre" href="/posts/">' public/index.html
+grep -q '<main class="themed" style="--tab: 275">' public/categories/rainbow-trout/index.html
+grep -q '<main class="themed" style="--tab: 215">' public/categories/dean-river/index.html
+grep -q '<main class="themed" style="--tab: 48">' public/archive/index.html
+! grep -q 'class="themed"' public/posts/2026-09-september-2026/index.html
+! grep -q 'class="themed"' public/index.html
+grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september 2026</a></p></figcaption>' public/categories/rainbow-trout/index.html
+grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september 2026</a></p></figcaption>' public/categories/morice-river/index.html

@@ -14,14 +14,15 @@
 </head>
 <body>
 {{ partial "doodles.html" . }}
+{{ $tabs := partial "tabs.html" . }}{{ $theme := "" }}{{ if or (eq .Kind "term") (and (eq .Kind "section") (in (slice "archive" "trips") .Section)) }}{{ range $tabs }}{{ if .on }}{{ $theme = .hue }}{{ end }}{{ end }}{{ end }}
 <div class="wrap cols">
 <div>
 <header class="band">
 <a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}<svg class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/></svg></a>
 </header>
-<main>{{ block "main" . }}{{ end }}</main>
+<main{{ with $theme }} class="themed" style="--tab: {{ . }}"{{ end }}>{{ block "main" . }}{{ end }}</main>
 </div>
-{{ partial "sidebar.html" . }}
+{{ partial "sidebar.html" (dict "tabs" $tabs) }}
 </div>
 <footer class="wrap"><p>the layout and form of this website was heavily inspired by <a href="https://dyun5.exblog.jp/">slow fishing</a></p></footer>
 </body>

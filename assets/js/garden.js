@@ -23,17 +23,23 @@ if (stem) {
     clear(d)
     const tab = d.closest('li[data-tab]'), hue = tab ? tab.style.getPropertyValue('--hue') || 120 : 120
     rows(d).forEach((li, j) => {
+      if (row(li).offsetParent === null) return
       const g = document.createElementNS(ns, 'g'), u = document.createElementNS(ns, 'use')
       const col = `hsl(${hue} 60% ${li.dataset.l || 50}%)`
       g.setAttribute('class', 'leaf' + (li.classList.contains('on') ? ' lit' : '')); g.setAttribute('stroke', col); g.setAttribute('color', col)
       u.setAttribute('href', '#gfish'); g.appendChild(u); leaves.appendChild(g); li.leaf = g
+      g.addEventListener('mouseenter', () => { g.classList.add('lit'); li.classList.add('lit') })
+      g.addEventListener('mouseleave', () => { if (!li.classList.contains('on')) { g.classList.remove('lit'); li.classList.remove('lit') } })
+      g.addEventListener('click', () => { const a = li.querySelector(':scope > a'), d = li.querySelector(':scope > details'); if (d) d.open = !d.open; else if (a) location.href = a.href })
       const L = at(target(li)), x = stem.getPointAtLength(L).x
       g.side = (j % 2 && x - 42 > textEnd(li) + 4) ? -1 : 1
       animate ? swim(g, L, j * 140) : pose(g, L, 1)
     })
   }
-  const regrow = skip => side.querySelectorAll('details[open]').forEach(d => { if (d !== skip) grow(d, false) })
-  side.querySelectorAll('details').forEach(d => { if (d.open) grow(d, true); d.addEventListener('toggle', () => { d.open ? grow(d, true) : clear(d); regrow(d) }) })
+  const shown = d => d.open && d.offsetParent !== null
+  const regrow = skip => side.querySelectorAll('details').forEach(d => { if (skip && (d === skip || skip.contains(d))) return; shown(d) ? grow(d, false) : clear(d) })
+  const toggle = (d, animate) => { const kids = [...d.querySelectorAll('details')]; if (shown(d)) { grow(d, animate); kids.forEach(x => shown(x) ? grow(x, animate) : clear(x)) } else { clear(d); kids.forEach(clear) } }
+  side.querySelectorAll('details').forEach(d => { if (shown(d)) grow(d, true); d.addEventListener('toggle', () => { toggle(d, true); regrow(d) }) })
   addEventListener('resize', () => regrow())
   addEventListener('load', () => regrow())
   if (document.fonts) document.fonts.ready.then(() => regrow())
