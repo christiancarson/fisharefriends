@@ -1,5 +1,5 @@
 ---
-title: "hello friend"
+title: "hello bro"
 layout: secret
 sitemap:
   disable: true

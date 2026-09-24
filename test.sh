@@ -160,3 +160,5 @@ node --check assets/js/garden.js && node --check assets/js/signup.js
 hugo build -D --minify -d /tmp/faf-min --quiet && /opt/homebrew/Caskroom/miniconda/base/bin/python3 lock/encrypt.py /tmp/faf-min /tmp/faf-locked test-pass > /dev/null && test -s /tmp/faf-locked/site.bin && grep -q 'id="p"' /tmp/faf-locked/index.html && ! grep -q 'critty' /tmp/faf-locked/index.html && rm -rf /tmp/faf-locked
 node -e "const h=require('fs').readFileSync('lock/unlock.html','utf8'); const m=h.match(/html\.replace\((\/.*?\/g), /); const re=new RegExp(m[1].slice(1,-2),'g'); const min=require('fs').readFileSync('/tmp/faf-min/index.html','utf8'); const hits=[...min.matchAll(re)].map(x=>x[3]); if(!hits.some(p=>p.startsWith('css/site.'))||!hits.some(p=>p.startsWith('js/garden.'))) { console.error('unlock rewrite misses minified assets', hits.slice(0,5)); process.exit(1) }" && rm -rf /tmp/faf-min
 grep -q "fetch('/site.bin'" lock/unlock.html
+grep -q '<p class="bro"><a href="/hello/">hello bro ❤️</a></p>' public/index.html && ! grep -q 'hello!' public/index.html
+grep -q '<title>hello bro</title>' public/hello/index.html

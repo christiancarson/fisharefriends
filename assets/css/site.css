@@ -36,6 +36,8 @@ body { text-transform: lowercase }
 .sep { display: block; width: 3.7rem; height: 1.9rem; margin: 0 auto 2.5rem }
 .intro { max-width: none; margin: 0 0 2rem; font-size: 1.05rem; font-weight: 400; color: var(--ink) }
 .intro p { margin: 0 0 .9rem }
+.intro .bro a { font: 700 1.7rem/1.2 "Brush Script MT", "Dancing Script", cursive; text-transform: none; text-decoration: none; color: var(--ink) }
+.intro .bro a:hover { color: var(--red) }
 .intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 ul.plain { list-style: none; padding: 0; margin: 0 }
 .side { padding: 3.5rem 0 0 6.1rem; position: relative; clip-path: inset(0 0 0 -4.7rem); font-size: 1.05rem; font-weight: 400 }
