@@ -15,11 +15,11 @@
   "Skagit River",
   "Widgeon Slough",
   "estuaries",
+  "first fish",
   "fish",
   "friends",
   "karina dsj",
   "lakes",
-  "michelle",
   "resoration",
   "rivers",
   "water",
@@ -129,8 +129,8 @@
    "cards": [
     {
      "type": "photo",
-     "file": "first-fish-smiley-face-emoji.jpg",
-     "title": "first fish smiley face emoji",
+     "file": "georgina.jpg",
+     "title": "georgina",
      "caption": "",
      "tags": [
       "friends",
@@ -138,7 +138,7 @@
       "Skagit River",
       "fish",
       "Rainbow Trout",
-      "michelle"
+      "first fish"
      ]
     }
    ]

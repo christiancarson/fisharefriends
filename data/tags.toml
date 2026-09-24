@@ -6,6 +6,10 @@ parent = "friends"
 title = "Finn W"
 parent = "friends"
 
+["first-fish"]
+title = "first fish"
+parent = "friends"
+
 ["gabe-r"]
 title = "Gabe R"
 parent = "friends"
