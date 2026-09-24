@@ -68,7 +68,7 @@ grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categorie
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
-grep -q '<a class="tablink" href="/journal/" data-link="journal" style="--hue: 48">monthly photo journal</a> from my time on the <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">water</a>.' public/index.html
+grep -q 'monthly photo journal</a> from my time <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">on</a> and <a class="tablink" href="/categories/works/" data-link="works" style="--hue: 90">off</a> the water. you can also find' public/index.html || grep -q 'monthly photo journal</a> from my time <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">on</a> and <a class="tablink" href="/categories/works/" data-link="works" style="--hue: 90">off</a> the water. You can also find' public/index.html
 grep -q '<a class="tablink" href="/trips/[a-z-]*/" data-link="trips" style="--hue: 130">sign up to join me on a trip</a>' public/index.html
 ! grep -q '>all</a>' public/index.html
 grep -q 'id="random" href="/posts/">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a>' public/index.html
@@ -118,7 +118,7 @@ grep -q '<summary>water</summary><ul class="plain nest"><li><a href="/categories
 grep -q 'data-tags="rivers morice-river"' public/categories/water/index.html
 grep -q 'data-tags="lakes boot-lake"' public/categories/water/index.html
 grep -q '<summary>water</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers</summary>' public/categories/dean-river/index.html
-test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 7
+test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 8
 grep -q '<summary>trips</summary><ul class="plain nest"><li><a href="/trips/">all trips</a></li><li data-sub="0" data-l="62"><a href="/trips/' public/index.html && grep -q '<a href="/trips/sample-trip/">sample trip</a> <span class="mute">2099-06-06</span></li>' public/index.html
 grep -q '<summary>contact</summary><ul class="plain nest"><li data-sub="0" data-l="62"><span>critty (at) fisharefriends.org</span></li><li data-sub="1" data-l="54"><a href="/index.xml">rss</a></li>' public/index.html
 grep -q '<li data-tab="1" data-name="trips" style="--hue: 130" class="on"><details open>' public/trips/sample-trip/index.html
@@ -141,9 +141,10 @@ grep -q '<summary>friends <span class="mute">4</span></summary><ul class="plain 
 grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">3</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30">' public/categories/sam-a/index.html
-test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends music contact "
+test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends music works contact "
 grep -q 'data-kind="wade"' public/trips/sample-trip/index.html || grep -q 'data-kind="raft"' public/trips/sample-trip/index.html
 grep -q 'git add content data assets/maps' sync.sh
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 test -e public/trips/index.html
+grep -q 'data-name="works" style="--hue: 90"><a href="/categories/works/">works</a>' public/index.html && test -e public/categories/works/index.html
