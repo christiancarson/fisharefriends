@@ -20,7 +20,7 @@
   "friends",
   "karina dsj",
   "lakes",
-  "resoration",
+  "restoration",
   "rivers",
   "water",
   "works"
@@ -37,7 +37,7 @@
      "tags": [
       "Draw Creek",
       "works",
-      "resoration"
+      "restoration"
      ]
     }
    ]
@@ -58,8 +58,8 @@
     },
     {
      "type": "photo",
-     "file": "me.jpg",
-     "title": "me",
+     "file": "i-get-mine.jpg",
+     "title": "i get mine",
      "caption": "",
      "tags": [
       "Kennedy Lake"
@@ -77,9 +77,8 @@
      "caption": "",
      "tags": [
       "Kennedy River",
-      "friends",
       "works",
-      "resoration"
+      "restoration"
      ]
     }
    ]

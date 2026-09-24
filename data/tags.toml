@@ -8,7 +8,7 @@ parent = "friends"
 
 ["first-fish"]
 title = "first fish"
-parent = "friends"
+parent = "fish"
 
 ["gabe-r"]
 title = "Gabe R"
@@ -26,8 +26,8 @@ parent = "friends"
 title = "Ollie O"
 parent = "friends"
 
-["resoration"]
-title = "resoration"
+["restoration"]
+title = "restoration"
 parent = "works"
 
 ["ross-c"]
