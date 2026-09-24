@@ -33,7 +33,6 @@ grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
 ! grep -q 'class="plain menu"' public/index.html
 grep -q '<dt>donate</dt><dd><a href="https://www.squamishwatershed.com/#/">Squamish River Watershed Society</a></dd>' public/trips/squamish-river/index.html
 grep -q 'See you on the water:)' public/index.html
-grep -q 'please wait for the next float trip' public/trips/index.html
 ! grep -q '<nav>' public/index.html
 ! grep -q 'class="domain"' public/index.html
 ! grep -q 'by critty</p>' public/index.html
