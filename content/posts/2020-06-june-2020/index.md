@@ -4,11 +4,15 @@
  "categories": [
   "Boot Lake",
   "Coastal Cutthroat Trout",
+  "Sam A",
   "Work",
   "fish",
+  "friends",
   "lakes",
+  "sam b",
   "science",
-  "water"
+  "water",
+  "wickaninish"
  ],
  "groups": [
   {
@@ -41,21 +45,14 @@
    "cards": [
     {
      "type": "photo",
-     "file": "img-1588.jpg",
-     "title": "IMG 1588",
-     "caption": "",
-     "tags": [
-      "Work",
-      "science"
-     ]
-    },
-    {
-     "type": "photo",
      "file": "img-1637.jpg",
      "title": "IMG 1637",
      "caption": "",
      "tags": [
-      "fish"
+      "friends",
+      "Sam A",
+      "sam b",
+      "wickaninish"
      ]
     },
     {
@@ -74,6 +71,16 @@
      "caption": "",
      "tags": [
       "fish"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "wwe-for-stickleback.jpg",
+     "title": "WWE for stickleback",
+     "caption": "",
+     "tags": [
+      "Work",
+      "science"
      ]
     }
    ]

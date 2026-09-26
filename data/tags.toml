@@ -42,6 +42,14 @@ parent = "friends"
 title = "Sam A"
 parent = "friends"
 
+["sam-b"]
+title = "sam b"
+parent = "friends"
+
+["wickaninish"]
+title = "wickaninish"
+parent = "friends"
+
 ["works"]
 title = "works"
 parent = "things"
