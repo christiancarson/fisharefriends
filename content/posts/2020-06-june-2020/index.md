@@ -7,17 +7,17 @@
   "Coastal Cutthroat Trout",
   "Gabe R",
   "Sam A",
-  "Things",
   "Ucluelet Harbour",
-  "Work",
+  "Wickaninnish Bay",
   "fish",
   "friends",
   "lakes",
   "oceans",
   "sam b",
   "science",
+  "things",
   "water",
-  "wickaninish"
+  "works"
  ],
  "groups": [
   {
@@ -29,9 +29,11 @@
      "title": "WWE for stickleback",
      "caption": "",
      "tags": [
-      "Things",
-      "Work",
+      "things",
+      "works",
       "science",
+      "water",
+      "lakes",
       "Blackwater Lake"
      ]
     }
@@ -47,6 +49,8 @@
      "caption": "",
      "tags": [
       "fish",
+      "water",
+      "lakes",
       "Boot Lake",
       "Coastal Cutthroat Trout"
      ]
@@ -57,6 +61,8 @@
      "title": "tooted and booted",
      "caption": "",
      "tags": [
+      "water",
+      "lakes",
       "Boot Lake"
      ]
     }
@@ -68,11 +74,13 @@
     {
      "type": "photo",
      "file": "img-1648.jpg",
-     "title": "IMG 1648",
+     "title": "",
      "caption": "",
      "tags": [
       "friends",
       "Gabe R",
+      "water",
+      "oceans",
       "Ucluelet Harbour"
      ]
     },
@@ -82,6 +90,8 @@
      "title": "bung was open",
      "caption": "",
      "tags": [
+      "water",
+      "oceans",
       "Ucluelet Harbour",
       "friends",
       "Gabe R"
@@ -90,18 +100,20 @@
    ]
   },
   {
-   "water": null,
+   "water": "Wickaninnish Bay",
    "cards": [
     {
      "type": "photo",
      "file": "img-1637.jpg",
-     "title": "IMG 1637",
+     "title": "",
      "caption": "",
      "tags": [
       "friends",
       "Sam A",
       "sam b",
-      "wickaninish"
+      "water",
+      "oceans",
+      "Wickaninnish Bay"
      ]
     }
    ]

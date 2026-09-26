@@ -21,6 +21,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "rivers",
       "Squamish River",
       "Christian A"
      ]
@@ -32,6 +34,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "rivers",
       "Squamish River",
       "Sam A",
       "Finn W"

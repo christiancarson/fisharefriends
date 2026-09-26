@@ -37,7 +37,10 @@
      "title": "all hands on deck",
      "caption": "",
      "tags": [
+      "water",
+      "rivers",
       "Draw Creek",
+      "things",
       "works",
       "restoration"
      ]
@@ -53,8 +56,10 @@
      "title": "",
      "caption": "",
      "tags": [
-      "karina dsj",
       "friends",
+      "karina dsj",
+      "water",
+      "oceans",
       "Hope Bay"
      ]
     }
@@ -71,6 +76,8 @@
      "tags": [
       "friends",
       "Gabe R",
+      "water",
+      "lakes",
       "Kennedy Lake"
      ]
     },
@@ -80,6 +87,8 @@
      "title": "i get mine",
      "caption": "",
      "tags": [
+      "water",
+      "lakes",
       "Kennedy Lake"
      ]
     }
@@ -94,7 +103,10 @@
      "title": "nap time",
      "caption": "",
      "tags": [
+      "water",
+      "rivers",
       "Kennedy River",
+      "things",
       "works",
       "restoration"
      ]
@@ -110,6 +122,8 @@
      "title": "lake bike connection",
      "caption": "",
      "tags": [
+      "water",
+      "lakes",
       "Lost Lake"
      ]
     },
@@ -119,6 +133,8 @@
      "title": "lake bike reflection",
      "caption": "",
      "tags": [
+      "water",
+      "lakes",
       "Lost Lake"
      ]
     }
@@ -137,6 +153,8 @@
       "Sam A",
       "fish",
       "Rainbow Trout",
+      "water",
+      "lakes",
       "Onion Lake"
      ]
     },
@@ -149,6 +167,8 @@
       "friends",
       "Christian A",
       "Sam A",
+      "water",
+      "lakes",
       "Onion Lake"
      ]
     }
@@ -165,6 +185,8 @@
      "tags": [
       "friends",
       "karina dsj",
+      "water",
+      "rivers",
       "Skagit River",
       "fish",
       "Rainbow Trout",
@@ -182,8 +204,10 @@
      "title": "standing",
      "caption": "",
      "tags": [
-      "Sam A",
       "friends",
+      "Sam A",
+      "water",
+      "estuaries",
       "Widgeon Slough"
      ]
     }

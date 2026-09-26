@@ -20,6 +20,8 @@
      "title": "microtrolling",
      "caption": "",
      "tags": [
+      "water",
+      "estuaries",
       "Toquaht Estuary"
      ]
     },
@@ -30,6 +32,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "estuaries",
       "Toquaht Estuary",
       "Sam A"
      ]
@@ -46,6 +50,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "oceans",
       "Ucluelet Harbour",
       "Sam A"
      ]

@@ -26,6 +26,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "rivers",
       "Atnarko River",
       "Sam A"
      ]
@@ -42,6 +44,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "rivers",
       "Burnt Bridge Creek",
       "Christian A"
      ]
@@ -58,6 +62,8 @@
      "caption": "",
      "tags": [
       "fish",
+      "water",
+      "rivers",
       "Dean River",
       "Rainbow Trout"
      ]
@@ -69,6 +75,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "rivers",
       "Dean River",
       "Sam A"
      ]
@@ -85,6 +93,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "lakes",
       "McCauley Lake",
       "Sam A"
      ]

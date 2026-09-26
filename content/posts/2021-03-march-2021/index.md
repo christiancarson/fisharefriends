@@ -18,6 +18,8 @@
      "title": "Blake",
      "caption": "",
      "tags": [
+      "water",
+      "rivers",
       "Bitteroot River",
       "fish",
       "Westslope Cutthroat Trout"

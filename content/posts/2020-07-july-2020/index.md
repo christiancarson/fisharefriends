@@ -21,6 +21,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "lakes",
       "Kennedy Lake",
       "Gabe R",
       "Ross C"
@@ -33,6 +35,8 @@
      "caption": "",
      "tags": [
       "friends",
+      "water",
+      "lakes",
       "Kennedy Lake",
       "Ollie O",
       "Ross C"

@@ -22,6 +22,8 @@
      "caption": "Ruby fish from the Morice on Sunday and the first fish I caught in nearly two weeks of being up here. She nearly took my arm off. Her name is Ruby and she is beautiful.",
      "tags": [
       "fish",
+      "water",
+      "rivers",
       "Morice River",
       "Rainbow Trout"
      ]
@@ -37,6 +39,7 @@
      "title": "Banquet by Bloc Party",
      "caption": "",
      "tags": [
+      "things",
       "music",
       "indie"
      ]

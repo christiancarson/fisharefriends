@@ -46,9 +46,9 @@ parent = "friends"
 title = "sam b"
 parent = "friends"
 
-["wickaninish"]
-title = "wickaninish"
-parent = "friends"
+["science"]
+title = "science"
+parent = "works"
 
 ["works"]
 title = "works"
