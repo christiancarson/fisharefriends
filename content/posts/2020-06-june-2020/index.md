@@ -4,8 +4,10 @@
  "categories": [
   "Boot Lake",
   "Coastal Cutthroat Trout",
+  "Work",
   "fish",
   "lakes",
+  "science",
   "water"
  ],
  "groups": [
@@ -41,6 +43,16 @@
      "type": "photo",
      "file": "img-1588.jpg",
      "title": "IMG 1588",
+     "caption": "",
+     "tags": [
+      "Work",
+      "science"
+     ]
+    },
+    {
+     "type": "photo",
+     "file": "img-1637.jpg",
+     "title": "IMG 1637",
      "caption": "",
      "tags": [
       "fish"
