@@ -15,8 +15,12 @@ img { max-width: 100%; height: auto; display: block; margin: 1.2rem auto }
 .card figcaption p { margin: 0 }
 .water { background: #f3f3f1; border-radius: 1rem; padding: .95rem .95rem 1px; margin: 0 0 1.2rem }
 .water .card:not(.map) { margin-left: 1.5rem }
+.entry { background: #f3f3f1; border-radius: 1rem; padding: .95rem .95rem 1px; margin: 0 0 1.2rem }
+.entry-title { font: 1.25rem/1.2 "Gochi Hand", cursive; margin: 0 0 .9rem }
+.entry-title a { text-decoration: none }
+.entry-title a:hover { text-decoration: underline }
 .tags { margin-top: .4rem }
-.tags a, .tags span { color: var(--mute); font-size: .8rem; margin-right: .7em }
+.tags a, .tags span { display: inline-block; white-space: nowrap; color: var(--mute); font-size: .8rem; margin-right: .7em }
 .ftitle { display: block; margin-bottom: .3rem; font-weight: 700; font-size: 1rem; color: var(--ink) }
 .wrap { margin: 0; padding: 0 1.6rem }
 .band { padding: 22px 0 24px }

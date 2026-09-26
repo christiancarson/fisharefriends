@@ -132,8 +132,8 @@ grep -q '<main class="themed" style="--tab: 215; --tl: 40%">' public/categories/
 grep -q '<main class="themed" style="--tab: 48; --tl: 40%">' public/journal/index.html
 ! grep -q 'class="themed"' public/posts/2026-09-september-2026/index.html
 ! grep -q 'class="themed"' public/index.html
-grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september 2026</a></p></figcaption>' public/categories/rainbow-trout/index.html
-grep -q '<p class="tags from"><a href="/posts/2026-09-september-2026/">september 2026</a></p></figcaption>' public/categories/morice-river/index.html
+grep -q '<section class="entry"><h2 class="entry-title"><a href="/posts/2026-09-september-2026/">september 2026</a></h2>' public/categories/rainbow-trout/index.html
+grep -q '<section class="entry"><h2 class="entry-title"><a href="/posts/2026-09-september-2026/">september 2026</a></h2>' public/categories/morice-river/index.html
 grep -q 'src="/img/friend.jpg"' public/hello/index.html && ! grep -q 'plain nav' public/hello/index.html
 ! grep -q '/hello/' public/sitemap.xml
 ! grep -q 'hello friend' public/journal/index.html
@@ -162,4 +162,4 @@ node -e "const h=require('fs').readFileSync('lock/unlock.html','utf8'); const m=
 grep -q "fetch('/site.bin'" lock/unlock.html
 grep -q '<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>' public/index.html && ! grep -q 'hello!' public/index.html
 grep -q '<title>hello bro</title>' public/hello/index.html
-grep -q '<p class="tags from"><a href="/posts/2020-06-june-2020/">june 2020</a></p></figcaption>' public/posts/2020-06-june-2020/index.html
+! grep -q 'tags from' public/posts/2020-06-june-2020/index.html && grep -q '<h2 class="entry-title"><a href="/posts/2020-06-june-2020/">june 2020</a></h2>' public/categories/boot-lake/index.html

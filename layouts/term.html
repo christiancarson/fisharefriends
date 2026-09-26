@@ -4,7 +4,8 @@
 {{ $own := resources.Get (printf "maps/%s.svg" (.Title | urlize)) }}
 {{ with $own }}{{ partial "map.html" $.Title }}{{ end }}
 {{ $key := .Data.Term | urlize }}
-{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ range .Params.groups }}{{ with .water }}{{ if and (not $own) (in (slice (partial "watergroup.html" .) "water" (urlize .)) $key) }}{{ partial "map.html" (dict "water" . "link" $p.RelPermalink "page" $p "from" true) }}
-{{ end }}{{ end }}{{ range .cards }}{{ if in (partial "cardtags.html" .) $key }}{{ partial "cardany.html" (dict "card" . "page" $p "link" $p.RelPermalink "from" true) }}
-{{ end }}{{ end }}{{ end }}{{ end }}
+{{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ $items := slice }}{{ range .Params.groups }}{{ with .water }}{{ if and (not $own) (in (slice (partial "watergroup.html" .) "water" (urlize .)) $key) }}{{ $items = $items | append (partial "map.html" (dict "water" . "link" $p.RelPermalink "page" $p)) }}{{ end }}{{ end }}{{ range .cards }}{{ if in (partial "cardtags.html" .) $key }}{{ $items = $items | append (partial "cardany.html" (dict "card" . "page" $p "link" $p.RelPermalink)) }}{{ end }}{{ end }}{{ end }}{{ with $items }}<section class="entry"><h2 class="entry-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+{{ range . }}{{ . }}
+{{ end }}</section>
+{{ end }}{{ end }}
 {{ end }}
