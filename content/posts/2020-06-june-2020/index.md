@@ -39,6 +39,15 @@
    "cards": [
     {
      "type": "photo",
+     "file": "img-1588.jpg",
+     "title": "IMG 1588",
+     "caption": "",
+     "tags": [
+      "fish"
+     ]
+    },
+    {
+     "type": "photo",
      "file": "img-1648.jpg",
      "title": "IMG 1648",
      "caption": "",
