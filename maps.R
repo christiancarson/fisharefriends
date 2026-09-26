@@ -27,16 +27,19 @@ if (!nrow(s)) {
   if (nrow(l)) g <- st_cast(st_geometry(l[if (!is.null(pt)) which.min(st_distance(l, pt)) else which.max(l$AREA_HA), ]), "MULTILINESTRING")
   tol <- 15
 }
-far <- !is.null(pt) && (!length(g) || as.numeric(min(st_distance(g, pt))) > 15000)
+kind <- tolower(sub(".* ", "", name))
+far <- !is.null(pt) && kind %in% c("lake", "pond", "river", "creek") && (!length(g) || as.numeric(min(st_distance(g, pt))) > 15000)
 if (far) {
   xy <- st_coordinates(pt)
   box <- sprintf("BBOX(GEOMETRY,%f,%f,%f,%f)", xy[1] - 2500, xy[2] - 2500, xy[1] + 2500, xy[2] + 2500)
-  l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", box)
-  if (nrow(l)) {
-    k <- which.min(st_distance(l, pt))
-    message(name, ": named match is far from the photos, drawing the lake at the photos instead: ", l$GNIS_NAME_1[k], " (", round(as.numeric(st_distance(l, pt))[k] / 1000, 1), " km)")
-    g <- st_cast(st_geometry(l[k, ]), "MULTILINESTRING")
-    tol <- 15
+  if (kind %in% c("lake", "pond")) {
+    l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", box)
+    if (nrow(l)) {
+      k <- which.min(st_distance(l, pt))
+      message(name, ": named match is far from the photos, drawing the lake at the photos instead: ", l$GNIS_NAME_1[k], " (", round(as.numeric(st_distance(l, pt))[k] / 1000, 1), " km)")
+      g <- st_cast(st_geometry(l[k, ]), "MULTILINESTRING")
+      tol <- 15
+    }
   } else {
     s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", paste0(box, " AND GNIS_NAME IS NOT NULL"))
     if (nrow(s)) {
@@ -46,38 +49,44 @@ if (far) {
     }
   }
 }
-if (!length(g)) {
-  osm <- tempfile(fileext = ".osm")
-  for (i in 1:6) {
-    a <- if (i <= 4) 'area["ISO3166-2"="CA-BC"]->.bc;' else ""
-    in_bc <- if (i <= 4) "(area.bc)" else ""
-    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", eps[(i - 1) %% 2 + 1], "--data-urlencode", shQuote(sprintf('data=[out:xml][timeout:120];%s(way["waterway"~"river|stream"]["name"="%s"]%s;relation["waterway"~"river|stream"]["name"="%s"]%s;way["natural"="water"]["name"="%s"]%s;relation["natural"="water"]["name"="%s"]%s;);(._;>;);out body;', a, name, in_bc, name, in_bc, name, in_bc, name, in_bc)), "-o", osm))
-    if (got(osm, "<osm") && length(st_geometry(suppressWarnings(st_read(osm, "lines", quiet = TRUE))))) break
+ask <- function(qs, out, tag, has) {
+  for (q in qs) for (i in 1:3) {
+    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", eps[(i - 1) %% 2 + 1], "--data-urlencode", shQuote(q), "-o", out))
+    if (got(out, tag)) {
+      if (isTRUE(tryCatch(has(out), error = function(e) FALSE))) return(TRUE)
+      break
+    }
     Sys.sleep(20)
   }
-  g <- st_transform(st_geometry(suppressWarnings(st_read(osm, "lines", quiet = TRUE))), 3005)
+  FALSE
+}
+lines <- function(f) st_geometry(suppressWarnings(st_read(f, "lines", quiet = TRUE)))
+sea <- kind %in% c("bay", "harbour", "sound", "inlet", "ocean", "strait", "channel", "passage", "cove")
+bc <- 'area["ISO3166-2"="CA-BC"]->.bc;'
+if (!length(g) && !sea) {
+  osm <- tempfile(fileext = ".osm")
+  q <- function(a, b) sprintf('data=[out:xml][timeout:120];%s(way["waterway"~"river|stream"]["name"="%s"]%s;relation["waterway"~"river|stream"]["name"="%s"]%s;way["natural"="water"]["name"="%s"]%s;relation["natural"="water"]["name"="%s"]%s;);(._;>;);out body;', a, name, b, name, b, name, b, name, b)
+  if (ask(c(q(bc, "(area.bc)"), q("", "")), osm, "<osm", function(f) length(lines(f)) > 0)) g <- st_transform(lines(osm), 3005)
 }
 if (!length(g)) {
-  ctr <- tempfile(fileext = ".json")
-  for (i in 1:6) {
-    a <- if (i <= 4) 'area["ISO3166-2"="CA-BC"]->.bc;' else ""
-    in_bc <- if (i <= 4) "(area.bc)" else ""
-    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", eps[(i - 1) %% 2 + 1], "--data-urlencode", shQuote(sprintf('data=[out:json][timeout:120];%s(node["name"="%s"]%s;way["name"="%s"]%s;relation["name"="%s"]%s;);out center 1;', a, name, in_bc, name, in_bc, name, in_bc)), "-o", ctr))
-    if (got(ctr, "elements") && length(fromJSON(ctr)$elements)) break
-    Sys.sleep(20)
+  if (!is.null(pt)) {
+    ll <- st_coordinates(st_transform(pt, 4326))
+    lat <- ll[1, 2]
+    lon <- ll[1, 1]
+    message(name, ": drawing the shore around the photos")
+  } else {
+    ctr <- tempfile(fileext = ".json")
+    q <- function(a, b) sprintf('data=[out:json][timeout:120];%s(node["name"="%s"]%s;way["name"="%s"]%s;relation["name"="%s"]%s;);out center 1;', a, name, b, name, b, name, b)
+    stopifnot(ask(c(q(bc, "(area.bc)"), q("", "")), ctr, "elements", function(f) length(fromJSON(f)$elements) > 0))
+    e <- fromJSON(ctr)$elements
+    lat <- if (!is.null(e$lat)) e$lat[1] else e$center$lat[1]
+    lon <- if (!is.null(e$lon)) e$lon[1] else e$center$lon[1]
   }
-  e <- fromJSON(ctr)$elements
-  lat <- if (!is.null(e$lat)) e$lat[1] else e$center$lat[1]
-  lon <- if (!is.null(e$lon)) e$lon[1] else e$center$lon[1]
   osm <- tempfile(fileext = ".osm")
-  for (i in 1:6) {
-    dlat <- 4000 / 111320
-    dlon <- 4000 / (111320 * cos(lat * pi / 180))
-    system2("curl", c("-s", "-m", "150", "-A", shQuote("fisharefriends.org maps"), "-X", "POST", eps[(i - 1) %% 2 + 1], "--data-urlencode", shQuote(sprintf('data=[out:xml][timeout:120][bbox:%f,%f,%f,%f];(way["natural"="coastline"];way["waterway"~"river|stream"];);(._;>;);out body;', lat - dlat, lon - dlon, lat + dlat, lon + dlon)), "-o", osm))
-    if (got(osm, "<osm")) break
-    Sys.sleep(20)
-  }
-  g <- st_transform(st_geometry(suppressWarnings(st_read(osm, "lines", quiet = TRUE))), 3005)
+  dlat <- 4000 / 111320
+  dlon <- 4000 / (111320 * cos(lat * pi / 180))
+  q <- sprintf('data=[out:xml][timeout:120][bbox:%f,%f,%f,%f];(way["natural"="coastline"];way["waterway"~"river|stream"];);(._;>;);out body;', lat - dlat, lon - dlon, lat + dlat, lon + dlon)
+  if (ask(q, osm, "<osm", function(f) length(lines(f)) > 0)) g <- st_transform(lines(osm), 3005)
 }
 stopifnot(length(g) > 0)
 g <- st_zm(st_simplify(st_cast(st_cast(g, "MULTILINESTRING"), "LINESTRING"), dTolerance = tol))

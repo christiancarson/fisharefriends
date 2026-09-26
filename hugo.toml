@@ -29,6 +29,7 @@ restoration = 'works'
 
 [params.tags]
 fishies = 'fish'
+work = 'works'
 boat = ''
 'non-fish' = ''
 'not-fly-fishing' = ''
@@ -47,6 +48,8 @@ contact = 178
 things = 320
 
 [params.waters]
+wickaninish = 'Wickaninnish Bay'
+wickaninnish = 'Wickaninnish Bay'
 Toquaht = 'Toquaht Estuary'
 Ucluelet = 'Ucluelet Harbour'
 Squamish = 'Squamish River'

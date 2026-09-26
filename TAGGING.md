@@ -13,14 +13,14 @@ Month folders are named year-month first, `2026-07 July`, so Finder lists them i
 - **water:** any name ending in river, creek, lake, pond, slough, estuary, lagoon, bay, harbour, inlet, sound, strait, channel, passage, cove or ocean. It gets a map and the photo nests under it.
 - **species:** rainbow trout, bull trout, coho, steelhead and about 200 others, or any two-word name ending in trout, salmon, char, rockfish, snapper and so on. Filed under fish with the Latin name.
 
-Case never matters. Periods are dropped (`Sam A.` is `Sam A`). Group words like water, rivers, lakes, estuary or ocean are ignored, so add them or not.
+Case never matters (`Things` is `things`). Periods are dropped (`Sam A.` is `Sam A`). `work` is read as `works`. Group words like water, rivers, lakes, estuary or ocean are optional: every photo shows its whole line anyway, so a photo tagged Boot Lake shows water, lakes, Boot Lake, and one tagged science shows things, works, science.
 
 ## the file name is the card title
 
 - underscores become spaces: `all_hands_on_deck.jpeg` shows as "all hands on deck"
 - a water or species word in the name is stripped: `Josh_Dean_River` tagged Dean River shows as "Josh"
 - a trailing on, at, in, from, of, the, and, with is dropped: `standing_on` shows as "standing"
-- `Screenshot ...`, `IMG_...`, `DSC_...` publish with no title, so rename the file to give it one
+- `Screenshot ...`, `IMG_1234`, `DSC_...`, `PXL_...` publish with no title, so rename the file to give it one
 - emoji work in file names
 - `Name.txt` beside the photo is its caption
 
@@ -87,5 +87,7 @@ an empty `Morice_River.river` file in the folder puts every untagged photo of th
 - a name in the wrong tab: change its `parent` in `data/tags.toml` in the repo, or ask
 - a name that must always land somewhere: `[params.nest]` in `hugo.toml` (`'first fish' = 'fish'`, `music = 'things'`, `works = 'things'`, `restoration = 'works'`)
 - a species without a Latin name: add it to `data/latin.toml`
+- a place name with no water word (`wickaninish`, `Ucluelet`): it gets filed as a person unless it is aliased to its water in `[params.waters]` in `hugo.toml`, so ask, or tag the water's full name (`Wickaninnish Bay`)
+- photos tagged fish are cropped around the fish, not the faces
 - move a photo to `_trash` to take it off the site
 - the sync log is `~/Library/Logs/fisharefriends-sync.log`; map choices and skipped folders are written there

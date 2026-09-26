@@ -5,7 +5,7 @@ dst = pathlib.Path("content/posts")
 months = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"], 1)}
 clean = lambda s: re.sub(r"\s+", " ", s.replace("_", " ").replace(".", "")).strip()
 params = tomllib.loads(pathlib.Path("hugo.toml").read_text())["params"]
-waters = {**params.get("tags", {}), **params.get("waters", {})}
+waters = {k.lower(): v for k, v in {**params.get("tags", {}), **params.get("waters", {})}.items()}
 species = tomllib.loads(pathlib.Path("data/species.toml").read_text())
 kids = {k: (v["title"], v["parent"]) for k, v in tomllib.loads(pathlib.Path("data/tags.toml").read_text()).items()} if pathlib.Path("data/tags.toml").exists() else {}
 parents = params.get("parents", ["friends", "fish", "music", "works", "things"])
@@ -14,6 +14,13 @@ nest = {k.lower(): v for k, v in params.get("nest", {}).items()}
 crop = pathlib.Path.home() / "Library/Caches/fisharefriends/crop"
 if not crop.exists() or crop.stat().st_mtime < pathlib.Path("crop.swift").stat().st_mtime:
     crop.parent.mkdir(parents=True, exist_ok=True); subprocess.run(["swiftc", "-O", "crop.swift", "-o", str(crop)], check=True)
+def lineage(t):
+    out, k = [], slugify(t)
+    for _ in range(5):
+        if k in kids and kids[k][1].lower() != k: out.insert(0, kids[k][1]); k = slugify(kids[k][1])
+        elif k in species: out.insert(0, "fish"); k = "fish"
+        else: break
+    return (["water", group(t)] if water(t) else []) + out + [t]
 def gps(f):
     try:
         g = Image.open(f).getexif().get_ifd(0x8825); lat, lon = g.get(2), g.get(4)
@@ -21,12 +28,16 @@ def gps(f):
         dd = lambda v, r: (float(v[0]) + float(v[1]) / 60 + float(v[2]) / 3600) * (-1 if r in ("S", "W") else 1)
         return dd(lat, g.get(1)), dd(lon, g.get(3))
     except Exception: return None
-def focus(im):
-    small = im.copy(); small.thumbnail((1024, 1024)); tmp = pathlib.Path("/tmp/faf-focus.jpg"); small.save(tmp, quality=85)
-    j = json.loads(subprocess.run([str(crop), str(tmp)], capture_output=True, text=True).stdout or "{}")
+def focus(im, fishy=False):
+    small = im.copy(); small.thumbnail((1024, 1024)); tmp = pathlib.Path("/tmp/faf-focus.jpg"); small.save(tmp, quality=90)
+    j = json.loads(subprocess.run([str(crop), str(tmp)] + (["fish"] if fishy else []), capture_output=True, text=True).stdout or "{}")
     boxes = j.get("faces") or j.get("salient") or []
-    if not boxes: return 0.5, 0.5
-    return (min(b[0] for b in boxes) + max(b[0] + b[2] for b in boxes)) / 2, (min(b[1] for b in boxes) + max(b[1] + b[3] for b in boxes)) / 2
+    home = ((min(b[0] for b in boxes) + max(b[0] + b[2] for b in boxes)) / 2, (min(b[1] for b in boxes) + max(b[1] + b[3] for b in boxes)) / 2) if boxes else (0.5, 0.5)
+    w = j.get("windows") or []
+    top = max((x[2] for x in w), default=0)
+    if top < 0.15: return home
+    best = min((x for x in w if x[2] >= top - 0.05), key=lambda x: (x[0] - home[0]) ** 2 + (x[1] - home[1]) ** 2)
+    return best[0], best[1]
 latin = tomllib.loads(pathlib.Path("data/latin.toml").read_text())
 isfish = lambda t: t.lower() in latin or (" " in t.strip() and re.search(r"(?i)\b(trout|salmon|char|steelhead|whitefish|grayling|varden|bass|pike|sturgeon|perch|surfperch|rockfish|greenling|sole|flounder|sanddab|halibut|cod|pollock|hake|herring|smelt|anchovy|sardine|dogfish|shark|skate|ray|sculpin|tuna|mackerel|bonito|marlin|trevally|pompano|runner|corvina|seabass|snapper|pargo|grouper|cabrilla|triggerfish|barracuda|bonefish|hogfish|needlefish|mullet|porgy|grunt|guitarfish|eel|lance|tomcod|jack) *$", t) is not None)
 water = lambda t: re.search(r"(?i) (river|creek|lake|estuary|harbour|bay|sound|inlet|ocean|slough|lagoon|pond|strait|channel|passage|cove)$", t) is not None
@@ -56,7 +67,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         name = clean(bits[0])
         desc = (folder / (bits[0] + ".txt")).read_text().strip() if (folder / (bits[0] + ".txt")).exists() else ""
         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic"):
-            tag = [cased(x) for x in (waters.get(t, t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])) if x and x.lower() not in ignore] or ["fish"]
+            tag = [cased(x.lower() if x.lower() in parents else x) for x in (waters.get(t.lower(), t) for t in finder_tags(f) or ([clean(t) for t in bits[1].split(",")] if len(bits) > 1 else ["fish"])) if x and x.lower() not in ignore] or ["fish"]
             tags.update(tag)
             pt = gps(f)
             for t in tag:
@@ -77,24 +88,24 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
                         if p in tag: kids.setdefault(slugify(t), (t, p)); break
                     used.add(slugify(t))
             name = re.sub(r"(?i)\s+(from|at|on|in|of|the|and|with)$", "", name)
-            if re.match(r"(?i)screenshot|img_|dsc_|image", name): name = ""
+            if re.match(r"(?i)(screenshot|img|dsc|dscn|pxl|image)[\s-]*\d", name): name = ""
             jpg = out / ((slugify(name) or slugify(bits[0])) + ".jpg")
             if not jpg.exists() or jpg.stat().st_mtime < f.stat().st_mtime:
                 im = ImageOps.exif_transpose(Image.open(f)).convert("RGB")
                 W, H = im.size
                 w, h = (int(H * 16 / 9), H) if W / H > 16 / 9 else (W, int(W * 9 / 16))
-                cx, cy = focus(im)
+                cx, cy = focus(im, any(t.lower() == "fish" or slugify(t) in species or kids.get(slugify(t), ("", ""))[1] == "fish" for t in tag))
                 x, y = min(max(int(cx * W - w / 2), 0), W - w), min(max(int(cy * H - h / 2), 0), H - h)
                 im = im.crop((x, y, x + w, y + h)).resize((1600, 900), Image.LANCZOS)
                 im.save(jpg, quality=85)
-            photos.append((sorted(t for t in tag if water(t)) or home[:1], {"type": "photo", "file": jpg.name, "title": name, "caption": desc, "tags": tag}))
+            photos.append((sorted(t for t in tag if water(t)) or home[:1], {"type": "photo", "file": jpg.name, "title": name, "caption": desc, "tags": list(dict.fromkeys(x for t in tag for x in lineage(t)))}))
         elif f.suffix == ".river":
             tags.update([name] + finder_tags(f))
         elif f.suffix == ".video":
             tags.update(["music"] + finder_tags(f))
             for t in finder_tags(f):
                 if t not in ("fish", "friends", "music"): kids.setdefault(slugify(t), (t, "music")); used.add(slugify(t))
-            videos.append({"type": "video", "id": bits[1], "title": name, "caption": desc, "tags": ["music"] + [t for t in finder_tags(f) if t != "music"]})
+            videos.append({"type": "video", "id": bits[1], "title": name, "caption": desc, "tags": list(dict.fromkeys(x for t in ["music"] + [t for t in finder_tags(f) if t.lower() != "music"] for x in lineage(t)))})
     groups = []
     for t in sorted(t for t in tags if water(t)):
         pts = where.get(t, [])
