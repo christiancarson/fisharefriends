@@ -162,3 +162,4 @@ node -e "const h=require('fs').readFileSync('lock/unlock.html','utf8'); const m=
 grep -q "fetch('/site.bin'" lock/unlock.html
 grep -q '<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>' public/index.html && ! grep -q 'hello!' public/index.html
 grep -q '<title>hello bro</title>' public/hello/index.html
+grep -q '<p class="tags from"><a href="/posts/2020-06-june-2020/">june 2020</a></p></figcaption>' public/posts/2020-06-june-2020/index.html

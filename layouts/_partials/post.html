@@ -4,7 +4,7 @@
 {{ if eq .Section "trips" }}{{ partial "map.html" (.Params.river | default .Params.where) }}{{ partial "trip.html" . }}{{ end }}
 <div class="body">{{ range .Params.groups }}{{ if .water }}<div class="water">
 {{ partial "map.html" .water }}
-{{ end }}{{ range .cards }}{{ partial "cardany.html" (dict "card" . "page" $) }}
+{{ end }}{{ range .cards }}{{ partial "cardany.html" (dict "card" . "page" $ "from" true) }}
 {{ end }}{{ if .water }}</div>
 {{ end }}{{ end }}{{ .Content }}</div>
 <p class="meta"># by {{ site.Params.author }} | {{ .Date.Format "2006-01-02 15:04" }}{{ range .GetTerms "categories" }} | <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ if eq .Section "trips" }} | <a href="{{ .Parent.RelPermalink }}">trips</a>{{ end }}</p>
