@@ -2,6 +2,8 @@
 
 Drop a photo in a month folder, give it Finder tags, and the site sorts it. This is the whole rule set.
 
+Month folders are named year-month first, `2026-07 July`, so Finder lists them in date order. For a new month, make a folder the same way; add `__a title` to the end to name the post (`2026-10 October__Skeena trip`).
+
 ## the shape of a tag set
 
     [tab tag]  [names that belong to that tab]  [water name]  [species]

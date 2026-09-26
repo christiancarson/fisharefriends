@@ -41,11 +41,12 @@ for k in nest: kids[slugify(k)] = (k, nest[k]); used.add(slugify(k))
 toml = lambda rows: "".join(f'["{k}"]\n' + "".join(f"{a} = {json.dumps(b)}\n" for a, b in v.items()) + "\n" for k, v in rows.items())
 for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     parts = folder.name.split("__")
-    m = re.match(r"([A-Za-z]+)[ _](\d{4})", parts[0])
+    m = re.match(r"(\d{4})[-_ ](\d{1,2})(?!\d)", parts[0]) or re.match(r"([A-Za-z]+)[ _](\d{4})", parts[0])
     if not m: continue
-    if m.group(1).lower() not in months: print("skipped", folder.name); continue
-    date = datetime.date(int(m.group(2)), months[m.group(1).lower()], 1)
-    title = clean(parts[1]) if len(parts) > 1 else f"{m.group(1).lower()} {m.group(2)}"
+    y, mo = (int(m.group(1)), int(m.group(2))) if m.group(1).isdigit() else (int(m.group(2)), months.get(m.group(1).lower(), 0))
+    if not 1 <= mo <= 12: print("skipped", folder.name); continue
+    date = datetime.date(y, mo, 1)
+    title = clean(parts[1]) if len(parts) > 1 else f"{date:%B} {y}".lower()
     out = dst / f"{date:%Y-%m}-{slugify(title)}"
     out.mkdir(parents=True, exist_ok=True)
     photos, videos, tags, where = [], [], set(), {}
