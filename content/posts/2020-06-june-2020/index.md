@@ -2,9 +2,11 @@
  "title": "june 2020",
  "date": "2020-06-01T12:00:00-07:00",
  "categories": [
+  "Blackwater Lake",
   "Boot Lake",
   "Coastal Cutthroat Trout",
   "Sam A",
+  "Things",
   "Work",
   "fish",
   "friends",
@@ -15,6 +17,23 @@
   "wickaninish"
  ],
  "groups": [
+  {
+   "water": "Blackwater Lake",
+   "cards": [
+    {
+     "type": "photo",
+     "file": "wwe-for-stickleback.jpg",
+     "title": "WWE for stickleback",
+     "caption": "",
+     "tags": [
+      "Things",
+      "Work",
+      "science",
+      "Blackwater Lake"
+     ]
+    }
+   ]
+  },
   {
    "water": "Boot Lake",
    "cards": [
@@ -71,16 +90,6 @@
      "caption": "",
      "tags": [
       "fish"
-     ]
-    },
-    {
-     "type": "photo",
-     "file": "wwe-for-stickleback.jpg",
-     "title": "WWE for stickleback",
-     "caption": "",
-     "tags": [
-      "Work",
-      "science"
      ]
     }
    ]
