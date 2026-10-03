@@ -1,3 +1,7 @@
+["art"]
+title = "art"
+parent = "things"
+
 ["boats"]
 title = "boats"
 parent = "friends"
@@ -5,6 +9,10 @@ parent = "friends"
 ["christian-a"]
 title = "Christian A"
 parent = "friends"
+
+["coombs"]
+title = "coombs"
+parent = "things"
 
 ["finn-w"]
 title = "Finn W"
@@ -33,6 +41,10 @@ parent = "things"
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
+
+["photos"]
+title = "photos"
+parent = "things"
 
 ["research"]
 title = "research"
