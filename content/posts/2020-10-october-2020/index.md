@@ -2,7 +2,10 @@
  "title": "october 2020",
  "date": "2020-10-01T12:00:00-07:00",
  "categories": [
-  "fish"
+  "art",
+  "clark fork",
+  "photos",
+  "things"
  ],
  "groups": [
   {
@@ -14,7 +17,10 @@
      "title": "increasing internal plastics count",
      "caption": "",
      "tags": [
-      "fish"
+      "things",
+      "clark fork",
+      "art",
+      "photos"
      ]
     }
    ]

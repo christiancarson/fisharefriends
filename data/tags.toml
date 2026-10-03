@@ -10,6 +10,10 @@ parent = "friends"
 title = "Christian A"
 parent = "friends"
 
+["clark-fork"]
+title = "clark fork"
+parent = "things"
+
 ["coombs"]
 title = "coombs"
 parent = "things"
