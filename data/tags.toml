@@ -34,6 +34,10 @@ parent = "things"
 title = "Ollie O"
 parent = "friends"
 
+["research"]
+title = "research"
+parent = "works"
+
 ["restoration"]
 title = "restoration"
 parent = "works"
