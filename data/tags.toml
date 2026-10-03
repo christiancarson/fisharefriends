@@ -1,3 +1,7 @@
+["boats"]
+title = "boats"
+parent = "friends"
+
 ["christian-a"]
 title = "Christian A"
 parent = "friends"
