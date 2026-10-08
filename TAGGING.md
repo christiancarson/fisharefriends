@@ -18,7 +18,7 @@ Case never matters (`Things` is `things`). Periods are dropped (`Sam A.` is `Sam
 ## the file name is the card title
 
 - underscores become spaces: `all_hands_on_deck.jpeg` shows as "all hands on deck"
-- a water or species word in the name is stripped: `Josh_Dean_River` tagged Dean River shows as "Josh"
+- a water or species name at the end of the file name is stripped: `Josh_Dean_River` tagged Dean River shows as "Josh", but `beaver_fever` tagged Beaver River keeps its full name
 - a trailing on, at, in, from, of, the, and, with is dropped: `standing_on` shows as "standing"
 - `Screenshot ...`, `IMG_1234`, `DSC_...`, `PXL_...` publish with no title, so rename the file to give it one
 - emoji work in file names
