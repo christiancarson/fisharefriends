@@ -4,8 +4,8 @@
  "categories": [
   "Beaver River",
   "Clark Fork River",
+  "Truckee River",
   "art",
-  "fish",
   "photos",
   "rivers",
   "things",
@@ -48,15 +48,17 @@
    ]
   },
   {
-   "water": null,
+   "water": "Truckee River",
    "cards": [
     {
      "type": "photo",
-     "file": "img-2334.jpg",
-     "title": "",
+     "file": "cold-no-fish-but-pretty.jpg",
+     "title": "cold no fish but pretty",
      "caption": "",
      "tags": [
-      "fish"
+      "water",
+      "rivers",
+      "Truckee River"
      ]
     }
    ]
