@@ -86,7 +86,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             for t in tag:
                 if t.lower() in nest: kids[slugify(t)] = (t, nest[t.lower()]); used.add(slugify(t))
             for t in tag:
-                if water(t) or slugify(t) in species: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|lake|creek)$", "", t)) + r"(\s+(river|lake|creek))?\b", "", name)) or name
+                if water(t) or slugify(t) in species: name = clean(re.sub(r"(?i)\b" + re.escape(re.sub(r"(?i)\s+(river|creek|lake|pond|slough|estuary|lagoon|bay|harbour|inlet|sound|strait|channel|passage|cove|ocean)$", "", t)) + r"(\s+(river|creek|lake|pond|slough|estuary|lagoon|bay|harbour|inlet|sound|strait|channel|passage|cove|ocean))?\s*$", "", name)) or name
                 elif t not in parents and not water(t):
                     if t.lower() in nest: kids[slugify(t)] = (t, nest[t.lower()])
                     if "fish" in tag and slugify(t) == slugify(clean(bits[0])): kids.setdefault(slugify(t), (t, "fish"))
@@ -116,7 +116,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     for t in sorted(t for t in tags if water(t)):
         pts = where.get(t, [])
         mid = [str(sorted(p[i] for p in pts)[len(pts) // 2]) for i in (0, 1)] if pts else []
-        if not pathlib.Path(f"assets/maps/{slugify(t)}.svg").exists() and subprocess.run(["Rscript", "maps.R", t, t, ""] + mid).returncode: continue
+        if not pathlib.Path(f"assets/maps/{slugify(t)}.svg").exists() and subprocess.run(["Rscript", "maps.R", t, t, ""] + mid).returncode: print("map failed, will retry next sync:", t)
         note = folder / (t.replace(" ", "_") + ".txt")
         if note.exists():
             rivers = tomllib.loads(pathlib.Path("data/rivers.toml").read_text())
@@ -124,7 +124,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             pathlib.Path("data/rivers.toml").write_text(toml(rivers))
         tags.update([group(t), "water"])
         groups.append({"water": t, "cards": [p for w, p in photos if w and w[0] == t]})
-    loose = [p for w, p in photos if not w or not pathlib.Path(f"assets/maps/{slugify(w[0])}.svg").exists()] + videos
+    loose = [p for w, p in photos if not w] + videos
     if loose: groups.append({"water": None, "cards": loose})
     for old in out.glob("*.jpg"):
         if old.name not in {p["file"] for w, p in photos}: old.unlink()

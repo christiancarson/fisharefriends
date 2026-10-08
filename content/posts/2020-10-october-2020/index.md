@@ -17,8 +17,8 @@
    "cards": [
     {
      "type": "photo",
-     "file": "fever.jpg",
-     "title": "fever",
+     "file": "beaver-fever.jpg",
+     "title": "beaver fever",
      "caption": "",
      "tags": [
       "water",

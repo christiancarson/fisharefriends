@@ -48,6 +48,7 @@ if (far) {
       g <- st_geometry(s[s$GNIS_NAME == k, ])
     }
   }
+  if (length(g) && as.numeric(min(st_distance(g, pt))) > 15000) g <- st_sfc(crs = 3005)
 }
 ask <- function(qs, out, tag, has) {
   for (q in qs) for (i in 1:3) {
@@ -69,9 +70,13 @@ if (!length(g) && !sea) {
   if (ask(c(q(bc, "(area.bc)"), q("", "")), osm, "<osm", function(f) length(lines(f)) > 0)) g <- st_transform(lines(osm), 3005)
   if (length(g) > 1) {
     cl <- cutree(hclust(as.dist(matrix(as.numeric(st_distance(g)), length(g))), method = "single"), h = 2000)
-    big <- as.integer(names(which.max(tapply(as.numeric(st_length(g)), cl, sum))))
-    if (any(cl != big)) message(name, ": ", length(unique(cl)), " places share this name, drawing the longest")
+    big <- if (is.null(pt)) as.integer(names(which.max(tapply(as.numeric(st_length(g)), cl, sum)))) else cl[which.min(as.numeric(st_distance(g, pt)))]
+    if (any(cl != big)) message(name, ": ", length(unique(cl)), " places share this name, drawing the ", if (is.null(pt)) "longest" else "one nearest the photos")
     g <- g[cl == big]
+  }
+  if (length(g) && !is.null(pt) && as.numeric(min(st_distance(g, pt))) > 15000) {
+    message(name, ": nothing by that name near the photos, drawing the water around them instead")
+    g <- st_sfc(crs = 3005)
   }
 }
 if (!length(g)) {
