@@ -6,7 +6,6 @@
   "Clark Fork River",
   "Truckee River",
   "art",
-  "photos",
   "rivers",
   "things",
   "water"
@@ -41,8 +40,7 @@
       "rivers",
       "Clark Fork River",
       "things",
-      "art",
-      "photos"
+      "art"
      ]
     }
    ]

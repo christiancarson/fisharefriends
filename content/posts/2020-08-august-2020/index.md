@@ -4,7 +4,6 @@
  "categories": [
   "Coombs Creek",
   "art",
-  "photos",
   "rivers",
   "things",
   "water"
@@ -21,7 +20,6 @@
      "tags": [
       "things",
       "art",
-      "photos",
       "water",
       "rivers",
       "Coombs Creek"
