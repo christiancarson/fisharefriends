@@ -2,15 +2,31 @@
  "title": "october 2020",
  "date": "2020-10-23T12:00:00-07:00",
  "categories": [
+  "Beaver River",
   "Clark Fork River",
   "art",
-  "fish",
   "photos",
   "rivers",
   "things",
   "water"
  ],
  "groups": [
+  {
+   "water": "Beaver River",
+   "cards": [
+    {
+     "type": "photo",
+     "file": "fever.jpg",
+     "title": "fever",
+     "caption": "",
+     "tags": [
+      "water",
+      "rivers",
+      "Beaver River"
+     ]
+    }
+   ]
+  },
   {
    "water": "Clark Fork River",
    "cards": [
@@ -26,20 +42,6 @@
       "things",
       "art",
       "photos"
-     ]
-    }
-   ]
-  },
-  {
-   "water": null,
-   "cards": [
-    {
-     "type": "photo",
-     "file": "beaver-fever.jpg",
-     "title": "beaver fever",
-     "caption": "",
-     "tags": [
-      "fish"
      ]
     }
    ]
