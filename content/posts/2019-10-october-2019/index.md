@@ -1,6 +1,6 @@
 {
  "title": "october 2019",
- "date": "2019-10-14T12:00:00-07:00",
+ "date": "2019-10-31T12:00:00-07:00",
  "categories": [
   "Christian A",
   "Finn W",
@@ -39,20 +39,6 @@
       "Squamish River",
       "Sam A",
       "Finn W"
-     ]
-    }
-   ]
-  },
-  {
-   "water": null,
-   "cards": [
-    {
-     "type": "photo",
-     "file": "not-fly-fishing.jpg",
-     "title": "Not fly fishing",
-     "caption": "",
-     "tags": [
-      "friends"
      ]
     }
    ]
