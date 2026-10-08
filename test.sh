@@ -91,7 +91,7 @@ grep -q 'href="/trips/sample-trip/">sample trip' public/trips/index.html
 grep -q 'id="september-2026">september 2026' public/journal/index.html
 grep -q 'href="/posts/2026-09-september-2026/">september 2026' public/journal/index.html
 grep -q '<dt>what</dt><dd>raft fishing</dd>' public/trips/sample-trip/index.html
-grep -q '<option>M</option>' public/trips/sample-trip/index.html
+grep -q '<option selected>M</option>' public/trips/sample-trip/index.html
 grep -q 'name="gear"' public/trips/sample-trip/index.html
 grep -q 'src="/js/signup\.[0-9a-f]*\.js"' public/index.html
 grep -q '<dt>licence</dt><dd><a href="https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence">bc freshwater fishing licence</a>' public/trips/sample-trip/index.html
