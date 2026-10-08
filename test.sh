@@ -137,7 +137,7 @@ grep -q '<section class="entry"><h2 class="entry-title"><a href="/posts/2026-09-
 grep -q 'src="/img/friend.jpg"' public/hello/index.html && ! grep -q 'plain nav' public/hello/index.html
 ! grep -q '/hello/' public/sitemap.xml
 ! grep -q 'hello friend' public/journal/index.html
-grep -q '<summary>friends <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/christian-a/">Christian A</a>' public/index.html
+grep -q '<summary>friends <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/friends/">all friends</a></li><li data-sub="0" data-l="62"><a href="/categories/[a-z0-9-]*/">' public/index.html && grep -q '<a href="/categories/christian-a/">Christian A</a>' public/index.html
 grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">[0-9]*</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30; --tl: 40%">' public/categories/sam-a/index.html
@@ -163,3 +163,4 @@ grep -q "fetch('/site.bin'" lock/unlock.html
 grep -q '<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>' public/index.html && ! grep -q 'hello!' public/index.html
 grep -q '<title>hello bro</title>' public/hello/index.html
 ! grep -q 'tags from' public/posts/2020-06-june-2020/index.html && grep -q '<h2 class="entry-title"><a href="/posts/2020-06-june-2020/">june 2020</a></h2>' public/categories/boot-lake/index.html
+grep -q '<p class="date">October 17, 2026</p>' public/trips/squamish-river/index.html

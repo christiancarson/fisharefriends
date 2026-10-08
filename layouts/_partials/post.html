@@ -1,5 +1,5 @@
 <article class="post">
-<p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+{{ $when := .Date }}{{ with .Params.trip_date }}{{ $when = time . }}{{ end }}<p class="date">{{ $when.Format "January 2, 2006" }}</p>
 <h2 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
 {{ if eq .Section "trips" }}{{ partial "map.html" (.Params.river | default .Params.where) }}{{ partial "trip.html" . }}{{ end }}
 <div class="body">{{ range .Params.groups }}{{ if .water }}<div class="water">
@@ -7,5 +7,5 @@
 {{ end }}{{ range .cards }}{{ partial "cardany.html" (dict "card" . "page" $) }}
 {{ end }}{{ if .water }}</div>
 {{ end }}{{ end }}{{ .Content }}</div>
-<p class="meta"># by {{ site.Params.author }} | {{ .Date.Format "2006-01-02 15:04" }}{{ range .GetTerms "categories" }} | <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ if eq .Section "trips" }} | <a href="{{ .Parent.RelPermalink }}">trips</a>{{ end }}</p>
+<p class="meta"># by {{ site.Params.author }} | {{ if .Params.trip_date }}{{ (time .Params.trip_date).Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02 15:04" }}{{ end }}{{ range .GetTerms "categories" }} | <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ if eq .Section "trips" }} | <a href="{{ .Parent.RelPermalink }}">trips</a>{{ end }}</p>
 </article>
