@@ -57,8 +57,8 @@
      "caption": "",
      "tags": [
       "things",
-      "friends",
       "boats",
+      "friends",
       "Gabe R",
       "water",
       "oceans",

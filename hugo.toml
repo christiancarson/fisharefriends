@@ -22,6 +22,7 @@ order = ['journal', 'trips', 'water', 'fish', 'friends', 'things', 'contact']
 parents = ['friends', 'fish', 'music', 'works', 'things']
 
 [params.nest]
+boats = 'things'
 'first fish' = 'fish'
 music = 'things'
 works = 'things'
@@ -48,6 +49,8 @@ contact = 178
 things = 320
 
 [params.waters]
+coombs = 'Coombs Creek'
+'clark fork' = 'Clark Fork River'
 wickaninish = 'Wickaninnish Bay'
 wickaninnish = 'Wickaninnish Bay'
 Toquaht = 'Toquaht Estuary'

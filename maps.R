@@ -67,6 +67,12 @@ if (!length(g) && !sea) {
   osm <- tempfile(fileext = ".osm")
   q <- function(a, b) sprintf('data=[out:xml][timeout:120];%s(way["waterway"~"river|stream"]["name"="%s"]%s;relation["waterway"~"river|stream"]["name"="%s"]%s;way["natural"="water"]["name"="%s"]%s;relation["natural"="water"]["name"="%s"]%s;);(._;>;);out body;', a, name, b, name, b, name, b, name, b)
   if (ask(c(q(bc, "(area.bc)"), q("", "")), osm, "<osm", function(f) length(lines(f)) > 0)) g <- st_transform(lines(osm), 3005)
+  if (length(g) > 1) {
+    cl <- cutree(hclust(as.dist(matrix(as.numeric(st_distance(g)), length(g))), method = "single"), h = 2000)
+    big <- as.integer(names(which.max(tapply(as.numeric(st_length(g)), cl, sum))))
+    if (any(cl != big)) message(name, ": ", length(unique(cl)), " places share this name, drawing the longest")
+    g <- g[cl == big]
+  }
 }
 if (!length(g)) {
   if (!is.null(pt)) {

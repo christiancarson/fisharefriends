@@ -2,14 +2,16 @@
  "title": "october 2020",
  "date": "2020-10-01T12:00:00-07:00",
  "categories": [
+  "Clark Fork River",
   "art",
-  "clark fork",
   "photos",
-  "things"
+  "rivers",
+  "things",
+  "water"
  ],
  "groups": [
   {
-   "water": null,
+   "water": "Clark Fork River",
    "cards": [
     {
      "type": "photo",
@@ -17,8 +19,10 @@
      "title": "increasing internal plastics count",
      "caption": "",
      "tags": [
+      "water",
+      "rivers",
+      "Clark Fork River",
       "things",
-      "clark fork",
       "art",
       "photos"
      ]

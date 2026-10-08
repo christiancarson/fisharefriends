@@ -4,19 +4,11 @@ parent = "things"
 
 ["boats"]
 title = "boats"
-parent = "friends"
+parent = "things"
 
 ["christian-a"]
 title = "Christian A"
 parent = "friends"
-
-["clark-fork"]
-title = "clark fork"
-parent = "things"
-
-["coombs"]
-title = "coombs"
-parent = "things"
 
 ["finn-w"]
 title = "Finn W"
