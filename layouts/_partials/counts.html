@@ -1,0 +1,1 @@
+{{ $count := dict }}{{ range where site.RegularPages "Section" "posts" }}{{ range .Params.groups }}{{ range .cards }}{{ range uniq (apply .tags "urlize" ".") }}{{ $count = merge $count (dict . (add (index $count . | default 0) 1)) }}{{ end }}{{ end }}{{ end }}{{ end }}{{ return $count }}

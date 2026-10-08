@@ -9,11 +9,11 @@ grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'body { text-transform: lowercase }' public/css/site.*.css
 grep -q '>walk and wade</a></h2>' public/trips/index.html
 grep -q 'href="/categories/fish/">all fish' public/index.html
-grep -q '<details><summary>rivers</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li data-sub="0" data-l="58"><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
-grep -q '<summary>lakes</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li data-sub="0" data-l="58"><a href="/categories/[a-z-]*/">' public/index.html
+grep -q '<details><summary>rivers\( <span class="mute">[0-9]*</span>\)*</summary><ul class="plain nest"><li><a href="/categories/rivers/">all rivers</a></li><li data-sub="0" data-l="58"><a href="/categories/atnarko-river/">Atnarko River</a>' public/index.html
+grep -q '<summary>lakes\( <span class="mute">[0-9]*</span>\)*</summary><ul class="plain nest"><li><a href="/categories/lakes/">all lakes</a></li><li data-sub="0" data-l="58"><a href="/categories/[a-z-]*/">' public/index.html
 ! grep -q '<summary>places</summary>' public/index.html
-grep -q '<summary>estuaries</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li data-sub="0" data-l="58"><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
-grep -q '<summary>oceans</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li data-sub="0" data-l="58"><a href="/categories/hope-bay/">Hope Bay</a>' public/index.html
+grep -q '<summary>estuaries\( <span class="mute">[0-9]*</span>\)*</summary><ul class="plain nest"><li><a href="/categories/estuaries/">all estuaries</a></li><li data-sub="0" data-l="58"><a href="/categories/toquaht-estuary/">Toquaht Estuary</a>' public/index.html
+grep -q '<summary>oceans\( <span class="mute">[0-9]*</span>\)*</summary><ul class="plain nest"><li><a href="/categories/oceans/">all oceans</a></li><li data-sub="0" data-l="58"><a href="/categories/hope-bay/">Hope Bay</a>' public/index.html
 grep -q '<summary>journal</summary><ul class="plain nest"><li><a href="/journal/">all journal</a></li><li data-sub="0" data-l="62"><a href="/posts/2026-09-september-2026/">september 2026</a></li>' public/index.html
 test $(grep -n 'figure class="card map" data-tags="rivers atnarko-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
 test $(grep -n 'number 1' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1) -lt $(grep -n 'figure class="card map" data-tags="rivers dean-river"' public/posts/2022-08-august-2022/index.html | head -1 | cut -d: -f1)
@@ -114,10 +114,10 @@ grep -q '<li data-tab="3" data-name="fish" style="--hue: 275" class="on"><detail
 grep -q '<li data-sub="2" data-l="46" class="on"><a href="/categories/rainbow-trout/">' public/categories/rainbow-trout/index.html
 ! grep -q 'class="petal lit"' public/index.html
 grep -q 'src="/js/garden\.[0-9a-f]*\.js"' public/index.html
-grep -q '<summary>water</summary><ul class="plain nest"><li><a href="/categories/water/">all water</a></li><li data-sub="0" data-l="62"><details><summary>rivers</summary>' public/index.html
+grep -q '<summary>water\( <span class="mute">[0-9]*</span>\)*</summary><ul class="plain nest"><li><a href="/categories/water/">all water</a></li><li data-sub="0" data-l="62"><details><summary>rivers\( <span class="mute">[0-9]*</span>\)*</summary>' public/index.html
 grep -q 'data-tags="rivers morice-river"' public/categories/water/index.html
 grep -q 'data-tags="lakes boot-lake"' public/categories/water/index.html
-grep -q '<summary>water</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers</summary>' public/categories/dean-river/index.html
+grep -q '<summary>water\( <span class="mute">[0-9]*</span>\)*</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers\( <span class="mute">[0-9]*</span>\)*</summary>' public/categories/dean-river/index.html
 test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 7
 grep -q '<summary>trips</summary><ul class="plain nest"><li><a href="/trips/">all trips</a></li><li data-sub="0" data-l="62"><a href="/trips/' public/index.html && grep -q '<a href="/trips/sample-trip/">sample trip</a> <span class="mute">2099-06-06</span></li>' public/index.html
 grep -q '<summary>contact</summary><ul class="plain nest"><li data-sub="0" data-l="62"><span>critty (at) fisharefriends.org</span></li><li data-sub="1" data-l="54"><a href="/index.xml">rss</a></li>' public/index.html
