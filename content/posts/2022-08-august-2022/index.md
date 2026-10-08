@@ -1,6 +1,6 @@
 {
  "title": "august 2022",
- "date": "2022-08-01T12:00:00-07:00",
+ "date": "2022-08-24T12:00:00-07:00",
  "categories": [
   "Atnarko River",
   "Burnt Bridge Creek",

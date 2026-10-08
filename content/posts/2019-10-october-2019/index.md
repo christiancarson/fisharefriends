@@ -1,6 +1,6 @@
 {
  "title": "october 2019",
- "date": "2019-10-01T12:00:00-07:00",
+ "date": "2019-10-14T12:00:00-07:00",
  "categories": [
   "Christian A",
   "Finn W",

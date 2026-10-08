@@ -1,6 +1,6 @@
 {
  "title": "october 2020",
- "date": "2020-10-01T12:00:00-07:00",
+ "date": "2020-10-20T12:00:00-07:00",
  "categories": [
   "Clark Fork River",
   "art",

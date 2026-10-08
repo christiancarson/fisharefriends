@@ -79,7 +79,7 @@ grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Christian in actio
 grep -q 'data-tags="rivers morice-river"' public/categories/morice-river/index.html
 ! grep -q 'squamish-river' public/journal/index.html
 ! grep -q '<article' public/index.html
-grep -q '<p class="date">September 1, 2026</p>' public/posts/2026-09-september-2026/index.html
+grep -q '<p class="date">September 30, 2026</p>' public/posts/2026-09-september-2026/index.html
 grep -q 'href="/posts/2026-09-september-2026/">september 2026' public/posts/index.html
 grep -q 'class="doodle sep"' public/posts/index.html
 grep -q '<title>september 2026 | fish are friends</title>' public/posts/2026-09-september-2026/index.html

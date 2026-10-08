@@ -1,6 +1,6 @@
 {
  "title": "august 2020",
- "date": "2020-08-01T12:00:00-07:00",
+ "date": "2020-08-16T12:00:00-07:00",
  "categories": [
   "Coombs Creek",
   "art",

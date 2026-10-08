@@ -1,6 +1,6 @@
 {
  "title": "july 2026",
- "date": "2026-07-01T12:00:00-07:00",
+ "date": "2026-07-23T12:00:00-07:00",
  "categories": [
   "Christian A",
   "Draw Creek",

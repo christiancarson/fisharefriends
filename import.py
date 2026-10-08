@@ -21,6 +21,12 @@ def lineage(t):
         elif k in species: out.insert(0, "fish"); k = "fish"
         else: break
     return (["water", group(t)] if water(t) else []) + out + [t]
+def taken(f):
+    try:
+        ex = Image.open(f).getexif()
+        v = ex.get_ifd(0x8769).get(36867) or ex.get(306)
+        return datetime.datetime.strptime(v, "%Y:%m:%d %H:%M:%S").date() if v else None
+    except Exception: return None
 def gps(f):
     try:
         g = Image.open(f).getexif().get_ifd(0x8825); lat, lon = g.get(2), g.get(4)
@@ -129,6 +135,9 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
             elif k in species: tags.add("fish"); k = "fish"
             else: break
     if not groups: continue
-    (out / "index.md").write_text(json.dumps({"title": title, "date": f"{date}T12:00:00-07:00", "categories": sorted(tags), "groups": groups}, ensure_ascii=False, indent=1) + "\n")
+    shots = [d for d in (taken(f) for f in folder.iterdir() if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".heic")) if d and (d.year, d.month) == (date.year, date.month)]
+    end = (date.replace(day=28) + datetime.timedelta(days=4)).replace(day=1) - datetime.timedelta(days=1)
+    when = min(max(shots) if shots else end, datetime.date.today())
+    (out / "index.md").write_text(json.dumps({"title": title, "date": f"{when}T12:00:00-07:00", "categories": sorted(tags), "groups": groups}, ensure_ascii=False, indent=1) + "\n")
     print(out.name, sum(len(g["cards"]) for g in groups) + sum(1 for g in groups if g["water"]))
 pathlib.Path("data/tags.toml").write_text(toml({k: {"title": t, "parent": p} for k, (t, p) in sorted(kids.items()) if k in used}))
