@@ -164,3 +164,4 @@ grep -q '<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</
 grep -q '<title>hello bro</title>' public/hello/index.html
 ! grep -q 'tags from' public/posts/2020-06-june-2020/index.html && grep -q '<h2 class="entry-title"><a href="/posts/2020-06-june-2020/">june 2020</a></h2>' public/categories/boot-lake/index.html
 grep -q '<p class="date">October 17, 2026</p>' public/trips/squamish-river/index.html
+grep -q '<option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option>' public/trips/squamish-river/index.html
