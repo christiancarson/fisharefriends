@@ -1,6 +1,8 @@
 ["morice-river"]
 title = "Morice River"
 about = ""
+lat = 54.3
+lon = -126.9
 
 ["squamish-river"]
 title = "Squamish River"
@@ -23,6 +25,8 @@ lon = -125.5
 ["atnarko-river"]
 title = "Atnarko River"
 about = ""
+lat = 52.3
+lon = -125.9
 
 ["dean-river"]
 title = "Dean River"
@@ -51,10 +55,14 @@ lon = -125.4
 ["mccauley-lake"]
 title = "McCauley Lake"
 about = ""
+lat = 52.6
+lon = -125.8
 
 ["burnt-bridge-creek"]
 title = "Burnt Bridge Creek"
 about = ""
+lat = 52.5
+lon = -126.2
 
 ["draw-creek"]
 title = "Draw Creek"
@@ -95,10 +103,14 @@ lon = -122.6
 ["hope-bay"]
 title = "Hope Bay"
 about = ""
+lat = 48.8
+lon = -123.3
 
 ["blackwater-lake"]
 title = "Blackwater Lake"
 about = ""
+lat = 50.2
+lon = -125.6
 
 ["wickaninnish-bay"]
 title = "Wickaninnish Bay"
@@ -115,6 +127,8 @@ lon = -125.8
 ["clark-fork-river"]
 title = "Clark Fork River"
 about = ""
+lat = 47.2
+lon = -114.3
 
 ["coombs-creek"]
 title = "Coombs Creek"
