@@ -5,13 +5,20 @@ about = ""
 ["squamish-river"]
 title = "Squamish River"
 about = ""
+lat = 50.0
+lon = -123.3
+
 ["kennedy-lake"]
 title = "Kennedy Lake"
 about = ""
+lat = 49.1
+lon = -125.4
 
 ["boot-lake"]
 title = "Boot Lake"
 about = ""
+lat = 50.0
+lon = -125.5
 
 ["atnarko-river"]
 title = "Atnarko River"
@@ -20,18 +27,26 @@ about = ""
 ["dean-river"]
 title = "Dean River"
 about = ""
+lat = 52.7
+lon = -125.5
 
 ["bitteroot-river"]
 title = "Bitteroot River"
 about = ""
+lat = 46.4
+lon = -114.1
 
 ["ucluelet-harbour"]
 title = "Ucluelet Harbour"
 about = ""
+lat = 48.9
+lon = -125.5
 
 ["toquaht-estuary"]
 title = "Toquaht Estuary"
 about = ""
+lat = 49.0
+lon = -125.4
 
 ["mccauley-lake"]
 title = "McCauley Lake"
@@ -44,26 +59,38 @@ about = ""
 ["draw-creek"]
 title = "Draw Creek"
 about = ""
+lat = 49.0
+lon = -125.4
 
 ["kennedy-river"]
 title = "Kennedy River"
 about = ""
+lat = 49.2
+lon = -125.4
 
 ["lost-lake"]
 title = "Lost Lake"
 about = ""
+lat = 49.4
+lon = -123.0
 
 ["onion-lake"]
 title = "Onion Lake"
 about = ""
+lat = 50.4
+lon = -121.6
 
 ["skagit-river"]
 title = "Skagit River"
 about = ""
+lat = 49.1
+lon = -121.2
 
 ["widgeon-slough"]
 title = "Widgeon Slough"
 about = ""
+lat = 49.3
+lon = -122.6
 
 ["hope-bay"]
 title = "Hope Bay"
@@ -76,10 +103,14 @@ about = ""
 ["wickaninnish-bay"]
 title = "Wickaninnish Bay"
 about = ""
+lat = 49.0
+lon = -125.7
 
 ["tranquil-river"]
 title = "Tranquil River"
 about = ""
+lat = 49.1
+lon = -125.8
 
 ["clark-fork-river"]
 title = "Clark Fork River"
@@ -88,12 +119,18 @@ about = ""
 ["coombs-creek"]
 title = "Coombs Creek"
 about = ""
+lat = 49.3
+lon = -124.7
 
 ["beaver-river"]
 title = "Beaver River"
 about = ""
+lat = 45.0
+lon = -112.8
 
 ["truckee-river"]
 title = "Truckee River"
 about = ""
+lat = 39.5
+lon = -119.7
 
