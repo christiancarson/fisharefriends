@@ -1,3 +1,3 @@
 {{ define "main" }}
-<div class="intro">{{ .Content }}</div>
+<div class="flip"><div class="face front intro" tabindex="0" role="button">{{ .Content }}</div><div class="face back">{{ partial "world.html" . }}</div></div>
 {{ end }}

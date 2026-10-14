@@ -2,30 +2,54 @@
  "title": "july 2026",
  "date": "2026-07-23T12:00:00-07:00",
  "categories": [
+  "Cayuse, Umatilla and Walla Walla",
   "Christian A",
+  "Confederated Tribes of the Colville Reservation",
   "Draw Creek",
   "Gabe R",
   "Hope Bay",
+  "Hul’qumi’num Treaty Group",
   "Kennedy Lake",
   "Kennedy River",
   "Lost Lake",
+  "MÁLEXEȽ (Malahat)",
+  "Nłeʔkepmx Tmíxʷ (Nlaka’pamux)",
   "Onion Lake",
+  "Quw’utsun",
   "Rainbow Trout",
   "Sam A",
+  "Semiahmoo",
   "Skagit River",
+  "Skwxwú7mesh-ulh Temíx̱w (Squamish)",
+  "Stz’uminus",
+  "Syilx (Okanagan)",
+  "S’ólh Téméxw (Stó:lō)",
+  "Te’mexw Treaty Association",
+  "Toquaht",
   "Widgeon Slough",
+  "Yuułuʔiłʔatḥ",
   "estuaries",
   "first fish",
   "fish",
   "friends",
   "karina dsj",
+  "kʷikʷəƛ̓əm",
   "lakes",
+  "lands",
+  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
   "oceans",
   "restoration",
   "rivers",
+  "saʔqʷəbixʷ-suyaƛ̕bixʷ (Sauk Suiattle)",
+  "sc̓əwaθenaɁɬ təməxʷ (Tsawwassen)",
+  "sq̓əc̓iy̓aɁɬ təməxʷ (Katzie)",
+  "səl̓ilwətaɁɬ təməxʷ (Tsleil-Waututh)",
   "things",
   "water",
-  "works"
+  "works",
+  "Á,LEṈENEȻ ȽTE (W̱SÁNEĆ)",
+  "šxʷməθkʷəy̓əmaɁɬ təməxʷ (Musqueam)",
+  "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)"
  ],
  "groups": [
   {
@@ -42,7 +66,9 @@
       "Draw Creek",
       "things",
       "works",
-      "restoration"
+      "restoration",
+      "lands",
+      "Toquaht"
      ]
     }
    ]
@@ -60,7 +86,17 @@
       "karina dsj",
       "water",
       "oceans",
-      "Hope Bay"
+      "Hope Bay",
+      "lands",
+      "Á,LEṈENEȻ ȽTE (W̱SÁNEĆ)",
+      "Cayuse, Umatilla and Walla Walla",
+      "Hul’qumi’num Treaty Group",
+      "MÁLEXEȽ (Malahat)",
+      "Quw’utsun",
+      "sc̓əwaθenaɁɬ təməxʷ (Tsawwassen)",
+      "Semiahmoo",
+      "Stz’uminus",
+      "Te’mexw Treaty Association"
      ]
     }
    ]
@@ -78,7 +114,11 @@
       "Gabe R",
       "water",
       "lakes",
-      "Kennedy Lake"
+      "Kennedy Lake",
+      "lands",
+      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+      "Yuułuʔiłʔatḥ"
      ]
     },
     {
@@ -89,7 +129,11 @@
      "tags": [
       "water",
       "lakes",
-      "Kennedy Lake"
+      "Kennedy Lake",
+      "lands",
+      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+      "Yuułuʔiłʔatḥ"
      ]
     }
    ]
@@ -108,7 +152,10 @@
       "Kennedy River",
       "things",
       "works",
-      "restoration"
+      "restoration",
+      "lands",
+      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)"
      ]
     }
    ]
@@ -124,7 +171,13 @@
      "tags": [
       "water",
       "lakes",
-      "Lost Lake"
+      "Lost Lake",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "S’ólh Téméxw (Stó:lō)",
+      "səl̓ilwətaɁɬ təməxʷ (Tsleil-Waututh)",
+      "Skwxwú7mesh-ulh Temíx̱w (Squamish)",
+      "šxʷməθkʷəy̓əmaɁɬ təməxʷ (Musqueam)"
      ]
     },
     {
@@ -135,7 +188,13 @@
      "tags": [
       "water",
       "lakes",
-      "Lost Lake"
+      "Lost Lake",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "S’ólh Téméxw (Stó:lō)",
+      "səl̓ilwətaɁɬ təməxʷ (Tsleil-Waututh)",
+      "Skwxwú7mesh-ulh Temíx̱w (Squamish)",
+      "šxʷməθkʷəy̓əmaɁɬ təməxʷ (Musqueam)"
      ]
     }
    ]
@@ -155,7 +214,9 @@
       "Rainbow Trout",
       "water",
       "lakes",
-      "Onion Lake"
+      "Onion Lake",
+      "lands",
+      "Nłeʔkepmx Tmíxʷ (Nlaka’pamux)"
      ]
     },
     {
@@ -169,7 +230,9 @@
       "Sam A",
       "water",
       "lakes",
-      "Onion Lake"
+      "Onion Lake",
+      "lands",
+      "Nłeʔkepmx Tmíxʷ (Nlaka’pamux)"
      ]
     }
    ]
@@ -190,7 +253,14 @@
       "Skagit River",
       "fish",
       "Rainbow Trout",
-      "first fish"
+      "first fish",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "Confederated Tribes of the Colville Reservation",
+      "Nłeʔkepmx Tmíxʷ (Nlaka’pamux)",
+      "S’ólh Téméxw (Stó:lō)",
+      "saʔqʷəbixʷ-suyaƛ̕bixʷ (Sauk Suiattle)",
+      "Syilx (Okanagan)"
      ]
     }
    ]
@@ -208,7 +278,13 @@
       "Sam A",
       "water",
       "estuaries",
-      "Widgeon Slough"
+      "Widgeon Slough",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "kʷikʷəƛ̓əm",
+      "S’ólh Téméxw (Stó:lō)",
+      "sc̓əwaθenaɁɬ təməxʷ (Tsawwassen)",
+      "sq̓əc̓iy̓aɁɬ təməxʷ (Katzie)"
      ]
     }
    ]

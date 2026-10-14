@@ -71,8 +71,9 @@ an empty `Morice_River.river` file in the folder puts every untagged photo of th
 - the map is drawn once, the first time a water name appears
 - if the photos carry GPS, the water of that name nearest to where you stood is drawn, so two Lost Lakes never get mixed up
 - if the nearest water of that name is more than 15 km away, the lake or stream at your feet is drawn instead, and the log names it (your "lost lake" is Rolf Lake to the province, your "onion lake" has no official name)
-- GPS is used only for that choice; published photos carry no location
+- GPS is used for that choice and to place the water on the front page world map, rounded to a tenth of a degree (about 10 km); published photos carry no location
 - if no map can be drawn, the photo still publishes, just without one
+- the Indigenous territories the water runs through (from native-land.ca) are added as tags to its photos and make up the lands tab
 
 ## the first time a name appears
 

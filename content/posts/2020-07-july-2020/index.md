@@ -6,9 +6,13 @@
   "Kennedy Lake",
   "Ollie O",
   "Ross C",
+  "Yuułuʔiłʔatḥ",
   "friends",
   "lakes",
-  "water"
+  "lands",
+  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+  "water",
+  "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)"
  ],
  "groups": [
   {
@@ -25,12 +29,16 @@
       "lakes",
       "Kennedy Lake",
       "Gabe R",
-      "Ross C"
+      "Ross C",
+      "lands",
+      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+      "Yuułuʔiłʔatḥ"
      ]
     },
     {
      "type": "photo",
-     "file": "we-re-talking-boats.jpg",
+     "file": "were-talking-boats.jpg",
      "title": "we're talking boats",
      "caption": "",
      "tags": [
@@ -39,7 +47,11 @@
       "lakes",
       "Kennedy Lake",
       "Ollie O",
-      "Ross C"
+      "Ross C",
+      "lands",
+      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+      "Yuułuʔiłʔatḥ"
      ]
     }
    ]

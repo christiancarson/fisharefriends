@@ -3,16 +3,21 @@
  "date": "2020-09-22T12:00:00-07:00",
  "categories": [
   "Gabe R",
+  "Toquaht",
   "Tranquil River",
   "Ucluelet Harbour",
+  "Yuułuʔiłʔatḥ",
   "boats",
   "friends",
+  "lands",
+  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
   "oceans",
   "research",
   "rivers",
   "things",
   "water",
-  "works"
+  "works",
+  "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)"
  ],
  "groups": [
   {
@@ -29,7 +34,10 @@
       "Tranquil River",
       "things",
       "works",
-      "research"
+      "research",
+      "lands",
+      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)"
      ]
     }
    ]
@@ -47,7 +55,10 @@
       "Gabe R",
       "water",
       "oceans",
-      "Ucluelet Harbour"
+      "Ucluelet Harbour",
+      "lands",
+      "Toquaht",
+      "Yuułuʔiłʔatḥ"
      ]
     },
     {
@@ -62,7 +73,10 @@
       "Gabe R",
       "water",
       "oceans",
-      "Ucluelet Harbour"
+      "Ucluelet Harbour",
+      "lands",
+      "Toquaht",
+      "Yuułuʔiłʔatḥ"
      ]
     }
    ]

@@ -5,13 +5,20 @@
   "Atnarko River",
   "Burnt Bridge Creek",
   "Christian A",
+  "Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)",
   "Dean River",
+  "Dënéndeh",
+  "Kulhulmcilh (Nuxalk)",
   "McCauley Lake",
   "Rainbow Trout",
   "Sam A",
+  "Tŝilhqot’in Nen",
+  "Unangam Tanangin (Unangax̂ /Aleut)",
   "fish",
   "friends",
+  "híɫzaqv w̓áwís (Heiltsuk)",
   "lakes",
+  "lands",
   "rivers",
   "water"
  ],
@@ -29,7 +36,12 @@
       "water",
       "rivers",
       "Atnarko River",
-      "Sam A"
+      "Sam A",
+      "lands",
+      "Dënéndeh",
+      "Kulhulmcilh (Nuxalk)",
+      "Tŝilhqot’in Nen",
+      "Unangam Tanangin (Unangax̂ /Aleut)"
      ]
     }
    ]
@@ -47,7 +59,12 @@
       "water",
       "rivers",
       "Burnt Bridge Creek",
-      "Christian A"
+      "Christian A",
+      "lands",
+      "Dënéndeh",
+      "Kulhulmcilh (Nuxalk)",
+      "Tŝilhqot’in Nen",
+      "Unangam Tanangin (Unangax̂ /Aleut)"
      ]
     }
    ]
@@ -65,7 +82,14 @@
       "water",
       "rivers",
       "Dean River",
-      "Rainbow Trout"
+      "Rainbow Trout",
+      "lands",
+      "Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)",
+      "Dënéndeh",
+      "híɫzaqv w̓áwís (Heiltsuk)",
+      "Kulhulmcilh (Nuxalk)",
+      "Tŝilhqot’in Nen",
+      "Unangam Tanangin (Unangax̂ /Aleut)"
      ]
     },
     {
@@ -78,7 +102,14 @@
       "water",
       "rivers",
       "Dean River",
-      "Sam A"
+      "Sam A",
+      "lands",
+      "Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)",
+      "Dënéndeh",
+      "híɫzaqv w̓áwís (Heiltsuk)",
+      "Kulhulmcilh (Nuxalk)",
+      "Tŝilhqot’in Nen",
+      "Unangam Tanangin (Unangax̂ /Aleut)"
      ]
     }
    ]
@@ -96,7 +127,11 @@
       "water",
       "lakes",
       "McCauley Lake",
-      "Sam A"
+      "Sam A",
+      "lands",
+      "Dënéndeh",
+      "Tŝilhqot’in Nen",
+      "Unangam Tanangin (Unangax̂ /Aleut)"
      ]
     }
    ]

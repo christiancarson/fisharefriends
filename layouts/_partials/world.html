@@ -1,0 +1,6 @@
+{{ with resources.Get "maps/world.svg" }}{{ $pins := slice }}{{ range $slug, $w := site.Data.waters }}{{ if and $w.lines (site.GetPage (printf "/categories/%s" $slug)) }}{{ $pins = $pins | append $slug }}{{ end }}{{ end }}{{ $n := len $pins }}{{ $lines := dict }}<svg class="world" viewBox="0 0 640 360" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-label="every water i have fished">
+{{ .Content | replaceRE `(?s)^\s*<svg[^>]*>|</svg>\s*$` "" | safeHTML }}<g class="waters">
+{{ range $i, $slug := $pins }}{{ $w := index site.Data.waters $slug }}{{ $lines = merge $lines (dict $slug $w.lines) }}<a class="water" href="{{ (site.GetPage (printf "/categories/%s" $slug)).RelPermalink }}" aria-label="{{ with index site.Data.rivers $slug }}{{ .title | default $slug }}{{ else }}{{ $slug }}{{ end }}" data-slug="{{ $slug }}" data-title="{{ with index site.Data.rivers $slug }}{{ .title | default $slug }}{{ else }}{{ $slug }}{{ end }}" data-lands="{{ with index site.Data.rivers $slug }}{{ delimit (.lands | default slice) ", " }}{{ end }}" style="--hue: {{ math.Round (div (mul 360.0 $i) $n) }}"></a>
+{{ end }}</g></svg>
+<script type="application/json" id="waters">{{ jsonify $lines | safeJS }}</script>
+<p class="tip" hidden><b></b><span></span></p>{{ end }}

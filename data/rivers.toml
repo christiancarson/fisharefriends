@@ -1,124 +1,145 @@
 ["morice-river"]
+lands = ["Dënéndeh","Takla","Wet’suwet’en Yintikh"]
 title = "Morice River"
 about = ""
 lat = 54.3
 lon = -126.9
 
 ["squamish-river"]
+lands = ["Cayuse, Umatilla and Walla Walla","Lil’wat","Skwxwú7mesh-ulh Temíx̱w (Squamish)","St̓át̓imc Tmicw (St’at’imc)"]
 title = "Squamish River"
 about = ""
 lat = 50.0
 lon = -123.3
 
 ["kennedy-lake"]
+lands = ["ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)","nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)","Yuułuʔiłʔatḥ"]
 title = "Kennedy Lake"
 about = ""
 lat = 49.1
 lon = -125.4
 
 ["boot-lake"]
+lands = ["K’ómoks","Kwakwaka’wakw A̱wi’nagwis","Liǧʷiłdax̌ʷ","We Wai Kai","Wei Wai Kum"]
 title = "Boot Lake"
 about = ""
 lat = 50.0
 lon = -125.5
 
 ["atnarko-river"]
+lands = ["Dënéndeh","Kulhulmcilh (Nuxalk)","Tŝilhqot’in Nen","Unangam Tanangin (Unangax̂ /Aleut)"]
 title = "Atnarko River"
 about = ""
 lat = 52.3
 lon = -125.9
 
 ["dean-river"]
+lands = ["Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)","Dënéndeh","híɫzaqv w̓áwís (Heiltsuk)","Kulhulmcilh (Nuxalk)","Tŝilhqot’in Nen","Unangam Tanangin (Unangax̂ /Aleut)"]
 title = "Dean River"
 about = ""
 lat = 52.7
 lon = -125.5
 
 ["bitteroot-river"]
+lands = ["Cayuse, Umatilla and Walla Walla","Ktunaxa ɁamakɁis","Salish"]
 title = "Bitteroot River"
 about = ""
 lat = 46.4
 lon = -114.1
 
 ["ucluelet-harbour"]
+lands = ["Toquaht","Yuułuʔiłʔatḥ"]
 title = "Ucluelet Harbour"
 about = ""
 lat = 48.9
 lon = -125.5
 
 ["toquaht-estuary"]
+lands = ["nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)","Toquaht","Tseshaht"]
 title = "Toquaht Estuary"
 about = ""
 lat = 49.0
 lon = -125.4
 
 ["mccauley-lake"]
+lands = ["Dënéndeh","Tŝilhqot’in Nen","Unangam Tanangin (Unangax̂ /Aleut)"]
 title = "McCauley Lake"
 about = ""
 lat = 52.6
 lon = -125.8
 
 ["burnt-bridge-creek"]
+lands = ["Dënéndeh","Kulhulmcilh (Nuxalk)","Tŝilhqot’in Nen","Unangam Tanangin (Unangax̂ /Aleut)"]
 title = "Burnt Bridge Creek"
 about = ""
 lat = 52.5
 lon = -126.2
 
 ["draw-creek"]
+lands = ["Toquaht"]
 title = "Draw Creek"
 about = ""
 lat = 49.0
 lon = -125.4
 
 ["kennedy-river"]
+lands = ["ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)","nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)"]
 title = "Kennedy River"
 about = ""
 lat = 49.2
 lon = -125.4
 
 ["lost-lake"]
+lands = ["Cayuse, Umatilla and Walla Walla","S’ólh Téméxw (Stó:lō)","səl̓ilwətaɁɬ təməxʷ (Tsleil-Waututh)","Skwxwú7mesh-ulh Temíx̱w (Squamish)","šxʷməθkʷəy̓əmaɁɬ təməxʷ (Musqueam)"]
 title = "Lost Lake"
 about = ""
 lat = 49.4
 lon = -123.0
 
 ["onion-lake"]
+lands = ["Nłeʔkepmx Tmíxʷ (Nlaka’pamux)"]
 title = "Onion Lake"
 about = ""
 lat = 50.4
 lon = -121.6
 
 ["skagit-river"]
+lands = ["Cayuse, Umatilla and Walla Walla","Confederated Tribes of the Colville Reservation","Nłeʔkepmx Tmíxʷ (Nlaka’pamux)","S’ólh Téméxw (Stó:lō)","saʔqʷəbixʷ-suyaƛ̕bixʷ (Sauk Suiattle)","Syilx (Okanagan)"]
 title = "Skagit River"
 about = ""
 lat = 49.1
 lon = -121.2
 
 ["widgeon-slough"]
+lands = ["Cayuse, Umatilla and Walla Walla","kʷikʷəƛ̓əm","S’ólh Téméxw (Stó:lō)","sc̓əwaθenaɁɬ təməxʷ (Tsawwassen)","sq̓əc̓iy̓aɁɬ təməxʷ (Katzie)"]
 title = "Widgeon Slough"
 about = ""
 lat = 49.3
 lon = -122.6
 
 ["hope-bay"]
+lands = ["Á,LEṈENEȻ ȽTE (W̱SÁNEĆ)","Cayuse, Umatilla and Walla Walla","Hul’qumi’num Treaty Group","MÁLEXEȽ (Malahat)","Quw’utsun","sc̓əwaθenaɁɬ təməxʷ (Tsawwassen)","Semiahmoo","Stz’uminus","Te’mexw Treaty Association"]
 title = "Hope Bay"
 about = ""
 lat = 48.8
 lon = -123.3
 
 ["blackwater-lake"]
+lands = ["K’ómoks","Kwakwaka’wakw A̱wi’nagwis","Liǧʷiłdax̌ʷ","We Wai Kai","Wei Wai Kum"]
 title = "Blackwater Lake"
 about = ""
 lat = 50.2
 lon = -125.6
 
 ["wickaninnish-bay"]
+lands = ["ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)","nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)","Yuułuʔiłʔatḥ"]
 title = "Wickaninnish Bay"
 about = ""
 lat = 49.0
 lon = -125.7
 
 ["tranquil-river"]
+lands = ["ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)","nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)"]
 title = "Tranquil River"
 about = ""
 lat = 49.1
@@ -131,18 +152,21 @@ lat = 47.2
 lon = -114.3
 
 ["coombs-creek"]
+lands = ["Hupacasath","K’ómoks","Snaw-naw-as","Te’mexw Treaty Association","Tseshaht"]
 title = "Coombs Creek"
 about = ""
 lat = 49.3
 lon = -124.7
 
 ["beaver-river"]
+lands = ["Cayuse, Umatilla and Walla Walla","Salish","Shoshone-Bannock"]
 title = "Beaver River"
 about = ""
 lat = 45.0
 lon = -112.8
 
 ["truckee-river"]
+lands = ["Cayuse, Umatilla and Walla Walla","Nüümü (Northern Paiute)","Wašišiw Ɂítdeʔ (Washoe)"]
 title = "Truckee River"
 about = ""
 lat = 39.5

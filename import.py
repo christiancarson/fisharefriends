@@ -1,4 +1,4 @@
-import pathlib, re, datetime, subprocess, plistlib, tomllib, json
+import unicodedata, pathlib, re, datetime, subprocess, plistlib, tomllib, json
 from PIL import Image, ImageOps
 src = pathlib.Path.home() / "Desktop" / "fish_are_friends"
 dst = pathlib.Path("content/posts")
@@ -53,7 +53,7 @@ cased = lambda t: t.title() if water(t) and t == t.lower() else t
 def finder_tags(f):
     h = subprocess.run(["xattr", "-px", "com.apple.metadata:_kMDItemUserTags", str(f)], capture_output=True, text=True).stdout
     return [clean(t.split("\n")[0]) for t in plistlib.loads(bytes.fromhex(re.sub(r"\s", "", h)))] if h.strip() else []
-slugify = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+slugify = lambda s: "".join(c if unicodedata.category(c)[0] in "LMN" or c in "-/" else "-" if c.isspace() or c in "_." else "" for c in unicodedata.normalize("NFC", s.lower())).strip("-")
 for k in nest: kids[slugify(k)] = (k, nest[k]); used.add(slugify(k))
 toml = lambda rows: "".join(f'["{k}"]\n' + "".join(f"{a} = {json.dumps(b)}\n" for a, b in v.items()) + "\n" for k, v in rows.items())
 for folder in sorted(p for p in src.iterdir() if p.is_dir()):
@@ -115,15 +115,24 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     groups = []
     for t in sorted(t for t in tags if water(t)):
         pts = where.get(t, [])
-        mid = [str(sorted(p[i] for p in pts)[len(pts) // 2]) for i in (0, 1)] if pts else []
-        if not pathlib.Path(f"assets/maps/{slugify(t)}.svg").exists() and subprocess.run(["Rscript", "maps.R", t, t, ""] + mid).returncode: print("map failed, will retry next sync:", t)
+        known = tomllib.loads(pathlib.Path("data/rivers.toml").read_text()).get(slugify(t), {})
+        mid = [str(sorted(p[i] for p in pts)[len(pts) // 2]) for i in (0, 1)] if pts else [str(known["lat"]), str(known["lon"])] if "lat" in known else []
+        if not all(pathlib.Path(f).exists() for f in (f"assets/maps/{slugify(t)}.svg", f"data/waters/{slugify(t)}.json")) and subprocess.run(["Rscript", "maps.R", t, t, ""] + mid).returncode: print("map failed, will retry next sync:", t)
+        rivers = tomllib.loads(pathlib.Path("data/rivers.toml").read_text())
+        if mid and "lat" not in rivers.get(slugify(t), {}):
+            rivers.setdefault(slugify(t), {"title": t, "about": ""}).update({"lat": round(float(mid[0]), 1), "lon": round(float(mid[1]), 1)})
+            pathlib.Path("data/rivers.toml").write_text(toml(rivers))
         note = folder / (t.replace(" ", "_") + ".txt")
         if note.exists():
             rivers = tomllib.loads(pathlib.Path("data/rivers.toml").read_text())
             rivers.setdefault(slugify(t), {"title": t})["about"] = note.read_text().strip()
             pathlib.Path("data/rivers.toml").write_text(toml(rivers))
         tags.update([group(t), "water"])
-        groups.append({"water": t, "cards": [p for w, p in photos if w and w[0] == t]})
+        if "lands" not in rivers.get(slugify(t), {}) and pathlib.Path(f"data/waters/{slugify(t)}.json").exists() and subprocess.run(["Rscript", "lands.R", slugify(t)]).returncode: print("territories failed, will retry next sync:", t)
+        lands = [unicodedata.normalize("NFC", l) for l in tomllib.loads(pathlib.Path("data/rivers.toml").read_text()).get(slugify(t), {}).get("lands", [])]
+        for l in lands: kids.setdefault(slugify(l), (l, "lands")); used.add(slugify(l))
+        tags.update(lands)
+        groups.append({"water": t, "cards": [dict(p, tags=list(dict.fromkeys(p["tags"] + [x for l in lands for x in lineage(l)]))) for w, p in photos if w and w[0] == t]})
     loose = [p for w, p in photos if not w] + videos
     if loose: groups.append({"water": None, "cards": loose})
     for old in out.glob("*.jpg"):
@@ -141,3 +150,6 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     (out / "index.md").write_text(json.dumps({"title": title, "date": f"{when}T12:00:00-07:00", "categories": sorted(tags), "groups": groups}, ensure_ascii=False, indent=1) + "\n")
     print(out.name, sum(len(g["cards"]) for g in groups) + sum(1 for g in groups if g["water"]))
 pathlib.Path("data/tags.toml").write_text(toml({k: {"title": t, "parent": p} for k, (t, p) in sorted(kids.items()) if k in used}))
+drawn = " ".join(sorted(p.stem for p in pathlib.Path("data/waters").glob("*.json")))
+world = pathlib.Path("assets/maps/world.svg")
+if (not world.exists() or f'data-waters="{drawn}"' not in world.read_text()) and subprocess.run(["Rscript", "world.R"]).returncode: print("world map failed, will retry next sync")

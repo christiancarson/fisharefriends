@@ -3,8 +3,12 @@
  "date": "2021-03-26T12:00:00-07:00",
  "categories": [
   "Bitteroot River",
+  "Cayuse, Umatilla and Walla Walla",
+  "Ktunaxa ɁamakɁis",
+  "Salish",
   "Westslope Cutthroat Trout",
   "fish",
+  "lands",
   "rivers",
   "water"
  ],
@@ -22,7 +26,11 @@
       "rivers",
       "Bitteroot River",
       "fish",
-      "Westslope Cutthroat Trout"
+      "Westslope Cutthroat Trout",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "Ktunaxa ɁamakɁis",
+      "Salish"
      ]
     }
    ]

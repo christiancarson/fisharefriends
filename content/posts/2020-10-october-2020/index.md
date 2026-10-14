@@ -3,9 +3,15 @@
  "date": "2020-10-28T12:00:00-07:00",
  "categories": [
   "Beaver River",
+  "Cayuse, Umatilla and Walla Walla",
   "Clark Fork River",
+  "Nüümü (Northern Paiute)",
+  "Salish",
+  "Shoshone-Bannock",
   "Truckee River",
+  "Wašišiw Ɂítdeʔ (Washoe)",
   "art",
+  "lands",
   "rivers",
   "things",
   "water"
@@ -22,7 +28,11 @@
      "tags": [
       "water",
       "rivers",
-      "Beaver River"
+      "Beaver River",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "Salish",
+      "Shoshone-Bannock"
      ]
     }
    ]
@@ -56,7 +66,11 @@
      "tags": [
       "water",
       "rivers",
-      "Truckee River"
+      "Truckee River",
+      "lands",
+      "Cayuse, Umatilla and Walla Walla",
+      "Nüümü (Northern Paiute)",
+      "Wašišiw Ɂítdeʔ (Washoe)"
      ]
     }
    ]

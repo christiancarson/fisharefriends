@@ -50,8 +50,8 @@ grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/inde
 grep -q '<figure class="card video" data-tags="things music indie"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
-grep -q '<a class="ftitle" href="/categories/rivers/">Morice River</a></figcaption>' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout lands d%C3%ABn%C3%A9ndeh takla wetsuweten-yintikh"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
+grep -q '<a class="ftitle" href="/categories/rivers/">Morice River</a><p class="tags"><a href="/categories/d%C3%ABn%C3%A9ndeh/">Dënéndeh</a>' public/posts/2026-09-september-2026/index.html
 grep -q 'preserveAspectRatio="xMinYMin meet"' public/posts/2026-09-september-2026/index.html
 test -f public/posts/2026-09-september-2026/ruby.jpg
 ! grep -q 'squamish-river/">squamish river</a></h2>' public/index.html
@@ -64,7 +64,7 @@ test $(grep -n 'figure class="card map"' public/posts/2026-09-september-2026/ind
 test $(grep -c 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html) -eq 1
 test $(grep -n 'data-tags="rivers morice-river"' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1) -lt $(grep -n '>Ruby</a>' public/posts/2026-09-september-2026/index.html | head -1 | cut -d: -f1)
 grep -q '<div class="water">' public/posts/2022-08-august-2022/index.html
-grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/water/">water</a><a href="/categories/rivers/">rivers</a><a href="/categories/dean-river/">Dean River</a><a href="/categories/rainbow-trout/">Rainbow Trout</a></p>' public/posts/2022-08-august-2022/index.html
+grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/water/">water</a><a href="/categories/rivers/">rivers</a><a href="/categories/dean-river/">Dean River</a><a href="/categories/rainbow-trout/">Rainbow Trout</a><a href="/categories/lands/">lands</a>' public/posts/2022-08-august-2022/index.html
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
 grep -q 'come upon my lie' public/index.html
@@ -101,7 +101,7 @@ grep -q '<dt>bring</dt><dd>a pair of runners, rain jacket' public/trips/squamish
 grep -q 'I need gear (waders, rod)' public/trips/squamish-river/index.html
 grep -q 'class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/>' public/index.html
 grep -q '<figure class="card map" data-tags="rivers squamish-river"><div class="doodle" aria-hidden="true"><svg' public/trips/squamish-river/index.html
-grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a></figcaption>' public/trips/squamish-river/index.html
+grep -q '<a class="ftitle" href="/categories/rivers/">Squamish River</a><p class="tags"><a href="/categories/cayuse-umatilla-and-walla-walla/">Cayuse, Umatilla and Walla Walla</a>' public/trips/squamish-river/index.html
 grep -q '<summary>fish <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/fish/">all fish</a></li><li data-sub="0" data-l="62"><a href="/categories/coastal-cutthroat-trout/">Coastal Cutthroat Trout</a>' public/index.html && grep -q 'data-l="[0-9]*"><a href="/categories/first-fish/">first fish</a>' public/index.html
 grep -q '<p class="latin">Oncorhynchus mykiss</p>' public/categories/rainbow-trout/index.html
 grep -q 'href="/posts/2026-09-september-2026/">Ruby</a>' public/categories/rainbow-trout/index.html
@@ -109,8 +109,8 @@ grep -q 'href="/posts/2020-06-june-2020/">Ben</a>' public/categories/coastal-cut
 grep -q 'Westslope Cutthroat Trout' public/posts/2021-03-march-2021/index.html
 grep -q 'id="stem"' public/index.html
 test $(grep -o 'class="petal' public/index.html | wc -l) -eq $(grep -o '<li data-tab=' public/index.html | wc -l)
-grep -q 'class="petal lit" data-tab="3"' public/categories/rainbow-trout/index.html
-grep -q '<li data-tab="3" data-name="fish" style="--hue: 275" class="on"><details open>' public/categories/rainbow-trout/index.html
+grep -q 'class="petal lit" data-tab="4"' public/categories/rainbow-trout/index.html
+grep -q '<li data-tab="4" data-name="fish" style="--hue: 275" class="on"><details open>' public/categories/rainbow-trout/index.html
 grep -q '<li data-sub="2" data-l="46" class="on"><a href="/categories/rainbow-trout/">' public/categories/rainbow-trout/index.html
 ! grep -q 'class="petal lit"' public/index.html
 grep -q 'src="/js/garden\.[0-9a-f]*\.js"' public/index.html
@@ -118,7 +118,7 @@ grep -q '<summary>water\( <span class="mute">[0-9]*</span>\)*</summary><ul class
 grep -q 'data-tags="rivers morice-river"' public/categories/water/index.html
 grep -q 'data-tags="lakes boot-lake"' public/categories/water/index.html
 grep -q '<summary>water\( <span class="mute">[0-9]*</span>\)*</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers\( <span class="mute">[0-9]*</span>\)*</summary>' public/categories/dean-river/index.html
-test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 7
+test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 8
 grep -q '<summary>trips</summary><ul class="plain nest"><li><a href="/trips/">all trips</a></li><li data-sub="0" data-l="62"><a href="/trips/' public/index.html && grep -q '<a href="/trips/sample-trip/">sample trip</a> <span class="mute">2099-06-06</span></li>' public/index.html
 grep -q '<summary>contact</summary><ul class="plain nest"><li data-sub="0" data-l="62"><span>critty (at) fisharefriends.org</span></li><li data-sub="1" data-l="54"><a href="/index.xml">rss</a></li>' public/index.html
 grep -q '<li data-tab="1" data-name="trips" style="--hue: 130" class="on"><details open>' public/trips/sample-trip/index.html
@@ -141,7 +141,7 @@ grep -q '<summary>friends <span class="mute">[0-9]*</span></summary><ul class="p
 grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">[0-9]*</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30; --tl: 40%">' public/categories/sam-a/index.html
-test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water fish friends things contact "
+test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water lands fish friends things contact "
 grep -q 'data-kind="wade"' public/trips/sample-trip/index.html || grep -q 'data-kind="raft"' public/trips/sample-trip/index.html
 grep -q 'git add content data assets/maps' sync.sh
 hugo build -d public --quiet --cleanDestinationDir
@@ -162,5 +162,34 @@ hugo build -D --minify -d /tmp/faf-min --quiet && /opt/homebrew/Caskroom/minicon
 grep -q '<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>' public/index.html && ! grep -q 'hello!' public/index.html
 grep -q '<title>hello bro</title>' public/hello/index.html
 ! grep -q 'tags from' public/posts/2020-06-june-2020/index.html && grep -q '<h2 class="entry-title"><a href="/posts/2020-06-june-2020/">june 2020</a></h2>' public/categories/boot-lake/index.html
-grep -q '<p class="date">October 17, 2026</p>' public/trips/squamish-river/index.html
+grep -q '<p class="date">November 21, 2026</p>' public/trips/squamish-river/index.html
 grep -q '<option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option>' public/trips/squamish-river/index.html
+grep -q '<div class="flip"><div class="face front intro" tabindex="0" role="button">' public/index.html
+grep -q '<div class="face back"><svg class="world" viewBox="0 0 640 360"' public/index.html
+grep -q '<g id="land" data-fit="320 [0-9.]* [0-9.e-]*">' public/index.html
+grep -q '<g id="landx">' public/index.html
+grep -q '<g id="detail" transform="scale(.001)" data-waters="[a-z -]*">' public/index.html
+! grep -q 'id="lands"\|class="river"' public/index.html
+test $(grep -o '<a class="water" href="/categories/[a-z-]*/" aria-label="[^"]*" data-slug="[a-z-]*" data-title="[^"]*" data-lands="[^"]*" style="--hue: [0-9]*"></a>' public/index.html | wc -l) -ge 24
+grep -q '<a class="water" href="/categories/morice-river/" aria-label="Morice River" data-slug="morice-river" data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh" style="--hue: [0-9]*"></a>' public/index.html
+grep -q 'style="--hue: 0"></a>' public/index.html
+grep -q '<script type="application/json" id="waters">{"[a-z-]*":\[\[-\{0,1\}[0-9]*,-\{0,1\}[0-9]*,' public/index.html
+grep -q '"morice-river":\[\[' public/index.html
+grep -q 'js/world\.[a-f0-9]*\.js" defer' public/index.html
+! grep -q 'js/world\.' public/posts/2026-09-september-2026/index.html
+! grep -q 'class="flip"' public/journal/index.html
+test $(grep -c '^lat = ' data/rivers.toml) -eq $(grep -c '^\["' data/rivers.toml)
+test $(grep -c '<path d="M' assets/maps/world.svg) -gt 300
+test "$(grep -o 'data-waters="[^"]*"' assets/maps/world.svg | sed 's/data-waters="//; s/"//' | tr ' ' '\n' | sort | tr '\n' ' ')" = "$(ls data/waters | sed 's/.json//' | sort | tr '\n' ' ')"
+grep -q 'trip_date: "2026-11-21"' content/trips/squamish-river/index.md
+grep -qi 'november 21, 2026' public/trips/squamish-river/index.html
+grep -q '<li data-tab="3" data-name="lands" style="--hue: 90"><details><summary>lands <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/lands/">all lands</a></li><li data-sub="0"' public/index.html
+test $(grep -o 'data-name="[^"]*"' public/index.html | wc -l) -eq 8
+grep -q 'data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh"' public/index.html
+grep -q 'aria-label="Morice River"' public/index.html
+grep -q '<a href="/categories/wetsuweten-yintikh/">Wet’suwet’en Yintikh</a>' public/posts/2026-09-september-2026/index.html
+grep -q 'Morice River</a><p class="tags"><a href="/categories/d%C3%ABn%C3%A9ndeh/">Dënéndeh</a>' public/categories/morice-river/index.html
+grep -q '<h2 class="entry-title"><a href="/posts/2026-09-september-2026/">september 2026</a></h2>' public/categories/wetsuweten-yintikh/index.html
+grep -q '<p class="tip" hidden><b></b><span></span></p>' public/index.html
+test -f public/posts/2020-06-june-2020/img-1637.jpg
+test $(grep -c '<path' assets/maps/dean-river.svg) -gt 600

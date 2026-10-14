@@ -6,9 +6,25 @@ parent = "things"
 title = "boats"
 parent = "things"
 
+["cayuse-umatilla-and-walla-walla"]
+title = "Cayuse, Umatilla and Walla Walla"
+parent = "lands"
+
 ["christian-a"]
 title = "Christian A"
 parent = "friends"
+
+["confederated-tribes-of-the-colville-reservation"]
+title = "Confederated Tribes of the Colville Reservation"
+parent = "lands"
+
+["dakeł-keyoh-ᑕᗸᒡ-ᗲᘏᑋ"]
+title = "Dake\u0142 Keyoh (\u1455\u15f8\u14a1 \u15f2\u160f\u144b)"
+parent = "lands"
+
+["dënéndeh"]
+title = "D\u00ebn\u00e9ndeh"
+parent = "lands"
 
 ["finn-w"]
 title = "Finn W"
@@ -22,6 +38,18 @@ parent = "fish"
 title = "Gabe R"
 parent = "friends"
 
+["hulquminum-treaty-group"]
+title = "Hul\u2019qumi\u2019num Treaty Group"
+parent = "lands"
+
+["hupacasath"]
+title = "Hupacasath"
+parent = "lands"
+
+["híɫzaqv-w̓áwís-heiltsuk"]
+title = "hi\u0301\u026bzaqv w\u0313a\u0301wi\u0301s (Heiltsuk)"
+parent = "lands"
+
 ["indie"]
 title = "indie"
 parent = "music"
@@ -30,13 +58,61 @@ parent = "music"
 title = "karina dsj"
 parent = "friends"
 
+["ktunaxa-ɂamakɂis"]
+title = "Ktunaxa \u0241amak\u0241is"
+parent = "lands"
+
+["kulhulmcilh-nuxalk"]
+title = "Kulhulmcilh (Nuxalk)"
+parent = "lands"
+
+["kwakwakawakw-a̱winagwis"]
+title = "Kwakwaka\u2019wakw A\u0331wi\u2019nagwis"
+parent = "lands"
+
+["kómoks"]
+title = "K\u2019\u00f3moks"
+parent = "lands"
+
+["kʷikʷəƛ̓əm"]
+title = "k\u02b7ik\u02b7\u0259\u019b\u0313\u0259m"
+parent = "lands"
+
+["lilwat"]
+title = "Lil\u2019wat"
+parent = "lands"
+
+["liǧʷiłdax̌ʷ"]
+title = "Lig\u030c\u02b7i\u0142dax\u030c\u02b7"
+parent = "lands"
+
 ["music"]
 title = "music"
 parent = "things"
 
+["málexeƚ-malahat"]
+title = "M\u00c1LEXE\u023d (Malahat)"
+parent = "lands"
+
+["nuučaan̓uuɫɂatḥ-nism̓a-nuu-chah-nulth"]
+title = "nuu\u010daan\u0313uu\u026b\u0241at\u1e25 nism\u0313a (Nuu-chah-nulth)"
+parent = "lands"
+
+["nüümü-northern-paiute"]
+title = "N\u00fc\u00fcm\u00fc (Northern Paiute)"
+parent = "lands"
+
+["nłeʔkepmx-tmíxʷ-nlakapamux"]
+title = "N\u0142e\u0294kepmx Tm\u00edx\u02b7 (Nlaka\u2019pamux)"
+parent = "lands"
+
 ["ollie-o"]
 title = "Ollie O"
 parent = "friends"
+
+["quwutsun"]
+title = "Quw\u2019utsun"
+parent = "lands"
 
 ["research"]
 title = "research"
@@ -50,6 +126,10 @@ parent = "works"
 title = "Ross C"
 parent = "friends"
 
+["salish"]
+title = "Salish"
+parent = "lands"
+
 ["sam-a"]
 title = "Sam A"
 parent = "friends"
@@ -58,11 +138,115 @@ parent = "friends"
 title = "sam b"
 parent = "friends"
 
+["saʔqʷəbixʷ-suyaƛ̕bixʷ-sauk-suiattle"]
+title = "sa\u0294q\u02b7\u0259bix\u02b7-suya\u019b\u0315bix\u02b7 (Sauk Suiattle)"
+parent = "lands"
+
 ["science"]
 title = "science"
 parent = "works"
 
+["sc̓əwaθenaɂɬ-təməxʷ-tsawwassen"]
+title = "sc\u0313\u0259wa\u03b8ena\u0241\u026c t\u0259m\u0259x\u02b7 (Tsawwassen)"
+parent = "lands"
+
+["semiahmoo"]
+title = "Semiahmoo"
+parent = "lands"
+
+["shoshone-bannock"]
+title = "Shoshone-Bannock"
+parent = "lands"
+
+["skwxwú7mesh-ulh-temíx̱w-squamish"]
+title = "Skwxw\u00fa7mesh-ulh Tem\u00edx\u0331w (Squamish)"
+parent = "lands"
+
+["snaw-naw-as"]
+title = "Snaw-naw-as"
+parent = "lands"
+
+["sq̓əc̓iy̓aɂɬ-təməxʷ-katzie"]
+title = "sq\u0313\u0259c\u0313iy\u0313a\u0241\u026c t\u0259m\u0259x\u02b7 (Katzie)"
+parent = "lands"
+
+["stzuminus"]
+title = "Stz\u2019uminus"
+parent = "lands"
+
+["st̓át̓imc-tmicw-statimc"]
+title = "St\u0313\u00e1t\u0313imc Tmicw (St\u2019at\u2019imc)"
+parent = "lands"
+
+["syilx-okanagan"]
+title = "Syilx (Okanagan)"
+parent = "lands"
+
+["sólh-téméxw-stólō"]
+title = "S\u2019\u00f3lh T\u00e9m\u00e9xw (St\u00f3:lo\u0304)"
+parent = "lands"
+
+["səl̓ilwətaɂɬ-təməxʷ-tsleil-waututh"]
+title = "s\u0259l\u0313ilw\u0259ta\u0241\u026c t\u0259m\u0259x\u02b7 (Tsleil-Waututh)"
+parent = "lands"
+
+["takla"]
+title = "Takla"
+parent = "lands"
+
+["temexw-treaty-association"]
+title = "Te\u2019mexw Treaty Association"
+parent = "lands"
+
+["toquaht"]
+title = "Toquaht"
+parent = "lands"
+
+["tseshaht"]
+title = "Tseshaht"
+parent = "lands"
+
+["tŝilhqotin-nen"]
+title = "Ts\u0302ilhqot\u2019in Nen"
+parent = "lands"
+
+["unangam-tanangin-unangax̂-/aleut"]
+title = "Unangam Tanangin (Unangax\u0302 /Aleut)"
+parent = "lands"
+
+["wašišiw-ɂítdeʔ-washoe"]
+title = "Wa\u0161i\u0161iw \u0241\u00edtde\u0294 (Washoe)"
+parent = "lands"
+
+["we-wai-kai"]
+title = "We Wai Kai"
+parent = "lands"
+
+["wei-wai-kum"]
+title = "Wei Wai Kum"
+parent = "lands"
+
+["wetsuweten-yintikh"]
+title = "Wet\u2019suwet\u2019en Yintikh"
+parent = "lands"
+
 ["works"]
 title = "works"
 parent = "things"
+
+["yuułuʔiłʔatḥ"]
+title = "Yuu\u0142u\u0294i\u0142\u0294at\u1e25"
+parent = "lands"
+
+["áleṉeneȼ-ƚte-w̱sáneć"]
+title = "\u00c1,LE\u1e48ENE\u023b \u023dTE (W\u0331S\u00c1NE\u0106)"
+parent = "lands"
+
+["šxʷməθkʷəy̓əmaɂɬ-təməxʷ-musqueam"]
+title = "\u0161x\u02b7m\u0259\u03b8k\u02b7\u0259y\u0313\u0259ma\u0241\u026c t\u0259m\u0259x\u02b7 (Musqueam)"
+parent = "lands"
+
+["ƛaʔuukʷiʔatḥ-tla-o-qui-aht"]
+title = "\u019ba\u0294uuk\u02b7i\u0294ath\u0323 (Tla-o-qui-aht)"
+parent = "lands"
 

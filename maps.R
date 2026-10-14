@@ -18,7 +18,8 @@ s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", sprintf("GNIS_NAME='%s'%s", 
 if (nrow(s) && !is.null(pt) && !nzchar(grp)) {
   near <- s$WATERSHED_GROUP_CODE[which.min(st_distance(s, pt))]
   message(name, ": nearest to the photos is in ", near, " (", round(min(st_distance(s, pt)) / 1000, 1), " km)")
-  s <- s[s$WATERSHED_GROUP_CODE == near, ]
+  repeat { more <- unique(s$WATERSHED_GROUP_CODE[lengths(st_intersects(s, s[s$WATERSHED_GROUP_CODE %in% near, ])) > 0]); if (all(more %in% near)) break; near <- union(near, more) }
+  s <- s[s$WATERSHED_GROUP_CODE %in% near, ]
 }
 g <- st_geometry(s)
 if (!nrow(s)) {
@@ -112,6 +113,16 @@ d <- vapply(g, function(p) paste("M", paste(round((p[, 1] - b$xmin) * sx + x0, 1
 svg <- c('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMinYMin meet" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">', sprintf('<path d="%s" stroke-width="5"/>', d), "</svg>")
 slug <- gsub(" ", "-", tolower(alias))
 writeLines(svg, sprintf("assets/maps/%s.svg", slug))
+dir.create("data/waters", showWarnings = FALSE)
+lines <- Filter(Negate(is.null), lapply(st_transform(st_simplify(g, dTolerance = 100), 4326), function(p) { v <- round(p[, 1:2] * 1e4); if (nrow(v) < 2) NULL else c(v[1, ], as.vector(t(diff(v)))) }))
+writeLines(toJSON(list(lines = lines)), sprintf("data/waters/%s.json", slug))
 old <- if (file.exists("data/rivers.toml")) readLines("data/rivers.toml") else character()
 title <- alias
-if (!any(old == sprintf('["%s"]', slug))) writeLines(c(old, sprintf('["%s"]', slug), sprintf('title = "%s"', title), 'about = ""', ""), "data/rivers.toml")
+ll <- st_coordinates(st_transform(st_centroid(st_union(g)), 4326))
+at <- which(old == sprintf('["%s"]', slug))
+where <- c(sprintf("lat = %.1f", ll[2]), sprintf("lon = %.1f", ll[1]))
+blk <- if (length(at)) old[at:length(old)] else character()
+nxt <- grep("^\\[", blk[-1])
+blk <- blk[seq_len(if (length(nxt)) nxt[1] else length(blk))]
+if (!length(at)) old <- c(old, sprintf('["%s"]', slug), sprintf('title = "%s"', title), 'about = ""', where, "") else if (!any(grepl("^lat = ", blk))) old <- append(old, where, at)
+writeLines(old, "data/rivers.toml")

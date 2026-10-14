@@ -3,10 +3,15 @@
  "date": "2021-08-10T12:00:00-07:00",
  "categories": [
   "Sam A",
+  "Toquaht",
   "Toquaht Estuary",
+  "Tseshaht",
   "Ucluelet Harbour",
+  "Yuułuʔiłʔatḥ",
   "estuaries",
   "friends",
+  "lands",
+  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
   "oceans",
   "water"
  ],
@@ -22,7 +27,11 @@
      "tags": [
       "water",
       "estuaries",
-      "Toquaht Estuary"
+      "Toquaht Estuary",
+      "lands",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+      "Toquaht",
+      "Tseshaht"
      ]
     },
     {
@@ -35,7 +44,11 @@
       "water",
       "estuaries",
       "Toquaht Estuary",
-      "Sam A"
+      "Sam A",
+      "lands",
+      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+      "Toquaht",
+      "Tseshaht"
      ]
     }
    ]
@@ -53,7 +66,10 @@
       "water",
       "oceans",
       "Ucluelet Harbour",
-      "Sam A"
+      "Sam A",
+      "lands",
+      "Toquaht",
+      "Yuułuʔiłʔatḥ"
      ]
     }
    ]

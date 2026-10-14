@@ -1,7 +1,7 @@
 {{ define "main" }}
 <h1 class="listtitle">{{ .Title }}</h1>
-{{ with index site.Data.species (.Title | urlize) }}{{ with .latin }}<p class="latin">{{ . }}</p>{{ end }}{{ end }}
-{{ $own := resources.Get (printf "maps/%s.svg" (.Title | urlize)) }}
+{{ with index site.Data.species (partial "key.html" .Title) }}{{ with .latin }}<p class="latin">{{ . }}</p>{{ end }}{{ end }}
+{{ $own := resources.Get (printf "maps/%s.svg" (partial "key.html" .Title)) }}
 {{ with $own }}{{ partial "map.html" $.Title }}{{ end }}
 {{ $key := .Data.Term | urlize }}
 {{ range .Pages.ByDate.Reverse }}{{ $p := . }}{{ $items := slice }}{{ range .Params.groups }}{{ with .water }}{{ if and (not $own) (in (slice (partial "watergroup.html" .) "water" (urlize .)) $key) }}{{ $items = $items | append (partial "map.html" (dict "water" . "link" $p.RelPermalink "page" $p)) }}{{ end }}{{ end }}{{ range .cards }}{{ if in (partial "cardtags.html" .) $key }}{{ $items = $items | append (partial "cardany.html" (dict "card" . "page" $p "link" $p.RelPermalink)) }}{{ end }}{{ end }}{{ end }}{{ with $items }}<section class="entry"><h2 class="entry-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
