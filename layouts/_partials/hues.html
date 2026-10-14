@@ -1,1 +1,0 @@
-{{ $pins := slice }}{{ range $slug, $w := site.Data.waters }}{{ if and $w.lines (site.GetPage (printf "/categories/%s" $slug)) }}{{ $pins = $pins | append $slug }}{{ end }}{{ end }}{{ $n := len $pins }}{{ $h := dict }}{{ range $i, $slug := $pins }}{{ $h = merge $h (dict $slug (math.Round (div (mul 360.0 $i) $n))) }}{{ end }}{{ return $h }}

@@ -52,6 +52,7 @@ body { text-transform: lowercase }
 .flip.flipped .back { transform: rotateY(0); visibility: visible }
 @media (prefers-reduced-motion: reduce) { .flip .face { transition: none } }
 .flip .back { position: relative }
+.flip.still .face { transition: none }
 .world { display: block; width: 100%; aspect-ratio: 16 / 9; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none }
 .world.held { cursor: grabbing }
 .world.over { cursor: pointer }
@@ -62,6 +63,8 @@ body { text-transform: lowercase }
 .tip { position: absolute; margin: 0; pointer-events: none; font: 1.15rem/1.1 "Gochi Hand", cursive; white-space: nowrap; background: var(--paper); border-radius: 6px; padding: 0 .3em; box-shadow: 0 0 0 3px var(--paper) }
 .tip span { display: block; font: .75rem/1.3 "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--mute) }
 .tip span:empty { display: none }
+.card .globe { display: inline-block; margin-top: .3rem; font: 1rem/1.4 "Gochi Hand", cursive; color: var(--mute); text-decoration: none }
+.card .globe:hover { text-decoration: underline }
 .flip .front:focus { outline: none }
 .flip .front:focus-visible { outline: 2px dashed var(--mute); outline-offset: 6px; border-radius: 6px }
 ul.plain { list-style: none; padding: 0; margin: 0 }

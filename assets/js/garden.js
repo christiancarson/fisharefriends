@@ -38,7 +38,7 @@ if (stem) {
     rows(d).forEach((li, j) => {
       if (row(li).offsetParent === null) return
       const g = document.createElementNS(ns, 'g'), u = document.createElementNS(ns, 'use')
-      const own = li.style.getPropertyValue('--hue'), col = own ? `hsl(${own} 60% 48%)` : `hsl(${hue} 60% ${li.dataset.l || 50}%)`
+      const col = `hsl(${hue} 60% ${li.dataset.l || 50}%)`
       g.setAttribute('class', 'leaf' + (li.classList.contains('on') ? ' lit' : '')); g.setAttribute('stroke', col); g.setAttribute('color', col)
       u.setAttribute('href', '#gfish'); g.appendChild(u); leaves.appendChild(g); li.leaf = g
       g.addEventListener('mouseenter', () => { g.classList.add('lit'); li.classList.add('lit') })

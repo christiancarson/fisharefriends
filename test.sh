@@ -165,9 +165,10 @@ grep -q '<title>hello bro</title>' public/hello/index.html
 grep -q '<p class="date">November 21, 2026</p>' public/trips/squamish-river/index.html
 grep -q '<option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option>' public/trips/squamish-river/index.html
 grep -q '<div class="flip"><div class="face front intro" tabindex="0" role="button">' public/index.html
-test $(grep -o '<a class="water" href="/categories/[a-z-]*/" data-slug="[a-z-]*" data-title="[^"]*" data-lands="[^"]*" style="--hue: [0-9]*">[^<]*</a>' public/index.html | wc -l) -ge 24
-grep -q '<a class="water" href="/categories/morice-river/" data-slug="morice-river" data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh" style="--hue: [0-9]*">Morice River</a>' public/index.html
-grep -q 'style="--hue: 0">[^<]*</a>' public/index.html
+test $(grep -o '<a class="water" href="/categories/[a-z-]*/" data-slug="[a-z-]*" data-title="[^"]*" data-lands="[^"]*">[^<]*</a>' public/index.html | wc -l) -ge 24
+grep -q '<a class="water" href="/categories/morice-river/" data-slug="morice-river" data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh">Morice River</a>' public/index.html
+grep -q '<p class="waterlist" style="--hue: 215">' public/index.html
+grep -q '<a class="globe" href="/#morice-river">on the globe</a>' public/categories/morice-river/index.html
 grep -q '<script type="application/json" id="waters">{"[a-z-]*":\[\[-\{0,1\}[0-9]*,-\{0,1\}[0-9]*,' public/index.html
 grep -q '"morice-river":\[\[' public/index.html
 grep -q 'js/world\.[a-f0-9]*\.js" defer' public/index.html
