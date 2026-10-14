@@ -81,7 +81,7 @@ const show = path => {
   document.addEventListener('click', window.lockClick); addEventListener('popstate', window.lockPop)
 }
 window.lockGo = h => { history.pushState(null, '', h); show(h.split('#')[0]) }
-const go = async pw => { site = await open(pw); sessionStorage.setItem('k', pw); show(location.pathname) }
+const go = async pw => { site = await open(pw); window.lockFile = rel => site.files[rel]; sessionStorage.setItem('k', pw); show(location.pathname) }
 if (!window.DecompressionStream) m.textContent = 'this browser is too old for the lock, try another'
 f.addEventListener('submit', async e => { e.preventDefault(); m.textContent = 'one sec'; try { await go(p.value) } catch { m.textContent = 'not it'; p.select() } })
 if (sessionStorage.getItem('k')) go(sessionStorage.getItem('k')).catch(() => sessionStorage.removeItem('k'))

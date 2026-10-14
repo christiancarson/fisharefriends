@@ -45,7 +45,10 @@ body { text-transform: lowercase }
 .intro .bro .heart { font-size: .72em; vertical-align: .08em }
 .intro p:last-child { font: 1.4rem/1 "Gochi Hand", cursive; margin-top: 1.2rem }
 .sphere { position: relative; margin: 0 0 2rem }
-.world { display: block; width: 100%; aspect-ratio: 16 / 9; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none }
+.world { display: block; width: 100%; aspect-ratio: 16 / 9; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; color: hsl(var(--hue, 215) 60% 48%) }
+.inset { display: block; width: 7.5rem; margin: 0 0 .8rem; cursor: pointer }
+.inset .world { aspect-ratio: 1; cursor: pointer }
+.inset:hover .world { animation: rainbow .8s linear infinite }
 .world.held { cursor: grabbing }
 .world.over { cursor: pointer }
 .world.rainbow { animation: flash .4s steps(2, jump-none) infinite }
