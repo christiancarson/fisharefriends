@@ -3,16 +3,13 @@
  "date": "2020-08-16T12:00:00-07:00",
  "categories": [
   "Coombs Creek",
-  "Hupacasath",
-  "K’ómoks",
-  "Snaw-naw-as",
-  "Te’mexw Treaty Association",
-  "Tseshaht",
+  "Hul’q’umi’num’ / Halq’eméylem / hən̓q̓əmin̓əm̓",
   "art",
-  "lands",
+  "native lands",
   "rivers",
   "things",
-  "water"
+  "water",
+  "ʔayʔaǰuθəm / Éy7á7juuthem"
  ],
  "groups": [
   {
@@ -29,12 +26,9 @@
       "water",
       "rivers",
       "Coombs Creek",
-      "lands",
-      "Hupacasath",
-      "K’ómoks",
-      "Snaw-naw-as",
-      "Te’mexw Treaty Association",
-      "Tseshaht"
+      "native lands",
+      "Hul’q’umi’num’ / Halq’eméylem / hən̓q̓əmin̓əm̓",
+      "ʔayʔaǰuθəm / Éy7á7juuthem"
      ]
     }
    ]

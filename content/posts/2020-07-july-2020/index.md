@@ -4,15 +4,13 @@
  "categories": [
   "Gabe R",
   "Kennedy Lake",
+  "Nuučaan̓uɫ",
   "Ollie O",
   "Ross C",
-  "Yuułuʔiłʔatḥ",
   "friends",
   "lakes",
-  "lands",
-  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
-  "water",
-  "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)"
+  "native lands",
+  "water"
  ],
  "groups": [
   {
@@ -30,10 +28,8 @@
       "Kennedy Lake",
       "Gabe R",
       "Ross C",
-      "lands",
-      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
-      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     },
     {
@@ -48,10 +44,8 @@
       "Kennedy Lake",
       "Ollie O",
       "Ross C",
-      "lands",
-      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
-      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]

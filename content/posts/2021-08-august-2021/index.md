@@ -2,14 +2,13 @@
  "title": "august 2021",
  "date": "2021-08-10T12:00:00-07:00",
  "categories": [
+  "Nuučaan̓uɫ",
   "Sam A",
-  "Toquaht",
   "Toquaht Estuary",
   "Ucluelet Harbour",
-  "Yuułuʔiłʔatḥ",
   "estuaries",
   "friends",
-  "lands",
+  "native lands",
   "oceans",
   "water"
  ],
@@ -26,8 +25,8 @@
       "water",
       "estuaries",
       "Toquaht Estuary",
-      "lands",
-      "Toquaht"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     },
     {
@@ -41,8 +40,8 @@
       "estuaries",
       "Toquaht Estuary",
       "Sam A",
-      "lands",
-      "Toquaht"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]
@@ -61,8 +60,8 @@
       "oceans",
       "Ucluelet Harbour",
       "Sam A",
-      "lands",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]

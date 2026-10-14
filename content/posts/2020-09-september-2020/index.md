@@ -3,20 +3,18 @@
  "date": "2020-09-22T12:00:00-07:00",
  "categories": [
   "Gabe R",
+  "Nuučaan̓uɫ",
   "Tranquil River",
   "Ucluelet Harbour",
-  "Yuułuʔiłʔatḥ",
   "boats",
   "friends",
-  "lands",
-  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+  "native lands",
   "oceans",
   "research",
   "rivers",
   "things",
   "water",
-  "works",
-  "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)"
+  "works"
  ],
  "groups": [
   {
@@ -34,9 +32,8 @@
       "things",
       "works",
       "research",
-      "lands",
-      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
-      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]
@@ -55,8 +52,8 @@
       "water",
       "oceans",
       "Ucluelet Harbour",
-      "lands",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     },
     {
@@ -72,8 +69,8 @@
       "water",
       "oceans",
       "Ucluelet Harbour",
-      "lands",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]

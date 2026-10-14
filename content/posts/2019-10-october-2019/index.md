@@ -2,16 +2,15 @@
  "title": "october 2019",
  "date": "2019-10-31T12:00:00-07:00",
  "categories": [
-  "Cayuse, Umatilla and Walla Walla",
   "Christian A",
   "Finn W",
-  "Lil’wat",
   "Sam A",
-  "Skwxwú7mesh-ulh Temíx̱w (Squamish)",
   "Squamish River",
-  "St̓át̓imc Tmicw (St’at’imc)",
+  "St̓át̓imcets",
+  "Sḵwx̱wú7mesh sníchim",
+  "Ucwalmícwts",
   "friends",
-  "lands",
+  "native lands",
   "rivers",
   "water"
  ],
@@ -30,11 +29,10 @@
       "rivers",
       "Squamish River",
       "Christian A",
-      "lands",
-      "Cayuse, Umatilla and Walla Walla",
-      "Lil’wat",
-      "Skwxwú7mesh-ulh Temíx̱w (Squamish)",
-      "St̓át̓imc Tmicw (St’at’imc)"
+      "native lands",
+      "Sḵwx̱wú7mesh sníchim",
+      "St̓át̓imcets",
+      "Ucwalmícwts"
      ]
     },
     {
@@ -49,11 +47,10 @@
       "Squamish River",
       "Sam A",
       "Finn W",
-      "lands",
-      "Cayuse, Umatilla and Walla Walla",
-      "Lil’wat",
-      "Skwxwú7mesh-ulh Temíx̱w (Squamish)",
-      "St̓át̓imc Tmicw (St’at’imc)"
+      "native lands",
+      "Sḵwx̱wú7mesh sníchim",
+      "St̓át̓imcets",
+      "Ucwalmícwts"
      ]
     }
    ]

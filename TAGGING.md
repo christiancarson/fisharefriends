@@ -74,7 +74,7 @@ an empty `Morice_River.river` file in the folder puts every untagged photo of th
 - GPS is used for that choice and to place the water on the front page world map, rounded to a tenth of a degree (about 10 km); published photos carry no location
 - a river tagged as a creek, or a creek tagged as a river, is still found; an estuary is drawn as the last 4 km of its river plus the shore within 1.5 km of where you stood; a bay, harbour, inlet or sound is the shore within 1.5 km of where you stood
 - if no map can be drawn, the photo still publishes, just without one
-- the Indigenous territories the water runs through (from native-land.ca) are added as tags to its photos and make up the lands tab
+- the Indigenous language areas the water runs through (from native-land.ca, broader than single nations) are added as tags to its photos and make up the native lands tab
 
 ## the first time a name appears
 

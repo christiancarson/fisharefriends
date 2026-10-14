@@ -2,15 +2,14 @@
  "title": "september 2026",
  "date": "2026-09-30T12:00:00-07:00",
  "categories": [
-  "Dënéndeh",
   "Morice River",
   "Rainbow Trout",
-  "Takla",
-  "Wet’suwet’en Yintikh",
+  "Unangam Tunuu (Aleut)",
+  "Witsuwit’en",
   "fish",
   "indie",
-  "lands",
   "music",
+  "native lands",
   "rivers",
   "things",
   "water"
@@ -30,10 +29,9 @@
       "rivers",
       "Morice River",
       "Rainbow Trout",
-      "lands",
-      "Dënéndeh",
-      "Takla",
-      "Wet’suwet’en Yintikh"
+      "native lands",
+      "Unangam Tunuu (Aleut)",
+      "Witsuwit’en"
      ]
     }
    ]

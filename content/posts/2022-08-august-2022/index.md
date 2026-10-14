@@ -5,20 +5,18 @@
   "Atnarko River",
   "Burnt Bridge Creek",
   "Christian A",
-  "Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)",
+  "Dakelh (ᑕᗸᒡ)",
   "Dean River",
-  "Dënéndeh",
-  "Kulhulmcilh (Nuxalk)",
   "McCauley Lake",
+  "Nuxalk",
   "Rainbow Trout",
   "Sam A",
-  "Tŝilhqot’in Nen",
-  "Unangam Tanangin (Unangax̂ /Aleut)",
+  "Tŝilhqot’in Ch’ih / Nenqayni Ch’ih",
+  "Unangam Tunuu (Aleut)",
   "fish",
   "friends",
-  "híɫzaqv w̓áwís (Heiltsuk)",
   "lakes",
-  "lands",
+  "native lands",
   "rivers",
   "water"
  ],
@@ -37,11 +35,10 @@
       "rivers",
       "Atnarko River",
       "Sam A",
-      "lands",
-      "Dënéndeh",
-      "Kulhulmcilh (Nuxalk)",
-      "Tŝilhqot’in Nen",
-      "Unangam Tanangin (Unangax̂ /Aleut)"
+      "native lands",
+      "Nuxalk",
+      "Tŝilhqot’in Ch’ih / Nenqayni Ch’ih",
+      "Unangam Tunuu (Aleut)"
      ]
     }
    ]
@@ -60,11 +57,10 @@
       "rivers",
       "Burnt Bridge Creek",
       "Christian A",
-      "lands",
-      "Dënéndeh",
-      "Kulhulmcilh (Nuxalk)",
-      "Tŝilhqot’in Nen",
-      "Unangam Tanangin (Unangax̂ /Aleut)"
+      "native lands",
+      "Nuxalk",
+      "Tŝilhqot’in Ch’ih / Nenqayni Ch’ih",
+      "Unangam Tunuu (Aleut)"
      ]
     }
    ]
@@ -83,13 +79,11 @@
       "rivers",
       "Dean River",
       "Rainbow Trout",
-      "lands",
-      "Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)",
-      "Dënéndeh",
-      "híɫzaqv w̓áwís (Heiltsuk)",
-      "Kulhulmcilh (Nuxalk)",
-      "Tŝilhqot’in Nen",
-      "Unangam Tanangin (Unangax̂ /Aleut)"
+      "native lands",
+      "Dakelh (ᑕᗸᒡ)",
+      "Nuxalk",
+      "Tŝilhqot’in Ch’ih / Nenqayni Ch’ih",
+      "Unangam Tunuu (Aleut)"
      ]
     },
     {
@@ -103,13 +97,11 @@
       "rivers",
       "Dean River",
       "Sam A",
-      "lands",
-      "Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)",
-      "Dënéndeh",
-      "híɫzaqv w̓áwís (Heiltsuk)",
-      "Kulhulmcilh (Nuxalk)",
-      "Tŝilhqot’in Nen",
-      "Unangam Tanangin (Unangax̂ /Aleut)"
+      "native lands",
+      "Dakelh (ᑕᗸᒡ)",
+      "Nuxalk",
+      "Tŝilhqot’in Ch’ih / Nenqayni Ch’ih",
+      "Unangam Tunuu (Aleut)"
      ]
     }
    ]
@@ -128,10 +120,10 @@
       "lakes",
       "McCauley Lake",
       "Sam A",
-      "lands",
-      "Dënéndeh",
-      "Tŝilhqot’in Nen",
-      "Unangam Tanangin (Unangax̂ /Aleut)"
+      "native lands",
+      "Nuxalk",
+      "Tŝilhqot’in Ch’ih / Nenqayni Ch’ih",
+      "Unangam Tunuu (Aleut)"
      ]
     }
    ]

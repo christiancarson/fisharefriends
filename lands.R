@@ -2,9 +2,9 @@ suppressMessages(library(sf))
 library(jsonlite)
 slug <- commandArgs(TRUE)[1]
 crs <- "+proj=eqearth +R=6378137"
-f <- path.expand("~/Library/Caches/fisharefriends/ne/territories.geojson")
+f <- path.expand("~/Library/Caches/fisharefriends/ne/languages.geojson")
 dir.create(dirname(f), recursive = TRUE, showWarnings = FALSE)
-if (!file.exists(f)) download.file("https://native-land.ca/api/polygons/geojson/territories", f, quiet = TRUE)
+if (!file.exists(f)) download.file("https://native-land.ca/api/polygons/geojson/languages", f, quiet = TRUE)
 t <- st_transform(st_make_valid(st_read(f, quiet = TRUE)), crs)
 lines <- fromJSON(sprintf("data/waters/%s.json", slug), simplifyVector = FALSE)$lines
 g <- st_transform(st_sfc(lapply(lines, function(v) st_linestring(apply(matrix(unlist(v), ncol = 2, byrow = TRUE), 2, cumsum) / 1e4)), crs = 4326), crs)

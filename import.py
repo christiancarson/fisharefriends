@@ -130,7 +130,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         tags.update([group(t), "water"])
         if "lands" not in rivers.get(slugify(t), {}) and pathlib.Path(f"data/waters/{slugify(t)}.json").exists() and subprocess.run(["Rscript", "lands.R", slugify(t)]).returncode: print("territories failed, will retry next sync:", t)
         lands = [unicodedata.normalize("NFC", l) for l in tomllib.loads(pathlib.Path("data/rivers.toml").read_text()).get(slugify(t), {}).get("lands", [])]
-        for l in lands: kids.setdefault(slugify(l), (l, "lands")); used.add(slugify(l))
+        for l in lands: kids.setdefault(slugify(l), (l, "native lands")); used.add(slugify(l))
         tags.update(lands)
         groups.append({"water": t, "cards": [dict(p, tags=list(dict.fromkeys(p["tags"] + [x for l in lands for x in lineage(l)]))) for w, p in photos if w and w[0] == t]})
     loose = [p for w, p in photos if not w] + videos

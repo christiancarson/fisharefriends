@@ -6,27 +6,21 @@
   "Boot Lake",
   "Coastal Cutthroat Trout",
   "Gabe R",
-  "Kwakwaka’wakw A̱wi’nagwis",
-  "K’ómoks",
-  "Liǧʷiłdax̌ʷ",
+  "Kwak̓wala",
+  "Nuučaan̓uɫ",
   "Sam A",
   "Ucluelet Harbour",
-  "We Wai Kai",
-  "Wei Wai Kum",
   "Wickaninnish Bay",
-  "Yuułuʔiłʔatḥ",
   "fish",
   "friends",
   "lakes",
-  "lands",
-  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
+  "native lands",
   "oceans",
   "sam b",
   "science",
   "things",
   "water",
-  "works",
-  "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)"
+  "works"
  ],
  "groups": [
   {
@@ -44,12 +38,8 @@
       "water",
       "lakes",
       "Blackwater Lake",
-      "lands",
-      "K’ómoks",
-      "Kwakwaka’wakw A̱wi’nagwis",
-      "Liǧʷiłdax̌ʷ",
-      "We Wai Kai",
-      "Wei Wai Kum"
+      "native lands",
+      "Kwak̓wala"
      ]
     }
    ]
@@ -68,12 +58,8 @@
       "lakes",
       "Boot Lake",
       "Coastal Cutthroat Trout",
-      "lands",
-      "K’ómoks",
-      "Kwakwaka’wakw A̱wi’nagwis",
-      "Liǧʷiłdax̌ʷ",
-      "We Wai Kai",
-      "Wei Wai Kum"
+      "native lands",
+      "Kwak̓wala"
      ]
     },
     {
@@ -85,12 +71,8 @@
       "water",
       "lakes",
       "Boot Lake",
-      "lands",
-      "K’ómoks",
-      "Kwakwaka’wakw A̱wi’nagwis",
-      "Liǧʷiłdax̌ʷ",
-      "We Wai Kai",
-      "Wei Wai Kum"
+      "native lands",
+      "Kwak̓wala"
      ]
     }
    ]
@@ -109,8 +91,8 @@
       "water",
       "oceans",
       "Ucluelet Harbour",
-      "lands",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     },
     {
@@ -124,8 +106,8 @@
       "Ucluelet Harbour",
       "friends",
       "Gabe R",
-      "lands",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]
@@ -145,10 +127,8 @@
       "water",
       "oceans",
       "Wickaninnish Bay",
-      "lands",
-      "ƛaʔuukʷiʔatḥ (Tla-o-qui-aht)",
-      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
-      "Yuułuʔiłʔatḥ"
+      "native lands",
+      "Nuučaan̓uɫ"
      ]
     }
    ]

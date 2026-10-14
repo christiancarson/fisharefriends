@@ -18,7 +18,7 @@ author = 'critty'
 email = 'critty@fisharefriends.org'
 signup = 'https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec'
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
-order = ['upcoming trips', 'journal', 'water', 'lands', 'fish', 'friends', 'things', 'about', 'contact']
+order = ['upcoming trips', 'journal', 'water', 'native lands', 'fish', 'friends', 'things', 'about']
 parents = ['friends', 'fish', 'music', 'works', 'things']
 
 [params.nest]
@@ -42,15 +42,14 @@ boat = ''
 
 [params.hues]
 'upcoming trips' = 130
-about = 8
+about = 178
 fish = 275
 friends = 30
 music = 355
 water = 215
 journal = 48
-contact = 178
 things = 320
-lands = 90
+'native lands' = 90
 
 [params.waters]
 coombs = 'Coombs Creek'
