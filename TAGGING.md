@@ -13,7 +13,7 @@ Month folders are named year-month first, `2026-07 July`, so Finder lists them i
 - **water:** any name ending in river, creek, lake, pond, slough, estuary, lagoon, bay, harbour, inlet, sound, strait, channel, passage, cove or ocean. It gets a map and the photo nests under it.
 - **species:** rainbow trout, bull trout, coho, steelhead and about 200 others, or any two-word name ending in trout, salmon, char, rockfish, snapper and so on. Filed under fish with the Latin name.
 
-Case never matters (`Things` is `things`). Periods are dropped (`Sam A.` is `Sam A`). `work` is read as `works`. Group words like water, rivers, lakes, estuary or ocean are optional: every photo shows its whole line anyway, so a photo tagged Boot Lake shows water, lakes, Boot Lake, and one tagged science shows things, works, science.
+Case never matters (`Things` is `things`). Periods are dropped (`Sam A.` is `Sam A`). `work` is read as `works` and `research` as `science`. Group words like water, rivers, lakes, estuary or ocean are optional: every photo shows its whole line anyway, so a photo tagged Boot Lake shows water, lakes, Boot Lake, and one tagged science shows things, works, science.
 
 ## the file name is the card title
 
@@ -55,7 +55,7 @@ Biking nests directly under things. Art, hiking, boating work the same way.
 
 **a song**
 file `Banquet_by_Bloc_Party__P-i0jw61niE.video` (the YouTube id after the double underscore), tags `indie`
-Genres nest under music, and music under things. `Banquet_by_Bloc_Party.txt` beside it is the caption.
+Genres nest under music, and music under things. `Banquet_by_Bloc_Party.txt` beside it is the caption. The song joins the month's water (the `.river` file if there is one, else the first water of the month), so it has a place on the globe.
 
 **a screenshot or a saved image**
 Rename it, then tag everything, including the water. It has no GPS and no useful name.

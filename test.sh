@@ -45,7 +45,7 @@ grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Morice River</a
 grep -q '<a class="ftitle" href="/posts/2026-09-september-2026/">Banquet by Bloc Party</a>' public/categories/music/index.html
 ! grep -q '<figure class="card"><a' public/categories/music/index.html
 grep -q 'youtube.com/embed/P-i0jw61niE' public/posts/2026-09-september-2026/index.html
-grep -q '<figure class="card video" data-tags="things music indie"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
+grep -q '<figure class="card video" data-tags="things music indie morice-river native-lands unangam-tunuu-aleut witsuwiten"><div class="frame"><iframe src="https://www.youtube.com/embed/P-i0jw61niE"' public/posts/2026-09-september-2026/index.html
 grep -q '<a class="ftitle" href="/categories/music/">Banquet by Bloc Party</a>' public/posts/2026-09-september-2026/index.html
 ! grep -q 'ftitle" href="[^"]*">september 2026' public/posts/2026-09-september-2026/index.html
 grep -q '<figure class="card" data-tags="fish morice-river rainbow-trout native-lands unangam-tunuu-aleut witsuwiten"><a href="/posts/2026-09-september-2026/ruby.jpg"><img src="/posts/2026-09-september-2026/ruby_hu' public/posts/2026-09-september-2026/index.html
@@ -144,10 +144,10 @@ grep -q 'git add content data assets/maps' sync.sh
 hugo build -d public --quiet --cleanDestinationDir
 test ! -e public/trips/sample-trip
 test -e public/trips/index.html
-grep -q 'data-name="things" style="--hue: 320"><details' public/index.html && test -e public/categories/things/index.html && grep -q 'data-tags="things music indie"' public/categories/things/index.html
+grep -q 'data-name="things" style="--hue: 320"><details' public/index.html && test -e public/categories/things/index.html && grep -q 'data-tags="things music indie morice-river native-lands unangam-tunuu-aleut witsuwiten"' public/categories/things/index.html
 grep -q '<summary>things <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/things/">all things</a></li><li data-sub="0" data-l="62"><details><summary>music <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/music/">all music</a></li><li data-sub="0" data-l="58"\( style="--hue: [0-9]*"\)*><a href="/categories/indie/">indie</a>' public/index.html && grep -q '<summary>works <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/works/">all works</a></li><li data-sub="0" data-l="58"\( style="--hue: [0-9]*"\)*><a href="/categories/restoration/">restoration</a>' public/index.html
 ! grep -q '^\["music"\]' data/tags.toml
-grep -q 'data-tags="things music indie"' public/categories/indie/index.html
+grep -q 'data-tags="things music indie morice-river native-lands unangam-tunuu-aleut witsuwiten"' public/categories/indie/index.html
 grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/squamish-river/index.html && grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/index.html
 ! grep -q '\.home \.cols' assets/css/site.css
 grep -q 'grid-template-columns: minmax(0, 1fr) 18.7rem' assets/css/site.css
@@ -186,7 +186,7 @@ grep -q '<div class="intro">' public/about/index.html
 grep -q '<h1 class="listtitle">upcoming trips</h1>' public/trips/index.html
 grep -q '<canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished" style="--hue: 215" data-world="/maps/world\.[a-f0-9]*\.json" data-waters="/maps/waters\.[a-f0-9]*\.json" data-links="/maps/links\.[a-f0-9]*\.json"></canvas>' public/index.html
 test $(ls public/maps/world.*.json public/maps/waters.*.json public/maps/links.*.json | wc -l) -eq 3
-python3 -c "import json, glob; w = json.load(open(glob.glob('public/maps/waters.*.json')[0])); l = json.load(open(glob.glob('public/maps/links.*.json')[0])); assert w['morice-river']['title'] == 'Morice River' and 'Witsuwit’en' in w['morice-river']['lands'] and len(w['morice-river']['lines']) > 10; assert 'morice-river' in l['/categories/rainbow-trout/'] and l['/posts/2026-09-september-2026/'] == ['morice-river'] and len(l['journal']) > 20"
+python3 -c "import json, glob; w = json.load(open(glob.glob('public/maps/waters.*.json')[0])); l = json.load(open(glob.glob('public/maps/links.*.json')[0])); assert w['morice-river']['title'] == 'Morice River' and 'Witsuwit’en' in w['morice-river']['lands'] and len(w['morice-river']['lines']) > 10; assert 'morice-river' in l['waters']['/categories/rainbow-trout/'] and l['waters']['/posts/2026-09-september-2026/'] == ['morice-river'] and len(l['waters']['journal']) > 20 and 'Ruby' in l['names']['/categories/rainbow-trout/'] and l['waters']['/categories/music/'] == ['morice-river']"
 grep -q '<a class="inset" href="/#/categories/rainbow-trout/" title="see on the globe"><canvas class="world" width="160" height="160" role="img" aria-label="where these photos were taken" style="--hue: 215" data-world=' public/categories/rainbow-trout/index.html
 grep -q '<a class="inset" href="/#/posts/2026-09-september-2026/"' public/posts/2026-09-september-2026/index.html
 ! grep -q 'class="inset"' public/index.html
@@ -194,3 +194,5 @@ grep -q 'js/world\.[a-f0-9]*\.js" defer' public/posts/2026-09-september-2026/ind
 grep -q "window.lockFile = rel => site.files\[rel\]" lock/unlock.html
 grep -q '<li data-tab="7" data-name="about" style="--hue: 178"><details><summary>about</summary><ul class="plain nest"><li data-sub="0" data-l="62"><a href="/about/">about me</a></li><li data-sub="1" data-l="54"><span>critty (at) fisharefriends.org</span></li><li data-sub="2" data-l="46"><a href="/index.xml">rss</a></li></ul></details></li>' public/index.html
 ! grep -q 'data-name="contact"' public/index.html
+! grep -rq '"research"' content/posts
+grep -q "research = 'science'" hugo.toml

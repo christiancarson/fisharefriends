@@ -33,12 +33,7 @@
       "Unangam Tunuu (Aleut)",
       "Witsuwit’en"
      ]
-    }
-   ]
-  },
-  {
-   "water": null,
-   "cards": [
+    },
     {
      "type": "video",
      "id": "P-i0jw61niE",
@@ -47,7 +42,13 @@
      "tags": [
       "things",
       "music",
-      "indie"
+      "indie",
+      "water",
+      "rivers",
+      "Morice River",
+      "native lands",
+      "Unangam Tunuu (Aleut)",
+      "Witsuwit’en"
      ]
     }
    ]

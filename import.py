@@ -113,6 +113,7 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
                 if t not in ("fish", "friends", "music"): kids.setdefault(slugify(t), (t, "music")); used.add(slugify(t))
             videos.append({"type": "video", "id": bits[1], "title": name, "caption": desc, "tags": list(dict.fromkeys(x for t in ["music"] + [t for t in finder_tags(f) if t.lower() != "music"] for x in lineage(t)))})
     groups = []
+    place = home[:1] or sorted(t for t in tags if water(t))[:1]
     for t in sorted(t for t in tags if water(t)):
         pts = where.get(t, [])
         known = tomllib.loads(pathlib.Path("data/rivers.toml").read_text()).get(slugify(t), {})
@@ -132,8 +133,9 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
         lands = [unicodedata.normalize("NFC", l) for l in tomllib.loads(pathlib.Path("data/rivers.toml").read_text()).get(slugify(t), {}).get("lands", [])]
         for l in lands: kids.setdefault(slugify(l), (l, "native lands")); used.add(slugify(l))
         tags.update(lands)
-        groups.append({"water": t, "cards": [dict(p, tags=list(dict.fromkeys(p["tags"] + [x for l in lands for x in lineage(l)]))) for w, p in photos if w and w[0] == t]})
-    loose = [p for w, p in photos if not w] + videos
+        own = [p for w, p in photos if w and w[0] == t] + ([dict(v, tags=list(dict.fromkeys(v["tags"] + lineage(t)))) for v in videos] if [t] == place else [])
+        groups.append({"water": t, "cards": [dict(p, tags=list(dict.fromkeys(p["tags"] + [x for l in lands for x in lineage(l)]))) for p in own]})
+    loose = [p for w, p in photos if not w] + ([] if place else videos)
     if loose: groups.append({"water": None, "cards": loose})
     for old in out.glob("*.jpg"):
         if old.name not in {p["file"] for w, p in photos}: old.unlink()

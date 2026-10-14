@@ -10,8 +10,8 @@
   "friends",
   "native lands",
   "oceans",
-  "research",
   "rivers",
+  "science",
   "things",
   "water",
   "works"
@@ -31,7 +31,7 @@
       "Tranquil River",
       "things",
       "works",
-      "research",
+      "science",
       "native lands",
       "Nuučaan̓uɫ"
      ]

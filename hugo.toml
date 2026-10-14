@@ -29,6 +29,7 @@ works = 'things'
 restoration = 'works'
 
 [params.tags]
+research = 'science'
 photos = ''
 photo = ''
 fishies = 'fish'
