@@ -5,13 +5,11 @@
   "Sam A",
   "Toquaht",
   "Toquaht Estuary",
-  "Tseshaht",
   "Ucluelet Harbour",
   "Yuułuʔiłʔatḥ",
   "estuaries",
   "friends",
   "lands",
-  "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
   "oceans",
   "water"
  ],
@@ -29,9 +27,7 @@
       "estuaries",
       "Toquaht Estuary",
       "lands",
-      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
-      "Toquaht",
-      "Tseshaht"
+      "Toquaht"
      ]
     },
     {
@@ -46,9 +42,7 @@
       "Toquaht Estuary",
       "Sam A",
       "lands",
-      "nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)",
-      "Toquaht",
-      "Tseshaht"
+      "Toquaht"
      ]
     }
    ]
@@ -68,7 +62,6 @@
       "Ucluelet Harbour",
       "Sam A",
       "lands",
-      "Toquaht",
       "Yuułuʔiłʔatḥ"
      ]
     }

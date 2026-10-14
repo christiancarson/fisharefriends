@@ -14,7 +14,11 @@ eps <- c("https://overpass-api.de/api/interpreter", "https://overpass.kumi.syste
 got <- function(f, tag) file.exists(f) && file.size(f) > 0 && any(grepl(tag, readLines(f, n = 20, warn = FALSE), fixed = TRUE)) && !any(grepl("runtime error", readLines(f, n = 20, warn = FALSE), fixed = TRUE))
 eps <- c("https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter")
 got <- function(f, tag) file.exists(f) && file.size(f) > 0 && any(grepl(tag, readLines(f, n = 20, warn = FALSE), fixed = TRUE)) && !any(grepl("runtime error", readLines(f, n = 20, warn = FALSE), fixed = TRUE))
-s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", sprintf("GNIS_NAME='%s'%s", name, grp))
+kind <- tolower(sub(".* ", "", name))
+base <- sub(" [^ ]+$", "", name)
+tries <- switch(kind, river = c(name, paste(base, "Creek")), creek = c(name, paste(base, "River")), estuary = c(paste(base, "River"), paste(base, "Creek")), name)
+shore <- function(p, r) { xy <- st_coordinates(p); c <- wfs("WHSE_BASEMAPPING.FWA_COASTLINES_SP", sprintf("BBOX(GEOMETRY,%f,%f,%f,%f)", xy[1] - r, xy[2] - r, xy[1] + r, xy[2] + r)); if (!nrow(c)) return(st_sfc(crs = 3005)); o <- st_intersection(st_geometry(c), st_buffer(p, r)); o[st_dimension(o) == 1] }
+for (nm in tries) { s <- wfs("WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP", sprintf("GNIS_NAME='%s'%s", nm, grp)); if (nrow(s)) { if (nm != name) message(name, ": drawn from ", nm); break } }
 if (nrow(s) && !is.null(pt) && !nzchar(grp)) {
   near <- s$WATERSHED_GROUP_CODE[which.min(st_distance(s, pt))]
   message(name, ": nearest to the photos is in ", near, " (", round(min(st_distance(s, pt)) / 1000, 1), " km)")
@@ -22,13 +26,13 @@ if (nrow(s) && !is.null(pt) && !nzchar(grp)) {
   s <- s[s$WATERSHED_GROUP_CODE %in% near, ]
 }
 g <- st_geometry(s)
+if (kind == "estuary" && length(g) && !is.null(pt)) g <- g[as.numeric(st_distance(g, pt)) < 4000]
 if (!nrow(s)) {
   l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", sprintf("GNIS_NAME_1='%s'%s", name, grp))
   if (nrow(l) && !is.null(pt)) message(name, ": nearest lake to the photos is in ", l$WATERSHED_GROUP_CODE[which.min(st_distance(l, pt))], " (", round(min(st_distance(l, pt)) / 1000, 1), " km)")
   if (nrow(l)) g <- st_cast(st_geometry(l[if (!is.null(pt)) which.min(st_distance(l, pt)) else which.max(l$AREA_HA), ]), "MULTILINESTRING")
   tol <- 15
 }
-kind <- tolower(sub(".* ", "", name))
 far <- !is.null(pt) && kind %in% c("lake", "pond", "river", "creek") && (!length(g) || as.numeric(min(st_distance(g, pt))) > 15000)
 if (far) {
   xy <- st_coordinates(pt)
@@ -85,7 +89,7 @@ if (!length(g)) {
     ll <- st_coordinates(st_transform(pt, 4326))
     lat <- ll[1, 2]
     lon <- ll[1, 1]
-    message(name, ": drawing the shore around the photos")
+    message(name, ": drawing the water around the photos")
   } else {
     ctr <- tempfile(fileext = ".json")
     q <- function(a, b) sprintf('data=[out:json][timeout:120];%s(node["name"="%s"]%s;way["name"="%s"]%s;relation["name"="%s"]%s;);out center 1;', a, name, b, name, b, name, b)
@@ -94,12 +98,17 @@ if (!length(g)) {
     lat <- if (!is.null(e$lat)) e$lat[1] else e$center$lat[1]
     lon <- if (!is.null(e$lon)) e$lon[1] else e$center$lon[1]
   }
-  osm <- tempfile(fileext = ".osm")
-  dlat <- 4000 / 111320
-  dlon <- 4000 / (111320 * cos(lat * pi / 180))
-  q <- sprintf('data=[out:xml][timeout:120][bbox:%f,%f,%f,%f];(way["natural"="coastline"];way["waterway"~"river|stream"];);(._;>;);out body;', lat - dlat, lon - dlon, lat + dlat, lon + dlon)
-  if (ask(q, osm, "<osm", function(f) length(lines(f)) > 0)) g <- st_transform(lines(osm), 3005)
+  if (is.null(pt)) pt <- st_transform(st_sfc(st_point(c(lon, lat)), crs = 4326), 3005)
+  span <- function(r) sprintf("[bbox:%f,%f,%f,%f]", lat - r / 111320, lon - r / (111320 * cos(lat * pi / 180)), lat + r / 111320, lon + r / (111320 * cos(lat * pi / 180)))
+  if (sea || kind == "estuary") {
+    g <- shore(pt, 1500)
+    for (r in c(1500, 4000)) if (!length(g)) { osm <- tempfile(fileext = ".osm"); if (ask(sprintf('data=[out:xml][timeout:120]%s;(way["natural"="coastline"];);(._;>;);out body;', span(r)), osm, "<osm", function(f) length(lines(f)) > 0)) { o <- st_intersection(st_transform(lines(osm), 3005), st_buffer(pt, r)); g <- o[st_dimension(o) == 1] } }
+  } else {
+    osm <- tempfile(fileext = ".osm")
+    if (ask(sprintf('data=[out:xml][timeout:120]%s;(way["waterway"~"river|stream"]["name"];);(._;>;);out body;', span(8000)), osm, "<osm", function(f) length(lines(f)) > 0)) { w <- st_transform(suppressWarnings(st_read(osm, "lines", quiet = TRUE)), 3005); k <- w$name[which.min(st_distance(w, pt))]; message(name, ": drawing the nearest named stream, ", k); g <- st_geometry(w[!is.na(w$name) & w$name == k, ]) }
+  }
 }
+if (kind == "estuary" && !is.null(pt)) g <- c(st_zm(g), st_zm(shore(pt, 1500)))
 stopifnot(length(g) > 0)
 g <- st_zm(st_simplify(st_cast(st_cast(g, "MULTILINESTRING"), "LINESTRING"), dTolerance = tol))
 b <- st_bbox(g)

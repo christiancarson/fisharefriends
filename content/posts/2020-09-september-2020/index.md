@@ -3,7 +3,6 @@
  "date": "2020-09-22T12:00:00-07:00",
  "categories": [
   "Gabe R",
-  "Toquaht",
   "Tranquil River",
   "Ucluelet Harbour",
   "Yuułuʔiłʔatḥ",
@@ -57,7 +56,6 @@
       "oceans",
       "Ucluelet Harbour",
       "lands",
-      "Toquaht",
       "Yuułuʔiłʔatḥ"
      ]
     },
@@ -75,7 +73,6 @@
       "oceans",
       "Ucluelet Harbour",
       "lands",
-      "Toquaht",
       "Yuułuʔiłʔatḥ"
      ]
     }

@@ -10,7 +10,6 @@
   "K’ómoks",
   "Liǧʷiłdax̌ʷ",
   "Sam A",
-  "Toquaht",
   "Ucluelet Harbour",
   "We Wai Kai",
   "Wei Wai Kum",
@@ -111,7 +110,6 @@
       "oceans",
       "Ucluelet Harbour",
       "lands",
-      "Toquaht",
       "Yuułuʔiłʔatḥ"
      ]
     },
@@ -127,7 +125,6 @@
       "friends",
       "Gabe R",
       "lands",
-      "Toquaht",
       "Yuułuʔiłʔatḥ"
      ]
     }

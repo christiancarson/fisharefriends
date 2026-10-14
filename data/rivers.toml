@@ -48,14 +48,14 @@ lat = 46.4
 lon = -114.1
 
 ["ucluelet-harbour"]
-lands = ["Toquaht","Yuułuʔiłʔatḥ"]
+lands = ["Yuułuʔiłʔatḥ"]
 title = "Ucluelet Harbour"
 about = ""
 lat = 48.9
 lon = -125.5
 
 ["toquaht-estuary"]
-lands = ["nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)","Toquaht","Tseshaht"]
+lands = ["Toquaht"]
 title = "Toquaht Estuary"
 about = ""
 lat = 49.0
