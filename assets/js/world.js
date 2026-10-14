@@ -59,19 +59,9 @@ if (cv && geo) {
     if (p && Math.hypot(x2, y2) < 1) aim(p[0], p[1], x2, y2)
     draw()
   }
-  const random = () => {
-    const left = waters.map(w => w.box), groups = []
-    while (left.length) {
-      const g = [left.pop()]
-      for (let i = 0; i < g.length; i++) for (let j = left.length - 1; j >= 0; j--) if (Math.hypot((g[i][0] + g[i][2] - left[j][0] - left[j][2]) / 2 * Math.cos(g[i][1] * D), (g[i][1] + g[i][3] - left[j][1] - left[j][3]) / 2) < 1.5) g.push(left.splice(j, 1)[0])
-      groups.push(g)
-    }
-    if (!groups.length) { z = 1; return draw() }
-    const g = groups[Math.floor(Math.random() * groups.length)]
-    const b = [Math.min(...g.map(b => b[0])), Math.min(...g.map(b => b[1])), Math.max(...g.map(b => b[2])), Math.max(...g.map(b => b[3]))]
-    lon0 = (b[0] + b[2]) / 2; lat0 = (b[1] + b[3]) / 2
-    const km = Math.max(60, (b[2] - b[0]) * 111 * Math.cos(lat0 * D), (b[3] - b[1]) * 111 * 16 / 9) * 1.5
-    z = Math.min(300, Math.max(1, cv.width * 6371 / km / (cv.height * .48)))
+  const home = () => {
+    const c = waters.map(w => [(w.box[0] + w.box[2]) / 2, (w.box[1] + w.box[3]) / 2])
+    lon0 = c.reduce((t, p) => t + p[0], 0) / (c.length || 1); lat0 = c.reduce((t, p) => t + p[1], 0) / (c.length || 1); z = 1
     draw()
   }
   const down = new Map()
@@ -92,7 +82,10 @@ if (cv && geo) {
   const coast = now => { if (!down.size && Math.hypot(...spin) > .01 && now - t < 3000) { turnBy(spin[0] * 16, spin[1] * 16); spin = [spin[0] * .94, spin[1] * .94]; glide = requestAnimationFrame(coast) } }
   const up = e => { down.delete(e.pointerId); last = [...down.values()]; if (!down.size) { cv.classList.remove('held'); removeEventListener('pointermove', move); removeEventListener('pointerup', up); removeEventListener('pointercancel', up); if (e.timeStamp - t < 80) { spin = vel; t = e.timeStamp; glide = requestAnimationFrame(coast) }; setTimeout(() => { dragged = false }) } }
   cv.addEventListener('pointerdown', e => { if (e.button) return; cancelAnimationFrame(glide); spin = [0, 0]; vel = [0, 0]; t = e.timeStamp; if (e.pointerType === 'mouse') down.clear(); if (!down.size) { addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', up) }; down.set(e.pointerId, [e.clientX, e.clientY]); last = [...down.values()]; start = [e.clientX, e.clientY]; dragged = false; cv.classList.add('held') })
-  cv.addEventListener('wheel', e => { e.preventDefault(); zoom(e.clientX, e.clientY, Math.exp(-e.deltaY * (e.deltaMode ? .05 : .0015))) }, { passive: false })
+  cv.addEventListener('wheel', e => { e.preventDefault(); zoom(e.clientX, e.clientY, Math.exp(-e.deltaY * (e.deltaMode ? .05 : e.ctrlKey ? .01 : .003))) }, { passive: false })
+  let pinch = 1
+  cv.addEventListener('gesturestart', e => { e.preventDefault(); pinch = 1 })
+  cv.addEventListener('gesturechange', e => { e.preventDefault(); zoom(e.clientX, e.clientY, e.scale / pinch); pinch = e.scale })
   cv.addEventListener('dblclick', e => { e.preventDefault(); clearTimeout(tap); zoom(e.clientX, e.clientY, 2.5) })
   const hit = (X, Y) => {
     const k = cv.getBoundingClientRect(), x = (X - k.left) * dpr(), y = (Y - k.top) * dpr()
@@ -108,7 +101,7 @@ if (cv && geo) {
   })
   cv.addEventListener('pointerleave', () => { if (hot) { hot = null; cv.classList.remove('over'); tip.hidden = true; draw() } })
   const fit = () => { flip.style.height = (flip.classList.contains('flipped') ? back : front).offsetHeight + 'px' }
-  const turn = on => { flip.classList.toggle('flipped', on); fit(); if (on) { size(); random() } else cancelAnimationFrame(glide) }
+  const turn = on => { flip.classList.toggle('flipped', on); fit(); if (on) { size(); home() } else cancelAnimationFrame(glide) }
   fit()
   addEventListener('resize', () => { fit(); size(); draw() }); addEventListener('load', fit)
   if (document.fonts) document.fonts.ready.then(fit)
