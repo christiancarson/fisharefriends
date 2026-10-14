@@ -76,15 +76,17 @@ if (stem) {
   let whirl = 0, k = 0
   const petals = [...svg.querySelectorAll('.petal')]
   const spinFast = () => { petals.forEach(p => p.classList.remove('lit')); petals[k++ % petals.length].classList.add('lit') }
-  if (go) go.addEventListener('mouseenter', () => { clearInterval(whirl); whirl = setInterval(spinFast, 45) })
-  if (go) go.addEventListener('mouseleave', () => { clearInterval(whirl); petals.forEach(p => p.classList.remove('lit')); side.querySelectorAll('li.on').forEach(li => { const p = svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`); if (p) p.classList.add('lit') }) })
+  if (go) go.addEventListener('mouseenter', () => { clearInterval(whirl); whirl = setInterval(spinFast, 45); document.dispatchEvent(new CustomEvent('gofish', { detail: { spin: true } })) })
+  if (go) go.addEventListener('mouseleave', () => { clearInterval(whirl); petals.forEach(p => p.classList.remove('lit')); side.querySelectorAll('li.on').forEach(li => { const p = svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`); if (p) p.classList.add('lit') }); document.dispatchEvent(new CustomEvent('gofish', { detail: { spin: false } })) })
   if (go) go.addEventListener('click', e => {
     clearInterval(whirl)
     e.preventDefault()
     const pages = go.dataset.pages.split(' ').filter(p => p && p !== location.pathname)
     const target = pages[Math.floor(Math.random() * pages.length)] || go.href
     const steps = petals.length * 2 + Math.floor(Math.random() * petals.length)
-    let i = 0, delay = 55
+    let i = 0, delay = 55, ms = 400, d = 55
+    for (let k = 0; k < steps; k++) { ms += d; d *= 1.09 }
+    document.dispatchEvent(new CustomEvent('gofish', { detail: { go: target, ms } }))
     const tick = () => {
       petals.forEach(p => p.classList.remove('lit')); petals[i % petals.length].classList.add('lit')
       if (++i < steps) { delay *= 1.09; setTimeout(tick, delay) } else setTimeout(() => (window.lockGo || (u => location.href = u))(target), 400)

@@ -1,5 +1,5 @@
 {
-const flip = document.querySelector('.flip'), cv = flip && flip.querySelector('canvas.world'), geo = document.getElementById('world')
+const wrap = document.querySelector('.sphere'), cv = wrap && wrap.querySelector('canvas.world'), geo = document.getElementById('world')
 if (cv && geo) {
   const map = JSON.parse(geo.textContent), ctx = cv.getContext('2d'), D = Math.PI / 180
   const globe = lines => {
@@ -9,17 +9,18 @@ if (cv && geo) {
     return { xyz, starts, ll, n }
   }
   const land = ['world', 'landx', 'region', 'local'].map(k => globe(map[k]))
-  const data = JSON.parse(document.getElementById('waters').textContent)
-  const waters = [...flip.querySelectorAll('a.water')].map(a => {
+  const data = JSON.parse(document.getElementById('waters').textContent), links = JSON.parse(document.getElementById('links').textContent)
+  const waters = [...wrap.querySelectorAll('a.water')].map(a => {
     const g = globe(data[a.dataset.slug] || []), box = [Infinity, Infinity, -Infinity, -Infinity]
     for (let i = 0; i < g.n; i++) { box[0] = Math.min(box[0], g.ll[i * 2]); box[1] = Math.min(box[1], g.ll[i * 2 + 1]); box[2] = Math.max(box[2], g.ll[i * 2]); box[3] = Math.max(box[3], g.ll[i * 2 + 1]) }
     return { a, g, box, path: null }
   })
-  const front = flip.querySelector('.front'), back = flip.querySelector('.back'), tip = flip.querySelector('.tip'), ink = getComputedStyle(document.body).color, blue = waters.length ? getComputedStyle(waters[0].a).color : ink
+  const tip = wrap.querySelector('.tip'), ink = getComputedStyle(document.body).color, blue = waters.length ? getComputedStyle(waters[0].a).color : ink
   const side = document.querySelector('.side'), garden = side && side.querySelector('.garden')
   const thread = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   thread.setAttribute('class', 'thread'); document.body.appendChild(thread)
-  let lon0 = -125, lat0 = 50, z = 1, hot = [], tint = blue, tie = null, cast = 0, dragged = false, touch = false, tap = 0, due = false, spin = [0, 0], glide = 0, fly = 0, peek = false, soon = 0, away = 0
+  const mid = waters.map(w => [(w.box[0] + w.box[2]) / 2, (w.box[1] + w.box[3]) / 2]), ml = mid.reduce((t, p) => t + p[0], 0) / (mid.length || 1), mb = mid.reduce((t, p) => t + p[1], 0) / (mid.length || 1)
+  let lon0 = ml, lat0 = mb, z = 1, hot = [], tint = blue, tie = null, cast = 0, dragged = false, touch = false, due = false, spin = [0, 0], glide = 0, fly = 0, soon = 0, away = 0, hue = -1, twirl = 0
   const dpr = () => devicePixelRatio || 1
   const size = () => { const w = cv.clientWidth; cv.width = Math.round(w * dpr()); cv.height = Math.round(w * 9 / 16 * dpr()) }
   const radius = () => cv.height * .48 * z
@@ -41,7 +42,7 @@ if (cv && geo) {
   }
   const string = () => {
     thread.replaceChildren()
-    if (!flip.classList.contains('flipped') || !hot.length || !tie) return
+    if (!hot.length || !tie) return
     const a = tie.getBoundingClientRect(), k = cv.getBoundingClientRect(), t = Math.min(1, (performance.now() - cast) / 500)
     if (!a.width) return
     for (const w of hot) {
@@ -57,11 +58,11 @@ if (cv && geo) {
     due = false
     const r = radius()
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height)
-    ctx.lineCap = ctx.lineJoin = 'round'; ctx.strokeStyle = ink; ctx.lineWidth = 2 * dpr()
+    ctx.lineCap = ctx.lineJoin = 'round'; ctx.strokeStyle = hue < 0 ? ink : `hsl(${hue} 75% 45%)`; ctx.lineWidth = 2 * dpr()
     ctx.beginPath(); ctx.arc(cv.width / 2, cv.height / 2, r, 0, 2 * Math.PI); ctx.stroke()
     if (z < 24) ctx.stroke(trace(land[0]))
     else { ctx.stroke(trace(land[1])); ctx.lineWidth = 1.4 * dpr(); ctx.stroke(trace(land[2])); ctx.stroke(trace(land[3])) }
-    ctx.strokeStyle = blue
+    ctx.strokeStyle = hue < 0 ? blue : `hsl(${(hue + 150) % 360} 75% 45%)`
     for (const w of waters) { w.path = trace(w.g); ctx.lineWidth = (hot.includes(w) ? 5.5 : 3) * dpr(); ctx.stroke(w.path) }
     cv.dataset.view = `${lon0.toFixed(4)} ${lat0.toFixed(4)} ${z.toFixed(4)}`
     string()
@@ -82,11 +83,7 @@ if (cv && geo) {
     if (p && Math.hypot(x2, y2) < 1) aim(p[0], p[1], x2, y2)
     draw()
   }
-  const home = () => {
-    const c = waters.map(w => [(w.box[0] + w.box[2]) / 2, (w.box[1] + w.box[3]) / 2])
-    lon0 = c.reduce((t, p) => t + p[0], 0) / (c.length || 1); lat0 = c.reduce((t, p) => t + p[1], 0) / (c.length || 1); z = 1
-    draw()
-  }
+  const still = () => { cancelAnimationFrame(fly); cancelAnimationFrame(glide); cancelAnimationFrame(twirl); clearTimeout(away); if (hue >= 0) { hue = -1; cv.classList.remove('rainbow') } }
   const rows = ws => ws.map(w => side && side.querySelector(`li[data-sub] > a[href="${w.a.getAttribute('href')}"]`)).filter(Boolean).map(a => a.parentNode)
   const petal = li => { const tab = li && li.closest('li[data-tab]'); return tab && garden && garden.querySelector(`.petal[data-tab="${tab.dataset.tab}"]`) }
   const mark = (ws, on) => rows(ws).forEach(li => { const tab = li.closest('li[data-tab]'), p = petal(li); [li, li.leaf, p].forEach(x => x && !(x.classList.contains('on') || (x === p && tab.classList.contains('on'))) && x.classList.toggle('lit', on)) })
@@ -99,19 +96,24 @@ if (cv && geo) {
     draw()
   }
   const place = () => { if (!hot.length) return; const [x, y] = where(hot[0]); tip.style.left = (x / dpr() + 14) + 'px'; tip.style.top = (y / dpr() - 10) + 'px' }
-  const sail = (lon, lat, zt) => {
-    cancelAnimationFrame(fly); cancelAnimationFrame(glide)
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+  const sail = (lon, lat, zt, ms, turns, done) => {
+    still()
     const a0 = lon0, b0 = lat0, z0 = Math.log(z), dl = ((lon - a0 + 540) % 360) - 180, t0 = performance.now()
-    const step = now => { const t = Math.min(1, (now - t0) / 900), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; lon0 = a0 + dl * e; lat0 = b0 + (lat - b0) * e; z = Math.exp(z0 + (Math.log(zt) - z0) * e); draw(); if (t < 1) fly = requestAnimationFrame(step); else place() }
+    const step = now => {
+      const t = Math.min(1, (now - t0) / (ms || 900)), e = ease(t)
+      lon0 = a0 + dl * e + (turns || 0) * 360 * (1 - Math.pow(1 - t, 3)); lat0 = b0 + (lat - b0) * e; z = Math.exp(z0 + (Math.log(zt) - z0) * e)
+      if (turns) hue = (now / 4) % 360
+      draw()
+      if (t < 1) fly = requestAnimationFrame(step); else { if (turns) { hue = -1; cv.classList.remove('rainbow') } place(); done && done() }
+    }
     fly = requestAnimationFrame(step)
   }
-  const visit = (ws, title, note, from) => {
-    const b = [Math.min(...ws.map(w => w.box[0])), Math.min(...ws.map(w => w.box[1])), Math.max(...ws.map(w => w.box[2])), Math.max(...ws.map(w => w.box[3]))], lat = (b[1] + b[3]) / 2
-    const km = Math.max(60, (b[2] - b[0]) * 111 * Math.cos(lat * D), (b[3] - b[1]) * 111 * 16 / 9) * 2
-    sail((b[0] + b[2]) / 2, lat, Math.min(300, Math.max(1, cv.width * 6371 / km / (cv.height * .48))))
-    light(ws, title, note, from)
-  }
-  const find = a => { const h = a.getAttribute('href'), n = a.textContent.trim().toLowerCase(); const own = waters.filter(w => w.a.getAttribute('href') === h); return own.length ? own : waters.filter(w => w.a.dataset.lands.toLowerCase().split(', ').includes(n)) }
+  const frame = ws => { const b = [Math.min(...ws.map(w => w.box[0])), Math.min(...ws.map(w => w.box[1])), Math.max(...ws.map(w => w.box[2])), Math.max(...ws.map(w => w.box[3]))], lat = (b[1] + b[3]) / 2; const km = Math.max(60, (b[2] - b[0]) * 111 * Math.cos(lat * D), (b[3] - b[1]) * 111 * 16 / 9) * 2; return [(b[0] + b[2]) / 2, lat, Math.min(300, Math.max(1, cv.width * 6371 / km / (cv.height * .48)))] }
+  const visit = (ws, title, note, from) => { sail(...frame(ws)); light(ws, title, note, from) }
+  const find = h => { const own = waters.filter(w => w.a.getAttribute('href') === h), ks = links[h] || []; return own.length ? own : waters.filter(w => ks.includes(w.a.dataset.slug)) }
+  const show = (ws, li, title) => { clearTimeout(away); clearTimeout(soon); soon = setTimeout(() => visit(ws, ws.length === 1 ? ws[0].a.dataset.title : title, ws.length === 1 ? ws[0].a.dataset.lands : ws.map(w => w.a.dataset.title).join(', '), li), 120) }
+  const hide = () => { clearTimeout(soon); light([]); away = setTimeout(() => sail(ml, mb, 1), 600) }
   const down = new Map()
   let last = null, start = null, vel = [0, 0], t = 0
   const move = e => {
@@ -129,12 +131,12 @@ if (cv && geo) {
   }
   const coast = now => { if (!down.size && Math.hypot(...spin) > .01 && now - t < 3000) { turnBy(spin[0] * 16, spin[1] * 16); spin = [spin[0] * .94, spin[1] * .94]; glide = requestAnimationFrame(coast) } }
   const up = e => { down.delete(e.pointerId); last = [...down.values()]; if (!down.size) { cv.classList.remove('held'); removeEventListener('pointermove', move); removeEventListener('pointerup', up); removeEventListener('pointercancel', up); if (e.timeStamp - t < 80) { spin = vel; t = e.timeStamp; glide = requestAnimationFrame(coast) }; setTimeout(() => { dragged = false }) } }
-  cv.addEventListener('pointerdown', e => { if (e.button) return; peek = false; touch = e.pointerType === 'touch'; cancelAnimationFrame(glide); cancelAnimationFrame(fly); spin = [0, 0]; vel = [0, 0]; t = e.timeStamp; if (e.pointerType === 'mouse') down.clear(); if (!down.size) { addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', up) }; down.set(e.pointerId, [e.clientX, e.clientY]); last = [...down.values()]; start = [e.clientX, e.clientY]; dragged = false; cv.classList.add('held') })
-  cv.addEventListener('wheel', e => { e.preventDefault(); peek = false; cancelAnimationFrame(fly); zoom(e.clientX, e.clientY, Math.exp(-e.deltaY * (e.deltaMode ? .05 : e.ctrlKey ? .01 : .003))) }, { passive: false })
+  cv.addEventListener('pointerdown', e => { if (e.button) return; still(); touch = e.pointerType === 'touch'; spin = [0, 0]; vel = [0, 0]; t = e.timeStamp; if (e.pointerType === 'mouse') down.clear(); if (!down.size) { addEventListener('pointermove', move); addEventListener('pointerup', up); addEventListener('pointercancel', up) }; down.set(e.pointerId, [e.clientX, e.clientY]); last = [...down.values()]; start = [e.clientX, e.clientY]; dragged = false; cv.classList.add('held') })
+  cv.addEventListener('wheel', e => { e.preventDefault(); still(); zoom(e.clientX, e.clientY, Math.exp(-e.deltaY * (e.deltaMode ? .05 : e.ctrlKey ? .01 : .003))) }, { passive: false })
   let pinch = 1
   cv.addEventListener('gesturestart', e => { e.preventDefault(); pinch = 1 })
   cv.addEventListener('gesturechange', e => { e.preventDefault(); zoom(e.clientX, e.clientY, e.scale / pinch); pinch = e.scale })
-  cv.addEventListener('dblclick', e => { e.preventDefault(); clearTimeout(tap); zoom(e.clientX, e.clientY, 2.5) })
+  cv.addEventListener('dblclick', e => { e.preventDefault(); still(); zoom(e.clientX, e.clientY, 2.5) })
   const hit = (X, Y) => {
     const k = cv.getBoundingClientRect(), x = (X - k.left) * dpr(), y = (Y - k.top) * dpr()
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.lineWidth = 18 * dpr()
@@ -143,50 +145,41 @@ if (cv && geo) {
   }
   cv.addEventListener('pointermove', e => {
     if (e.pointerType === 'touch') return
-    const r = back.getBoundingClientRect()
+    const r = wrap.getBoundingClientRect()
     tip.style.left = (e.clientX - r.left + 14) + 'px'; tip.style.top = (e.clientY - r.top - 10) + 'px'
     const w = down.size ? null : hit(e.clientX, e.clientY)
     if (w !== hot[0] || hot.length !== (w ? 1 : 0)) light(w ? [w] : [], w && w.a.dataset.title, w && w.a.dataset.lands)
   })
+  cv.addEventListener('pointerenter', () => clearTimeout(away))
   cv.addEventListener('pointerleave', e => { if (hot.length && e.pointerType !== 'touch') light([]) })
-  if (side) side.addEventListener('mouseover', e => {
-    const a = e.target.closest('li[data-sub] > a[href^="/categories/"]'), ws = a ? find(a) : []
+  if (side) side.addEventListener('mouseover', e => { const a = e.target.closest('.side li > a[href]'), ws = a ? find(decodeURIComponent(a.getAttribute('href'))) : []; if (ws.length) show(ws, a.parentNode, a.textContent.trim()) })
+  if (side) side.addEventListener('mouseout', e => { const a = e.target.closest('.side li > a[href]'); if (a && !(e.relatedTarget && a.contains(e.relatedTarget)) && find(decodeURIComponent(a.getAttribute('href'))).length) hide() })
+  if (garden) garden.querySelectorAll('.petal').forEach(p => {
+    const li = side.querySelector(`li[data-tab="${p.dataset.tab}"]`), n = li && li.dataset.name, ws = n ? find(links[n] ? n : `/categories/${n}/`) : []
     if (!ws.length) return
-    clearTimeout(away); clearTimeout(soon)
-    soon = setTimeout(() => {
-      if (!flip.classList.contains('flipped')) { peek = true; turn(true) }
-      visit(ws, ws.length === 1 ? ws[0].a.dataset.title : a.textContent.trim(), ws.length === 1 ? ws[0].a.dataset.lands : ws.map(w => w.a.dataset.title).join(', '), a.parentNode)
-    }, 120)
+    p.addEventListener('mouseenter', () => show(ws, li, n)); p.addEventListener('mouseleave', hide)
   })
-  if (side) side.addEventListener('mouseout', e => {
-    const a = e.target.closest('li[data-sub] > a[href^="/categories/"]')
-    if (!a || (e.relatedTarget && a.contains(e.relatedTarget)) || !find(a).length) return
-    clearTimeout(soon); light([])
-    if (peek) away = setTimeout(() => { if (peek) turn(false) }, 500)
+  const whirl = now => { lon0 -= 1.2; hue = (now / 4) % 360; draw(); twirl = requestAnimationFrame(whirl) }
+  document.addEventListener('gofish', e => {
+    const d = e.detail
+    if (d.spin) { still(); clearTimeout(soon); light([]); cv.classList.add('rainbow'); twirl = requestAnimationFrame(whirl) }
+    else if (d.spin === false) { still(); spin = [1.2 * D * radius() * Math.max(.2, Math.cos(lat0 * D)) / 16, 0]; t = performance.now(); glide = requestAnimationFrame(coast) }
+    if (d.go) { const ws = find(d.go).length ? find(d.go) : [waters[Math.floor(Math.random() * waters.length)]].filter(Boolean); if (!ws.length) return; cv.classList.add('rainbow'); sail(...frame(ws), Math.max(600, d.ms - 80), 3, () => { light(ws, ws.length === 1 ? ws[0].a.dataset.title : '', ws.length === 1 ? ws[0].a.dataset.lands : ws.map(w => w.a.dataset.title).join(', ')); sessionStorage.setItem('globe', [lon0, lat0, z].join(' ')) }) }
   })
-  back.addEventListener('pointerenter', () => clearTimeout(away))
   addEventListener('scroll', string, { passive: true })
-  const fit = () => { flip.style.height = (flip.classList.contains('flipped') ? back : front).offsetHeight + 'px' }
-  const turn = on => { flip.classList.toggle('flipped', on); fit(); if (on) { size(); home() } else { peek = false; cancelAnimationFrame(glide); cancelAnimationFrame(fly); light([]) } }
   const go = w => { sessionStorage.setItem('globe', [lon0, lat0, z].join(' ')); (window.lockGo || (u => location.href = u))(w.a.getAttribute('href')) }
   cv.addEventListener('click', e => {
     if (dragged) { dragged = false; return }
     const w = hit(e.clientX, e.clientY)
     if (w && touch && !hot.includes(w)) { light([w], w.a.dataset.title, w.a.dataset.lands); place() }
     else if (w) go(w)
-    else { clearTimeout(tap); tap = setTimeout(() => turn(false), 300) }
   })
-  fit()
-  new ResizeObserver(() => { fit(); size(); draw() }).observe(cv); addEventListener('resize', fit); addEventListener('load', fit)
-  if (document.fonts) document.fonts.ready.then(fit)
-  front.addEventListener('click', e => { if (!e.target.closest('a') && !getSelection().toString()) turn(true) })
-  addEventListener('keydown', e => { if (e.key === 'Escape') turn(false); else if ((e.key === 'Enter' || e.key === ' ') && e.target === front) { e.preventDefault(); turn(true) } })
+  addEventListener('keydown', e => { if (e.key === 'Escape') { light([]); sail(ml, mb, 1) } })
+  new ResizeObserver(() => { size(); draw() }).observe(cv)
   const asked = waters.find(w => w.a.dataset.slug === location.hash.slice(1)), kept = sessionStorage.getItem('globe')
-  if (asked || kept) {
-    flip.classList.add('still'); turn(true); sessionStorage.removeItem('globe')
-    if (asked) visit([asked], asked.a.dataset.title, asked.a.dataset.lands)
-    else { [lon0, lat0, z] = kept.split(' ').map(Number); draw() }
-    setTimeout(() => flip.classList.remove('still'), 50)
-  }
+  sessionStorage.removeItem('globe'); size()
+  if (asked) visit([asked], asked.a.dataset.title, asked.a.dataset.lands)
+  else if (kept) { [lon0, lat0, z] = kept.split(' ').map(Number); draw() }
+  else draw()
 }
 }

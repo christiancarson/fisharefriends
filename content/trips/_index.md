@@ -1,3 +1,3 @@
 ---
-title: "trips"
+title: "upcoming trips"
 ---

@@ -1,6 +1,6 @@
 # how to tag
 
-Drop a photo in a month folder, give it Finder tags, and the site sorts it. This is the whole rule set.
+Drop a photo in a month folder, give it Finder tags, and the site sorts it. This is the whole rule set. The front page globe, the lands tab and the links between the flower list and the globe all follow from these tags, nothing there is placed by hand.
 
 Month folders are named year-month first, `2026-07 July`, so Finder lists them in date order. For a new month, make a folder the same way; add `__a title` to the end to name the post (`2026-10 October__Skeena trip`). Each journal entry is dated by the latest photo taken that month, or the last day of the month if no photo carries a date, and never later than today.
 

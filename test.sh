@@ -4,7 +4,7 @@ hugo build -D -d public --quiet --cleanDestinationDir
 grep -q '<title>september 2026</title>' public/index.xml
 grep -q '<title>fish are friends</title>' public/index.html
 grep -q 'class="brand" href="/">fish are friends' public/index.html
-grep -q 'href="/trips/">trips' public/trips/squamish-river/index.html
+grep -q 'href="/trips/">all upcoming trips' public/trips/squamish-river/index.html
 grep -q 'href="/trips/sample-trip/">sample trip' public/index.html
 grep -q 'body { text-transform: lowercase }' public/css/site.*.css
 grep -q '>walk and wade</a></h2>' public/trips/index.html
@@ -32,7 +32,7 @@ grep -q -- '--paper: #fff' public/css/site.*.css
 grep -q 'href="https://dyun5.exblog.jp/">slow fishing' public/index.html
 ! grep -q 'class="plain menu"' public/index.html
 grep -q '<dt>donate</dt><dd><a href="https://www.squamishwatershed.com/#/">Squamish River Watershed Society</a></dd>' public/trips/squamish-river/index.html
-grep -q 'See you on the water:)' public/index.html
+grep -q 'See you on the water:)' public/about/index.html
 ! grep -q '<nav>' public/index.html
 ! grep -q 'class="domain"' public/index.html
 ! grep -q 'by critty</p>' public/index.html
@@ -67,9 +67,9 @@ grep -q '<div class="water">' public/posts/2022-08-august-2022/index.html
 grep -q '<p class="tags"><a href="/categories/fish/">fish</a><a href="/categories/water/">water</a><a href="/categories/rivers/">rivers</a><a href="/categories/dean-river/">Dean River</a><a href="/categories/rainbow-trout/">Rainbow Trout</a><a href="/categories/lands/">lands</a>' public/posts/2022-08-august-2022/index.html
 ! grep -qi 'gab and gob\|mack the bulltrout' public/categories/fish/index.html
 grep -q 'data-signup="https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec"' public/trips/squamish-river/index.html
-grep -q 'come upon my lie' public/index.html
-grep -q 'monthly photo journal</a> from my time on and off the <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">water</a>.' public/index.html
-grep -q '<a class="tablink" href="/trips/[a-z-]*/" data-link="trips" style="--hue: 130">sign up to join me on a trip</a>' public/index.html
+grep -q 'come upon my lie' public/about/index.html
+grep -q 'monthly photo journal</a> from my time on and off the <a class="tablink" href="/categories/water/" data-link="water" style="--hue: 215">water</a>.' public/about/index.html
+grep -q '<a class="tablink" href="/trips/[a-z-]*/" data-link="upcoming trips" style="--hue: 130">sign up to join me on a trip</a>' public/about/index.html
 ! grep -q '>all</a>' public/index.html
 grep -q 'id="random" href="/posts/" data-pages="[^"]*/categories/fish/[^"]*">go fish <svg class="doodle" aria-hidden="true"><use href="#fish"/></svg></a>' public/index.html && ! grep -q 'data-pages="[^"]*/hello/' public/index.html && grep -q 'id="random"' public/posts/2026-09-september-2026/index.html
 grep -q '"/posts/2026-09-september-2026/"' public/index.html
@@ -118,12 +118,12 @@ grep -q '<summary>water\( <span class="mute">[0-9]*</span>\)*</summary><ul class
 grep -q 'data-tags="rivers morice-river"' public/categories/water/index.html
 grep -q 'data-tags="lakes boot-lake"' public/categories/water/index.html
 grep -q '<summary>water\( <span class="mute">[0-9]*</span>\)*</summary>' public/categories/dean-river/index.html && grep -q 'data-sub="0" data-l="62" class="on"><details open><summary>rivers\( <span class="mute">[0-9]*</span>\)*</summary>' public/categories/dean-river/index.html
-test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 8
+test $(grep -o '<li data-tab=' public/index.html | wc -l) -eq 9
 grep -q '<summary>trips</summary><ul class="plain nest"><li><a href="/trips/">all trips</a></li><li data-sub="0" data-l="62"><a href="/trips/' public/index.html && grep -q '<a href="/trips/sample-trip/">sample trip</a> <span class="mute">2099-06-06</span></li>' public/index.html
 grep -q '<summary>contact</summary><ul class="plain nest"><li data-sub="0" data-l="62"><span>critty (at) fisharefriends.org</span></li><li data-sub="1" data-l="54"><a href="/index.xml">rss</a></li>' public/index.html
-grep -q '<li data-tab="1" data-name="trips" style="--hue: 130" class="on"><details open>' public/trips/sample-trip/index.html
+grep -q '<li data-tab="0" data-name="upcoming trips" style="--hue: 130" class="on"><details open>' public/trips/sample-trip/index.html
 grep -q 'class="on"><a href="/trips/sample-trip/">sample trip</a>' public/trips/sample-trip/index.html
-grep -q '<li data-tab="0" data-name="journal" style="--hue: 48" class="on"><details open>' public/posts/2026-09-september-2026/index.html
+grep -q '<li data-tab="1" data-name="journal" style="--hue: 48" class="on"><details open>' public/posts/2026-09-september-2026/index.html
 grep -q 'style="--hue: 215"' public/index.html && grep -q 'style="--hue: 30"' public/index.html
 ! grep -q '>boat<\|>non-fish<\|>not-fly-fishing<' public/index.html
 grep -q '<a class="centre" href="/hello/">' public/index.html && grep -q 'class="face"' public/index.html
@@ -141,7 +141,7 @@ grep -q '<summary>friends <span class="mute">[0-9]*</span></summary><ul class="p
 grep -q '<a href="/categories/sam-a/">Sam A</a> <span class="mute">[0-9]*</span>' public/index.html
 grep -q '<a class="ftitle" href="/posts/2022-08-august-2022/">Sam in action</a>' public/categories/sam-a/index.html
 grep -q '<main class="themed" style="--tab: 30; --tl: 40%">' public/categories/sam-a/index.html
-test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "journal trips water lands fish friends things contact "
+test "$(grep -o '<li data-tab="[0-9]*" data-name="[^"]*"' public/index.html | sed 's/.*data-name="//; s/"//' | tr '\n' ' ')" = "upcoming trips journal water lands fish friends things about contact "
 grep -q 'data-kind="wade"' public/trips/sample-trip/index.html || grep -q 'data-kind="raft"' public/trips/sample-trip/index.html
 grep -q 'git add content data assets/maps' sync.sh
 hugo build -d public --quiet --cleanDestinationDir
@@ -164,7 +164,6 @@ grep -q '<title>hello bro</title>' public/hello/index.html
 ! grep -q 'tags from' public/posts/2020-06-june-2020/index.html && grep -q '<h2 class="entry-title"><a href="/posts/2020-06-june-2020/">june 2020</a></h2>' public/categories/boot-lake/index.html
 grep -q '<p class="date">November 21, 2026</p>' public/trips/squamish-river/index.html
 grep -q '<option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option>' public/trips/squamish-river/index.html
-grep -q '<div class="flip"><div class="face front intro" tabindex="0" role="button">' public/index.html
 test $(grep -o '<a class="water" href="/categories/[a-z-]*/" data-slug="[a-z-]*" data-title="[^"]*" data-lands="[^"]*">[^<]*</a>' public/index.html | wc -l) -ge 24
 grep -q '<a class="water" href="/categories/morice-river/" data-slug="morice-river" data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh">Morice River</a>' public/index.html
 grep -q '<p class="waterlist" style="--hue: 215">' public/index.html
@@ -173,12 +172,12 @@ grep -q '<script type="application/json" id="waters">{"[a-z-]*":\[\[-\{0,1\}[0-9
 grep -q '"morice-river":\[\[' public/index.html
 grep -q 'js/world\.[a-f0-9]*\.js" defer' public/index.html
 ! grep -q 'js/world\.' public/posts/2026-09-september-2026/index.html
-! grep -q 'class="flip"' public/journal/index.html
+! grep -q 'class="sphere"' public/journal/index.html
 test $(grep -c '^lat = ' data/rivers.toml) -eq $(grep -c '^\["' data/rivers.toml)
 grep -q 'trip_date: "2026-11-21"' content/trips/squamish-river/index.md
 grep -qi 'november 21, 2026' public/trips/squamish-river/index.html
 grep -q '<li data-tab="3" data-name="lands" style="--hue: 90"><details><summary>lands <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/lands/">all lands</a></li><li data-sub="0"' public/index.html
-test $(grep -o 'data-name="[^"]*"' public/index.html | wc -l) -eq 8
+test $(grep -o 'data-name="[^"]*"' public/index.html | wc -l) -eq 9
 grep -q 'data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh"' public/index.html
 grep -q '<a href="/categories/wetsuweten-yintikh/">Wet’suwet’en Yintikh</a>' public/posts/2026-09-september-2026/index.html
 grep -q 'Morice River</a><p class="tags"><a href="/categories/d%C3%ABn%C3%A9ndeh/">Dënéndeh</a>' public/categories/morice-river/index.html
@@ -186,9 +185,17 @@ grep -q '<h2 class="entry-title"><a href="/posts/2026-09-september-2026/">septem
 grep -q '<p class="tip" hidden><b></b><span></span></p>' public/index.html
 test -f public/posts/2020-06-june-2020/img-1637.jpg
 test $(grep -c '<path' assets/maps/dean-river.svg) -gt 600
-grep -q '<div class="face back"><canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished"></canvas>' public/index.html
+grep -q '<div class="sphere"><canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished"></canvas>' public/index.html
 grep -q '<script type="application/json" id="world">{"waters":"[a-z -]*","world":\[\[-\{0,1\}[0-9]*,-\{0,1\}[0-9]*,' public/index.html
 grep -q '"local":\[\[' public/index.html
 test "$(python3 -c "import json; print(json.load(open('assets/maps/world.json'))['waters'])")" = "$(ls data/waters | sed 's/.json//' | sort | tr '\n' ' ' | sed 's/ $//')"
 test $(python3 -c "import json; d = json.load(open('assets/maps/world.json')); print(sum(len(l) // 2 for l in d['local']))") -gt 5000
 ! test -f assets/maps/world.svg
+grep -q '<script type="application/json" id="links">{"' public/index.html
+grep -q '"/categories/rainbow-trout/":\["[a-z-]*"' public/index.html
+grep -q '"/posts/2026-09-september-2026/":\["morice-river"\]' public/index.html
+grep -q '"journal":\["' public/index.html
+grep -q '<title>about | fish are friends</title>' public/about/index.html
+grep -q '<div class="intro">' public/about/index.html
+grep -q '<li data-tab="7" data-name="about" style="--hue: 8"><a href="/about/">about</a>' public/index.html
+grep -q '<h1 class="listtitle">upcoming trips</h1>' public/trips/index.html

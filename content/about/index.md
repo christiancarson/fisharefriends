@@ -1,0 +1,15 @@
+---
+title: "about"
+layout: about
+---
+<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>
+
+You’ve come upon my lie (place where a fish rests).
+
+Here I share a {{< tab journal >}}monthly photo journal{{< /tab >}} from my time on and off the {{< tab water >}}water{{< /tab >}}. You can also find specific facets from each journal, like {{< tab fish >}}fish{{< /tab >}}, {{< tab friends >}}friends{{< /tab >}}, and {{< tab things >}}things{{< /tab >}}.
+
+It is also a place where you can {{< tab "upcoming trips" >}}sign up to join me on a trip{{< /tab >}} and learn the basics of fly fishing - 100% for free with no gear required. If you so choose, there will be an opportunity to donate to organizations that do restoration on the waters we fish.
+
+See you on the water:)
+
+Critty

@@ -18,7 +18,7 @@ author = 'critty'
 email = 'critty@fisharefriends.org'
 signup = 'https://script.google.com/macros/s/AKfycbx4_QPAM9AQnIfD8QtnuWdZJgYkNLEla_AJtjgrlUJJ_Pu4q_gHgVZ0Ey3dX426zPyGSw/exec'
 licence = 'https://www2.gov.bc.ca/gov/content/sports-culture/recreation/fishing-hunting/fishing/recreational-freshwater-fishing-licence'
-order = ['journal', 'trips', 'water', 'lands', 'fish', 'friends', 'things', 'contact']
+order = ['upcoming trips', 'journal', 'water', 'lands', 'fish', 'friends', 'things', 'about', 'contact']
 parents = ['friends', 'fish', 'music', 'works', 'things']
 
 [params.nest]
@@ -38,10 +38,11 @@ boat = ''
 'not-fly-fishing' = ''
 
 [params.shade]
-trips = 28
+'upcoming trips' = 28
 
 [params.hues]
-trips = 130
+'upcoming trips' = 130
+about = 8
 fish = 275
 friends = 30
 music = 355
