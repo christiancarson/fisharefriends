@@ -26,7 +26,7 @@ if (nrow(s) && !is.null(pt) && !nzchar(grp)) {
   s <- s[s$WATERSHED_GROUP_CODE %in% near, ]
 }
 g <- st_geometry(s)
-if (kind == "estuary" && length(g) && !is.null(pt)) g <- g[as.numeric(st_distance(g, pt)) < 4000]
+if (kind == "estuary" && length(g)) { mouth <- st_sfc(st_point(st_coordinates(s[which.min(s$DOWNSTREAM_ROUTE_MEASURE), ])[1, 1:2]), crs = 3005); g <- c(st_zm(g[s$DOWNSTREAM_ROUTE_MEASURE < 3000]), st_zm(shore(mouth, 2000))); message(name, ": drawn as the mouth of ", nm) }
 if (!nrow(s)) {
   l <- wfs("WHSE_BASEMAPPING.FWA_LAKES_POLY", sprintf("GNIS_NAME_1='%s'%s", name, grp))
   if (nrow(l) && !is.null(pt)) message(name, ": nearest lake to the photos is in ", l$WATERSHED_GROUP_CODE[which.min(st_distance(l, pt))], " (", round(min(st_distance(l, pt)) / 1000, 1), " km)")
@@ -84,6 +84,15 @@ if (!length(g) && !sea) {
     g <- st_sfc(crs = 3005)
   }
 }
+if (!length(g) && sea) {
+  n <- tryCatch(wfs("WHSE_BASEMAPPING.GNS_GEOGRAPHICAL_NAMES_SP", sprintf("GEOGRAPHICAL_NAME LIKE '%s%%'", base)), error = function(e) NULL)
+  if (!is.null(n) && nrow(n)) n <- n[grepl("Bay|Inlet|Harbour|Sound|Cove|Passage|Channel|Lagoon|Strait|Arm|Basin|Estuary", n$FEATURE_TYPE), ]
+  if (!is.null(n) && nrow(n)) {
+    k <- if (any(n$GEOGRAPHICAL_NAME == name)) which(n$GEOGRAPHICAL_NAME == name)[1] else if (!is.null(pt)) which.min(st_distance(n, pt)) else 1
+    g <- shore(st_geometry(n[k, ]), 2000)
+    message(name, ": drawn as the shore of ", n$GEOGRAPHICAL_NAME[k], " (", n$FEATURE_TYPE[k], ")")
+  }
+}
 if (!length(g)) {
   if (!is.null(pt)) {
     ll <- st_coordinates(st_transform(pt, 4326))
@@ -108,7 +117,6 @@ if (!length(g)) {
     if (ask(sprintf('data=[out:xml][timeout:120]%s;(way["waterway"~"river|stream"]["name"];);(._;>;);out body;', span(8000)), osm, "<osm", function(f) length(lines(f)) > 0)) { w <- st_transform(suppressWarnings(st_read(osm, "lines", quiet = TRUE)), 3005); k <- w$name[which.min(st_distance(w, pt))]; message(name, ": drawing the nearest named stream, ", k); g <- st_geometry(w[!is.na(w$name) & w$name == k, ]) }
   }
 }
-if (kind == "estuary" && !is.null(pt)) g <- c(st_zm(g), st_zm(shore(pt, 1500)))
 stopifnot(length(g) > 0)
 g <- st_zm(st_simplify(st_cast(st_cast(g, "MULTILINESTRING"), "LINESTRING"), dTolerance = tol))
 b <- st_bbox(g)

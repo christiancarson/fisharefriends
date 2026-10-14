@@ -1,9 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" preserveAspectRatio="xMinYMin meet" fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
-<path d="M 360.9 115.3 L 289.3 82" stroke-width="5"/>
-<path d="M 289.3 82 L 275.1 60.7 L 217.9 68.3 L 192.7 65.6 L 259.7 50.6 L 388.3 50.9 L 496.5 69.1 L 529 67.5 L 507.1 53 L 426.3 34.4 L 434.7 21.8 L 495.6 16" stroke-width="5"/>
-<path d="M 608.7 322.5 L 624 319.7" stroke-width="5"/>
-<path d="M 224.8 270.9 L 224.1 282.3 L 298.8 280.7 L 253.7 288.8 L 264.8 298.2 L 183.8 301.8 L 106.7 321.2 L 73.6 317.3 L 16 322.4 L 79.5 344" stroke-width="5"/>
-<path d="M 269.3 237.7 L 292.6 256.1 L 224.8 270.9" stroke-width="5"/>
-<path d="M 292.8 227.1 L 269.3 237.7" stroke-width="5"/>
-<path d="M 221 177.4 L 216.9 185 L 296.7 198.1 L 298.5 208.5 L 362.4 217.2 L 292.8 227.1" stroke-width="5"/>
+<path d="M 140.8 168.9 L 87.7 117.6" stroke-width="5"/>
+<path d="M 87.7 117.6 L 77.2 84.9 L 34.7 96.6 L 16 92.4 L 65.7 69.2 L 161.2 69.7 L 241.5 97.7 L 265.6 95.2 L 249.3 72.9 L 189.4 44.3 L 195.6 25 L 240.8 16" stroke-width="5"/>
+<path d="M 624 214.8 L 504.9 149.3 L 413.1 146.4 L 355.5 127.6 L 323.4 130.1 L 303.5 118.1 L 245.9 120.8" stroke-width="5"/>
+<path d="M 152.8 144.8 L 152 146.3" stroke-width="5"/>
+<path d="M 520 283.7 L 482.6 280.5 L 508.6 271 L 484.8 251.4 L 584 250.6" stroke-width="5"/>
+<path d="M 468.2 185.6 L 432.9 168.6 L 455.2 164 L 468.2 185.6" stroke-width="5"/>
+<path d="M 90.3 341 L 90.8 344" stroke-width="5"/>
+<path d="M 25.2 256.5 L 34 276.3 L 93.2 296.4 L 94.5 312.5 L 142 325.9 L 90.3 341" stroke-width="5"/>
+<path d="M 27.2 243 L 25.2 256.5" stroke-width="5"/>
+<path d="M 29.1 227 L 58 233.8 L 27.2 243" stroke-width="5"/>
+<path d="M 128.2 173 L 151.7 191.9 L 75.2 222.1 L 29.1 227" stroke-width="5"/>
+<path d="M 140.8 168.9 L 128.2 173" stroke-width="5"/>
+<path d="M 152.3 164.5 L 140.8 168.9" stroke-width="5"/>
+<path d="M 152 146.3 L 152.3 164.5" stroke-width="5"/>
+<path d="M 155.4 143.4 L 152.8 144.8" stroke-width="5"/>
+<path d="M 251.1 124.7 L 268.7 135.6 L 234.5 130.9 L 155.4 143.4" stroke-width="5"/>
+<path d="M 310.2 132.5 L 310.2 132.5" stroke-width="5"/>
+<path d="M 244.8 122.6 L 251.1 124.7" stroke-width="5"/>
+<path d="M 245.9 120.8 L 244.8 122.6" stroke-width="5"/>
 </svg>
