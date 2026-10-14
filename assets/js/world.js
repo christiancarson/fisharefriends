@@ -42,6 +42,7 @@ if (cv && geo) {
     else { ctx.stroke(trace(land[1])); ctx.lineWidth = 1.4 * dpr(); ctx.stroke(trace(land[2])); ctx.stroke(trace(land[3])) }
     for (const w of waters) { w.path = trace(w.g); ctx.strokeStyle = w.color; ctx.lineWidth = (hot.includes(w) ? 5.5 : 3) * dpr(); ctx.stroke(w.path) }
     cv.dataset.view = `${lon0.toFixed(4)} ${lat0.toFixed(4)} ${z.toFixed(4)}`
+    string()
   }
   const draw = () => { if (!due) { due = true; requestAnimationFrame(paint) } }
   const turnBy = (dx, dy) => { const r = radius(); lat0 = Math.min(89, Math.max(-89, lat0 + dy / r / D)); lon0 = ((lon0 - dx / (r * Math.max(.2, Math.cos(lat0 * D))) / D + 540) % 360) - 180; draw() }
@@ -96,8 +97,12 @@ if (cv && geo) {
   const side = document.querySelector('.side'), garden = side && side.querySelector('.garden')
   const rows = ws => ws.map(w => side && side.querySelector(`li[data-sub] > a[href="${w.a.getAttribute('href')}"]`)).filter(Boolean).map(a => a.parentNode)
   const mark = (ws, on) => rows(ws).forEach(li => { const tab = li.closest('li[data-tab]'), petal = tab && garden && garden.querySelector(`.petal[data-tab="${tab.dataset.tab}"]`); [li, li.leaf, petal].forEach(x => x && !(x.classList.contains('on') || (x === petal && tab.classList.contains('on'))) && x.classList.toggle('lit', on)) })
-  const light = (ws, title, note) => {
+  const thread = document.createElementNS('http://www.w3.org/2000/svg', 'svg'), petal = li => { const tab = li && li.closest('li[data-tab]'); return tab && garden && garden.querySelector(`.petal[data-tab="${tab.dataset.tab}"]`) }
+  thread.setAttribute('class', 'thread'); document.body.appendChild(thread)
+  let tie = null, cast = 0
+  const light = (ws, title, note, from) => {
     mark(hot, false); hot = ws; mark(hot, true)
+    const li = from || rows(ws)[0]; tie = li && li.leaf && li.offsetParent !== null ? li.leaf : petal(li); cast = performance.now()
     cv.classList.toggle('over', hot.length > 0); tip.hidden = !hot.length
     if (hot.length) { tip.firstChild.textContent = title; tip.lastChild.textContent = note; tip.style.color = hot[0].color }
     draw()
@@ -109,11 +114,26 @@ if (cv && geo) {
     if (w !== hot[0] || hot.length !== (w ? 1 : 0)) light(w ? [w] : [], w && w.a.dataset.title, w && w.a.dataset.lands)
   })
   cv.addEventListener('pointerleave', () => { if (hot.length) light([]) })
-  const place = () => {
-    if (!hot.length) return
-    const w = hot[0], r = radius(), a = lon0 * D, b = lat0 * D, A = (w.box[0] + w.box[2]) / 2 * D, B = (w.box[1] + w.box[3]) / 2 * D, x = Math.cos(B) * Math.cos(A), y = Math.cos(B) * Math.sin(A), v = Math.sin(B)
-    tip.style.left = ((cv.width / 2 + r * (-x * Math.sin(a) + y * Math.cos(a))) / dpr() + 14) + 'px'; tip.style.top = ((cv.height / 2 - r * (-x * Math.sin(b) * Math.cos(a) - y * Math.sin(b) * Math.sin(a) + v * Math.cos(b))) / dpr() - 10) + 'px'
+  const where = w => {
+    const r = radius(), a = lon0 * D, b = lat0 * D, A = (w.box[0] + w.box[2]) / 2 * D, B = (w.box[1] + w.box[3]) / 2 * D, x = Math.cos(B) * Math.cos(A), y = Math.cos(B) * Math.sin(A), v = Math.sin(B)
+    return [cv.width / 2 + r * (-x * Math.sin(a) + y * Math.cos(a)), cv.height / 2 - r * (-x * Math.sin(b) * Math.cos(a) - y * Math.sin(b) * Math.sin(a) + v * Math.cos(b)), x * Math.cos(b) * Math.cos(a) + y * Math.cos(b) * Math.sin(a) + v * Math.sin(b) > 0]
   }
+  const place = () => { if (!hot.length) return; const [x, y] = where(hot[0]); tip.style.left = (x / dpr() + 14) + 'px'; tip.style.top = (y / dpr() - 10) + 'px' }
+  const string = () => {
+    thread.replaceChildren()
+    if (!flip.classList.contains('flipped') || !hot.length || !tie) return
+    const a = tie.getBoundingClientRect(), k = cv.getBoundingClientRect(), t = Math.min(1, (performance.now() - cast) / 500)
+    if (!a.width) return
+    for (const w of hot) {
+      const [x, y, seen] = where(w)
+      if (!seen) continue
+      const x1 = a.left + a.width / 2, y1 = a.top + a.height / 2, x2 = k.left + x / dpr(), y2 = k.top + y / dpr(), p = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+      p.setAttribute('d', `M ${x1} ${y1} C ${x1 - 160} ${y1 + 80}, ${x2 + 160} ${y2 + 80}, ${x2} ${y2}`); p.setAttribute('stroke', w.color); thread.appendChild(p)
+      const L = p.getTotalLength(); p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L * (1 - t))
+    }
+    if (t < 1) requestAnimationFrame(string)
+  }
+  addEventListener('scroll', string, { passive: true })
   const sail = (lon, lat, zt) => {
     cancelAnimationFrame(fly); cancelAnimationFrame(glide)
     const a0 = lon0, b0 = lat0, z0 = Math.log(z), dl = ((lon - a0 + 540) % 360) - 180, t0 = performance.now()
@@ -130,14 +150,14 @@ if (cv && geo) {
       const b = [Math.min(...ws.map(w => w.box[0])), Math.min(...ws.map(w => w.box[1])), Math.max(...ws.map(w => w.box[2])), Math.max(...ws.map(w => w.box[3]))], lat = (b[1] + b[3]) / 2
       const km = Math.max(60, (b[2] - b[0]) * 111 * Math.cos(lat * D), (b[3] - b[1]) * 111 * 16 / 9) * 2
       sail((b[0] + b[2]) / 2, lat, Math.min(300, Math.max(1, cv.width * 6371 / km / (cv.height * .48))))
-      light(ws, ws.length === 1 ? ws[0].a.dataset.title : a.textContent.trim(), ws.length === 1 ? ws[0].a.dataset.lands : ws.map(w => w.a.dataset.title).join(', '))
-    }, 200)
+      light(ws, ws.length === 1 ? ws[0].a.dataset.title : a.textContent.trim(), ws.length === 1 ? ws[0].a.dataset.lands : ws.map(w => w.a.dataset.title).join(', '), a.parentNode)
+    }, 120)
   })
   if (side) side.addEventListener('mouseout', e => {
     const a = e.target.closest('li[data-sub] > a[href^="/categories/"]')
     if (!a || (e.relatedTarget && a.contains(e.relatedTarget)) || !find(a).length) return
     clearTimeout(soon); light([])
-    if (peek) away = setTimeout(() => { if (peek) turn(false) }, 700)
+    if (peek) away = setTimeout(() => { if (peek) turn(false) }, 500)
   })
   back.addEventListener('pointerenter', () => clearTimeout(away))
   const fit = () => { flip.style.height = (flip.classList.contains('flipped') ? back : front).offsetHeight + 'px' }
