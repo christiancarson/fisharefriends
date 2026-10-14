@@ -151,5 +151,5 @@ for folder in sorted(p for p in src.iterdir() if p.is_dir()):
     print(out.name, sum(len(g["cards"]) for g in groups) + sum(1 for g in groups if g["water"]))
 pathlib.Path("data/tags.toml").write_text(toml({k: {"title": t, "parent": p} for k, (t, p) in sorted(kids.items()) if k in used}))
 drawn = " ".join(sorted(p.stem for p in pathlib.Path("data/waters").glob("*.json")))
-world = pathlib.Path("assets/maps/world.svg")
-if (not world.exists() or f'data-waters="{drawn}"' not in world.read_text()) and subprocess.run(["Rscript", "world.R"]).returncode: print("world map failed, will retry next sync")
+world = pathlib.Path("assets/maps/world.json")
+if (not world.exists() or f'"waters":"{drawn}"' not in world.read_text()) and subprocess.run(["Rscript", "world.R"]).returncode: print("world map failed, will retry next sync")

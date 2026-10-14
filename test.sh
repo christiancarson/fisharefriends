@@ -165,31 +165,29 @@ grep -q '<title>hello bro</title>' public/hello/index.html
 grep -q '<p class="date">November 21, 2026</p>' public/trips/squamish-river/index.html
 grep -q '<option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option>XXXL</option>' public/trips/squamish-river/index.html
 grep -q '<div class="flip"><div class="face front intro" tabindex="0" role="button">' public/index.html
-grep -q '<div class="face back"><svg class="world" viewBox="0 0 640 360"' public/index.html
-grep -q '<g id="land" data-fit="320 [0-9.]* [0-9.e-]*">' public/index.html
-grep -q '<g id="landx">' public/index.html
-grep -q '<g id="detail" transform="scale(.001)" data-waters="[a-z -]*">' public/index.html
-! grep -q 'id="lands"\|class="river"' public/index.html
-test $(grep -o '<a class="water" href="/categories/[a-z-]*/" aria-label="[^"]*" data-slug="[a-z-]*" data-title="[^"]*" data-lands="[^"]*" style="--hue: [0-9]*"></a>' public/index.html | wc -l) -ge 24
-grep -q '<a class="water" href="/categories/morice-river/" aria-label="Morice River" data-slug="morice-river" data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh" style="--hue: [0-9]*"></a>' public/index.html
-grep -q 'style="--hue: 0"></a>' public/index.html
+test $(grep -o '<a class="water" href="/categories/[a-z-]*/" data-slug="[a-z-]*" data-title="[^"]*" data-lands="[^"]*" style="--hue: [0-9]*">[^<]*</a>' public/index.html | wc -l) -ge 24
+grep -q '<a class="water" href="/categories/morice-river/" data-slug="morice-river" data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh" style="--hue: [0-9]*">Morice River</a>' public/index.html
+grep -q 'style="--hue: 0">[^<]*</a>' public/index.html
 grep -q '<script type="application/json" id="waters">{"[a-z-]*":\[\[-\{0,1\}[0-9]*,-\{0,1\}[0-9]*,' public/index.html
 grep -q '"morice-river":\[\[' public/index.html
 grep -q 'js/world\.[a-f0-9]*\.js" defer' public/index.html
 ! grep -q 'js/world\.' public/posts/2026-09-september-2026/index.html
 ! grep -q 'class="flip"' public/journal/index.html
 test $(grep -c '^lat = ' data/rivers.toml) -eq $(grep -c '^\["' data/rivers.toml)
-test $(grep -c '<path d="M' assets/maps/world.svg) -gt 300
-test "$(grep -o 'data-waters="[^"]*"' assets/maps/world.svg | sed 's/data-waters="//; s/"//' | tr ' ' '\n' | sort | tr '\n' ' ')" = "$(ls data/waters | sed 's/.json//' | sort | tr '\n' ' ')"
 grep -q 'trip_date: "2026-11-21"' content/trips/squamish-river/index.md
 grep -qi 'november 21, 2026' public/trips/squamish-river/index.html
 grep -q '<li data-tab="3" data-name="lands" style="--hue: 90"><details><summary>lands <span class="mute">[0-9]*</span></summary><ul class="plain nest"><li><a href="/categories/lands/">all lands</a></li><li data-sub="0"' public/index.html
 test $(grep -o 'data-name="[^"]*"' public/index.html | wc -l) -eq 8
 grep -q 'data-title="Morice River" data-lands="Dënéndeh, Takla, Wet’suwet’en Yintikh"' public/index.html
-grep -q 'aria-label="Morice River"' public/index.html
 grep -q '<a href="/categories/wetsuweten-yintikh/">Wet’suwet’en Yintikh</a>' public/posts/2026-09-september-2026/index.html
 grep -q 'Morice River</a><p class="tags"><a href="/categories/d%C3%ABn%C3%A9ndeh/">Dënéndeh</a>' public/categories/morice-river/index.html
 grep -q '<h2 class="entry-title"><a href="/posts/2026-09-september-2026/">september 2026</a></h2>' public/categories/wetsuweten-yintikh/index.html
 grep -q '<p class="tip" hidden><b></b><span></span></p>' public/index.html
 test -f public/posts/2020-06-june-2020/img-1637.jpg
 test $(grep -c '<path' assets/maps/dean-river.svg) -gt 600
+grep -q '<div class="face back"><canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished"></canvas>' public/index.html
+grep -q '<script type="application/json" id="world">{"waters":"[a-z -]*","world":\[\[-\{0,1\}[0-9]*,-\{0,1\}[0-9]*,' public/index.html
+grep -q '"local":\[\[' public/index.html
+test "$(python3 -c "import json; print(json.load(open('assets/maps/world.json'))['waters'])")" = "$(ls data/waters | sed 's/.json//' | sort | tr '\n' ' ' | sed 's/ $//')"
+test $(python3 -c "import json; d = json.load(open('assets/maps/world.json')); print(sum(len(l) // 2 for l in d['local']))") -gt 5000
+! test -f assets/maps/world.svg
