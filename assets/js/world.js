@@ -170,11 +170,12 @@ if (cv) (async () => {
     p.addEventListener('mouseenter', () => show(ws, li, n, h)); p.addEventListener('mouseleave', hide)
   })
   const whirl = now => { lon0 -= 1.2; hue = (now / 4) % 360; draw(); twirl = requestAnimationFrame(whirl) }
+  let spun = false
   document.addEventListener('gofish', e => {
     const d = e.detail
-    if (d.spin) { still(); clearTimeout(soon); light([]); z = 1; cv.classList.add('rainbow'); twirl = requestAnimationFrame(whirl) }
-    else if (d.spin === false) { still(); spin = [1.2 * D * radius() * Math.max(.2, Math.cos(lat0 * D)) / 16, 0]; t = performance.now(); glide = requestAnimationFrame(coast) }
-    if (d.go) { const ws = find(d.go).length ? find(d.go) : waters.slice(Math.floor(Math.random() * waters.length)).slice(0, 1); if (!ws.length) return; cv.classList.add('rainbow'); sail(...frame(ws), Math.max(600, d.ms - 80), 3, () => light(ws, name(ws), ws.length === 1 ? ws[0].lands : '')) }
+    if (d.spin) { spun = true; still(); clearTimeout(soon); light([]); z = 1; cv.classList.add('rainbow'); twirl = requestAnimationFrame(whirl) }
+    else if (d.spin === false && spun) { spun = false; still(); spin = [1.2 * D * radius() * Math.max(.2, Math.cos(lat0 * D)) / 16, 0]; t = performance.now(); glide = requestAnimationFrame(coast) }
+    if (d.go) { spun = false; const ws = find(d.go).length ? find(d.go) : waters.slice(Math.floor(Math.random() * waters.length)).slice(0, 1); if (!ws.length) return; cv.classList.add('rainbow'); sail(...frame(ws), Math.max(600, d.ms - 80), 3, () => light(ws, name(ws), ws.length === 1 ? ws[0].lands : '')) }
   })
   addEventListener('scroll', string, { passive: true })
   const go = w => (window.route || window.lockGo || (u => location.href = u))(w.href)
