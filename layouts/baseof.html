@@ -11,6 +11,7 @@
 {{ $js := resources.Get "js/signup.js" | fingerprint }}<script src="{{ $js.RelPermalink }}" defer></script>
 {{ $gj := resources.Get "js/garden.js" | fingerprint }}<script src="{{ $gj.RelPermalink }}" defer></script>
 {{ $wj := resources.Get "js/world.js" | fingerprint }}<script src="{{ $wj.RelPermalink }}" defer></script>
+{{ $pj := resources.Get "js/pages.js" | fingerprint }}<script src="{{ $pj.RelPermalink }}" defer></script>
 {{ with site.Home.OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
 </head>
 <body{{ if .IsHome }} class="home"{{ end }}>
@@ -21,7 +22,7 @@
 <header class="band">
 <a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}<svg class="doodle blue mark" aria-hidden="true"><use href="#fishpals"/></svg></a>
 </header>
-<main{{ with $theme }} class="themed" style="--tab: {{ . }}; --tl: {{ $shade }}%"{{ end }}>{{ if not .IsHome }}{{ with resources.Get "maps/world.json" }}{{ $m := partialCached "maps.html" . "maps" }}<a class="inset" href="{{ printf "%s#%s" site.Home.RelPermalink $.RelPermalink | safeURL }}" title="see on the globe"><canvas class="world" width="160" height="160" role="img" aria-label="where these photos were taken" style="--hue: {{ $m.hue }}" data-world="{{ $m.world }}" data-waters="{{ $m.waters }}" data-links="{{ $m.links }}"></canvas></a>{{ end }}{{ end }}{{ block "main" . }}{{ end }}</main>
+<main{{ with $theme }} class="themed" style="--tab: {{ . }}; --tl: {{ $shade }}%"{{ end }}><div class="sphere">{{ partial "world.html" . }}</div><div class="page">{{ block "main" . }}{{ end }}</div></main>
 </div>
 {{ partial "sidebar.html" (dict "tabs" $tabs) }}
 </div>

@@ -43,7 +43,7 @@ if (stem) {
       u.setAttribute('href', '#gfish'); g.appendChild(u); leaves.appendChild(g); li.leaf = g
       g.addEventListener('mouseenter', () => { g.classList.add('lit'); li.classList.add('lit') })
       g.addEventListener('mouseleave', () => { if (!li.classList.contains('on')) { g.classList.remove('lit'); li.classList.remove('lit') } })
-      g.addEventListener('click', () => { const a = li.querySelector(':scope > a'), d = li.querySelector(':scope > details'); if (d) d.open = !d.open; else if (a) (window.lockGo || (u => location.href = u))(a.getAttribute('href')) })
+      g.addEventListener('click', () => { const a = li.querySelector(':scope > a'), d = li.querySelector(':scope > details'); if (d) d.open = !d.open; else if (a) (window.route || window.lockGo || (u => location.href = u))(a.getAttribute('href')) })
       const L = at(target(li)), x = stem.getPointAtLength(L).x
       g.side = (j % 2 && x + 40 < textStart(li) - 4) ? 1 : -1
       animate ? swim(g, L, j * 140) : pose(g, L, 1)
@@ -62,16 +62,18 @@ if (stem) {
     const on = () => { p.classList.add('lit'); li.classList.add('lit') }, off = () => { if (!li.classList.contains('on')) { p.classList.remove('lit'); li.classList.remove('lit') } }
     li.addEventListener('mouseenter', on); li.addEventListener('mouseleave', off)
     p.addEventListener('mouseenter', on); p.addEventListener('mouseleave', off)
-    p.addEventListener('click', () => { const d = li.querySelector(':scope > details'), a = li.querySelector(':scope > a'); if (d) d.open = !d.open; else if (a) (window.lockGo || (u => location.href = u))(a.getAttribute('href')) })
+    p.addEventListener('click', () => { const d = li.querySelector(':scope > details'), a = li.querySelector(':scope > a'); if (d) d.open = !d.open; else if (a) (window.route || window.lockGo || (u => location.href = u))(a.getAttribute('href')) })
   })
   side.addEventListener('mouseover', e => { const li = e.target.closest('li[data-sub]'); if (li && li.leaf && !li.contains(e.relatedTarget)) li.leaf.classList.add('lit') })
   side.addEventListener('mouseout', e => { const li = e.target.closest('li[data-sub]'); if (li && li.leaf && !li.classList.contains('on') && !li.contains(e.relatedTarget)) li.leaf.classList.remove('lit') })
-  document.querySelectorAll('main .tablink').forEach(a => {
+  const links = () => document.querySelectorAll('main .tablink').forEach(a => {
     const n = a.dataset.link, li = side.querySelector(`li[data-tab][data-name="${n}"]`)
     const p = li && svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`)
     a.addEventListener('mouseenter', () => { li && li.classList.add('lit'); p && p.classList.add('lit') })
     a.addEventListener('mouseleave', () => { if (li && !li.classList.contains('on')) { li.classList.remove('lit'); p && p.classList.remove('lit') } })
   })
+  links()
+  document.addEventListener('page', () => { side.querySelectorAll('li[data-tab]').forEach(li => { const p = svg.querySelector(`.petal[data-tab="${li.dataset.tab}"]`); if (p) p.classList.toggle('lit', li.classList.contains('on')) }); regrow(); links() })
   const go = document.getElementById('random')
   let whirl = 0, k = 0
   const petals = [...svg.querySelectorAll('.petal')]
@@ -89,7 +91,7 @@ if (stem) {
     document.dispatchEvent(new CustomEvent('gofish', { detail: { go: target, ms } }))
     const tick = () => {
       petals.forEach(p => p.classList.remove('lit')); petals[i % petals.length].classList.add('lit')
-      if (++i < steps) { delay *= 1.09; setTimeout(tick, delay) } else setTimeout(() => (window.lockGo || (u => location.href = u))(target), 400)
+      if (++i < steps) { delay *= 1.09; setTimeout(tick, delay) } else setTimeout(() => (window.route || window.lockGo || (u => location.href = u))(target), 400)
     }
     tick()
   })

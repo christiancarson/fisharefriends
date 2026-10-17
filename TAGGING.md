@@ -70,10 +70,13 @@ an empty `Morice_River.river` file in the folder puts every untagged photo of th
 
 - the map is drawn once, the first time a water name appears
 - if the photos carry GPS, the water of that name nearest to where you stood is drawn, so two Lost Lakes never get mixed up
-- if the nearest water of that name is more than 15 km away, the lake or stream at your feet is drawn instead, and the log names it (your "lost lake" is Rolf Lake to the province, your "onion lake" has no official name)
-- GPS is used for that choice and to place the water on the front page world map, rounded to a tenth of a degree (about 10 km); published photos carry no location
-- a river tagged as a creek, or a creek tagged as a river, is still found; an estuary is its river's lowest 3 km plus the shore within 2 km of the river mouth; a bay, harbour, inlet or sound is the shore within 2 km of its official named point (so Ucluelet Harbour finds Ucluelet Inlet), none of which depends on where you stood
-- if no map can be drawn, the photo still publishes, just without one
+- if the nearest water of that name is more than 15 km away, the lake, stream, river mouth or shore at your feet is drawn instead, and the log names it (your "lost lake" is Rolf Lake to the province, your "onion lake" has no official name)
+- GPS is used for that choice and to place the water on the globe, rounded to a tenth of a degree (about 10 km). published photos carry no location
+- a river tagged as a creek, or a creek tagged as a river, is still found
+- an estuary is its river's lowest 3 km plus the shore within 2 km of the river mouth. a river that ends at a confluence is followed on to the sea (Puntledge Estuary runs down the Courtenay River into Comox Harbour), and Englishman River Estuary works as well as Englishman Estuary
+- a bay, harbour, inlet, sound, strait, channel, passage, cove or ocean is the shore within 2 km of its named point in the BC geographical names register. case does not matter, and a feature sharing the first word stands in when the exact name is missing (Ucluelet Harbour finds Ucluelet Inlet). a name the register lacks is drawn as the shore within 1.5 km of the photos
+- without GPS, a name shared by several rivers or bays is drawn only when exactly one of them meets the sea. otherwise the log asks you to add `lat` and `lon` for it in `data/rivers.toml`, and the next sync draws the one nearest that spot
+- if no map can be drawn, the photo still publishes, just without one, and the next sync tries again
 - the Indigenous language areas the water runs through (from native-land.ca, broader than single nations) are added as tags to its photos and make up the native lands tab
 
 ## the first time a name appears

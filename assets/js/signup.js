@@ -9,7 +9,9 @@ const roster = async f => {
   if (full) f.querySelector('.note').textContent = 'this one is full, watch for the next trip'
   return names
 }
-document.querySelectorAll('.signup[data-signup]:not([data-signup=""])').forEach(f => roster(f).catch(() => {}))
+const load = () => document.querySelectorAll('.signup[data-signup]:not([data-signup=""])').forEach(f => roster(f).catch(() => {}))
+load()
+document.addEventListener('page', load)
 document.addEventListener('submit', async e => {
   if (!e.target.matches('.signup')) return
   e.preventDefault()

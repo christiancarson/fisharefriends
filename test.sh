@@ -153,7 +153,7 @@ grep -q '<main class="themed" style="--tab: 130; --tl: 28%">' public/trips/squam
 grep -q 'grid-template-columns: minmax(0, 1fr) 18.7rem' assets/css/site.css
 test "$(grep -o '\.cols[^{]*{ [^}]*grid-template-columns: [^;}]*' assets/css/site.css | wc -l)" -eq 2
 /opt/homebrew/Caskroom/miniconda/base/bin/python3 -c "import glob, sys; from PIL import Image; bad=[f for f in glob.glob('content/posts/*/*.jpg') if Image.open(f).getexif()]; sys.exit(1 if bad else 0)"
-node --check assets/js/garden.js && node --check assets/js/signup.js
+node --check assets/js/garden.js && node --check assets/js/signup.js && node --check assets/js/world.js && node --check assets/js/pages.js
 hugo build -D --minify -d /tmp/faf-min --quiet && /opt/homebrew/Caskroom/miniconda/base/bin/python3 lock/encrypt.py /tmp/faf-min /tmp/faf-locked test-pass > /dev/null && test -s /tmp/faf-locked/core.bin && grep -q "fetch('/core.bin?v=[0-9a-f]*'" /tmp/faf-locked/index.html && grep -q "core.bin?v=" /tmp/faf-locked/404.html && ! grep -rq 'critty' /tmp/faf-locked/index.html && test $(ls /tmp/faf-locked/x | wc -l) -gt 50 && test $(stat -f%z /tmp/faf-locked/core.bin) -lt 2000000
 /opt/homebrew/Caskroom/miniconda/base/bin/python3 -c "import hashlib,gzip,json; from cryptography.hazmat.primitives.ciphers.aead import AESGCM; b=open('/tmp/faf-locked/core.bin','rb').read(); k=AESGCM(hashlib.pbkdf2_hmac('sha256',b'test-pass',b[:16],300000,32)); d=json.loads(gzip.decompress(k.decrypt(b[16:28],b[28:],None))); import re,os; refs=set(r for h in d['files'].values() for r in re.findall(r'src=\"?/([^\"\\s>#?]+)',h) if r.endswith(('.jpg','.png'))); missing=[r for r in refs if r not in d['blobs'] or not os.path.exists('/tmp/faf-locked/x/'+d['blobs'][r][0]+'.bin')]; assert not missing, missing[:3]" && rm -rf /tmp/faf-locked /tmp/faf-min
 grep -q '<p class="bro"><a href="/hello/">hello bro <span class="heart">❤️</span></a></p>' public/index.html && ! grep -q 'hello!' public/index.html
@@ -165,7 +165,7 @@ test $(grep -o '<p class="waterlist"><a href="/categories/[a-z-]*/">[^<]*</a>' p
 grep -q '<a href="/categories/morice-river/">Morice River</a>' public/index.html
 grep -q '<a class="globe" href="/#morice-river">on the globe</a>' public/categories/morice-river/index.html
 grep -q 'js/world\.[a-f0-9]*\.js" defer' public/index.html
-! grep -q 'class="sphere"' public/journal/index.html
+grep -q '<main class="themed" style="--tab: 48; --tl: 40%"><div class="sphere"><canvas class="world"' public/journal/index.html
 test $(grep -c '^lat = ' data/rivers.toml) -eq $(grep -c '^\["' data/rivers.toml)
 grep -q 'trip_date: "2026-11-21"' content/trips/squamish-river/index.md
 grep -qi 'november 21, 2026' public/trips/squamish-river/index.html
@@ -176,7 +176,7 @@ grep -q 'Morice River</a><p class="tags"><a href="/categories/[^"]*">[^<]*</a><a
 grep -q '<h2 class="entry-title"><a href="/posts/2026-09-september-2026/">september 2026</a></h2>' public/categories/witsuwiten/index.html
 grep -q '<p class="tip" hidden><b></b><span></span></p>' public/index.html
 test -f public/posts/2020-06-june-2020/img-1637.jpg
-test $(grep -c '<path' assets/maps/dean-river.svg) -gt 600
+test $(grep -c '<path' assets/maps/dean-river.svg) -gt 250
 grep -q '<div class="sphere"><canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished" style="--hue: 215"' public/index.html
 test "$(python3 -c "import json; print(json.load(open('assets/maps/world.json'))['waters'])")" = "$(ls data/waters | sed 's/.json//' | sort | tr '\n' ' ' | sed 's/ $//')"
 test $(python3 -c "import json; d = json.load(open('assets/maps/world.json')); print(sum(len(l) // 2 for l in d['local']))") -gt 5000
@@ -187,9 +187,15 @@ grep -q '<h1 class="listtitle">upcoming trips</h1>' public/trips/index.html
 grep -q '<canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished" style="--hue: 215" data-world="/maps/world\.[a-f0-9]*\.json" data-waters="/maps/waters\.[a-f0-9]*\.json" data-links="/maps/links\.[a-f0-9]*\.json"></canvas>' public/index.html
 test $(ls public/maps/world.*.json public/maps/waters.*.json public/maps/links.*.json | wc -l) -eq 3
 python3 -c "import json, glob; w = json.load(open(glob.glob('public/maps/waters.*.json')[0])); l = json.load(open(glob.glob('public/maps/links.*.json')[0])); assert w['morice-river']['title'] == 'Morice River' and 'Witsuwit’en' in w['morice-river']['lands'] and len(w['morice-river']['lines']) > 10; assert 'morice-river' in l['waters']['/categories/rainbow-trout/'] and l['waters']['/posts/2026-09-september-2026/'] == ['morice-river'] and len(l['waters']['journal']) > 20 and 'Ruby' in l['names']['/categories/rainbow-trout/'] and l['waters']['/categories/music/'] == ['morice-river']"
-grep -q '<a class="inset" href="/#/categories/rainbow-trout/" title="see on the globe"><canvas class="world" width="160" height="160" role="img" aria-label="where these photos were taken" style="--hue: 215" data-world=' public/categories/rainbow-trout/index.html
-grep -q '<a class="inset" href="/#/posts/2026-09-september-2026/"' public/posts/2026-09-september-2026/index.html
-! grep -q 'class="inset"' public/index.html
+grep -q '<main class="themed" style="--tab: 275; --tl: 40%"><div class="sphere"><canvas class="world" width="640" height="360" role="img" aria-label="every water i have fished" style="--hue: 215" data-world="/maps/world\.[a-f0-9]*\.json"' public/categories/rainbow-trout/index.html
+grep -q '<div class="page"><article class="post">' public/posts/2026-09-september-2026/index.html
+grep -q '<div class="page"></div></main>' public/index.html
+! grep -rq 'class="inset"' public --include=index.html
+grep -q 'js/pages\.[a-f0-9]*\.js" defer' public/index.html && grep -q 'js/pages\.[a-f0-9]*\.js" defer' public/about/index.html
+test $(grep -c '<p class="tip" hidden><b></b><span></span></p>' public/about/index.html) -eq 1
+grep -q '\.sphere { position: relative; width: 20rem; max-width: 100%' assets/css/site.css && ! grep -q '\.inset' assets/css/site.css
+grep -q 'window.lockPage = render; window.lockWatch = watch' lock/unlock.html && grep -q 'if (window.route) return' lock/unlock.html
+python3 -c "import json, glob, re; bad = [f for f in glob.glob('data/waters/*.json') if any(len(l) == 4 and l[2] == 0 and l[3] == 0 for l in json.load(open(f))['lines'])]; assert bad == ['data/waters/truckee-river.json'], bad; dots = [f for f in glob.glob('assets/maps/*.svg') if any(len(set(d.replace('M ', '').split(' L '))) < 2 for d in re.findall(r'd=\"([^\"]+)\"', open(f).read()))]; assert sorted(dots) == ['assets/maps/clark-fork-river.svg', 'assets/maps/truckee-river.svg'], dots"
 grep -q 'js/world\.[a-f0-9]*\.js" defer' public/posts/2026-09-september-2026/index.html
 grep -q "window.lockFile = rel => site.files\[rel\]" lock/unlock.html
 grep -q '<li data-tab="7" data-name="about" style="--hue: 178"><details><summary>about</summary><ul class="plain nest"><li data-sub="0" data-l="62"><a href="/about/">about me</a></li><li data-sub="1" data-l="54"><span>critty (at) fisharefriends.org</span></li><li data-sub="2" data-l="46"><a href="/index.xml">rss</a></li></ul></details></li>' public/index.html
